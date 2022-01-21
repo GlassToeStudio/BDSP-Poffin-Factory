@@ -1,0 +1,261 @@
+Rank: 1 Poffins eaten: 7 | 255, 255, 255, 255, 255 : 255
+	117 super mild poffin   37 - Flavors [117, 0, 42, 42, 0]
+		petaya  Spicy    40
+		enigma  Spicy    60
+		liechi  Spicy    40
+		custap  Sweet    60
+	117 super mild poffin   37 - Flavors [0, 117, 0, 42, 42]
+		apicot  Dry      40
+		micle   Dry      60
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	102 super mild poffin   34 - Flavors [0, 0, 102, 0, 72]
+		apicot  Dry      40
+		custap  Sweet    60
+		lansat  Spicy    50
+		salac   Sweet    40
+	117 super mild poffin   37 - Flavors [42, 42, 0, 117, 0]
+		petaya  Spicy    40
+		enigma  Spicy    60
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	115 super mild poffin   37 - Flavors [0, 0, 70, 0, 115]
+		apicot  Dry      40
+		custap  Sweet    60
+		salac   Sweet    40
+		rowap   Sour     60
+Rank: 1 Poffins eaten: 7 | 255, 255, 255, 255, 255 : 255
+	117 super mild poffin   37 - Flavors [117, 0, 42, 42, 0]
+		petaya  Spicy    40
+		enigma  Spicy    60
+		liechi  Spicy    40
+		custap  Sweet    60
+	117 super mild poffin   37 - Flavors [0, 117, 0, 42, 42]
+		apicot  Dry      40
+		micle   Dry      60
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	102 super mild poffin   39 - Flavors [42, 0, 102, 0, 87]
+		custap  Sweet    60
+		lansat  Spicy    50
+		salac   Sweet    40
+		rowap   Sour     60
+	115 super mild poffin   37 - Flavors [0, 70, 0, 115, 0]
+		petaya  Spicy    40
+		micle   Dry      60
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	115 super mild poffin   37 - Flavors [0, 0, 70, 0, 115]
+		apicot  Dry      40
+		custap  Sweet    60
+		salac   Sweet    40
+		rowap   Sour     60
+Rank: 1 Poffins eaten: 7 | 255, 255, 255, 255, 255 : 255
+	117 super mild poffin   37 - Flavors [117, 0, 42, 42, 0]
+		petaya  Spicy    40
+		enigma  Spicy    60
+		liechi  Spicy    40
+		custap  Sweet    60
+	117 super mild poffin   37 - Flavors [0, 117, 0, 42, 42]
+		apicot  Dry      40
+		micle   Dry      60
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	102 super mild poffin   39 - Flavors [42, 0, 102, 0, 87]
+		custap  Sweet    60
+		lansat  Spicy    50
+		salac   Sweet    40
+		rowap   Sour     60
+	117 super mild poffin   37 - Flavors [42, 42, 0, 117, 0]
+		petaya  Spicy    40
+		enigma  Spicy    60
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	115 super mild poffin   37 - Flavors [0, 0, 70, 0, 115]
+		apicot  Dry      40
+		custap  Sweet    60
+		salac   Sweet    40
+		rowap   Sour     60
+Rank: 1 Poffins eaten: 8 | 255, 255, 255, 255, 255 : 255
+	117 super mild poffin   37 - Flavors [117, 0, 42, 42, 0]
+		petaya  Spicy    40
+		enigma  Spicy    60
+		liechi  Spicy    40
+		custap  Sweet    60
+	102 super mild poffin   35 - Flavors [0, 102, 0, 87, 0]
+		micle   Dry      60
+		charti  Dry      35
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	102 super mild poffin   39 - Flavors [42, 0, 102, 0, 87]
+		custap  Sweet    60
+		lansat  Spicy    50
+		salac   Sweet    40
+		rowap   Sour     60
+	115 super mild poffin   30 - Flavors [0, 55, 0, 115, 0]
+		petaya  Spicy    40
+		charti  Dry      35
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	115 super mild poffin   37 - Flavors [0, 0, 70, 0, 115]
+		apicot  Dry      40
+		custap  Sweet    60
+		salac   Sweet    40
+		rowap   Sour     60
+Rank: 1 Poffins eaten: 8 | 255, 255, 255, 255, 255 : 255
+	102 super mild poffin   42 - Flavors [102, 12, 0, 12, 0]
+		petaya  Spicy    40
+		enigma  Spicy    60
+		jaboca  Bitter   60
+		rowap   Sour     60
+	102 super mild poffin   35 - Flavors [0, 102, 0, 87, 0]
+		micle   Dry      60
+		charti  Dry      35
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	102 super mild poffin   39 - Flavors [42, 0, 102, 0, 87]
+		custap  Sweet    60
+		lansat  Spicy    50
+		salac   Sweet    40
+		rowap   Sour     60
+	115 super mild poffin   30 - Flavors [0, 55, 0, 115, 0]
+		petaya  Spicy    40
+		charti  Dry      35
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	100 super mild poffin   30 - Flavors [0, 0, 55, 0, 100]
+		apicot  Dry      40
+		custap  Sweet    60
+		salac   Sweet    40
+		colbur  Sour     35
+Rank: 1 Poffins eaten: 8 | 255, 255, 255, 255, 255 : 255
+	117 super mild poffin   37 - Flavors [117, 0, 42, 42, 0]
+		petaya  Spicy    40
+		enigma  Spicy    60
+		liechi  Spicy    40
+		custap  Sweet    60
+	115 super mild poffin   35 - Flavors [0, 115, 0, 40, 0]
+		enigma  Spicy    60
+		micle   Dry      60
+		charti  Dry      35
+		ganlon  Dry      40
+	102 super mild poffin   39 - Flavors [42, 0, 102, 0, 87]
+		custap  Sweet    60
+		lansat  Spicy    50
+		salac   Sweet    40
+		rowap   Sour     60
+	115 super mild poffin   30 - Flavors [0, 55, 0, 115, 0]
+		petaya  Spicy    40
+		charti  Dry      35
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	117 super mild poffin   32 - Flavors [0, 27, 0, 0, 117]
+		apicot  Dry      40
+		ganlon  Dry      40
+		salac   Sweet    40
+		rowap   Sour     60
+Rank: 1 Poffins eaten: 8 | 255, 255, 255, 255, 255 : 255
+	117 super mild poffin   39 - Flavors [117, 0, 27, 12, 0]
+		petaya  Spicy    40
+		enigma  Spicy    60
+		custap  Sweet    60
+		lansat  Spicy    50
+	100 super mild poffin   30 - Flavors [0, 100, 0, 70, 0]
+		petaya  Spicy    40
+		micle   Dry      60
+		charti  Dry      35
+		ganlon  Dry      40
+	102 super mild poffin   39 - Flavors [42, 0, 102, 0, 87]
+		custap  Sweet    60
+		lansat  Spicy    50
+		salac   Sweet    40
+		rowap   Sour     60
+	115 super mild poffin   37 - Flavors [0, 70, 0, 115, 0]
+		petaya  Spicy    40
+		micle   Dry      60
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	117 super mild poffin   33 - Flavors [42, 0, 42, 0, 117]
+		lansat  Spicy    50
+		salac   Sweet    40
+		rowap   Sour     60
+		colbur  Sour     35
+Rank: 1 Poffins eaten: 8 | 255, 255, 255, 255, 255 : 255
+	147 super mild poffin   34 - Flavors [147, 0, 27, 0, 0]
+		petaya  Spicy    40
+		enigma  Spicy    60
+		liechi  Spicy    40
+		lansat  Spicy    50
+	102 super mild poffin   35 - Flavors [0, 102, 0, 87, 0]
+		micle   Dry      60
+		charti  Dry      35
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	102 super mild poffin   39 - Flavors [42, 0, 102, 0, 87]
+		custap  Sweet    60
+		lansat  Spicy    50
+		salac   Sweet    40
+		rowap   Sour     60
+	102 super mild poffin   42 - Flavors [0, 12, 0, 102, 12]
+		micle   Dry      60
+		custap  Sweet    60
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	115 super mild poffin   35 - Flavors [0, 40, 0, 0, 115]
+		apicot  Dry      40
+		jaboca  Bitter   60
+		rowap   Sour     60
+		colbur  Sour     35
+Rank: 1 Poffins eaten: 8 | 255, 255, 255, 255, 255 : 255
+	115 super mild poffin   35 - Flavors [115, 0, 40, 0, 0]
+		enigma  Spicy    60
+		tanga   Spicy    35
+		liechi  Spicy    40
+		rowap   Sour     60
+	102 super mild poffin   35 - Flavors [0, 102, 0, 87, 0]
+		micle   Dry      60
+		charti  Dry      35
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	102 super mild poffin   39 - Flavors [42, 0, 102, 0, 87]
+		custap  Sweet    60
+		lansat  Spicy    50
+		salac   Sweet    40
+		rowap   Sour     60
+	115 super mild poffin   37 - Flavors [0, 70, 0, 115, 0]
+		petaya  Spicy    40
+		micle   Dry      60
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	102 super mild poffin   29 - Flavors [0, 0, 12, 0, 102]
+		charti  Dry      35
+		salac   Sweet    40
+		rowap   Sour     60
+		colbur  Sour     35
+Rank: 1 Poffins eaten: 8 | 255, 255, 255, 255, 255 : 255
+	130 super mild poffin   33 - Flavors [130, 0, 70, 0, 0]
+		enigma  Spicy    60
+		tanga   Spicy    35
+		liechi  Spicy    40
+		lansat  Spicy    50
+	102 super mild poffin   35 - Flavors [0, 102, 0, 87, 0]
+		micle   Dry      60
+		charti  Dry      35
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	102 super mild poffin   39 - Flavors [42, 0, 102, 0, 87]
+		custap  Sweet    60
+		lansat  Spicy    50
+		salac   Sweet    40
+		rowap   Sour     60
+	115 super mild poffin   30 - Flavors [0, 55, 0, 115, 0]
+		petaya  Spicy    40
+		charti  Dry      35
+		ganlon  Dry      40
+		jaboca  Bitter   60
+	117 super mild poffin   37 - Flavors [0, 42, 42, 0, 117]
+		apicot  Dry      40
+		micle   Dry      60
+		salac   Sweet    40
+		rowap   Sour     60
+

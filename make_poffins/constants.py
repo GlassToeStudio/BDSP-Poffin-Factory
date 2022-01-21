@@ -1,0 +1,58 @@
+from gts_colors.colors import (BOLD, ITALIC, N_BOLD, N_ITALIC, RESET, RGB_BLUE,
+                               RGB_DARK_VIOLET, RGB_GREEN, RGB_ORANGE, RGB_RED,
+                               RGB_VIOLET, RGB_YELLOW, color_256)
+
+italic = ITALIC
+n_bold = N_BOLD
+n_italic = N_ITALIC
+
+# Weakened by:
+# Spicy |  Sour  |  Bitter | Sweet  | Dry\n
+# Dry   |  Spicy |  Sour   | Bitter | Sweet
+WEAKENED_BY = [1, 2, 3, 4, 0]
+"""List of indecies of which flavor weakens a given flavor based on its index of preference."""  # noqa ES501
+FLAVORS = ["Spicy", "Dry", "Sweet", "Bitter", "Sour"]
+"""List of all 5 flavors in order of preference - Spicy, Dry, Sweet, Bitter, Sour"""  # noqa ES501
+FLAVOR_COLORS = {"Spicy": color_256(208), "Dry": color_256(39), "Sweet": color_256(163), "Bitter": color_256(40), "Sour": color_256(226)}  # noqa ES501
+"""Dictionary of ascii color codes for each of the 5 flavors: {"Flavor" : Color}"""  # noqa ES501
+FLAVOR_PREFERENCE = {"Spicy": 5, "Dry": 4, "Sweet": 3, "Bitter": 2, "Sour": 1}
+"""Lookup table to find a given flavor's (Spicy, Dry, Sweet, Bitter, Sour) preference"""  # noqa ES501
+SMOOTHNESS_TABLE = {
+    20: ["leppa", "oran", "persim", "lum", "sitrus", "razz", "bluk", "nanab", "wepear", "pinap", "pomeg", "kelpsy", "qualot", "hondew", "grepa"],  # noqa ES501
+    25: ["cheri", "chesto", "pecha", "rawst", "aspear", "figy", "wiki", "mago", "aguav", "iapapa"],  # noqa ES501
+    30: ["tamato", "cornn", "magost", "rabuta", "nomel", "occa", "passho", "wacan", "rindo", "yache", "chople", "kebia", "shuca", "coba", "payapa"],  # noqa ES501
+    35: ["spelon", "pamtre", "watmel", "durin", "belue", "tanga", "charti", "kasib", "haban", "colbur", "babiri", "chilan", "roseli"],  # noqa ES501
+    40: ["liechi", "ganlon", "salac", "petaya", "apicot"],
+    50: ["lansat", "starf"],
+    60: ["enigma", "micle", "custap", "jaboca", "rowap"],
+}
+"""Lookup table to find the inherent smoothness of a berry by giving its name"""  # noqa ES501
+
+outline = color_256(168)
+"""A pinkish color for an outline"""
+bad_red = color_256(196)
+"""A red"""
+super_mild_poffin = f"{BOLD}{RGB_RED}SU{RGB_ORANGE}PER {RGB_YELLOW}MI{RGB_GREEN}LD {RGB_BLUE}PO{RGB_DARK_VIOLET}FF{RGB_VIOLET}IN{RESET}"  # noqa ES501
+"""The word "Super Mild Poffin" but in rainbow colors"""
+mild_poffin = f"{BOLD}{color_256(11)}MILD POFFIN{RESET}"
+"""The word "Mild Poffin" but in gold"""
+rich_poffin = f"{BOLD}{color_256(247)}RICH POFFIN{RESET}"
+"""The word "Rich Poffin" but in light grey."""
+overripe_poffin = f"{BOLD}{color_256(242)}OVERRIPE POFFIN{RESET}"
+"""The word Overripe Poffin but in dark grey"""
+foul_poffin = f"{BOLD}{color_256(237)}FOUL POFFIN{RESET}"
+"""The word Foul Poffin but in black"""
+
+
+def sort_flavors(flavors_list: list[str]) -> list[tuple[int, str]]:
+    """Sort the list of flavors names by preference
+
+    Ex:
+        [(30, 'Spicy'), (30, 'Sweet'), (30, 'Sour'), (10, 'Dry'), (10, 'Bitter')]  # noqa ES501
+    """
+
+    return sorted(flavors_list, key=lambda x: (x[0], FLAVOR_PREFERENCE[x[1]]), reverse=True)  # noqa ES501
+
+
+def subtract_weakening_flavors(values):
+    return [values[i] - values[WEAKENED_BY[i]] for i in range(5)]  # noqa ES501
