@@ -21,12 +21,12 @@ def test_berry_smoothness():
 
 
 def test_berry_str():
-    value = "\tganlon Dry     40 [0, 30, 10, 30, 0]"
+    value = "\tganlon Bitter  40 [0, 30, 10, 30, 0]"
     assert str(ganlon_berry) == value, f"Should be {value}"
 
 
 def test_berry_main_flavor():
-    value = "Dry"
+    value = "Bitter"
     assert ganlon_berry.main_flavor == value, f"Should be {value}"
 
 

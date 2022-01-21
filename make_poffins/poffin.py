@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-import make_poffins.berry_factory as b
+import make_poffins.berry_factory as bf
 from make_poffins.berry import Berry
 from make_poffins.constants import (BOLD, FLAVOR_COLORS, FLAVORS, N_BOLD,
                                     RESET, color_256, foul_poffin, mild_poffin,
@@ -9,9 +9,19 @@ from make_poffins.constants import (BOLD, FLAVOR_COLORS, FLAVORS, N_BOLD,
 
 
 class Poffin:
-    """Poffin needs a description"""
-
     def __init__(self, flavor_values: list[int], smoothness: int, berries: list[Berry]):  # noqa ES501
+        """
+        Poffin
+            Flavor Values: [int]
+            Smoothness: int
+            Berries (aka recipe): [Berry]
+            Flavor Names: [str]
+            Level: int
+            Second Level: int
+            repr name: str
+            name: str
+            __id__: int
+        """
         self.flavor_values = deepcopy(flavor_values)
         """Values of the flavors - unaltered. Ex: [10, 0, 0, 10, 0]"""
         self.smoothness = smoothness
@@ -100,7 +110,7 @@ class Poffin:
         return (
             "\n"
             f"{outline}{'-'*amt}{RESET}\n"
-            f"{BOLD}{self.level} - {self.repr_name:<17}{BOLD} {self.smoothness}{N_BOLD}"  # noqa ES501
+            f"{BOLD}{self.level} - {self.repr_name:<36}{BOLD} {self.smoothness}{N_BOLD}"  # noqa ES501
             f" - {color_256(239)}Flavors{RESET} {printable_flavor_values}\n"
             f"{outline}{'-'*amt}{RESET}\n"
             f"* {string_of_all_flavors} ({self.level}, {self.second_level})\n"  # noqa ES501
@@ -119,7 +129,7 @@ class Poffin:
 
 
 def main():
-    test_poffin = Poffin([148, 0, 0, 28, 0], 30, [b.spelon_berry, b.liechi_berry, b.petaya_berry, b.enigma_berry])  # noqa ES501
+    test_poffin = Poffin([148, 0, 0, 28, 0], 30, [bf.spelon_berry, bf.liechi_berry, bf.petaya_berry, bf.enigma_berry])  # noqa ES501
     print(repr(test_poffin))
     print(str(test_poffin))
 

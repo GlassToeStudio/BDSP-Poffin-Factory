@@ -1,6 +1,7 @@
 from make_poffins.constants import (BOLD, FLAVOR_COLORS, FLAVORS, ITALIC,
                                     N_BOLD, N_ITALIC, RESET, SMOOTHNESS_TABLE,
-                                    color_256, sort_flavors)
+                                    color_256, sort_flavors,
+                                    subtract_weakening_flavors)
 
 
 class Berry:
@@ -20,10 +21,14 @@ class Berry:
         """The name of the berry"""
         self.flavor_values = values
         """List of 5 values representing the flavors for this berry"""
+        # self.__weakened_flavor_values__ = None
+        """List of 5 values wekaned just forfiltering/sorting"""
         self.smoothness = self.__get_smoothness__()
         """The inherent smoothness of this berry"""
         self.main_flavor = self.__get_main_flavor__()
         """The main flavor of this berry: Spicy, Dry, Sweet, Bitter, or Sour"""
+        self.main_flavor_value = max(self.flavor_values)
+        """The numerical value for the mainflavor"""
         self.__id__ = int(''.join(map(str, self.flavor_values)))
         """The 'unique' id of this berry"""
 
@@ -34,6 +39,7 @@ class Berry:
         return 255
 
     def __get_main_flavor__(self):
+        # self.__weakened_flavor_values__ = subtract_weakening_flavors(self.flavor_values)  # noqa ES501
         flavor_list = [(flavor, FLAVORS[i]) for i, flavor in enumerate(self.flavor_values) if flavor > 0]  # noqa ES501
         sorted_list = [flavor for _, flavor in sort_flavors(flavor_list)]
         return sorted_list[0]
@@ -50,8 +56,8 @@ class Berry:
             printable_flavor_values = (f"{printable_flavor_values}"
                                        f"{FLAVOR_COLORS[FLAVORS[i]]}"
                                        f"{bold}{self.flavor_values[i]:>3}{RESET}, ")  # noqa ES501
-        printable_flavor_values = f"{printable_flavor_values[:-2]}]"
 
+        printable_flavor_values = f"{printable_flavor_values[:-2]}]"
         formated_flavor = f"({ITALIC}{self.main_flavor}{N_ITALIC})"
 
         return (f"\t{BOLD}{FLAVOR_COLORS[self.main_flavor]}{self.name:<7}{N_BOLD}"  # noqa ES501

@@ -1,4 +1,4 @@
-import make_poffins.berry_factory as b
+import make_poffins.berry_factory as bf
 from make_poffins.constants import BOLD, FLAVOR_COLORS, RESET, bad_red, outline
 from make_poffins.poffin import Poffin
 from make_poffins.poffin_cooker import PoffinCooker
@@ -25,6 +25,7 @@ class ContestStats:
         """The ranking for the given poffin combo"""
         self.__all_values = None
         """Convenient list of all contest values"""
+        self.num_perfect_values = 0
 
     def feed_poffins(self, poffins: list[Poffin]):
         self.poffins = poffins
@@ -48,6 +49,7 @@ class ContestStats:
         self.cleverness = self.__add_value__(self.cleverness, p.flavor_values[3])  # noqa ES501
         self.toughness = self.__add_value__(self.toughness, p.flavor_values[4])
         self.__all_values = [self.coolness, self.beauty, self.cuteness, self.cleverness, self.toughness]  # noqa ES501
+        self.num_perfect_values = sum(1 for x in self.__all_values if x >= 255)
 
     @staticmethod
     def __add_value__(current_value, additional_value):
@@ -116,11 +118,11 @@ def main():
         return poffin
 
     recipes = [
-        [b.spelon_berry, b.petaya_berry, b.enigma_berry, b.jaboca_berry],
-        [b.pamtre_berry, b.apicot_berry, b.micle_berry, b.rowap_berry],
-        [b.salac_berry, b.lansat_berry, b.custap_berry, b.rowap_berry],
-        [b.durin_berry, b.ganlon_berry, b.micle_berry, b.jaboca_berry],
-        [b.belue_berry, b.salac_berry, b.lansat_berry, b.rowap_berry]
+        [bf.spelon_berry, bf.petaya_berry, bf.enigma_berry, bf.jaboca_berry],
+        [bf.pamtre_berry, bf.apicot_berry, bf.micle_berry, bf.rowap_berry],
+        [bf.salac_berry, bf.lansat_berry, bf.custap_berry, bf.rowap_berry],
+        [bf.durin_berry, bf.ganlon_berry, bf.micle_berry, bf.jaboca_berry],
+        [bf.belue_berry, bf.salac_berry, bf.lansat_berry, bf.rowap_berry]
     ]
     poffins = []
     for recipe in recipes:

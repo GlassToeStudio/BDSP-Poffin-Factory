@@ -1,5 +1,4 @@
 import math
-from turtle import st
 
 from make_poffins.berry import Berry
 from make_poffins.constants import subtract_weakening_flavors

@@ -202,18 +202,6 @@ every_berry = [
 ]
 """List of all 64 berries"""
 
-berry_list_small = [
-    cheri_berry,
-    chesto_berry,
-    pecha_berry,
-    rawst_berry,
-    aspear_berry,
-    leppa_berry,
-    oran_berry,
-    persim_berry,
-]
-"""Randonly removed some berries to shorten the list"""
-
 tiny_list = [
     petaya_berry,
     enigma_berry,
@@ -234,24 +222,26 @@ tiny_list = [
 """Three of each, theoretically best, berries -  Spicy, Dry, Sweet, Bitter, Sour"""  # noqa ES501
 
 
-def __berry_combinatiions_n__(n: int) -> tuple[Berry, ...]:
+def __berry_combinatiions_n__(n: int, berries: list[Berry] = None) -> tuple[Berry, ...]:  # noqa ES501
     """Every combination of n berries"""
-    return combinations(every_berry, n)
+    if berries is None:
+        berries = every_berry
+    return combinations(berries, n)
 
 
-def berry_combinationss_2() -> tuple[Berry, Berry]:
+def berry_combinationss_2(berries: list[Berry] = None) -> tuple[Berry, Berry]:
     """Every combination of 2 berries"""
-    return __berry_combinatiions_n__(2)
+    return __berry_combinatiions_n__(2, berries)
 
 
-def berry_combinations_3() -> tuple[Berry, Berry, Berry]:
+def berry_combinations_3(berries: list[Berry] = None) -> tuple[Berry, Berry, Berry]:  # noqa ES501
     """Every combination of 3 berries"""
-    return __berry_combinatiions_n__(3)
+    return __berry_combinatiions_n__(3, berries)
 
 
-def berry_combinations_4() -> tuple[Berry, Berry, Berry, Berry]:
+def berry_combinations_4(berries: list[Berry] = None) -> tuple[Berry, Berry, Berry, Berry]:  # noqa ES501
     """Every combination of 4 berries"""
-    return __berry_combinatiions_n__(4)
+    return __berry_combinatiions_n__(4, berries)
 
 
 if __name__ == "__main__":

@@ -1,14 +1,15 @@
-from itertools import combinations, product
+from itertools import product
 
-import make_poffins.berry_factory as b
+import make_poffins.berry_factory as bf
+from make_poffins.berry_sorter import BerrySorter
 from make_poffins.contest_stats import ContestStats
-from make_poffins.poffin import Poffin
-from make_poffins.poffin_maker import cook_poffin
+from make_poffins.poffin_cooker import PoffinCooker
 
 
 def test_cook(recipe, t):
-    n_poffin = cook_poffin(frozenset(recipe), t)
-    return n_poffin
+    cooker = PoffinCooker()
+    cooker.cook(frozenset(recipe), 40, 0, 0)
+    return cooker.complete()
 
 
 def test_equality(poffin1, poffin2):
@@ -34,7 +35,26 @@ def test_product():
         print(p)
 
 
+def test_sort():
+    bs = BerrySorter(bf.every_berry)
+    bs.sort_all(True)
+    bs.print_berries()
+    bs = BerrySorter(bf.every_berry)
+    bs.sort_all(False)
+    bs.print_berries()
+
+
+def test_set_frozenset():
+    x = set([1, 2, 3, 4, 5, 6, 6, 7])
+    y = frozenset([1, 2, 3, 4, 5, 6, 6, 7])
+    print(x, y)
+    w = [(x, x, x, x) for x in bf.every_berry]
+    z = set([(x, x, x, x) for x in bf.every_berry])
+    print(w[0], str(list(z)[0]))
+
+
 if __name__ == "__main__":
+    test_set_frozenset()
     # test_product()
     # test_poffin1 = test_cook([b.spelon_berry, b.liechi_berry, b.petaya_berry, b.enigma_berry], 40)
     # test_poffin2 = test_cook([b.spelon_berry, b.petaya_berry, b.enigma_berry, b.jaboca_berry], 40)
@@ -42,19 +62,19 @@ if __name__ == "__main__":
     # print(test_poffin2)
     # print(test_equality(test_poffin1, test_poffin2))
     # test_set([test_poffin1, test_poffin2])
-    poffins = []
-    recipe1 = [b.spelon_berry, b.petaya_berry, b.enigma_berry, b.jaboca_berry]
-    recipe2 = [b.pamtre_berry, b.apicot_berry, b.micle_berry, b.rowap_berry]
-    recipe3 = [b.salac_berry, b.lansat_berry, b.custap_berry, b.rowap_berry]
-    recipe4 = [b.durin_berry, b.ganlon_berry, b.micle_berry, b.jaboca_berry]
-    recipe5 = [b.belue_berry, b.salac_berry, b.lansat_berry, b.rowap_berry]
-    recipes = [recipe1, recipe2, recipe3, recipe4, recipe5]
-    for recipe in recipes:
-        poffins.append(test_cook(recipe, 40))
-    # print(poffins)
-    stats = ContestStats()
-    stats.feed_poffins(poffins)
-    print(stats)
+    # poffins = []
+    # recipe1 = [bf.spelon_berry, bf.petaya_berry, bf.enigma_berry, bf.jaboca_berry]
+    # recipe2 = [bf.pamtre_berry, bf.apicot_berry, bf.micle_berry, bf.rowap_berry]
+    # recipe3 = [bf.salac_berry, bf.lansat_berry, bf.custap_berry, bf.rowap_berry]
+    # recipe4 = [bf.durin_berry, bf.ganlon_berry, bf.micle_berry, bf.jaboca_berry]
+    # recipe5 = [bf.belue_berry, bf.salac_berry, bf.lansat_berry, bf.rowap_berry]
+    # recipes = [recipe1, recipe2, recipe3, recipe4, recipe5]
+    # for recipe in recipes:
+    #     poffins.append(test_cook(recipe, 40))
+    # # print(poffins)
+    # stats = ContestStats()
+    # stats.feed_poffins(poffins)
+    # print(stats)
 
     # recipe = [b.rowap_berry, b.payapa_berry, b.kebia_berry, b.belue_berry]
     # test_cook(recipe, 40)
