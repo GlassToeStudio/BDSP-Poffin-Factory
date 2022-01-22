@@ -60,8 +60,8 @@ def test_set_frozenset():
 def test_poffin_sorter():
     cooker = PoffinCooker()
     pf = PoffinFactory(cooker, berry_factory)
-    o_poffins = pf.poffin_list
-    poffins = pf.get_poffins_with_n_flavors_greater_than_min_value(o_poffins, 3, 30)
+    poffins = pf.poffin_list
+    poffins = pf.get_poffins_by_flavor_with_n_flavors_greater_than_min_value(poffins, "Sour", 3, 30)  # noqa ES501
     print("Poffins len:", len(poffins))
 
 

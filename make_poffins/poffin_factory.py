@@ -50,50 +50,55 @@ class PoffinFactory():
     def generate_custom_poffin_list_from_recipes(self, recipes):  # noqa ES501
         return [self.__cooker__.cook(recipe) for recipe in recipes]  # noqa ES501
 
-    def get_poffins_with_n_flavors_greater_than_min_value(self, o_poffins: list[Poffin], num_flavors: int = 3, min_value: int = 30) -> list[Poffin]:  # noqa ES501
+    def get_poffins_with_n_flavors_greater_than_min_value_at_min_level(self, o_poffins: list[Poffin], num_flavors: int = 3, min_value: int = 30, min_level: int = 100) -> list[Poffin]:  # noqa ES501
         poffin_sorter = PoffinSorter()
         poffins = poffin_sorter.filter_poffins_by_flavor(o_poffins, "spicy")
-        poffins = poffin_sorter.filter_poffins_by_level(poffins, 100)
-        poffins = poffin_sorter.filter_by_num_flavors(poffins, 3)
+        poffins = poffin_sorter.filter_poffins_by_level(poffins, min_level)
+        poffins = poffin_sorter.filter_by_num_flavors(poffins, num_flavors)
         poffins = poffin_sorter.sort_on_sum_of_main_flavor_smoothness_ratios(poffins)  # noqa ES501
-        # _ = [print(str(p)) for p in poffins]
         spicy_poffins_list = poffins.copy()
 
         poffins = poffin_sorter.filter_poffins_by_flavor(o_poffins, "dry")
-        poffins = poffin_sorter.filter_poffins_by_level(poffins, 100)
-        poffins = poffin_sorter.filter_by_num_flavors(poffins, 3)
+        poffins = poffin_sorter.filter_poffins_by_level(poffins, min_level)
+        poffins = poffin_sorter.filter_by_num_flavors(poffins, num_flavors)
         poffins = poffin_sorter.sort_on_sum_of_main_flavor_smoothness_ratios(poffins)  # noqa ES501
-        # _ = [print(str(p)) for p in poffins]
         dry_poffins_list = poffins.copy()
 
         poffins = poffin_sorter.filter_poffins_by_flavor(o_poffins, "sweet")
-        poffins = poffin_sorter.filter_poffins_by_level(poffins, 100)
-        poffins = poffin_sorter.filter_by_num_flavors(poffins, 3)
+        poffins = poffin_sorter.filter_poffins_by_level(poffins, min_level)
+        poffins = poffin_sorter.filter_by_num_flavors(poffins, num_flavors)
         poffins = poffin_sorter.sort_on_sum_of_main_flavor_smoothness_ratios(poffins)  # noqa ES501
-        # _ = [print(str(p)) for p in poffins]
         sweet_poffins_list = poffins.copy()
 
         poffins = poffin_sorter.filter_poffins_by_flavor(o_poffins, "bitter")
-        poffins = poffin_sorter.filter_poffins_by_level(poffins, 100)
-        poffins = poffin_sorter.filter_by_num_flavors(poffins, 3)
+        poffins = poffin_sorter.filter_poffins_by_level(poffins, min_level)
+        poffins = poffin_sorter.filter_by_num_flavors(poffins, num_flavors)
         poffins = poffin_sorter.sort_on_sum_of_main_flavor_smoothness_ratios(poffins)  # noqa ES501
-        # _ = [print(str(p)) for p in poffins]
         bitter_poffins_list = poffins.copy()
 
         poffins = poffin_sorter.filter_poffins_by_flavor(o_poffins, "sour")
-        poffins = poffin_sorter.filter_poffins_by_level(poffins, 100)
-        poffins = poffin_sorter.filter_by_num_flavors(poffins, 3)
+        poffins = poffin_sorter.filter_poffins_by_level(poffins, min_level)
+        poffins = poffin_sorter.filter_by_num_flavors(poffins, num_flavors)
         poffins = poffin_sorter.sort_on_sum_of_main_flavor_smoothness_ratios(poffins)  # noqa ES501
-        # _ = [print(str(p)) for p in poffins]
         sour_poffins_list = poffins.copy()
 
         poffins = [*spicy_poffins_list, *dry_poffins_list, *sweet_poffins_list, *bitter_poffins_list, *sour_poffins_list]  # noqa ES501
 
         poffins = poffin_sorter.filter_similar_poffins_to_four(poffins)
 
-        poffins = poffin_sorter.filter_if_any_value_less_than(poffins, 30)
-        for _ in poffins:
-            print(_)
+        poffins = poffin_sorter.filter_if_any_value_less_than(poffins, min_value)
+        print(len(poffins))
+        return poffins
+
+    def get_poffins_by_flavor_with_n_flavors_greater_than_min_value_at_min_level(self, o_poffins: list[Poffin], flavor: str, num_flavors: int = 3, min_value: int = 30, min_level: int = 100) -> list[Poffin]:  # noqa ES501
+        poffin_sorter = PoffinSorter()
+        poffins = poffin_sorter.filter_poffins_by_flavor(o_poffins, flavor)
+        poffins = poffin_sorter.filter_poffins_by_level(poffins, min_level)
+        poffins = poffin_sorter.filter_by_num_flavors(poffins, num_flavors)
+        poffins = poffin_sorter.sort_on_sum_of_main_flavor_smoothness_ratios(poffins)  # noqa ES501
+
+        poffins = poffin_sorter.filter_similar_poffins_to_four(poffins)
+        poffins = poffin_sorter.filter_if_any_value_less_than(poffins, min_value)
         print(len(poffins))
         return poffins
 

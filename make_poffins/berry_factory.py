@@ -252,7 +252,7 @@ def __berry_combinatiions_n__(n: int, berries: list[Berry] = None) -> tuple[Berr
     return combinations(berries, n)
 
 
-def berry_combinationss_2(berries: list[Berry] = None) -> tuple[Berry, Berry]:
+def berry_combinations_2(berries: list[Berry] = None) -> tuple[Berry, Berry]:
     """Every combination of 2 berries"""
     return __berry_combinatiions_n__(2, berries)
 
@@ -265,6 +265,11 @@ def berry_combinations_3(berries: list[Berry] = None) -> tuple[Berry, Berry, Ber
 def berry_combinations_4(berries: list[Berry] = None) -> tuple[Berry, Berry, Berry, Berry]:  # noqa ES501
     """Every combination of 4 berries"""
     return __berry_combinatiions_n__(4, berries)
+
+
+def berry_combinations_5(berries: list[Berry] = None) -> tuple[Berry, Berry, Berry, Berry]:  # noqa ES501
+    """Every combination of 4 berries"""
+    return __berry_combinatiions_n__(5, berries)
 
 
 if __name__ == "__main__":

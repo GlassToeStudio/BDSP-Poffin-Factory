@@ -7,6 +7,7 @@ from make_poffins.berry_sorter import BerrySorter
 from make_poffins.contest_stats import ContestStats
 from make_poffins.poffin import Poffin
 from make_poffins.poffin_cooker import PoffinCooker
+from make_poffins.poffin_factory import PoffinFactory
 from make_poffins.recipe_record import RecipeRecord
 
 FLAVORS = ["Spicy", "Dry", "Sweet", "Bitter", "Sour"]
@@ -64,55 +65,34 @@ def get_best_by_eating(poffin_combos: list[tuple[Poffin]]) -> list[ContestStats]
         #     continue
         current_stat = ContestStats()
         current_stat.feed_poffins(poffin_combo)
-        if current_stat.rank > 3:
+        if current_stat.rank > 2 or current_stat.poffins_eaten > 10:
             continue
         all_stats.append(current_stat)
 
-    results = sorted(all_stats, key=lambda x: (-x.num_perfect_values, x.sheen, x.poffins_eaten))  # noqa ES501
+    results = sorted(all_stats, key=lambda x: (-x.num_perfect_values, -x.sheen, x.poffins_eaten))  # noqa ES501
     print("total results:", len(results))
-    return results
+    return results[:5]
 
 
 def main():
-    print("Finding best recipes")
-    best_recipes = find_best_recipe(40)
-
-    print("Have best recipes")
-    # for _, r in best_recipes.items():
-    #     print(str(r), "\n")
-    # _ = input("Wait")
-
-    # print(f"Filtering {sum(len(x) for _, x in best_recipes.items())} recipes")  # noqa ES501
-    # filtered_recipes = []
-    # for _, recipes in best_recipes.items():
-    #     temp_filter_holder = []
-    #     for recipe in recipes:
-    #         if recipe.poffin.smoothness < 30 or recipe.poffin.smoothness > 40:  # or recipe.poffin.smoothness > 40:  # noqa ES501
-    #             continue
-
-    #         temp_filter_holder.append(recipe.poffin)
-
-    #     filtered_recipes.append(temp_filter_holder)
-
-    print(f"Filtered the recipes do to {len(best_recipes)}")
-    # for item in filtered_recipes:
-    #     print(str(item))
-    # _ = input("Wait")
-    print("Making the combinations of the recipes")
-    combos = [(x.poffin) for x in best_recipes]
-    combos = berry_factory.berry_combinationss_2(combos)
-    print("Eating and getting contest stats")
+    cooker = PoffinCooker()
+    pf = PoffinFactory(cooker, berry_factory)
+    poffins = pf.poffin_list
+    poffins = pf.get_poffins_with_n_flavors_greater_than_min_value_at_min_level(poffins, 3, 30, 100)  # noqa ES501
+    print("Poffins len:", len(poffins))
+    combos = berry_factory.berry_combinations_3(poffins)
     results = get_best_by_eating(combos)
 
     print("Done eating, where is the data?!")
     answer = ""
-    for recipe in results:
-        answer += f"{recipe}\n"
+    for r in results:
+        answer += f"{str(r)}\n"
 
     print("Saving to file and print to terminal")
-    with open("__best_recipe_all.txt", "w", encoding='utf-8') as out_file:
+    with open("new_best_recipe_all.txt", "w", encoding='utf-8') as out_file:
         print(answer, file=out_file)
-    print(repr(results[:10]))
+
+    print(repr(results))
 
 
 if __name__ == "__main__":
