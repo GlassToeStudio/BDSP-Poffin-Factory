@@ -1,7 +1,9 @@
-import make_poffins.berry_factory as bf
+
+from make_poffins import berry_factory
 from make_poffins.constants import BOLD, FLAVOR_COLORS, RESET, bad_red, outline
 from make_poffins.poffin import Poffin
 from make_poffins.poffin_cooker import PoffinCooker
+from make_poffins.poffin_factory import PoffinFactory
 
 
 class ContestStats:
@@ -32,12 +34,12 @@ class ContestStats:
         # print(poffins)
         while True:
             for p in poffins:
-                self.feed(p)
+                self.__feed__(p)
                 if self.sheen >= 255 or self.__rank_combo__() == 2:
                     self.rank = self.__rank_combo__()
                     return
 
-    def feed(self, p: Poffin) -> None:
+    def __feed__(self, p: Poffin) -> None:
         if self.sheen >= 255:
             return
 
@@ -111,24 +113,18 @@ def main():
         All Flavors: Spicy - Bitter
         Second strongest flavor value: 28
     """
-    def cook_poffin(recipe, t):
-        cooker = PoffinCooker()
-        cooker.cook(recipe, t, 0, 0)
-        poffin = cooker.complete()
-        return poffin
 
     recipes = [
-        [bf.spelon_berry, bf.petaya_berry, bf.enigma_berry, bf.jaboca_berry],
-        [bf.pamtre_berry, bf.apicot_berry, bf.micle_berry, bf.rowap_berry],
-        [bf.salac_berry, bf.lansat_berry, bf.custap_berry, bf.rowap_berry],
-        [bf.durin_berry, bf.ganlon_berry, bf.micle_berry, bf.jaboca_berry],
-        [bf.belue_berry, bf.salac_berry, bf.lansat_berry, bf.rowap_berry]
+        [berry_factory.petaya_berry, berry_factory.enigma_berry, berry_factory.liechi_berry, berry_factory.custap_berry],
+        [berry_factory.apicot_berry, berry_factory.micle_berry, berry_factory.ganlon_berry, berry_factory.jaboca_berry],
+        [berry_factory.apicot_berry, berry_factory.custap_berry, berry_factory.lansat_berry, berry_factory.salac_berry],
+        [berry_factory.petaya_berry, berry_factory.enigma_berry, berry_factory.ganlon_berry, berry_factory.jaboca_berry],
+        [berry_factory.apicot_berry, berry_factory.custap_berry, berry_factory.salac_berry, berry_factory.rowap_berry]
     ]
-    poffins = []
-    for recipe in recipes:
-        poffins.append(cook_poffin(recipe, 40))
-
+    cooker = PoffinCooker()
     stats = ContestStats()
+    pf = PoffinFactory(cooker, berry_factory)
+    poffins = pf.generate_custom_poffin_list_from_recipes(recipes)
     stats.feed_poffins(frozenset(poffins))
     print(stats)
     print(repr(stats))

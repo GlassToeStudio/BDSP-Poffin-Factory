@@ -5,15 +5,19 @@ from make_poffins.constants import (BOLD, FLAVOR_COLORS, FLAVORS, ITALIC,
 
 
 class Berry:
-    """Construct a berry by giving it a name and 5 flavor values.
+    """A berry with which poffins are made.
 
-    Spicy, Dry, Sweet, Bitter, Sour
+    Ex:
+        ganlon Dry     40 [0, 30, 10, 30, 0]
 
-    All berries hava:
-        name
-        flavors
-        smoothness
-        main flavor
+    Attributes:
+        name : str.lower()\n
+        main flavor : str\n
+            Ex: Spicy, Dry, Sweet, Bitter, Sour>\n
+        smoothness : int\n
+        flavor values : list[int, int, int, int, int]\n
+            Ex: [0, 30, 10, 30, 0]
+        main flavor value : int\n
     """
 
     def __init__(self, name: str, values: list[int]):
@@ -21,14 +25,15 @@ class Berry:
         """The name of the berry"""
         self.flavor_values = values
         """List of 5 values representing the flavors for this berry"""
-        # self.__weakened_flavor_values__ = None
-        """List of 5 values wekaned just forfiltering/sorting"""
+        self.__weakened_flavor_values__ = None
+        """List of 5 values weakened just forfiltering/sorting"""
         self.smoothness = self.__get_smoothness__()
         """The inherent smoothness of this berry"""
         self.main_flavor = self.__get_main_flavor__()
         """The main flavor of this berry: Spicy, Dry, Sweet, Bitter, or Sour"""
         self.main_flavor_value = max(self.flavor_values)
         """The numerical value for the mainflavor"""
+
         self.__id__ = int(''.join(map(str, self.flavor_values)))
         """The 'unique' id of this berry"""
 
@@ -39,7 +44,7 @@ class Berry:
         return 255
 
     def __get_main_flavor__(self):
-        # self.__weakened_flavor_values__ = subtract_weakening_flavors(self.flavor_values)  # noqa ES501
+        self.__weakened_flavor_values__ = subtract_weakening_flavors(self.flavor_values)  # noqa ES501
         flavor_list = [(flavor, FLAVORS[i]) for i, flavor in enumerate(self.flavor_values) if flavor > 0]  # noqa ES501
         sorted_list = [flavor for _, flavor in sort_flavors(flavor_list)]
         return sorted_list[0]
@@ -66,9 +71,13 @@ class Berry:
                 f" - {color_256(239)}Flavors{RESET} {printable_flavor_values}")
 
     def __str__(self):
-        """spelon (Spicy) 35 - Flavors [ 30,  10,   0,   0,   0]"""
-
-        return f"\t{self.name:<7}{self.main_flavor:<7}{self.smoothness:>3} {self.flavor_values}"  # noqa ES501
+        """spelon (Spicy) 35 - Flavors [30, 10,  0,  0,  0]"""
+        printable_flavor_values = "["
+        for i in range(5):
+            printable_flavor_values = (f"{printable_flavor_values}"
+                                       f"{self.flavor_values[i]:>3}, ")  # noqa ES501
+        printable_flavor_values = f"{printable_flavor_values[:-2]}]"
+        return f"\t{self.name:<7}{self.main_flavor:<8}{self.smoothness:>3} {printable_flavor_values}"  # noqa ES501
 
     def __eq__(self, other):
         return self.__id__ == other.__id__

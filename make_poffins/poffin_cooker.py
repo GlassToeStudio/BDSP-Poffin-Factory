@@ -8,70 +8,66 @@ from make_poffins.poffin import Poffin
 class PoffinCooker:
     """Give it some berries and it will cook a poffin in time = t"""
 
-    def __init__(self):
-        self.__values__ = [0] * 5
-        """Starting with the berry values [0, 10, 10, 0, 0] and resulting in, for example, [0, 0, 0, 8, 8]"""  # noqa ES501
-        self.__smoothness__ = 0
-        """Smoothness is the value added to sheen"""
-        self.__poffin__ = None
-        """The resulting poffin"""
-        self.__negative_values__ = None
-        """Number of values that are negative"""
+    def __init__(self, cook_time: float = 40, spills: int = 0, burns: int = 0):  # noqa ES501
+        self.cook_time = cook_time
+        self.spills = spills
+        self.burns = burns
 
-    def __sum_over_all_berries__(self, berries: list[Berry]) -> None:
+    @classmethod
+    def __sum_over_all_berries__(cls, berries: list[Berry]) -> list[int]:
         """For each of the 5 flavors, sum the value for each berry.
 
         Args:
             berries (list[Berry]): list of all berries in recipe
+
+        Returns:
+            list[int]: poffin_values
         """
 
+        poffin_values = [0] * 5
         for i in range(5):
             for berry in berries:
-                self.__values__[i] += berry.flavor_values[i]
+                poffin_values[i] += berry.flavor_values[i]
+        return poffin_values
 
-    def __subtract_weakening_flavors__(self) -> None:
+    @classmethod
+    def __subtract_weakening_flavors__(cls, poffin_values: list[int]) -> list[int]:  # noqa ES501
         """Each flavor has a corresponding flavor that weakens it.
         Subtract all the weaken factors from each flavor.
         """
 
-        self.__values__ = subtract_weakening_flavors(self.__values__)
+        return subtract_weakening_flavors(poffin_values)
 
-    def __decrease_by_negative_flavors__(self) -> None:
+    def __decrease_by_negative_flavors__(self, poffin_values: list[int]) -> list[int]:  # noqa ES501
         """Once subtracted, count the number of negative values and
         subract 1 from every value for each negative value.
         """
+        negatives = self.__count_negative_values__(poffin_values)
+        return [poffin_values[i] - negatives for i in range(5)]  # noqa ES501
 
-        for i in range(5):
-            self.__values__[i] -= self.__count_negative_values__()
-
-    def __multiply_by_cooking_time_bonus__(self, cook_time: float) -> None:
+    def __multiply_by_cooking_time_bonus__(self, poffin_values: list[int]) -> list[int]:  # noqa ES501
         """Multiply the remaining values by a bonus for cooking time.
-
-            bonus = 60.0 / cook_time
-        Args:
-            cook_time (float): Time it takes to cook a poffin
         """
 
-        bonus = 60.0 / cook_time
-        for i in range(5):
-            self.__values__[i] = math.floor(self.__values__[i] * bonus)
+        bonus = 60.0 / self.cook_time
+        return [math.floor(poffin_values[i] * bonus) for i in range(5)]
 
-    def __subtract_spills_and_burns__(self, spills: int, burns: int) -> None:
+    def __subtract_spills_and_burns__(self, poffin_values: list[int]) -> list[int]:  # noqa ES501
         """Reduce each value by the number of spills and the number of burns.
 
-        Args:
-            spills (int): Number of spills
-            burns (int): Number of burns
         """
+        # TODO: I set the max value to 115 since I think thats all you can get in game.
+        return [poffin_values[i] - (self.spills + self.burns) for i in range(5)]  # noqa ES501
+        #return [min(poffin_values[i] - (self.spills + self.burns), 115) for i in range(5)]  # noqa ES501
 
-        self.__values__ = [self.__values__[i] - (spills + burns) for i in range(5)]
-
-    def __set_negatives_to_zero__(self) -> None:
+    @classmethod
+    def __set_negatives_to_zero__(cls, poffin_values: list[int]) -> list[int]:
         """Set any negative value to 0"""
 
-        self.__values__ = [x if x > 0 else 0 for x in self.__values__]
+        return [x if x > 0 else 0 for x in poffin_values]
 
-    def __calc_smoothness__(self, berries: list[Berry]) -> None:
+    @classmethod
+    def __calc_smoothness__(cls, berries: list[Berry]) -> int:
         """Calculate the smoothness of the poffin.
 
         smoothness_p = ⌊Σⁿ(smoothness_b) / n⌋ - n
@@ -86,13 +82,15 @@ class PoffinCooker:
 
         n = len(berries)
         berry_smoothness = sum(x.smoothness for x in berries)
-        self.__smoothness__ = math.floor((berry_smoothness / n) - n)
+        return math.floor((berry_smoothness / n) - n)
 
-    def __adjust_affection__(self):
+    @classmethod
+    def __adjust_affection__(cls, smoothness: int):
         """I dont know how this works"""
-        self.__smoothness__ -= 9
+        return smoothness - 9
 
-    def __count_negative_values__(self) -> int:
+    @classmethod
+    def __count_negative_values__(cls, poffin_values: list[int]) -> list[int]:
         """Return the number of negative values.
 
         Will check to see if this is already calculated.
@@ -103,34 +101,24 @@ class PoffinCooker:
             int: total number of negative values
         """
 
-        if self.__negative_values__ is None:
-            self.__negative_values__ = sum(1 for x in self.__values__ if x < 0)
-        return self.__negative_values__
+        return sum(1 for x in poffin_values if x < 0)
 
-    def cook(self, berries: list[Berry], cook_time: float, spills: int, burns: int) -> None:  # noqa ES501
+    def cook(self, berries: list[Berry]) -> Poffin:  # noqa ES501
         """Cook the poffin.
 
         Args:
             berries (list[Berry]): Berries to use in the recipe
-            cook_time (float): Time it takes to cook
-            spills (int): Number of spills
-            burns (int): Number of burns
-        """
-
-        self.__sum_over_all_berries__(berries)
-        self.__subtract_weakening_flavors__()
-        self.__decrease_by_negative_flavors__()
-        self.__multiply_by_cooking_time_bonus__(cook_time)
-        self.__subtract_spills_and_burns__(spills, burns)
-        self.__set_negatives_to_zero__()
-        self.__calc_smoothness__(berries)
-        self.__adjust_affection__()
-        self.__poffin__ = Poffin(self.__values__, self.__smoothness__, berries)
-
-    def complete(self) -> Poffin:
-        """Return the poffin.
 
         Returns:
-            Poffin: Poffin
+            Poffin: cooked poffin
         """
-        return self.__poffin__
+
+        poffin_values = self.__sum_over_all_berries__(berries)
+        poffin_values = self.__subtract_weakening_flavors__(poffin_values)
+        poffin_values = self.__decrease_by_negative_flavors__(poffin_values)
+        poffin_values = self.__multiply_by_cooking_time_bonus__(poffin_values)
+        poffin_values = self.__subtract_spills_and_burns__(poffin_values)
+        poffin_values = self.__set_negatives_to_zero__(poffin_values)
+        smoothness = self.__calc_smoothness__(berries)
+        smoothness = self.__adjust_affection__(smoothness)
+        return Poffin(poffin_values, smoothness, berries)

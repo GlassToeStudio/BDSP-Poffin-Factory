@@ -1,9 +1,13 @@
+from copy import deepcopy
 from itertools import product
 
-import make_poffins.berry_factory as bf
+from make_poffins import poffin
 from make_poffins.berry_sorter import BerrySorter
 from make_poffins.contest_stats import ContestStats
+from make_poffins.poffin import berry_factory
 from make_poffins.poffin_cooker import PoffinCooker
+from make_poffins.poffin_factory import PoffinFactory
+from make_poffins.poffin_sorter import PoffinSorter
 
 
 def test_cook(recipe, t):
@@ -36,10 +40,10 @@ def test_product():
 
 
 def test_sort():
-    bs = BerrySorter(bf.every_berry)
+    bs = BerrySorter(berry_factory.every_berry)
     bs.sort_all(True)
     bs.print_berries()
-    bs = BerrySorter(bf.every_berry)
+    bs = BerrySorter(berry_factory.every_berry)
     bs.sort_all(False)
     bs.print_berries()
 
@@ -48,13 +52,21 @@ def test_set_frozenset():
     x = set([1, 2, 3, 4, 5, 6, 6, 7])
     y = frozenset([1, 2, 3, 4, 5, 6, 6, 7])
     print(x, y)
-    w = [(x, x, x, x) for x in bf.every_berry]
-    z = set([(x, x, x, x) for x in bf.every_berry])
+    w = [(x, x, x, x) for x in berry_factory.every_berry]
+    z = set([(x, x, x, x) for x in berry_factory.every_berry])
     print(w[0], str(list(z)[0]))
 
 
+def test_poffin_sorter():
+    cooker = PoffinCooker()
+    pf = PoffinFactory(cooker, berry_factory)
+    o_poffins = pf.poffin_list
+    poffins = pf.get_poffins_with_n_flavors_greater_than_min_value(o_poffins, 3, 30)
+    print("Poffins len:", len(poffins))
+
+
 if __name__ == "__main__":
-    test_set_frozenset()
+    test_poffin_sorter()
     # test_product()
     # test_poffin1 = test_cook([b.spelon_berry, b.liechi_berry, b.petaya_berry, b.enigma_berry], 40)
     # test_poffin2 = test_cook([b.spelon_berry, b.petaya_berry, b.enigma_berry, b.jaboca_berry], 40)

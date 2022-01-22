@@ -31,7 +31,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent"
     ],
-    packages=find_packages(include=['make_poffins']),
+    packages=find_packages(include=['make_poffins', 'make_poffins.poffin_data', 'tests']),
     include_package_data=True,
     install_requires=[],
     setup_requires=['pytest-runner'],

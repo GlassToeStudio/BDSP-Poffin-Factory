@@ -32,15 +32,15 @@ outline = color_256(168)
 """A pinkish color for an outline"""
 bad_red = color_256(196)
 """A red"""
-super_mild_poffin = f"{BOLD}{RGB_RED}SU{RGB_ORANGE}PER {RGB_YELLOW}MI{RGB_GREEN}LD {RGB_BLUE}PO{RGB_DARK_VIOLET}FF{RGB_VIOLET}IN{RESET}"  # noqa ES501
+super_mild_poffin = f'{f"{BOLD}{RGB_RED}SU{RGB_ORANGE}PER {RGB_YELLOW}MI{RGB_GREEN}LD {RGB_BLUE}PO{RGB_DARK_VIOLET}FF{RGB_VIOLET}IN{RESET}":<28}'  # noqa ES501
 """The word "Super Mild Poffin" but in rainbow colors"""
-mild_poffin = f"{BOLD}{color_256(11)}MILD POFFIN{RESET}"
+mild_poffin = f'{f"{BOLD}{color_256(11) }MILD POFFIN{RESET}":<28}'
 """The word "Mild Poffin" but in gold"""
-rich_poffin = f"{BOLD}{color_256(247)}RICH POFFIN{RESET}"
+rich_poffin = f'{f"{BOLD}{color_256(247)}RICH POFFIN{RESET}":<28}'
 """The word "Rich Poffin" but in light grey."""
-overripe_poffin = f"{BOLD}{color_256(242)}OVERRIPE POFFIN{RESET}"
+overripe_poffin = f'{f"{BOLD}{color_256(242)}OVERRIPE POFFIN{RESET}":<28}'
 """The word Overripe Poffin but in dark grey"""
-foul_poffin = f"{BOLD}{color_256(237)}FOUL POFFIN{RESET}"
+foul_poffin = f'{f"{BOLD}{color_256(237)}FOUL POFFIN{RESET}":<28}'
 """The word Foul Poffin but in black"""
 
 
@@ -54,5 +54,5 @@ def sort_flavors(flavors_list: list[str]) -> list[tuple[int, str]]:
     return sorted(flavors_list, key=lambda x: (x[0], FLAVOR_PREFERENCE[x[1]]), reverse=True)  # noqa ES501
 
 
-def subtract_weakening_flavors(values):
+def subtract_weakening_flavors(values: list[int]) -> list[int]:
     return [values[i] - values[WEAKENED_BY[i]] for i in range(5)]  # noqa ES501

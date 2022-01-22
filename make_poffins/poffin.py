@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-import make_poffins.berry_factory as bf
+import make_poffins.berry_factory as berry_factory
 from make_poffins.berry import Berry
 from make_poffins.constants import (BOLD, FLAVOR_COLORS, FLAVORS, N_BOLD,
                                     RESET, color_256, foul_poffin, mild_poffin,
@@ -9,13 +9,30 @@ from make_poffins.constants import (BOLD, FLAVOR_COLORS, FLAVORS, N_BOLD,
 
 
 class Poffin:
+    """
+    A poffin with which to increase contest stats.
+
+    Attributes:
+        Flavor Values: [int, int, int, int, int]
+        Smoothness: int
+        Berries (aka recipe): list[Berry] (up to 4)
+        Flavor Names: list[str]
+        Level: int
+        Second Level: int
+        repr name: str
+        name: str
+        __id__: int
+    """
+
     def __init__(self, flavor_values: list[int], smoothness: int, berries: list[Berry]):  # noqa ES501
         """
-        Poffin
-            Flavor Values: [int]
+        A poffin with which to increase contest stats.
+
+        Attributes:
+            Flavor Values: [int, int, int, int, int]
             Smoothness: int
-            Berries (aka recipe): [Berry]
-            Flavor Names: [str]
+            Berries (aka recipe): list[Berry] (up to 4)
+            Flavor Names: list[str]
             Level: int
             Second Level: int
             repr name: str
@@ -42,6 +59,8 @@ class Poffin:
         """The name of the poffine - Super Mild Poffin for example"""
         self.__id__ = int(''.join(map(str, self.flavor_values)))
         """The 'unique' id of this poffin"""
+        self.num_flavors = self.__num_flavors__()
+        """Total number of flavors for this poffin"""
         self.__set_names__()
 
     def __get_flavors__(self) -> list[str]:
@@ -71,7 +90,7 @@ class Poffin:
             self.name = "foul poffin"
         elif self.level >= 100:
             self.repr_name = super_mild_poffin
-            self.name = "super mild poffin"
+            self.name = "super mild poffin"  # noqa ES501
         elif self.level >= 50:
             self.repr_name = mild_poffin
             self.name = "mild poffin"
@@ -82,7 +101,7 @@ class Poffin:
             self.repr_name = rich_poffin
             self.name = "rich poffin"
         else:
-            self.repr_name = self.name = " - ".join(map(str, self.flavor_names))  # noqa ES501
+            self.repr_name = self.name = f"{' '.join(map(str, self.flavor_names))}"  # noqa ES501
 
     def __num_flavors__(self):
         return len(self.flavor_names)
@@ -103,14 +122,15 @@ class Poffin:
                                        f"{bold}{self.flavor_values[i]:>3}{RESET}, ")  # noqa ES501
         printable_flavor_values = f"{printable_flavor_values[:-2]}]"
 
-        string_of_all_flavors = "".join([f"{FLAVOR_COLORS[x]}{x:<6}{RESET}" for x in self.flavor_names])  # noqa ES501
+        string_of_all_flavors = "".join([f"{BOLD}{FLAVOR_COLORS[x]}{x:<7}{RESET}" for x in self.flavor_names])  # noqa ES501
         join_berries = '\n'.join(map(repr, self.berries))
         formated_berry_string = f"* {color_256(239)}Berries used:{RESET}\n{join_berries}"  # noqa ES501
+        name_for_printing = self.repr_name if self.repr_name != self.name else f'{f"{BOLD}{string_of_all_flavors}{RESET}":<28}'  # noqa ES501
         amt = 62
         return (
             "\n"
             f"{outline}{'-'*amt}{RESET}\n"
-            f"{BOLD}{self.level} - {self.repr_name:<36}{BOLD} {self.smoothness}{N_BOLD}"  # noqa ES501
+            f"{BOLD}{self.level} - {name_for_printing:<37}{BOLD} {self.smoothness}{N_BOLD}"  # noqa ES501
             f" - {color_256(239)}Flavors{RESET} {printable_flavor_values}\n"
             f"{outline}{'-'*amt}{RESET}\n"
             f"* {string_of_all_flavors} ({self.level}, {self.second_level})\n"  # noqa ES501
@@ -119,7 +139,12 @@ class Poffin:
 
     def __str__(self) -> str:
         formated_berry_string = '\n'.join(map(str, self.berries))
-        return f"{self.level:<4}{self.name:<19}{self.smoothness} - Flavors {self.flavor_values}\n{formated_berry_string}"  # noqa ES501
+        printable_flavor_values = "["
+        for i in range(5):
+            printable_flavor_values = (f"{printable_flavor_values}"
+                                       f"{self.flavor_values[i]:>3}, ")
+        printable_flavor_values = f"{printable_flavor_values[:-2]}]"
+        return f"{self.level:<4}{self.name:<20}{self.smoothness} {printable_flavor_values}\n{formated_berry_string}"  # noqa ES501
 
     def __eq__(self, other):
         return self.__id__ == other.__id__
@@ -129,7 +154,7 @@ class Poffin:
 
 
 def main():
-    test_poffin = Poffin([148, 0, 0, 28, 0], 30, [bf.spelon_berry, bf.liechi_berry, bf.petaya_berry, bf.enigma_berry])  # noqa ES501
+    test_poffin = Poffin([148, 0, 0, 28, 0], 30, berry_factory.single_recipe)  # noqa ES501
     print(repr(test_poffin))
     print(str(test_poffin))
 

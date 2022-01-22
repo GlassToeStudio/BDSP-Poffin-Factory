@@ -1,5 +1,6 @@
 from itertools import combinations
 
+from make_poffins import berry_factory
 from make_poffins.berry import Berry
 
 petaya_berry = Berry("Petaya", [30, 0, 0, 30, 10])
@@ -221,6 +222,28 @@ tiny_list = [
 ]
 """Three of each, theoretically best, berries -  Spicy, Dry, Sweet, Bitter, Sour"""  # noqa ES501
 
+nano_list = [
+    petaya_berry,
+    enigma_berry,
+    apicot_berry,
+    liechi_berry,
+    custap_berry,
+    ganlon_berry,
+]
+"""Only 6 berries! Om My!"""
+
+single_recipe = [spelon_berry, liechi_berry, petaya_berry, enigma_berry]
+"""Four berries to be used as a single test recipe\n
+
+Poffin:
+
+    148 super mild poffin   30 [148,   0,   0,  28,   0]\n
+            spelon Spicy    35 [ 30,  10,   0,   0,   0]\n
+            liechi Spicy    40 [ 30,  10,  30,   0,   0]\n
+            petaya Spicy    40 [ 30,   0,   0,  30,  10]\n
+            enigma Spicy    60 [ 40,  10,   0,   0,   0]\n
+"""
+
 
 def __berry_combinatiions_n__(n: int, berries: list[Berry] = None) -> tuple[Berry, ...]:  # noqa ES501
     """Every combination of n berries"""
@@ -245,4 +268,5 @@ def berry_combinations_4(berries: list[Berry] = None) -> tuple[Berry, Berry, Ber
 
 
 if __name__ == "__main__":
-    print("Not meant to be main")
+    for x in dir(berry_factory):
+        print(x)

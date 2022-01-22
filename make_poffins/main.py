@@ -1,19 +1,18 @@
-import math
-from functools import cache
-from itertools import product
 
-import make_poffins.berry_factory as bf
+from functools import cache
+
+import make_poffins.berry_factory as berry_factory
 from make_poffins.berry import Berry
 from make_poffins.berry_sorter import BerrySorter
-from make_poffins.best_recipe import BestRecipe
 from make_poffins.contest_stats import ContestStats
 from make_poffins.poffin import Poffin
 from make_poffins.poffin_cooker import PoffinCooker
+from make_poffins.recipe_record import RecipeRecord
 
 FLAVORS = ["Spicy", "Dry", "Sweet", "Bitter", "Sour"]
 
 
-def get_best(bests: list[BestRecipe], flavor: str) -> BestRecipe:
+def get_best(bests: list[RecipeRecord], flavor: str) -> RecipeRecord:
     best_flavor = bests[flavor]
     best_flavor = sorted(best_flavor, key=lambda x: (-x.num_can_eat, -x.poffin.smoothness, sum(x.total_values), x.poffin.level), reverse=True)  # noqa ES501
 
@@ -27,23 +26,23 @@ def get_best(bests: list[BestRecipe], flavor: str) -> BestRecipe:
 
 
 @cache
-def find_best_recipe(cook_time: float) -> set[BestRecipe]:
+def find_best_recipe(cook_time: float) -> set[RecipeRecord]:
     best_recipes = set()
     # for f in FLAVORS:
     #     best_recipes[f] = []
 
-    bs = BerrySorter(bf.every_berry)
+    bs = BerrySorter(berry_factory.every_berry)
     bs.sort_all(True)
     berries = bs.get_sorted_berries()
 
-    for recipe in bf.berry_combinations_4(berries):
+    for recipe in berry_factory.berry_combinations_4(berries):
         poffin = cook_poffin(recipe, cook_time)
 
         # if poffin.level >= 100 and poffin.__num_flavors__() >= 3:
         # if (math.ceil(255 / poffin.smoothness) * poffin.level) < 255:  # noqa ES501
         #     continue
 
-        this_recipe = BestRecipe(poffin)  # noqa ES501
+        this_recipe = RecipeRecord(poffin)  # noqa ES501
         best_recipes.add(this_recipe)
 
     return best_recipes
@@ -101,7 +100,7 @@ def main():
     # _ = input("Wait")
     print("Making the combinations of the recipes")
     combos = [(x.poffin) for x in best_recipes]
-    combos = bf.berry_combinationss_2(combos)
+    combos = berry_factory.berry_combinationss_2(combos)
     print("Eating and getting contest stats")
     results = get_best_by_eating(combos)
 
