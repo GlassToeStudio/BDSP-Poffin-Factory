@@ -201,7 +201,10 @@ every_berry = [
     rowap_berry,
     roseli_berry,
 ]
-"""List of all 64 berries"""
+"""List of all 65 berries - two berries are the same with different names
+
+    starf berry and lansat berry
+"""
 
 tiny_list = [
     petaya_berry,
@@ -221,6 +224,40 @@ tiny_list = [
     colbur_berry
 ]
 """Three of each, theoretically best, berries -  Spicy, Dry, Sweet, Bitter, Sour"""  # noqa ES501
+
+nine_berry_list = [
+    hondew_berry,
+    spelon_berry,
+    petaya_berry,
+    enigma_berry,
+    belue_berry,
+    salac_berry,
+    lansat_berry,
+    custap_berry,
+    durin_berry,
+    kebia_berry,
+    ganlon_berry,
+    jaboca_berry
+]
+"""Rank: 1 Poffins eaten: 9\n
+    255, 255, 255, 255, 255 : 255\n
+
+    117 super mild poffin   25 [117,  42,   0,  42,   0]\n
+        hondew Spicy    20 [ 10,  10,   0,  10,   0]\n
+        spelon Spicy    35 [ 30,  10,   0,   0,   0]\n
+        petaya Spicy    40 [ 30,   0,   0,  30,  10]\n
+        enigma Spicy    60 [ 40,  10,   0,   0,   0]\n
+    102 super mild poffin   33 [ 42,   0, 102,   0,  72]\n
+        belue  Sour     35 [ 10,   0,   0,   0,  30]\n
+        salac  Sweet    40 [  0,   0,  30,  10,  30]\n
+        lansat Spicy    50 [ 30,  10,  30,  10,  30]\n
+        custap Sweet    60 [  0,   0,  40,  10,   0]\n
+    102 super mild poffin   28 [  0,  49,   0, 102,  42]\n
+        durin  Bitter   35 [  0,   0,   0,  30,  10]\n
+        kebia  Dry      30 [  0,  15,   0,   0,  10]\n
+        ganlon Dry      40 [  0,  30,  10,  30,   0]\n
+        jaboca Bitter   60 [  0,   0,   0,  40,  10]\n
+"""
 
 nano_list = [
     petaya_berry,
@@ -253,23 +290,27 @@ def __berry_combinatiions_n__(n: int, berries: list[Berry] = None) -> tuple[Berr
 
 
 def berry_combinations_2(berries: list[Berry] = None) -> tuple[Berry, Berry]:
-    """Every combination of 2 berries"""
+    """Every combination of 2 berries
+
+        List of all 65 berries used if no berry list is passed in.
+    """
     return __berry_combinatiions_n__(2, berries)
 
 
 def berry_combinations_3(berries: list[Berry] = None) -> tuple[Berry, Berry, Berry]:  # noqa ES501
-    """Every combination of 3 berries"""
+    """Every combination of 3 berries
+
+        List of all 65 berries used if no berry list is passed in.
+    """
     return __berry_combinatiions_n__(3, berries)
 
 
 def berry_combinations_4(berries: list[Berry] = None) -> tuple[Berry, Berry, Berry, Berry]:  # noqa ES501
-    """Every combination of 4 berries"""
+    """Every combination of 4 berries
+
+        List of all 65 berries used if no berry list is passed in.
+    """
     return __berry_combinatiions_n__(4, berries)
-
-
-def berry_combinations_5(berries: list[Berry] = None) -> tuple[Berry, Berry, Berry, Berry]:  # noqa ES501
-    """Every combination of 4 berries"""
-    return __berry_combinatiions_n__(5, berries)
 
 
 if __name__ == "__main__":
