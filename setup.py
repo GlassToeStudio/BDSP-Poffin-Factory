@@ -3,6 +3,8 @@ from os import path
 
 from setuptools import find_packages, setup
 
+import make_poffins
+
 HERE = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
@@ -31,7 +33,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent"
     ],
-    packages=find_packages(include=['make_poffins', 'make_poffins.poffin_data', 'tests']),
+    packages=find_packages(include=['make_poffins', 'make_poffins.*'], exclude=['tests']),
     include_package_data=True,
     install_requires=[],
     setup_requires=['pytest-runner'],

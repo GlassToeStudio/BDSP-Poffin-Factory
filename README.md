@@ -3,7 +3,7 @@
 
 https://medium.com/analytics-vidhya/how-to-create-a-python-library-7d5aea80cc3f
 
-##### *more comprehensive with docs, uplaod, etc.*
+##### *more comprehensive with docs, upload, etc.*
 https://towardsdatascience.com/deep-dive-create-and-publish-your-first-python-library-f7f618719e14
 
 ## Folder structure
