@@ -120,7 +120,7 @@ class Berry:
             printable_flavor_values = (f"{printable_flavor_values}"
                                        f"{self.flavor_values[i]:>3}, ")  # noqa ES501
         printable_flavor_values = f"{printable_flavor_values[:-2]}]"
-        return f"\t{self.name:<7}{self.main_flavor:<8}{self.smoothness:>3} {printable_flavor_values}"  # noqa ES501
+        return f"\t{self.name:<7}{self.main_flavor:<8}{self.smoothness:>3} {printable_flavor_values} Rarity: {self.rarity}"  # noqa ES501
 
     def __eq__(self, other):
         return self.__id__ == other.__id__

@@ -14,7 +14,7 @@ def test_poffin_name():
 
 
 def test_poffin_berry_flavor_values():
-    value = [148, 0, 0, 28, 0]
+    value = [115, 0, 0, 28, 0]
     assert test_poffin1.flavor_values == value, f"Should be {value}"
 
 
@@ -24,7 +24,7 @@ def test_poffin_smoothness():
 
 
 def test_poffin_str():
-    value = "148 super mild poffin   30 [148,   0,   0,  28,   0]"
+    value = "115 super mild poffin   30 [115,   0,   0,  28,   0] Rarity: 40"
     assert str(test_poffin1).__contains__(value), "Should be True"
 
 

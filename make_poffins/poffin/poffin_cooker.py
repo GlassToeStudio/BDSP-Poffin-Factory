@@ -57,7 +57,7 @@ class PoffinCooker:
 
         """
         # TODO: I set the max value to 115 since I think thats all you can get in game.
-        return [poffin_values[i] - (self.spills + self.burns) for i in range(5)]  # noqa ES501
+        return [min(poffin_values[i] - (self.spills + self.burns), 115) for i in range(5)]  # noqa ES501
         #return [min(poffin_values[i] - (self.spills + self.burns), 115) for i in range(5)]  # noqa ES501
 
     @classmethod
@@ -92,10 +92,6 @@ class PoffinCooker:
     @classmethod
     def __count_negative_values__(cls, poffin_values: list[int]) -> list[int]:
         """Return the number of negative values.
-
-        Will check to see if this is already calculated.
-        If so, return the value
-        else calculate and store the value and return it.
 
         Returns:
             int: total number of negative values

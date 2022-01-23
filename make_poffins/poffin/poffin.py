@@ -61,6 +61,8 @@ class Poffin:
         """The 'unique' id of this poffin"""
         self.num_flavors = self.__num_flavors__()
         """Total number of flavors for this poffin"""
+        self.rarity = sum(x.rarity for x in berries)
+        """The total rarity (in berriy rarity) for this poffin"""
         self.__set_names__()
 
     def __get_flavors__(self) -> list[str]:
@@ -144,7 +146,7 @@ class Poffin:
             printable_flavor_values = (f"{printable_flavor_values}"
                                        f"{self.flavor_values[i]:>3}, ")
         printable_flavor_values = f"{printable_flavor_values[:-2]}]"
-        return f"{self.level:<4}{self.name:<20}{self.smoothness} {printable_flavor_values}\n{formated_berry_string}"  # noqa ES501
+        return f"{self.level:<4}{self.name:<20}{self.smoothness} {printable_flavor_values} Rarity: {self.rarity}\n{formated_berry_string}"  # noqa ES501
 
     def __eq__(self, other):
         return self.__id__ == other.__id__

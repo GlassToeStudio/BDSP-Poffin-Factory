@@ -23,8 +23,8 @@ def test_berry_smoothness():
 
 def test_berry_str():
     value1 = "\tganlon Dry      40 [  0,  30,  10,  30,   0] [-30, 20, -20, 30, 0]"
-    value2 = "\tganlon Dry      40 [  0,  30,  10,  30,   0]"
-    assert str(ganlon_berry) == value1 or str(ganlon_berry) == value2, f"Should be {True}"  # noqa ES501
+    value2 = "\tganlon Dry      40 [  0,  30,  10,  30,   0] Rarity: 9"
+    assert str(ganlon_berry) == value1 or str(ganlon_berry) == value2, "Should be True"  # noqa ES501
 
 
 def test_berry_main_flavor():
