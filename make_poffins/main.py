@@ -22,12 +22,12 @@ def get_best_by_eating(_poffin_combos: list[tuple[Poffin]], _min_rank: int = 1, 
             continue
         all_stats.append(current_stat)
         results = sorted(all_stats, key=lambda x: (-x.num_perfect_values, -x.sheen, x.poffins_eaten))
-        print(repr(current_stat))
+
         print(str(current_stat), file=print_file)
         if len(results) >= num_to_send:
             break
 
-    results = sorted(all_stats, key=lambda x: (-x.num_perfect_values, -x.sheen, x.poffins_eaten))
+    results = sorted(all_stats, key=lambda x: (x.num_perfect_values, x.sheen, -x.poffins_eaten))
     print(f"Total results: {len(results)}\nSending top {num_to_send}!")
     return results[:num_to_send]
 
@@ -46,12 +46,12 @@ def main(_berry_combinations: tuple[Berry, ...], _poffin_permutations: Callable,
 
 if __name__ == "__main__":
     timestamp = time.strftime("%d-%b-%Y %I-%M %p", time.localtime())
-    with open(f"poffin_results_{timestamp}.txt", "w", encoding="utf-8") as out_file:
+    with open(f"make_poffins/results/poffin_results_{timestamp}.txt", "w", encoding="utf-8") as out_file:
         berry_combinations = berry_factory.berry_combinations_4(berry_factory.every_berry)
         min_flavors = 3
         min_value = 30
         min_level = 100
-        min_rank = 2
-        max_eaten = 10
-        poffin_permutations = poffin_factory.poffin_permutations_5
+        min_rank = 1
+        max_eaten = 8
+        poffin_permutations = poffin_factory.poffin_permutations_3
         main(berry_combinations, poffin_permutations, min_flavors, min_value, min_level, min_rank, max_eaten, out_file)

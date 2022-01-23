@@ -35,6 +35,9 @@ setup(
     ],
     packages=find_packages(include=['make_poffins', 'make_poffins.*'], exclude=['tests']),
     include_package_data=True,
+    package_data={
+        "": ["./results/*"]
+    },
     install_requires=[],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],

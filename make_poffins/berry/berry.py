@@ -1,6 +1,6 @@
 from make_poffins.constants import (BOLD, FLAVOR_COLORS, FLAVORS, ITALIC,
-                                    N_BOLD, N_ITALIC, RESET, SMOOTHNESS_TABLE,
-                                    color_256, sort_flavors,
+                                    N_BOLD, N_ITALIC, RARITY_TABLE, RESET,
+                                    SMOOTHNESS_TABLE, color_256,
                                     subtract_weakening_flavors)
 
 
@@ -16,41 +16,74 @@ class Berry:
             Ex: Spicy, Dry, Sweet, Bitter, Sour>\n
         smoothness : int\n
         flavor values : list[int, int, int, int, int]\n
-            Ex: [0, 30, 10, 30, 0]
+            Ex: [0, 30, 10, 30, 0]\n
         main flavor value : int\n
     """
 
     def __init__(self, name: str, values: list[int]):
+        """A berry with which poffins are made.
+
+        Arguments:
+            name (str): the name of the berry
+            values list[int]: the 5 flavor values of this berry
+
+        Attributes:
+            name : str.lower()\n
+            main flavor : str\n
+                Ex: Spicy, Dry, Sweet, Bitter, Sour>\n
+            smoothness : int\n
+            flavor values : list[int, int, int, int, int]\n
+                Ex: [0, 30, 10, 30, 0]\n
+            main flavor value : int\n
+        """
+
         self.name = name.lower()
         """The name of the berry"""
         self.flavor_values = values
         """List of 5 values representing the flavors for this berry"""
-        self.__weakened_flavor_values__ = None
-        """List of 5 values weakened just forfiltering/sorting"""
         self.smoothness = self.__get_smoothness__()
         """The inherent smoothness of this berry"""
+        self.main_flavor_value = max(self.flavor_values)
+        """The numerical value for the main flavor"""
         self.main_flavor = self.__get_main_flavor__()
         """The main flavor of this berry: Spicy, Dry, Sweet, Bitter, or Sour"""
-        self.main_flavor_value = max(self.flavor_values)
-        """The numerical value for the mainflavor"""
+        self.rarity = self.__get_rarity__()
+        """The rarity of this berry (1-15), higher is more rare"""
 
+        # Other info
+        self.__weakened_flavor_values__ = self.__get_weakened_flavor_values__()
+        """List of 5 values weakened just for filtering/sorting"""
+        self.__weakened_main_flavor_value__ = max(self.__weakened_flavor_values__)
+        """The numerical value for the weakened main flavor"""
+        self.__weakened_main_flavor__ = self.__get_weakened_main_flavor__()
+        """The main flavor of this berry: Spicy, Dry, Sweet, Bitter, or Sour"""
         self.__id__ = int(''.join(map(str, self.flavor_values)))
         """The 'unique' id of this berry"""
 
-    def __get_smoothness__(self):
+    def __get_smoothness__(self) -> int:
+        """Get the smoothness value for this berry from the SMOOTHNESS_TABLE"""
         for smooth_key, smooth_names in SMOOTHNESS_TABLE.items():
             if self.name in smooth_names:
                 return smooth_key
         return 255
 
-    def __get_main_flavor__(self):
-        self.__weakened_flavor_values__ = subtract_weakening_flavors(self.flavor_values)  # noqa ES501
-        flavor_list = [(flavor, FLAVORS[i]) for i, flavor in enumerate(self.flavor_values) if flavor > 0]  # noqa ES501
-        sorted_list = [flavor for _, flavor in sort_flavors(flavor_list)]
-        return sorted_list[0]
+    def __get_main_flavor__(self) -> str:
+        """Return the name of the flavor with the max value"""
+        return FLAVORS[self.flavor_values.index(self.main_flavor_value)]
+
+    def __get_weakened_main_flavor__(self) -> str:
+        """Return the name of the flavor with the max value"""
+        return FLAVORS[self.__weakened_flavor_values__.index(self.__weakened_main_flavor_value__)]
+
+    def __get_rarity__(self) -> int:
+        return RARITY_TABLE[self.smoothness]
+
+    def __get_weakened_flavor_values__(self) -> list[int]:
+        """Get list of 5 values weakened just for filtering/sorting"""
+        return subtract_weakening_flavors(self.flavor_values)  # noqa ES501
 
     def __repr__(self) -> str:
-        """spelon (Spicy) 35 - Flavors [ 30,  10,   0,   0,   0]
+        """ganlon (Dry)    40 - Flavors [  0,  30,  10,  30,   0]
 
             But colored
         """
@@ -70,8 +103,18 @@ class Berry:
                 f"{color_256(255)}{self.smoothness:>3}{RESET}"
                 f" - {color_256(239)}Flavors{RESET} {printable_flavor_values}")
 
+    def print_with_weakened_values(self):
+        """ganlon Dry      40 [  0,  30,  10,  30,   0]"""
+        printable_flavor_values = "["
+        for i in range(5):
+            printable_flavor_values = (f"{printable_flavor_values}"
+                                       f"{self.__weakened_flavor_values__[i]:>3}, ")  # noqa ES501
+        printable_flavor_values = f"{printable_flavor_values[:-2]}]"
+        r = f"\t{'- weak':<7}{self.__weakened_main_flavor__:<8}{self.smoothness:>3} {printable_flavor_values}"  # noqa ES501
+        return f"{str(self)}\n{r}"
+
     def __str__(self):
-        """spelon (Spicy) 35 - Flavors [30, 10,  0,  0,  0]"""
+        """ganlon Dry      40 [  0,  30,  10,  30,   0]"""
         printable_flavor_values = "["
         for i in range(5):
             printable_flavor_values = (f"{printable_flavor_values}"
@@ -90,3 +133,4 @@ if __name__ == "__main__":
     ganlon_berry = Berry("Ganlon", [0, 30, 10, 30, 0])
     print(ganlon_berry)
     print(repr(ganlon_berry))
+    print(ganlon_berry.print_with_weakened_values())

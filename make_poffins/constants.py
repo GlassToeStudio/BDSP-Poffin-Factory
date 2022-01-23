@@ -9,8 +9,6 @@ n_italic = N_ITALIC
 # Weakened by:
 # Spicy |  Sour  |  Bitter | Sweet  | Dry\n
 # Dry   |  Spicy |  Sour   | Bitter | Sweet
-WEAKENED_BY = [1, 2, 3, 4, 0]
-"""List of indecies of which flavor weakens a given flavor based on its index of preference."""  # noqa ES501
 FLAVORS = ["Spicy", "Dry", "Sweet", "Bitter", "Sour"]
 """List of all 5 flavors in order of preference - Spicy, Dry, Sweet, Bitter, Sour"""  # noqa ES501
 FLAVOR_COLORS = {"Spicy": color_256(208), "Dry": color_256(39), "Sweet": color_256(163), "Bitter": color_256(40), "Sour": color_256(226)}  # noqa ES501
@@ -23,10 +21,21 @@ SMOOTHNESS_TABLE = {
     30: ["tamato", "cornn", "magost", "rabuta", "nomel", "occa", "passho", "wacan", "rindo", "yache", "chople", "kebia", "shuca", "coba", "payapa"],  # noqa ES501
     35: ["spelon", "pamtre", "watmel", "durin", "belue", "tanga", "charti", "kasib", "haban", "colbur", "babiri", "chilan", "roseli"],  # noqa ES501
     40: ["liechi", "ganlon", "salac", "petaya", "apicot"],
-    50: ["lansat", "starf"],
+    50: ["lansat", "starf"],  # Exactly the same berry, just different name
     60: ["enigma", "micle", "custap", "jaboca", "rowap"],
 }
 """Lookup table to find the inherent smoothness of a berry by giving its name"""  # noqa ES501
+
+RARITY_TABLE = {
+    20: 1,
+    25: 3,
+    30: 5,
+    35: 7,
+    40: 9,
+    50: 11,
+    60: 15,
+    255: 255  # For those berries that do not exist.
+}
 
 outline = color_256(168)
 """A pinkish color for an outline"""
@@ -55,4 +64,4 @@ def sort_flavors(flavors_list: list[str]) -> list[tuple[int, str]]:
 
 
 def subtract_weakening_flavors(values: list[int]) -> list[int]:
-    return [values[i] - values[WEAKENED_BY[i]] for i in range(5)]  # noqa ES501
+    return [values[i] - values[(i+1) % 5] for i in range(5)]  # noqa ES501

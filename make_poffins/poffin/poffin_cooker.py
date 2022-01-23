@@ -21,14 +21,14 @@ class PoffinCooker:
             berries (list[Berry]): list of all berries in recipe
 
         Returns:
-            list[int]: poffin_values
+            list[int]: summed_berry_values
         """
 
-        poffin_values = [0] * 5
+        summed_berry_values = [0] * 5
         for i in range(5):
             for berry in berries:
-                poffin_values[i] += berry.flavor_values[i]
-        return poffin_values
+                summed_berry_values[i] += berry.flavor_values[i]
+        return summed_berry_values
 
     @classmethod
     def __subtract_weakening_flavors__(cls, poffin_values: list[int]) -> list[int]:  # noqa ES501
