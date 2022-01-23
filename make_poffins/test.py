@@ -9,8 +9,8 @@ from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
 from poffin.interface_poffin_filter import (FilterPoffinsBy_Level,
                                             FilterPoffinsBy_MaxNSimilar)
-from poffin.interface_poffin_sort import (SortOnPoffinMainFlavorValue,
-                                          SortOnPoffinSmoothness)
+from poffin.interface_poffin_sort import (SortOnPoffins_MainFlavorValue,
+                                          SortOnPoffins_Smoothness)
 from poffin.poffin_sort_and_filter_system import PoffinSortAndFilterSystem
 
 
@@ -73,10 +73,10 @@ if __name__ == "__main__":
     print(len(s))
     print(*s)
 # sorting
-sort_class1 = SortOnPoffinSmoothness()
+sort_class1 = SortOnPoffins_Smoothness()
 filter_class1 = FilterPoffinsBy_Level(148)
 filter_class2 = FilterPoffinsBy_MaxNSimilar(1)
-sort_class2 = SortOnPoffinMainFlavorValue()
+sort_class2 = SortOnPoffins_MainFlavorValue()
 
 sort_filters = [sort_class1, filter_class1, filter_class2, sort_class2]
 poffin_sorter_filterer = PoffinSortAndFilterSystem(sort_filters)

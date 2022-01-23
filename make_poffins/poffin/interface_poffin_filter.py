@@ -58,6 +58,25 @@ class FilterPoffinsBy_NumberOfFlavors(IPoffinFilterInterface):
         return [p for p in poffins if p.__num_flavors__() >= self.value]
 
 
+class FilterPoffins_ByRarity(IPoffinFilterInterface):
+    """Filter out any berries with a rarity less than the given value
+
+    Notes:
+        THIS WILL NOT LEAVE MANY BERRIES!
+
+        min = 4\n
+        max = 60\n
+
+
+    Returns:
+        list[Berry]: berries with smoothness >= value
+    """
+
+    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+        assert 1 < self.value < 15
+        return [p for p in poffins if p.rarity >= self.value]
+
+
 class FilterPoffinsBy_AnyFlavorValueLessThan(IPoffinFilterInterface):
     """Filter out any poffins any flavor value  < the passed in value.
 

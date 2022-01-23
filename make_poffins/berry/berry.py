@@ -18,6 +18,8 @@ class Berry:
         flavor values : list[int, int, int, int, int]\n
             Ex: [0, 30, 10, 30, 0]\n
         main flavor value : int\n
+
+    https://progameguides.com/pokemon/complete-poffin-recipe-guide-for-pokemon-brilliant-diamond-and-shining-pearl/
     """
 
     def __init__(self, name: str, values: list[int]):
@@ -47,6 +49,8 @@ class Berry:
         """The numerical value for the main flavor"""
         self.main_flavor = self.__get_main_flavor__()
         """The main flavor of this berry: Spicy, Dry, Sweet, Bitter, or Sour"""
+        self.num_flavors = sum(1 for x in self.flavor_values if x > 0)
+        """Total number of flavors this berry has"""
         self.rarity = self.__get_rarity__()
         """The rarity of this berry (1-15), higher is more rare"""
 

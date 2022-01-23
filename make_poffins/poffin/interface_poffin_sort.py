@@ -13,7 +13,7 @@ class IPoffinSortInterface(metaclass=ABCMeta):
         return self.__class__.__name__
 
 
-class SortOnPoffinMainFlavorValue(IPoffinSortInterface):
+class SortOnPoffins_MainFlavorValue(IPoffinSortInterface):
     """Sort poffins by the value of their main flavor.
 
     * Higher is better.
@@ -26,7 +26,7 @@ class SortOnPoffinMainFlavorValue(IPoffinSortInterface):
         return sorted(poffins, key=lambda x: -x.level)
 
 
-class SortOnPoffinSmoothness(IPoffinSortInterface):
+class SortOnPoffins_Smoothness(IPoffinSortInterface):
     """Sort poffins by the value of their smoothness in ascending order.
 
     * Lower is better.
@@ -39,7 +39,7 @@ class SortOnPoffinSmoothness(IPoffinSortInterface):
         return sorted(poffins, key=lambda x: x.smoothness)
 
 
-class SortOnPoffinLevelToSmoothnessRatio(IPoffinSortInterface):
+class SortOnPoffins_LevelToSmoothnessRatio(IPoffinSortInterface):
     """Sort poffins by the level / smoothness in ascending order.
 
     * Higher is better.
@@ -52,7 +52,7 @@ class SortOnPoffinLevelToSmoothnessRatio(IPoffinSortInterface):
         return sorted(poffins, key=lambda x: -x.level / x.smoothness)
 
 
-class SortOnPoffinLevelToSmoothnessRatioSum(IPoffinSortInterface):
+class SortOnPoffins_LevelToSmoothnessRatioSum(IPoffinSortInterface):
     """Sort poffins by the sum of their levels / smoothness in ascending order.
 
     * Higher is better.
