@@ -1,0 +1,145 @@
+Rank: 1 Poffins eaten: 19 Rarity: 80  Unique Berries: 15
+	255, 255, 255, 255, 255 : 255
+
+79  mild poffin         14 [ 79,   0,  72,   0,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	qualot Spicy    20 [ 10,   0,  10,   0,  10] Rarity: 1
+	occa   Spicy    30 [ 15,   0,  10,   0,   0] Rarity: 5
+	liechi Spicy    40 [ 30,  10,  30,   0,   0] Rarity: 9
+79  mild poffin         14 [ 72,   0,  79,   0,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	qualot Spicy    20 [ 10,   0,  10,   0,  10] Rarity: 1
+	shuca  Sweet    30 [ 10,   0,  15,   0,   0] Rarity: 5
+	liechi Spicy    40 [ 30,  10,  30,   0,   0] Rarity: 9
+79  mild poffin         14 [ 72,   0,   0,  79,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	hondew Spicy    20 [ 10,  10,   0,  10,   0] Rarity: 1
+	rindo  Bitter   30 [ 10,   0,   0,  15,   0] Rarity: 5
+	petaya Spicy    40 [ 30,   0,   0,  30,  10] Rarity: 9
+79  mild poffin         14 [  0,  79,   0,  72,   0] Rarity: 16
+	kelpsy Dry      20 [  0,  10,   0,  10,  10] Rarity: 1
+	hondew Spicy    20 [ 10,  10,   0,  10,   0] Rarity: 1
+	passho Dry      30 [  0,  15,   0,  10,   0] Rarity: 5
+	ganlon Dry      40 [  0,  30,  10,  30,   0] Rarity: 9
+85  mild poffin         14 [  0,   0,  63,   0,  85] Rarity: 16
+	sitrus Dry      20 [  0,  10,  10,  10,  10] Rarity: 1
+	grepa  Dry      20 [  0,  10,  10,   0,  10] Rarity: 1
+	wacan  Sweet    30 [  0,   0,  15,   0,  10] Rarity: 5
+	salac  Sweet    40 [  0,   0,  30,  10,  30] Rarity: 9
+
+Rank: 1 Poffins eaten: 19 Rarity: 80  Unique Berries: 15
+	255, 255, 255, 255, 255 : 255
+
+79  mild poffin         14 [ 79,   0,  72,   0,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	qualot Spicy    20 [ 10,   0,  10,   0,  10] Rarity: 1
+	occa   Spicy    30 [ 15,   0,  10,   0,   0] Rarity: 5
+	liechi Spicy    40 [ 30,  10,  30,   0,   0] Rarity: 9
+79  mild poffin         14 [ 72,   0,  79,   0,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	qualot Spicy    20 [ 10,   0,  10,   0,  10] Rarity: 1
+	shuca  Sweet    30 [ 10,   0,  15,   0,   0] Rarity: 5
+	liechi Spicy    40 [ 30,  10,  30,   0,   0] Rarity: 9
+79  mild poffin         14 [ 72,   0,   0,  79,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	hondew Spicy    20 [ 10,  10,   0,  10,   0] Rarity: 1
+	rindo  Bitter   30 [ 10,   0,   0,  15,   0] Rarity: 5
+	petaya Spicy    40 [ 30,   0,   0,  30,  10] Rarity: 9
+79  mild poffin         14 [  0,  79,   0,  72,   0] Rarity: 16
+	kelpsy Dry      20 [  0,  10,   0,  10,  10] Rarity: 1
+	hondew Spicy    20 [ 10,  10,   0,  10,   0] Rarity: 1
+	passho Dry      30 [  0,  15,   0,  10,   0] Rarity: 5
+	ganlon Dry      40 [  0,  30,  10,  30,   0] Rarity: 9
+93  mild poffin         14 [  0,   0,  55,   0,  93] Rarity: 16
+	sitrus Dry      20 [  0,  10,  10,  10,  10] Rarity: 1
+	grepa  Dry      20 [  0,  10,  10,   0,  10] Rarity: 1
+	payapa Sour     30 [  0,   0,  10,   0,  15] Rarity: 5
+	salac  Sweet    40 [  0,   0,  30,  10,  30] Rarity: 9
+
+Rank: 1 Poffins eaten: 19 Rarity: 78  Unique Berries: 15
+	255, 255, 255, 255, 255 : 255
+
+79  mild poffin         14 [ 79,   0,  72,   0,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	qualot Spicy    20 [ 10,   0,  10,   0,  10] Rarity: 1
+	occa   Spicy    30 [ 15,   0,  10,   0,   0] Rarity: 5
+	liechi Spicy    40 [ 30,  10,  30,   0,   0] Rarity: 9
+79  mild poffin         14 [ 72,   0,  79,   0,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	qualot Spicy    20 [ 10,   0,  10,   0,  10] Rarity: 1
+	shuca  Sweet    30 [ 10,   0,  15,   0,   0] Rarity: 5
+	liechi Spicy    40 [ 30,  10,  30,   0,   0] Rarity: 9
+79  mild poffin         14 [ 72,   0,   0,  79,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	hondew Spicy    20 [ 10,  10,   0,  10,   0] Rarity: 1
+	rindo  Bitter   30 [ 10,   0,   0,  15,   0] Rarity: 5
+	petaya Spicy    40 [ 30,   0,   0,  30,  10] Rarity: 9
+79  mild poffin         14 [  0,  79,   0,  72,   0] Rarity: 16
+	kelpsy Dry      20 [  0,  10,   0,  10,  10] Rarity: 1
+	hondew Spicy    20 [ 10,  10,   0,  10,   0] Rarity: 1
+	passho Dry      30 [  0,  15,   0,  10,   0] Rarity: 5
+	ganlon Dry      40 [  0,  30,  10,  30,   0] Rarity: 9
+93  mild poffin         13 [  0,   0,  40,   0,  93] Rarity: 14
+	sitrus Dry      20 [  0,  10,  10,  10,  10] Rarity: 1
+	grepa  Dry      20 [  0,  10,  10,   0,  10] Rarity: 1
+	iapapa Sour     25 [  0,   0,   0,   0,  15] Rarity: 3
+	salac  Sweet    40 [  0,   0,  30,  10,  30] Rarity: 9
+
+Rank: 1 Poffins eaten: 20 Rarity: 72  Unique Berries: 14
+	255, 255, 255, 255, 255 : 255
+
+79  mild poffin         14 [ 79,   0,  72,   0,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	qualot Spicy    20 [ 10,   0,  10,   0,  10] Rarity: 1
+	occa   Spicy    30 [ 15,   0,  10,   0,   0] Rarity: 5
+	liechi Spicy    40 [ 30,  10,  30,   0,   0] Rarity: 9
+79  mild poffin         14 [ 72,   0,  79,   0,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	qualot Spicy    20 [ 10,   0,  10,   0,  10] Rarity: 1
+	shuca  Sweet    30 [ 10,   0,  15,   0,   0] Rarity: 5
+	liechi Spicy    40 [ 30,  10,  30,   0,   0] Rarity: 9
+79  mild poffin         14 [ 72,   0,   0,  79,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	hondew Spicy    20 [ 10,  10,   0,  10,   0] Rarity: 1
+	rindo  Bitter   30 [ 10,   0,   0,  15,   0] Rarity: 5
+	petaya Spicy    40 [ 30,   0,   0,  30,  10] Rarity: 9
+79  mild poffin         14 [  0,  79,   0,  72,   0] Rarity: 16
+	kelpsy Dry      20 [  0,  10,   0,  10,  10] Rarity: 1
+	hondew Spicy    20 [ 10,  10,   0,  10,   0] Rarity: 1
+	passho Dry      30 [  0,  15,   0,  10,   0] Rarity: 5
+	ganlon Dry      40 [  0,  30,  10,  30,   0] Rarity: 9
+64  mild poffin         9 [  0,  27,   0,   0,  64] Rarity: 8
+	sitrus Dry      20 [  0,  10,  10,  10,  10] Rarity: 1
+	kelpsy Dry      20 [  0,  10,   0,  10,  10] Rarity: 1
+	grepa  Dry      20 [  0,  10,  10,   0,  10] Rarity: 1
+	yache  Sour     30 [  0,  10,   0,   0,  15] Rarity: 5
+
+Rank: 1 Poffins eaten: 20 Rarity: 74  Unique Berries: 14
+	255, 255, 255, 255, 255 : 255
+
+79  mild poffin         14 [ 79,   0,  72,   0,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	qualot Spicy    20 [ 10,   0,  10,   0,  10] Rarity: 1
+	occa   Spicy    30 [ 15,   0,  10,   0,   0] Rarity: 5
+	liechi Spicy    40 [ 30,  10,  30,   0,   0] Rarity: 9
+79  mild poffin         14 [ 72,   0,  79,   0,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	qualot Spicy    20 [ 10,   0,  10,   0,  10] Rarity: 1
+	shuca  Sweet    30 [ 10,   0,  15,   0,   0] Rarity: 5
+	liechi Spicy    40 [ 30,  10,  30,   0,   0] Rarity: 9
+79  mild poffin         14 [ 72,   0,   0,  79,   0] Rarity: 16
+	pomeg  Spicy    20 [ 10,   0,  10,  10,   0] Rarity: 1
+	hondew Spicy    20 [ 10,  10,   0,  10,   0] Rarity: 1
+	rindo  Bitter   30 [ 10,   0,   0,  15,   0] Rarity: 5
+	petaya Spicy    40 [ 30,   0,   0,  30,  10] Rarity: 9
+79  mild poffin         14 [  0,  79,   0,  72,   0] Rarity: 16
+	kelpsy Dry      20 [  0,  10,   0,  10,  10] Rarity: 1
+	hondew Spicy    20 [ 10,  10,   0,  10,   0] Rarity: 1
+	passho Dry      30 [  0,  15,   0,  10,   0] Rarity: 5
+	ganlon Dry      40 [  0,  30,  10,  30,   0] Rarity: 9
+72  mild poffin         10 [  0,  27,   0,   0,  72] Rarity: 10
+	kelpsy Dry      20 [  0,  10,   0,  10,  10] Rarity: 1
+	grepa  Dry      20 [  0,  10,  10,   0,  10] Rarity: 1
+	iapapa Sour     25 [  0,   0,   0,   0,  15] Rarity: 3
+	yache  Sour     30 [  0,  10,   0,   0,  15] Rarity: 5
+

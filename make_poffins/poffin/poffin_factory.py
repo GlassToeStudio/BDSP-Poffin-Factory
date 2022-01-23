@@ -4,8 +4,6 @@ from make_poffins.berry.berry import Berry
 from make_poffins.poffin.poffin import Poffin
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 
-from poffin.poffin_sort_and_filter_system import PoffinSortAndFilterSystem
-
 
 def __poffin_permutations_n__(n: int, poffins: list[Poffin]) -> tuple[Poffin, ...]:  # noqa ES501
     """Every combination of n poffins"""
@@ -77,31 +75,6 @@ class PoffinFactory():
 
     def generate_custom_poffin_list_from_recipes(self, recipes):  # noqa ES501
         return [self.__cooker__.cook(recipe) for recipe in recipes]  # noqa ES501
-
-    # Sorters
-    def get_poffins_with_n_flavors_greater_than_min_value_at_min_level(self, o_poffins: list[Poffin], num_flavors: int = 3, min_value: int = 30, min_level: int = 100) -> list[Poffin]:  # noqa ES501
-        poffin_sorter = PoffinSortAndFilterSystem()
-        poffins = poffin_sorter.filter_poffins_by_level(o_poffins, min_level)
-        poffins = poffin_sorter.filter_by_num_flavors(poffins, num_flavors)
-        poffins = poffin_sorter.sort_on_sum_of_main_flavor_smoothness_ratios(poffins)  # noqa ES501
-        poffins = poffin_sorter.filter_similar_poffins_to_four(poffins)
-        poffins = poffin_sorter.filter_if_any_value_less_than(poffins, min_value)  # noqa ES501
-        print(len(poffins))
-        self.__poffins__ = poffins
-        return poffins
-
-    def get_poffins_by_flavor_with_n_flavors_greater_than_min_value_at_min_level(self, o_poffins: list[Poffin], flavor: str, num_flavors: int = 3, min_value: int = 30, min_level: int = 100) -> list[Poffin]:  # noqa ES501
-        poffin_sorter = PoffinSortAndFilterSystem()
-        poffins = poffin_sorter.filter_poffins_by_flavor(o_poffins, flavor)
-        poffins = poffin_sorter.filter_poffins_by_level(poffins, min_level)
-        poffins = poffin_sorter.filter_by_num_flavors(poffins, num_flavors)
-        poffins = poffin_sorter.sort_on_sum_of_main_flavor_smoothness_ratios(poffins)  # noqa ES501
-
-        poffins = poffin_sorter.filter_similar_poffins_to_four(poffins)
-        poffins = poffin_sorter.filter_if_any_value_less_than(poffins, min_value)  # noqa ES501
-        print(len(poffins))
-        self.__poffins__ = poffins
-        return poffins
 
 
 if __name__ == "__main__":
