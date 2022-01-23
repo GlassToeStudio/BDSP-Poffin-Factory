@@ -1,7 +1,7 @@
 from copy import deepcopy
 
-import make_poffins.berry_factory as berry_factory
-from make_poffins.berry import Berry
+from make_poffins.berry import berry_factory
+from make_poffins.berry.berry import Berry
 from make_poffins.constants import (BOLD, FLAVOR_COLORS, FLAVORS, N_BOLD,
                                     RESET, color_256, foul_poffin, mild_poffin,
                                     outline, overripe_poffin, rich_poffin,

@@ -1,7 +1,7 @@
 from itertools import combinations
 
-from make_poffins import berry_factory
-from make_poffins.berry import Berry
+from make_poffins.berry import berry_factory
+from make_poffins.berry.berry import Berry
 
 petaya_berry = Berry("Petaya", [30, 0, 0, 30, 10])
 """Spicy (25)  -- [10, 0, 0, 0, 0]"""

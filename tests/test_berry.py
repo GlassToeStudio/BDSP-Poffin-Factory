@@ -1,5 +1,6 @@
-from make_poffins import berry
-from make_poffins.berry_factory import every_berry, lansat_berry, starf_berry
+from make_poffins.berry import berry
+from make_poffins.berry.berry_factory import (every_berry, lansat_berry,
+                                              starf_berry)
 
 ganlon_berry = berry.Berry("Ganlon", [0, 30, 10, 30, 0])
 n_ganlon_berry = berry.Berry("Fake2", [0, 30, 10, 30, 0])

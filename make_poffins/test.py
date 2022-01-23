@@ -1,13 +1,13 @@
 from copy import deepcopy
 from itertools import product
 
-from make_poffins import poffin
-from make_poffins.berry_sorter import BerrySorter
+from make_poffins.berry.berry_sorter import BerrySorter
 from make_poffins.contest_stats import ContestStats
-from make_poffins.poffin import berry_factory
-from make_poffins.poffin_cooker import PoffinCooker
-from make_poffins.poffin_factory import PoffinFactory
-from make_poffins.poffin_sorter import PoffinSorter
+from make_poffins.poffin import poffin
+from make_poffins.poffin.poffin import berry_factory
+from make_poffins.poffin.poffin_cooker import PoffinCooker
+from make_poffins.poffin.poffin_factory import PoffinFactory
+from make_poffins.poffin.poffin_sorter import PoffinSorter
 
 
 def test_cook(recipe, t):

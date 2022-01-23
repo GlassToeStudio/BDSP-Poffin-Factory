@@ -1,4 +1,5 @@
-from make_poffins.poffin import Poffin, berry_factory
+from make_poffins.berry import berry_factory
+from make_poffins.poffin.poffin import Poffin
 
 petaya_apicot_custap_salac_poffin = Poffin([12, 0, 27, 0, 42], 32, [berry_factory.petaya_berry, berry_factory.apicot_berry, berry_factory.custap_berry, berry_factory.salac_berry])
 petaya_apicot_custap_rowap_poffin = Poffin([27, 0, 0, 0, 42], 37, [berry_factory.petaya_berry, berry_factory.apicot_berry, berry_factory.custap_berry, berry_factory.rowap_berry])

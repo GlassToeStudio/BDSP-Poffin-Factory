@@ -1,4 +1,5 @@
-from make_poffins.poffin import Poffin, berry_factory
+from make_poffins.berry import berry_factory
+from make_poffins.poffin.poffin import Poffin
 
 petaya_enigma_apicot_micle_poffin = Poffin([0, 100, 0, 0, 0], 37, [berry_factory.petaya_berry, berry_factory.enigma_berry, berry_factory.apicot_berry, berry_factory.micle_berry])
 petaya_enigma_apicot_charti_poffin = Poffin([40, 85, 0, 0, 0], 30, [berry_factory.petaya_berry, berry_factory.enigma_berry, berry_factory.apicot_berry, berry_factory.charti_berry])

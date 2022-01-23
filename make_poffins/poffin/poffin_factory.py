@@ -1,9 +1,9 @@
 from itertools import permutations
 
-from make_poffins.berry import Berry
-from make_poffins.poffin import Poffin
-from make_poffins.poffin_cooker import PoffinCooker
-from make_poffins.poffin_sorter import PoffinSorter
+from make_poffins.berry.berry import Berry
+from make_poffins.poffin.poffin import Poffin
+from make_poffins.poffin.poffin_cooker import PoffinCooker
+from make_poffins.poffin.poffin_sorter import PoffinSorter
 
 
 def __poffin_permutations_n__(n: int, poffins: list[Poffin]) -> tuple[Poffin, ...]:  # noqa ES501
@@ -32,7 +32,7 @@ def poffin_permutations_5(poffins: list[Poffin]) -> tuple[Poffin, Poffin, Poffin
 
 
 def poffin_permutations_10(poffins: list[Poffin]) -> tuple[Poffin, Poffin, Poffin, Poffin, Poffin]:  # noqa ES501
-    """Every combination of 5 poffins"""
+    """Every combination of 10 poffins"""
     return __poffin_permutations_n__(10, poffins)
 
 
@@ -77,6 +77,7 @@ class PoffinFactory():
     def generate_custom_poffin_list_from_recipes(self, recipes):  # noqa ES501
         return [self.__cooker__.cook(recipe) for recipe in recipes]  # noqa ES501
 
+    # Sorters
     def get_poffins_with_n_flavors_greater_than_min_value_at_min_level(self, o_poffins: list[Poffin], num_flavors: int = 3, min_value: int = 30, min_level: int = 100) -> list[Poffin]:  # noqa ES501
         poffin_sorter = PoffinSorter()
         poffins = poffin_sorter.filter_poffins_by_flavor(o_poffins, "spicy")

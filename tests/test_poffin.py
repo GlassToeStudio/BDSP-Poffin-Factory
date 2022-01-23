@@ -1,7 +1,7 @@
-import make_poffins.berry_factory as b
-from make_poffins.berry_factory import single_recipe
-from make_poffins.poffin import Poffin
-from make_poffins.poffin_cooker import PoffinCooker
+import make_poffins.berry.berry_factory as b
+from make_poffins.berry.berry_factory import single_recipe
+from make_poffins.poffin.poffin import Poffin
+from make_poffins.poffin.poffin_cooker import PoffinCooker
 
 cooker = PoffinCooker()
 test_poffin1 = cooker.cook(single_recipe)  # noqa ES501

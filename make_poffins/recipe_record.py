@@ -1,8 +1,8 @@
 import math
 
-import make_poffins.berry_factory as berry_factory
-from make_poffins.poffin import Poffin
-from make_poffins.poffin_cooker import PoffinCooker
+from make_poffins.berry import berry_factory
+from make_poffins.poffin.poffin import Poffin
+from make_poffins.poffin.poffin_cooker import PoffinCooker
 
 
 class RecipeRecord:

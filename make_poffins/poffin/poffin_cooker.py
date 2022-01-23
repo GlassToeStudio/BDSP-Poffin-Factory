@@ -1,8 +1,8 @@
 import math
 
-from make_poffins.berry import Berry
+from make_poffins.berry.berry import Berry
 from make_poffins.constants import subtract_weakening_flavors
-from make_poffins.poffin import Poffin
+from make_poffins.poffin.poffin import Poffin
 
 
 class PoffinCooker:

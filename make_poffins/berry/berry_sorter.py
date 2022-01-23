@@ -1,5 +1,5 @@
-from make_poffins.berry import Berry
-from make_poffins.berry_factory import every_berry
+from make_poffins.berry.berry import Berry
+from make_poffins.berry.berry_factory import every_berry
 
 
 class BerrySorter():
