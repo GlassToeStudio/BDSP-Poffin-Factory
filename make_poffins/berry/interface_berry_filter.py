@@ -27,49 +27,7 @@ class IBerryFilterInterface(metaclass=ABCMeta):
         return f"{self.__class__.__name__} with a value of {self._value}"
 
 
-class FilterBerriesBy_MainFlavorValue(IBerryFilterInterface):
-    """Filter out any berries < the passed in value.
-
-    Args:
-        Level (int): The minimum level berry to keep
-
-    Returns:
-        list[Berry]: List of berries with a level >= the passed in value.
-    """
-
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.main_flavor_value >= self._value]
-
-
-class FilterBerriesBy_Flavor(IBerryFilterInterface):
-    """Filter out any berries that is not of the given flavor.
-
-    Args:
-        Flavor (str): The flavor berries to keep
-
-    Returns:
-        list[Berry]: List of berries that are the given flavor
-    """
-
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.main_flavor.lower() == self._value.lower()]
-
-
-class FilterBerryiesBy_NumberOfFlavorsLessThan(IBerryFilterInterface):
-    """Filter out any berries with total number of flavors  < the passed in value.
-
-    Args:
-        Level (int): The minimum amount of flavors
-
-    Returns:
-        list[Berry]: List of berries with flavors >= the passed in value.
-    """
-
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.num_flavors >= self._value]
-
-
-class FilterBerriesBy_AnyFlavorValueLessThan(IBerryFilterInterface):
+class FilterBerriesBy_AnyFlavorValue_LessThan(IBerryFilterInterface):
     """Filter out any berries any flavor value  < the passed in value.
 
     Args:
@@ -97,7 +55,7 @@ class FilterBerriesBy_AnyFlavorValueLessThan(IBerryFilterInterface):
         return berries
 
 
-class FilterBerriesBy_AnyFlavorValueGreaterThan(IBerryFilterInterface):
+class FilterBerriesBy_AnyFlavorValue_GreaterThan(IBerryFilterInterface):
     """Filter out any berries any flavor value > the passed in value.
 
     Args:
@@ -125,7 +83,7 @@ class FilterBerriesBy_AnyFlavorValueGreaterThan(IBerryFilterInterface):
         return berries
 
 
-class FilterBerriesBy_SmoothnessLessThan(IBerryFilterInterface):
+class FilterBerriesBy_Smoothness_LessThan(IBerryFilterInterface):
     """Filter out any berries with a smoothnes less than the given value
 
     Notes:
@@ -143,7 +101,7 @@ class FilterBerriesBy_SmoothnessLessThan(IBerryFilterInterface):
         return [b for b in berries if b.smoothness >= self._value]
 
 
-class FilterBerriessBy_SmoothnessGreaterThan(IBerryFilterInterface):
+class FilterBerriessBy_Smoothness_GreaterThan(IBerryFilterInterface):
     """Filter out any berries with a smoothnes greater than the given value
 
     Notes:
@@ -161,7 +119,77 @@ class FilterBerriessBy_SmoothnessGreaterThan(IBerryFilterInterface):
         return [b for b in berries if b.smoothness <= self._value]
 
 
-class FilterBerriessBy_RarityLessThan(IBerryFilterInterface):
+class FilterBerriesBy_MainFlavorValue_LessThan(IBerryFilterInterface):
+    """Filter out any berries < the passed in value.
+
+    Args:
+        Level (int): The minimum level berry to keep
+
+    Returns:
+        list[Berry]: List of berries with a level >= the passed in value.
+    """
+
+    def execute(self, berries: list[Berry]) -> list[Berry]:
+        return [b for b in berries if b.main_flavor_value >= self._value]
+
+
+class FilterBerriesBy_MainFlavorValue_GreaterThan(IBerryFilterInterface):
+    """Filter out any berries > the passed in value.
+
+    Args:
+        Level (int): The minimum level berry to keep
+
+    Returns:
+        list[Berry]: List of berries with a level <= the passed in value.
+    """
+
+    def execute(self, berries: list[Berry]) -> list[Berry]:
+        return [b for b in berries if b.main_flavor_value <= self._value]
+
+
+class FilterBerriesBy_MainFlavorName(IBerryFilterInterface):
+    """Filter out any berries that is not of the given flavor.
+
+    Args:
+        Flavor (str): The flavor berries to keep
+
+    Returns:
+        list[Berry]: List of berries that are the given flavor
+    """
+
+    def execute(self, berries: list[Berry]) -> list[Berry]:
+        return [b for b in berries if b.main_flavor.lower() == self._value.lower()]
+
+
+class FilterBerryiesBy_NumberOfFlavors_LessThan(IBerryFilterInterface):
+    """Filter out any berries with total number of flavors  < the passed in value.
+
+    Args:
+        Level (int): The minimum amount of flavors
+
+    Returns:
+        list[Berry]: List of berries with flavors >= the passed in value.
+    """
+
+    def execute(self, berries: list[Berry]) -> list[Berry]:
+        return [b for b in berries if b.num_flavors >= self._value]
+
+
+class FilterBerryiesBy_NumberOfFlavors_GreaterThan(IBerryFilterInterface):
+    """Filter out any berries with total number of flavors > the passed in value.
+
+    Args:
+        Level (int): The minimum amount of flavors
+
+    Returns:
+        list[Berry]: List of berries with flavors <= the passed in value.
+    """
+
+    def execute(self, berries: list[Berry]) -> list[Berry]:
+        return [b for b in berries if b.num_flavors <= self._value]
+
+
+class FilterBerriessBy_Rarity_LessThan(IBerryFilterInterface):
     """Filter out any berries with a rarity less than the given value
 
     Notes:
@@ -187,7 +215,7 @@ class FilterBerriessBy_RarityLessThan(IBerryFilterInterface):
         return [b for b in berries if b.rarity >= self._value]
 
 
-class FilterBerriessBy_RarityGreaterThan(IBerryFilterInterface):
+class FilterBerriessBy_Rarity_GreaterThan(IBerryFilterInterface):
     """Filter out any berries with a rarity greater than the given value
 
     Notes:
@@ -211,3 +239,57 @@ class FilterBerriessBy_RarityGreaterThan(IBerryFilterInterface):
     def execute(self, berries: list[Berry]) -> list[Berry]:
         assert 1 <= self._value <= 15
         return [b for b in berries if b.rarity <= self._value]
+
+
+class FilterBerriesBy_WeakenedMainFlavorValue_LessThan(IBerryFilterInterface):
+    """Filter out any berries < the passed in value.
+
+    Args:
+        Level (int): The minimum level berry to keep
+
+    Returns:
+        list[Berry]: List of berries with a level >= the passed in value.
+    """
+
+    def execute(self, berries: list[Berry]) -> list[Berry]:
+        return [b for b in berries if b._weakened_main_flavor_value >= self._value]
+
+
+class FilterBerriesBy_WeakenedMainFlavorValue_GreaterThan(IBerryFilterInterface):
+    """Filter out any berries > the passed in value.
+
+    Args:
+        Level (int): The minimum level berry to keep
+
+    Returns:
+        list[Berry]: List of berries with a level <= the passed in value.
+    """
+
+    def execute(self, berries: list[Berry]) -> list[Berry]:
+        return [b for b in berries if b._weakened_main_flavor_value <= self._value]
+
+
+class FilterBerriesBy_WeakenedMainFlavorName(IBerryFilterInterface):
+    """Filter out any berries that is not of the given weakened flavor.
+
+    Args:
+        Flavor (str): The flavor berries to keep
+
+    Returns:
+        list[Berry]: List of berries that are the given flavor
+    """
+
+    def execute(self, berries: list[Berry]) -> list[Berry]:
+        return [b for b in berries if b._weakened_main_flavor.lower() == self._value.lower()]
+
+
+class FilterBerriessBy__id__(IBerryFilterInterface):
+    """Filter out any berries whose __id__ does not equal teh passed in value.
+
+
+    Returns:
+        list[Berry]: berries.__id__ == value
+    """
+
+    def execute(self, berries: list[Berry]) -> list[Berry]:
+        return [b for b in berries if b.smoothness == self._value]
