@@ -1,7 +1,6 @@
 from itertools import product
 
 from berry import berry_library
-from berry.berry_sort_and_filter_system import BerrySortAndFilterSystem
 from make_poffins.poffin.poffin import Poffin
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 from poffin.interface_poffin_filter import (FilterPoffinsBy_Level_LessThan,
