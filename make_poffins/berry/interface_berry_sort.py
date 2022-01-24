@@ -66,7 +66,7 @@ class SortOnBerry_Attrs(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        for key, reverse in reversed(self._value):
+        for key, reverse in reversed(self.value):
             berries.sort(key=attrgetter(key), reverse=reverse)
         return berries
 
@@ -79,7 +79,7 @@ class SortOnBerry_Name(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('name'), reverse=self._reverse)
+        berries.sort(key=attrgetter('name'), reverse=self.reverse)
         return berries
 
 
@@ -96,7 +96,7 @@ class SortOnBerry_Smoothness(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('smoothness'), reverse=self._reverse)
+        berries.sort(key=attrgetter('smoothness'), reverse=self.reverse)
         return berries
 
 
@@ -110,7 +110,7 @@ class SortOnBerry_MainFlavorValue(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('main_flavor_value'), reverse=not self._reverse)
+        berries.sort(key=attrgetter('main_flavor_value'), reverse=not self.reverse)
         return berries
 
 
@@ -122,7 +122,7 @@ class SortOnBerry_MainFlavor(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('main_flavor'), reverse=self._reverse)
+        berries.sort(key=attrgetter('main_flavor'), reverse=self.reverse)
         return berries
 
 
@@ -136,7 +136,7 @@ class SortOnBerry_NumFlavors(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('num_flavors'), reverse=not self._reverse)
+        berries.sort(key=attrgetter('num_flavors'), reverse=not self.reverse)
         return berries
 
 
@@ -153,7 +153,7 @@ class SortOnBerry_Rarity(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('rarity'), reverse=self._reverse)
+        berries.sort(key=attrgetter('rarity'), reverse=self.reverse)
         return berries
 
 
@@ -172,7 +172,7 @@ class SortOnBerry_WeakenedMainFlavorValue(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('_weakened_main_flavor_value'), reverse=not self._reverse)
+        berries.sort(key=attrgetter('_weakened_main_flavor_value'), reverse=not self.reverse)
         return berries
 
 
@@ -184,7 +184,7 @@ class SortOnBerry_WeakenedMainFlavor(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('_weakened_main_flavor'), reverse=self._reverse)
+        berries.sort(key=attrgetter('_weakened_main_flavor'), reverse=self.reverse)
         return berries
 
 
@@ -198,7 +198,7 @@ class SortOnBerry__id__(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('__id__'), reverse=not self._reverse)
+        berries.sort(key=attrgetter('__id__'), reverse=not self.reverse)
         return berries
 
 
@@ -212,5 +212,5 @@ class SortOnBerry_MainFlavorToSmoothnessRatio(IBerrySortInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=lambda x: x.main_flavor_value / x.smoothness, reverse=not self._reverse)
+        berries.sort(key=lambda x: x.main_flavor_value / x.smoothness, reverse=not self.reverse)
         return berries
