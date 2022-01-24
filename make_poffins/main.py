@@ -7,7 +7,6 @@ from make_poffins.berry.berry_sort_and_filter_system import \
 from make_poffins.berry.interface_berry_filter import \
     FilterBerriessBy_Rarity_GreaterThan
 from make_poffins.berry.interface_berry_sort import SortOnBerry_Attrs
-from make_poffins.contest_stats import ContestStats
 from make_poffins.poffin.interface_poffin_filter import (
     FilterPoffinsBy_AnyFlavorValueLessThan, FilterPoffinsBy_Level_LessThan,
     FilterPoffinsBy_MaxNSimilar, FilterPoffinsBy_NumberOfFlavors_LessThan)
@@ -18,6 +17,7 @@ from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
 from make_poffins.poffin.poffin_sort_and_filter_system import \
     PoffinSortAndFilterSystem
+from stats.contest_stats import ContestStats
 
 
 @cache
@@ -69,7 +69,7 @@ def main():
         ]
         berry_sorter = BerrySortAndFilterSystem(berry_sorters)
         berry_factory = BerryFactory(berry_sorter)
-        berry_combinations = berry_factory.berry_combinations_4()
+        berry_combinations = berry_factory.get_berry_combinations_4()
 
         # Poffins
         poffin_sorters = [
@@ -81,8 +81,12 @@ def main():
         ]
         poffin_sorter = PoffinSortAndFilterSystem(poffin_sorters)
         poffin_factory = PoffinFactory(PoffinCooker(cook_time), berry_combinations, poffin_sorter)
-        poffin_permutations = poffin_factory.poffin_permutations_4()
+        poffin_permutations = poffin_factory.get_poffin_permutations_4()
 
+        # Stats
+        # stat sorter
+        # stat factory
+        # Results to print etc
         results = eat_and_rank_poffins(poffin_permutations, top_x, min_rank, max_eaten, print_file)
 
         print("Lets see the results!\n\n\n")
