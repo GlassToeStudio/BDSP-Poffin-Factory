@@ -20,7 +20,7 @@ def test_SortOnBerry_Name():
 
 def test_SortOnBerry_Attrs():
     berry_sorters = [
-        SortOnBerry_Attrs((('main_flavor', False), ('smoothness', False),  ('__weakened_main_flavor_value__', False)))
+        SortOnBerry_Attrs((('main_flavor', False), ('smoothness', False),  ('_weakened_main_flavor_value', False)))
     ]
 
     berry_sorter = BerrySortAndFilterSystem(berry_sorters)
