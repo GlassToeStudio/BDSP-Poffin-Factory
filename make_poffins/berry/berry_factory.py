@@ -1,347 +1,80 @@
 import math
 from itertools import combinations
 
-from make_poffins.berry import berry_factory
+from make_poffins.berry import berry_factory, berry_library
 from make_poffins.berry.berry import Berry
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
 
-petaya_berry = Berry("Petaya", [30, 0, 0, 30, 10])
-"""Spicy (25)  -- [10, 0, 0, 0, 0]"""
-enigma_berry = Berry("Enigma", [40, 10, 0, 0, 0])
-"""Dry (25)  -- [0, 10, 0, 0, 0]"""
-tanga_berry = Berry("Tanga", [20, 0, 0, 0, 10])
-"""Sweet (25)  -- [0, 0, 10, 0, 0]"""
-spelon_berry = Berry("Spelon", [30, 10, 0, 0, 0])
-"""Bitter (25)  -- [0, 0, 0, 10, 0]"""
-liechi_berry = Berry("Liechi", [30, 10, 30, 0, 0])
-"""Sour (25)  -- [0, 0, 0, 0, 10]"""
-lansat_berry = Berry("Lansat", [30, 10, 30, 10, 30])
-"""Spicy (20)  -- [10, 0, 10, 10, 10] - same as starf"""
-starf_berry = Berry("Starf", [30, 10, 30, 10, 30])
-"""Spicy (20)  -- [10, 10, 0, 10, 10] - same as lansat"""
-figy_berry = Berry("Figy", [15, 0, 0, 0, 0])
-"""Spicy (20)  -- [10, 10, 10, 0, 10]"""
-chople_berry = Berry("Chople", [15, 0, 0, 10, 0])
-"""Spicy (20)  -- [10, 10, 10, 10, 0]"""
-occa_berry = Berry("Occa", [15, 0, 10, 0, 0])
-"""Dry (20)  -- [0, 10, 10, 10, 10]"""
-babiri_berry = Berry("Babiri", [25, 10, 0, 0, 0])
-"""Spicy (25)  -- [15, 0, 0, 0, 0]"""
-cheri_berry = Berry("Cheri", [10, 0, 0, 0, 0])
-"""Dry (25)  -- [0, 15, 0, 0, 0]"""
-rindo_berry = Berry("Rindo", [10, 0, 0, 15, 0])
-"""Sweet (25)  -- [0, 0, 15, 0, 0]"""
-pinap_berry = Berry("Pinap", [10, 0, 0, 0, 10])
-"""Bitter (25)  -- [0, 0, 0, 15, 0]"""
-nomel_berry = Berry("Nomel", [10, 0, 0, 0, 20])
-"""Sour (25)  -- [0, 0, 0, 0, 15]"""
-belue_berry = Berry("Belue", [10, 0, 0, 0, 30])
-"""Spicy (20)  -- [10, 10, 0, 0, 0]"""
-rowap_berry = Berry("Rowap", [10, 0, 0, 0, 40])
-"""Dry (20)  -- [0, 10, 10, 0, 0]"""
-pomeg_berry = Berry("Pomeg", [10, 0, 10, 10, 0])
-"""Sweet (20)  -- [0, 0, 10, 10, 0]"""
-qualot_berry = Berry("Qualot", [10, 0, 10, 0, 10])
-"""Bitter (20)  -- [0, 0, 0, 10, 10]"""
-leppa_berry = Berry("Leppa", [10, 0, 10, 10, 10])
-"""Spicy (20)  -- [10, 0, 0, 0, 10]"""
-shuca_berry = Berry("Shuca", [10, 0, 15, 0, 0])
-"""Spicy (20)  -- [10, 0, 10, 10, 0]"""
-tamato_berry = Berry("Tamato", [20, 10, 0, 0, 0])
-"""Dry (20)  -- [0, 10, 0, 10, 10]"""
-rawst_berry = Berry("Rawst", [0, 0, 0, 10, 0])
-"""Spicy (20)  -- [10, 0, 10, 0, 10]"""
-aguav_berry = Berry("Aguav", [0, 0, 0, 15, 0])
-"""Spicy (20)  -- [10, 10, 0, 10, 0]"""
-aspear_berry = Berry("Aspear", [0, 0, 0, 0, 10])
-"""Dry (20)  -- [0, 10, 10, 0, 10]"""
-wepear_berry = Berry("Wepear", [0, 0, 0, 10, 10])
-"""Spicy (30)  -- [20, 10, 0, 0, 0]"""
-rabuta_berry = Berry("Rabuta", [0, 0, 0, 20, 10])
-"""Dry (30)  -- [0, 20, 10, 0, 0]"""
-durin_berry = Berry("Durin", [0, 0, 0, 30, 10])
-"""Sweet (30)  -- [0, 0, 20, 10, 0]"""
-jaboca_berry = Berry("Jaboca", [0, 0, 0, 40, 10])
-"""Bitter (30)  -- [0, 0, 0, 20, 10]"""
-iapapa_berry = Berry("Iapapa", [0, 0, 0, 0, 15])
-"""Sour (30)  -- [10, 0, 0, 0, 20]"""
-colbur_berry = Berry("Colbur", [0, 0, 0, 10, 20])
-"""Spicy (35)  -- [30, 10, 0, 0, 0]"""
-pecha_berry = Berry("Pecha", [0, 0, 10, 0, 0])
-"""Dry (35)  -- [0, 30, 10, 0, 0]"""
-nanab_berry = Berry("Nanab", [0, 0, 10, 10, 0])
-"""Sweet (35)  -- [0, 0, 30, 10, 0]"""
-haban_berry = Berry("Haban", [0, 0, 10, 20, 0])
-"""Bitter (35)  -- [0, 0, 0, 30, 10]"""
-payapa_berry = Berry("Payapa", [0, 0, 10, 0, 15])
-"""Sour (35)  -- [10, 0, 0, 0, 30]"""
-mago_berry = Berry("Mago", [0, 0, 15, 0, 0])
-"""Spicy (30)  -- [15, 0, 10, 0, 0]"""
-wacan_berry = Berry("Wacan", [0, 0, 15, 0, 10])
-"""Dry (30)  -- [0, 15, 0, 10, 0]"""
-magost_berry = Berry("Magost", [0, 0, 20, 10, 0])
-"""Sweet (30)  -- [0, 0, 15, 0, 10]"""
-roseli_berry = Berry("Roseli", [0, 0, 25, 10, 0])
-"""Bitter (30)  -- [10, 0, 0, 15, 0]"""
-watmel_berry = Berry("Watmel", [0, 0, 30, 10, 0])
-"""Sour (30)  -- [0, 10, 0, 0, 15]"""
-salac_berry = Berry("Salac", [0, 0, 30, 10, 30])
-"""Spicy (30)  -- [15, 0, 0, 10, 0]"""
-custap_berry = Berry("Custap", [0, 0, 40, 10, 0])
-"""Dry (30)  -- [0, 15, 0, 0, 10]"""
-razz_berry = Berry("Razz", [10, 10, 0, 0, 0])
-"""Sweet (30)  -- [10, 0, 15, 0, 0]"""
-hondew_berry = Berry("Hondew", [10, 10, 0, 10, 0])
-"""Bitter (30)  -- [0, 10, 0, 15, 0]"""
-oran_berry = Berry("Oran", [10, 10, 0, 10, 10])
-"""Sour (30)  -- [0, 0, 10, 0, 15]"""
-lum_berry = Berry("Lum", [10, 10, 10, 10, 0])
-"""Spicy (35)  -- [20, 0, 0, 0, 10]"""
-persim_berry = Berry("Persim", [10, 10, 10, 0, 10])
-"""Dry (35)  -- [10, 20, 0, 0, 0]"""
-chesto_berry = Berry("Chesto", [0, 10, 0, 0, 0])
-"""Sweet (35)  -- [0, 10, 20, 0, 0]"""
-coba_berry = Berry("Coba", [0, 10, 0, 15, 0])
-"""Bitter (35)  -- [0, 0, 10, 20, 0]"""
-kelpsy_berry = Berry("Kelpsy", [0, 10, 0, 10, 10])
-"""Sour (35)  -- [0, 0, 0, 10, 20]"""
-yache_berry = Berry("Yache", [0, 10, 0, 0, 15])
-"""Spicy (35)  -- [25, 10, 0, 0, 0]"""
-bluk_berry = Berry("Bluk", [0, 10, 10, 0, 0])
-"""Dry (35)  -- [0, 25, 10, 0, 0]"""
-grepa_berry = Berry("Grepa", [0, 10, 10, 0, 10])
-"""Spicy (40)  -- [30, 10, 30, 0, 0]"""
-sitrus_berry = Berry("Sitrus", [0, 10, 10, 10, 10])
-"""Dry (40)  -- [0, 30, 10, 30, 0]"""
-kasib_berry = Berry("Kasib", [0, 10, 20, 0, 0])
-"""Sweet (40)  -- [0, 0, 30, 10, 30]"""
-charti_berry = Berry("Charti", [10, 20, 0, 0, 0])
-"""Spicy (40)  -- [30, 0, 0, 30, 10]"""
-wiki_berry = Berry("Wiki", [0, 15, 0, 0, 0])
-"""Dry (40)  -- [10, 30, 0, 0, 30]"""
-passho_berry = Berry("Passho", [0, 15, 0, 10, 0])
-"""Spicy (50)  -- [30, 10, 30, 10, 30]"""
-kebia_berry = Berry("Kebia", [0, 15, 0, 0, 10])
-"""Spicy (50)  -- [30, 10, 30, 10, 30]"""
-cornn_berry = Berry("Cornn", [0, 20, 10, 0, 0])
-"""Spicy (60)  -- [40, 10, 0, 0, 0]"""
-apicot_berry = Berry("Apicot", [10, 30, 0, 0, 30])
-"""Dry (60)  -- [0, 40, 10, 0, 0]"""
-chilan_berry = Berry("Chilan", [0, 25, 10, 0, 0])
-"""Sweet (60)  -- [0, 0, 40, 10, 0]"""
-pamtre_berry = Berry("Pamtre", [0, 30, 10, 0, 0])
-"""Bitter (60)  -- [0, 0, 0, 40, 10]"""
-ganlon_berry = Berry("Ganlon", [0, 30, 10, 30, 0])
-"""Sour (60)  -- [10, 0, 0, 0, 40]"""
-micle_berry = Berry("Micle", [0, 40, 10, 0, 0])
-"""Sweet (35)  -- [0, 0, 25, 10, 0]"""
-
 
 class BerryFactory:
     def __init__(self, berry_filter_system: BerrySortAndFilterSystem = None, berries: list[Berry] = None):
-        self.berry_filter_system = berry_filter_system
-        self.__berries__ = berries
-        self.__filtered_berries__ = None
-        print("\nSetting Up BerryFactory")
-
-        self.every_berry = [
-            cheri_berry,
-            chesto_berry,
-            pecha_berry,
-            rawst_berry,
-            aspear_berry,
-            leppa_berry,
-            oran_berry,
-            persim_berry,
-            lum_berry,
-            sitrus_berry,
-            figy_berry,
-            wiki_berry,
-            mago_berry,
-            aguav_berry,
-            iapapa_berry,
-            razz_berry,
-            bluk_berry,
-            nanab_berry,
-            wepear_berry,
-            pinap_berry,
-            pomeg_berry,
-            kelpsy_berry,
-            qualot_berry,
-            hondew_berry,
-            grepa_berry,
-            tamato_berry,
-            cornn_berry,
-            magost_berry,
-            rabuta_berry,
-            nomel_berry,
-            spelon_berry,
-            pamtre_berry,
-            watmel_berry,
-            durin_berry,
-            belue_berry,
-            occa_berry,
-            passho_berry,
-            wacan_berry,
-            rindo_berry,
-            yache_berry,
-            chople_berry,
-            kebia_berry,
-            shuca_berry,
-            coba_berry,
-            payapa_berry,
-            tanga_berry,
-            charti_berry,
-            kasib_berry,
-            haban_berry,
-            colbur_berry,
-            babiri_berry,
-            chilan_berry,
-            liechi_berry,
-            ganlon_berry,
-            salac_berry,
-            petaya_berry,
-            apicot_berry,
-            lansat_berry,
-            starf_berry,
-            enigma_berry,
-            micle_berry,
-            custap_berry,
-            jaboca_berry,
-            rowap_berry,
-            roseli_berry,
-        ]
-        """List of all 65 berries - two berries are the same with different names
-
-        starf berry and lansat berry
-        """
-
-        self.tiny_list = [
-            petaya_berry,
-            enigma_berry,
-            tanga_berry,
-            apicot_berry,
-            micle_berry,
-            charti_berry,
-            liechi_berry,
-            custap_berry,
-            lansat_berry,
-            ganlon_berry,
-            jaboca_berry,
-            petaya_berry,
-            salac_berry,
-            rowap_berry,
-            colbur_berry
-        ]
-        """Three of each, theoretically best, berries -  Spicy, Dry, Sweet, Bitter, Sour"""  # noqa ES501
-
-        self.nine_berry_list = [
-            hondew_berry,
-            spelon_berry,
-            petaya_berry,
-            enigma_berry,
-            belue_berry,
-            salac_berry,
-            lansat_berry,
-            custap_berry,
-            durin_berry,
-            kebia_berry,
-            ganlon_berry,
-            jaboca_berry
-        ]
-        """Rank: 1 Poffins eaten: 9\n
-            255, 255, 255, 255, 255 : 255\n
-
-            117 super mild poffin   25 [117,  42,   0,  42,   0]\n
-                hondew Spicy    20 [ 10,  10,   0,  10,   0]\n
-                spelon Spicy    35 [ 30,  10,   0,   0,   0]\n
-                petaya Spicy    40 [ 30,   0,   0,  30,  10]\n
-                enigma Spicy    60 [ 40,  10,   0,   0,   0]\n
-            102 super mild poffin   33 [ 42,   0, 102,   0,  72]\n
-                belue  Sour     35 [ 10,   0,   0,   0,  30]\n
-                salac  Sweet    40 [  0,   0,  30,  10,  30]\n
-                lansat Spicy    50 [ 30,  10,  30,  10,  30]\n
-                custap Sweet    60 [  0,   0,  40,  10,   0]\n
-            102 super mild poffin   28 [  0,  49,   0, 102,  42]\n
-                durin  Bitter   35 [  0,   0,   0,  30,  10]\n
-                kebia  Dry      30 [  0,  15,   0,   0,  10]\n
-                ganlon Dry      40 [  0,  30,  10,  30,   0]\n
-                jaboca Bitter   60 [  0,   0,   0,  40,  10]\n
-        """
-
-        self.nano_list = [
-            petaya_berry,
-            enigma_berry,
-            apicot_berry,
-            liechi_berry,
-            custap_berry,
-            ganlon_berry,
-        ]
-        """Only 6 berries! Om My!"""
-
-        self.single_recipe = [spelon_berry, liechi_berry, petaya_berry, enigma_berry]
-        """Four berries to be used as a single test recipe\n
-
-        Poffin:
-
-            148 super mild poffin   30 [148,   0,   0,  28,   0]\n
-                    spelon Spicy    35 [ 30,  10,   0,   0,   0]\n
-                    liechi Spicy    40 [ 30,  10,  30,   0,   0]\n
-                    petaya Spicy    40 [ 30,   0,   0,  30,  10]\n
-                    enigma Spicy    60 [ 40,  10,   0,   0,   0]\n
-        """
+        self._berry_filter_system = berry_filter_system
+        self._berries = berries
+        self._filtered_berries = None
+        self._every_berry = berry_library.every_berry
+        print("\nSetting Up BerryFactory...")
 
     @property
     def berries(self):
-        print("Trying to Get the Berry List", self.__berries__)
-        if self.__berries__ is None:
+        print("Trying to Get the Berry List", self._berries)
+
+        if self._berries is None:
             print("Berry List is Empty")
-            self.__berries__ = self.every_berry
-        print(f"Returning {len(self.__berries__)}, Every Berry!")
-        return self.__berries__
+
+            self._berries = self._every_berry  # TODO: Using an outside reference here! :D
+            print(f"Returning {len(self._berries)}, Every Berry!")
+        else:
+            print(f"Returning {len(self._berries)} berries.")
+        return self._berries
 
     @property
     def filtered_berries(self):
-        print("Trying to Get Filtered Berries")
-        if self.berry_filter_system is None:
-            return self.every_berry
+        print("Trying to Get Filtered Berries.")
 
-        if self.__filtered_berries__ is None:
+        if self._berry_filter_system is None:
+            print("There is No Berry Filter System.")
+            print(f"Returning {len(self._berries)}, Every Berry!")
+            return self._every_berry
+
+        if self._filtered_berries is None:
             print("Have to Generate Filtered Berries")
-            self.__filtered_berries__ = self.berry_filter_system.get_Sorted_and_filtered_berries(self.berries)
-        print(f"Returning {len(self.__filtered_berries__)} Filtered Berries")
-        return self.__filtered_berries__
 
-    def __berry_combinatiions_n__(self, n: int, berries: list[Berry] = None) -> tuple[Berry, ...]:  # noqa ES501
+            self._filtered_berries = self._berry_filter_system.get_Sorted_and_filtered_berries(self.berries)
+        print(f"Returning {len(self._filtered_berries)} Filtered Berries")
+
+        return self._filtered_berries
+
+    def _berry_combinatiions_n(self, n: int, berries: list[Berry] = None) -> tuple[Berry, ...]:  # noqa ES501
         """Every combination of n berries"""
         print(f"Calling Combinations N, there are {'0' if berries is None  else len(berries)} berries")
 
         if berries is None:
             print("There are no Berries Here")
+
             berries = self.filtered_berries
         print(f"Combinating {len(berries)} Filtered Berries")
+
         c = math.factorial(len(berries)) / (math.factorial(n) * math.factorial(len(berries) - n))
         print(f"There are {c} combinations! Wow")
+
         return combinations(berries, n)
 
-    @staticmethod
-    def berry_combinations_2(berries: list[Berry] = None) -> tuple[Berry, Berry]:
+    def berry_combinations_2(self, berries: list[Berry] = None) -> tuple[Berry, Berry]:
         """Every combination of 2 berries
 
             List of all 65 berries used if no berry list is passed in.
         """
         print(f"Calling Combinations 2, there are {'0' if berries is None  else len(berries)} berries")
-        return BerryFactory.__berry_combinatiions_n__(2, berries)
+        return self._berry_combinatiions_n(2, berries)
 
-    @staticmethod
-    def berry_combinations_3(berries: list[Berry] = None) -> tuple[Berry, Berry, Berry]:  # noqa ES501
+    def berry_combinations_3(self, berries: list[Berry] = None) -> tuple[Berry, Berry, Berry]:  # noqa ES501
         """Every combination of 3 berries
 
             List of all 65 berries used if no berry list is passed in.
         """
         print(f"Calling Combinations 3, there are {'0' if berries is None  else len(berries)} berries")
-        return BerryFactory.__berry_combinatiions_n__(3, berries)
+        return self._berry_combinatiions_n(3, berries)
 
     def berry_combinations_4(self, berries: list[Berry] = None) -> tuple[Berry, Berry, Berry, Berry]:  # noqa ES501
         """Every combination of 4 berries
@@ -349,7 +82,7 @@ class BerryFactory:
             List of all 65 berries used if no berry list is passed in.
         """
         print(f"Calling Combinations 4, there are {'0' if berries is None  else len(berries)} berries")
-        return self.__berry_combinatiions_n__(4, berries)
+        return self._berry_combinatiions_n(4, berries)
 
 
 if __name__ == "__main__":
