@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from operator import attrgetter, itemgetter
+from operator import attrgetter
 
 from make_poffins.berry.berry import Berry
 
