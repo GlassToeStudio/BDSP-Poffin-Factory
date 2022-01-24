@@ -53,7 +53,7 @@ class Poffin:
         self.second_level = self._get_second_level()
         """The value of the second strongest flavor - maybe helpful in raking"""  # noqa ES501
         self.name = ""
-        """The name of the poffine - Super Mild Poffin for example"""
+        """The name of the poffin - Super Mild Poffin for example"""
         self.repr_name = ""
         """The fancy colored version of the poffins name"""
         self.num_flavors = self._num_flavors()
