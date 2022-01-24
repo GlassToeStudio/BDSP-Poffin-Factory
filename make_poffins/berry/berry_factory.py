@@ -34,7 +34,7 @@ class BerryFactory:
 
         if self._berry_filter_system is None:
             print("There is No Berry Filter System.")
-            print(f"Returning {len(self._berries)}, Every Berry!")
+            print(f"Returning {len(self._every_berry)}, Every Berry!")
             return self._every_berry
 
         if self._filtered_berries is None:
