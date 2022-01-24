@@ -74,12 +74,6 @@ class ContestStats:
         self._all_values = [self.coolness, self.beauty, self.cuteness, self.cleverness, self.toughness]  # noqa ES501
         self.num_perfect_values = sum(1 for x in self._all_values if x >= 255)
 
-    @staticmethod
-    def _add_value(current_value, additional_value):
-        if current_value + additional_value >= 255:
-            return 255
-        return current_value + additional_value
-
     def _rank_combo(self) -> int:
         """Return a rank of this 4-poffin combo.
 
@@ -99,6 +93,12 @@ class ContestStats:
         if total == 5:
             return 2
         return 3
+
+    @classmethod
+    def _add_value(cls, current_value, additional_value):
+        if current_value + additional_value >= 255:
+            return 255
+        return current_value + additional_value
 
     def __repr__(self) -> str:
         amt = 36
