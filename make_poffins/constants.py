@@ -1,3 +1,5 @@
+from timeit import default_timer as timer
+
 from gts_colors.colors import (BOLD, ITALIC, N_BOLD, N_ITALIC, RESET, RGB_BLUE,
                                RGB_DARK_VIOLET, RGB_GREEN, RGB_ORANGE, RGB_RED,
                                RGB_VIOLET, RGB_YELLOW, color_256)
@@ -65,3 +67,13 @@ def sort_flavors(flavors_list: list[str]) -> list[tuple[int, str]]:
 
 def subtract_weakening_flavors(values: list[int]) -> list[int]:
     return [values[i] - values[(i+1) % 5] for i in range(5)]  # noqa ES501
+
+
+def calculate_time(func):
+    def time_it(*args, **kwargs):
+        begin = timer()
+        r = func(*args, **kwargs)
+        end = timer()
+        print(f"\tTotal time taken in : {func.__name__}, {(end - begin):.6f} seconds")
+        return r
+    return time_it
