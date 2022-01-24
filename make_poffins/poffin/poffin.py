@@ -1,6 +1,5 @@
-from copy import deepcopy
 
-from make_poffins.berry import berry_factory
+from make_poffins.berry import berry_library
 from make_poffins.berry.berry import Berry
 from make_poffins.constants import (BOLD, FLAVOR_COLORS, FLAVORS, N_BOLD,
                                     RESET, color_256, foul_poffin, mild_poffin,
@@ -39,33 +38,33 @@ class Poffin:
             name: str
             __id__: int
         """
-        self.flavor_values = deepcopy(flavor_values)
+        self.flavor_values = flavor_values
         """Values of the flavors - unaltered. Ex: [10, 0, 0, 10, 0]"""
         self.smoothness = smoothness
         """Calcualted smoothness of thisw poffin"""
         self.berries = berries
         """The berries used to make this poffin: 1 - 4 berries."""
-        self.flavor_names = self.__get_flavors__()
+        self.flavor_names = self._get_flavors()
         """Get a lsit of all flavor names - ["Sweet", "Dry", "Bitter"] for example"""  # noqa ES501
-        self.main_flavor = self.__get_main_flavor__()
+        self.main_flavor = self._get_main_flavor()
         """The main flavor - "Sweet" for example"""
-        self.level = self.__get_level__()
+        self.level = self._get_level()
         """The value of the strongest flavor"""
-        self.second_level = self.__get_second_level__()
+        self.second_level = self._get_second_level()
         """The value of the second strongest flavor - maybe helpful in raking"""  # noqa ES501
-        self.repr_name = ""
-        """The fancy colored version of the poffins name"""
         self.name = ""
         """The name of the poffine - Super Mild Poffin for example"""
-        self.__id__ = int(''.join(map(str, self.flavor_values)))
-        """The 'unique' id of this poffin"""
-        self.num_flavors = self.__num_flavors__()
+        self.repr_name = ""
+        """The fancy colored version of the poffins name"""
+        self.num_flavors = self._num_flavors()
         """Total number of flavors for this poffin"""
         self.rarity = sum(x.rarity for x in berries)
         """The total rarity (in berriy rarity) for this poffin"""
-        self.__set_names__()
+        self.__id__ = int(''.join(map(str, self.flavor_values)))
+        """The 'unique' id of this poffin"""
+        self._set_names()
 
-    def __get_flavors__(self) -> list[str]:
+    def _get_flavors(self) -> list[str]:
         flavor_list = [(flavor, FLAVORS[i]) for i, flavor in enumerate(self.flavor_values) if flavor > 0]  # noqa ES501
         sorted_list = [flavor for _, flavor in sort_flavors(flavor_list)]
 
@@ -74,18 +73,18 @@ class Poffin:
 
         return sorted_list
 
-    def __get_main_flavor__(self):
+    def _get_main_flavor(self):
         return self.flavor_names[0]
 
-    def __get_level__(self):
+    def _get_level(self):
         return max(self.flavor_values)
 
-    def __get_second_level__(self):
+    def _get_second_level(self):
         temp_list = self.flavor_values.copy()
         temp_list.remove(self.level)
         return max(max(temp_list), 0)
 
-    def __set_names__(self):
+    def _set_names(self):
         if self.level == 0 or len(self.berries) != len(set(self.berries)):
             self.level = 2
             self.repr_name = foul_poffin
@@ -96,16 +95,16 @@ class Poffin:
         elif self.level >= 50:
             self.repr_name = mild_poffin
             self.name = "mild poffin"
-        elif self.__num_flavors__() == 4:
+        elif self._num_flavors() == 4:
             self.repr_name = overripe_poffin
             self.name = "overripe poffin"
-        elif self.__num_flavors__() == 3:
+        elif self._num_flavors() == 3:
             self.repr_name = rich_poffin
             self.name = "rich poffin"
         else:
             self.repr_name = self.name = f"{' '.join(map(str, self.flavor_names))}"  # noqa ES501
 
-    def __num_flavors__(self):
+    def _num_flavors(self):
         return len(self.flavor_names)
 
     def __repr__(self) -> str:
@@ -156,7 +155,7 @@ class Poffin:
 
 
 def main():
-    test_poffin = Poffin([148, 0, 0, 28, 0], 30, berry_factory.single_recipe)  # noqa ES501
+    test_poffin = Poffin([148, 0, 0, 28, 0], 30, berry_library.single_recipe)  # noqa ES501
     print(repr(test_poffin))
     print(str(test_poffin))
 
