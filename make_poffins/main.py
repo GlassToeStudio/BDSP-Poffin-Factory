@@ -1,5 +1,4 @@
 import time
-from functools import cache
 
 from make_poffins.berry.berry_factory import BerryFactory
 from make_poffins.berry.berry_sort_and_filter_system import \
@@ -17,33 +16,13 @@ from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
 from make_poffins.poffin.poffin_sort_and_filter_system import \
     PoffinSortAndFilterSystem
-from stats.contest_stats import ContestStats
-
-
-@cache
-def eat_and_rank_poffins(_poffin_combos: list[tuple[Poffin]], _top_x=10, _min_rank: int = 1, _max_eaten: int = 10, print_file=None) -> list[ContestStats]:
-    # TODO: This should have a home
-    all_stats = []
-
-    for poffin_combo in _poffin_combos:
-        current_stat = ContestStats()
-        current_stat.apply_poffins(poffin_combo)
-        if current_stat.rank > _min_rank or current_stat.poffins_eaten > _max_eaten:
-            continue
-        all_stats.append(current_stat)
-        # results = sorted(all_stats, key=lambda x: (x.rarity, x.unique_berries, -x.poffins_eaten))
-
-        print(str(current_stat), file=print_file)
-        if len(all_stats) >= (_top_x*20):
-            break
-
-    results = sorted(all_stats, key=lambda x: (x.rarity, x.unique_berries, x.poffins_eaten))
-    if results:
-        meh = '\n'*20
-        print(f"{meh}{str(results[0])}", file=print_file)
-        print(f"Total results: {len(results)}\nSending top {_top_x}!")
-        return results[:_top_x]
-    return None
+from make_poffins.stats.contest_stats import ContestStats
+from make_poffins.stats.contest_stats_factory import ContestStatsFactory
+from make_poffins.stats.interface_contest_stats_filter import (
+    FilterContestStatsBy_PoffinsEaten_GreaterThan,
+    FilterContestStatsBy_Rank_GreaterThan)
+from stats.contest_stats_sort_and_filter_system import \
+    ContestStatsSortAndFilterSystem
 
 
 def main():
@@ -63,31 +42,34 @@ def main():
         top_x = 20
 
         # Berries
-        berry_sorters = [
+        berry_filters_sorters = [
             FilterBerriessBy_Rarity_GreaterThan(no_berries_rarer_than),
             SortOnBerry_Attrs((('main_flavor', False), ('smoothness', False),  ('_weakened_main_flavor_value', False))),
         ]
-        berry_sorter = BerrySortAndFilterSystem(berry_sorters)
-        berry_factory = BerryFactory(berry_sorter)
+        berry_filtering_sorting_system = BerrySortAndFilterSystem(berry_filters_sorters)
+        berry_factory = BerryFactory(berry_filtering_sorting_system)
         berry_combinations = berry_factory.get_berry_combinations_4()
 
         # Poffins
-        poffin_sorters = [
+        poffin_filters_sorters = [
             FilterPoffinsBy_Level_LessThan(min_level),
             FilterPoffinsBy_NumberOfFlavors_LessThan(min_flavors),
             SortOnPoffins_LevelToSmoothnessRatioSum(),
             FilterPoffinsBy_MaxNSimilar(max_similar),
             FilterPoffinsBy_AnyFlavorValueLessThan(min_value)
         ]
-        poffin_sorter = PoffinSortAndFilterSystem(poffin_sorters)
-        poffin_factory = PoffinFactory(PoffinCooker(cook_time), berry_combinations, poffin_sorter)
+        poffin_filtering_sorting_system = PoffinSortAndFilterSystem(poffin_filters_sorters)
+        poffin_factory = PoffinFactory(PoffinCooker(cook_time), berry_combinations, poffin_filtering_sorting_system)
         poffin_permutations = poffin_factory.get_poffin_permutations_4()
 
         # Stats
-        # stat sorter
-        # stat factory
-        # Results to print etc
-        results = eat_and_rank_poffins(poffin_permutations, top_x, min_rank, max_eaten, print_file)
+        contest_stats_filters_sorters = [
+            FilterContestStatsBy_PoffinsEaten_GreaterThan(max_eaten),
+            FilterContestStatsBy_Rank_GreaterThan(min_rank)
+        ]
+        contest_stats_filtering_sorting_system = ContestStatsSortAndFilterSystem(contest_stats_filters_sorters)
+        contest_stat_factory = ContestStatsFactory(poffin_permutations, contest_stats_filtering_sorting_system, top_x, min_rank, max_eaten)
+        results = contest_stat_factory.get_filtered_and_sorted_contest_stats()
 
         print("Lets see the results!\n\n\n")
         if len(results) > 0:
@@ -95,6 +77,7 @@ def main():
                 print(r)
             print('\n'*10)
             print(str(results[0]))
+            print(str(results[0]), file=print_file)
             print(repr(results[0]))
 
 

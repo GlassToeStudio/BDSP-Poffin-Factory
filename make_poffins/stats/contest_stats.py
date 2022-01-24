@@ -7,7 +7,28 @@ from make_poffins.poffin.poffin_factory import PoffinFactory
 
 
 class ContestStats:
+    """Container to hold contest stats
+        * Coolness -> Spicy
+        * Beauty -> Dry
+        * Cuteness -> Sweet
+        * Cleverness -> Bitter
+        * Tougnness -> Sour
+        * Total sheen
+
+    Has method to apply multiple poffins repeatedly.
+    """
+
     def __init__(self):
+        """Container to hold contest stats
+            * Coolness -> Spicy
+            * Beauty -> Dry
+            * Cuteness -> Sweet
+            * Cleverness -> Bitter
+            * Tougnness -> Sour
+            * Total sheen
+
+        Has method to apply multiple poffins repeatedly.
+        """
         self.coolness = 0
         """Coolness -> Spicy"""
         self.beauty = 0
@@ -49,6 +70,22 @@ class ContestStats:
         """
 
     def apply_poffins(self, poffins: list[Poffin]):
+        """Simulate feeding poffins one at a time and checking
+        each of the 5 contest values and sheen. Keep feeiding
+        until sheen is 255.
+
+        Args:
+            poffins (list[Poffin]): The poffins to 'eat'
+
+        Notes:\n
+            * These values are set once here:
+                * self.poffins
+                * self.rarity
+                * self.unique_berries
+
+        Yields:
+            None:
+        """
         # these are set once
         self.poffins = poffins
         self.rarity = sum(x.rarity for x in self.poffins)
@@ -65,8 +102,6 @@ class ContestStats:
                 if self.sheen >= 255 or current_rank == 2:
                     self.rank = current_rank
                     self._yield = len(self.poffins) * len(self.poffins[0].berries)
-                    self._all_values = [self.coolness, self.beauty, self.cuteness, self.cleverness, self.toughness]  # noqa ES501
-                    self.num_perfect_values = sum(1 for x in self._all_values if x >= 255)
                     return
 
     def _apply_poffin(self, p: Poffin) -> None:
@@ -81,6 +116,8 @@ class ContestStats:
         self.cuteness = self._add_value(self.cuteness, p.flavor_values[2])
         self.cleverness = self._add_value(self.cleverness, p.flavor_values[3])  # noqa ES501
         self.toughness = self._add_value(self.toughness, p.flavor_values[4])
+        self._all_values = [self.coolness, self.beauty, self.cuteness, self.cleverness, self.toughness]  # noqa ES501
+        self.num_perfect_values = sum(1 for x in self._all_values if x >= 255)
 
     def _rank_combo(self) -> int:
         """Return a rank of this 4-poffin combo.
