@@ -6,7 +6,7 @@ from make_poffins.berry.berry import Berry
 class IBerryFilterInterface(metaclass=ABCMeta):
 
     def __init__(self, value: int | str):
-        self._value = value
+        self.value = value
 
     @abstractmethod
     def execute(self, berries: list[Berry]) -> list[Berry]:
@@ -24,7 +24,7 @@ class IBerryFilterInterface(metaclass=ABCMeta):
         raise NotImplementedError
 
     def __str__(self):
-        return f"{self.__class__.__name__} with a value of {self._value}"
+        return f"{self.__class__.__name__} with a value of {self.value}"
 
 
 class FilterBerriesBy_AnyFlavorValue_LessThan(IBerryFilterInterface):
@@ -45,11 +45,11 @@ class FilterBerriesBy_AnyFlavorValue_LessThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        assert 10 < self._value < 40
+        assert 10 < self.value < 40
         temp_list = berries.copy()
         for b in temp_list:
             for i in range(5):
-                if 0 < b.flavor_values[i] < self._value:
+                if 0 < b.flavor_values[i] < self.value:
                     berries.remove(b)
                     break
         return berries
@@ -73,11 +73,11 @@ class FilterBerriesBy_AnyFlavorValue_GreaterThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        assert 10 < self._value < 40
+        assert 10 < self.value < 40
         temp_list = berries.copy()
         for b in temp_list:
             for i in range(5):
-                if 0 < self._value < b.flavor_values[i]:
+                if 0 < self.value < b.flavor_values[i]:
                     berries.remove(b)
                     break
         return berries
@@ -98,7 +98,7 @@ class FilterBerriesBy_Smoothness_LessThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.smoothness >= self._value]
+        return [b for b in berries if b.smoothness >= self.value]
 
 
 class FilterBerriessBy_Smoothness_GreaterThan(IBerryFilterInterface):
@@ -116,7 +116,7 @@ class FilterBerriessBy_Smoothness_GreaterThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.smoothness <= self._value]
+        return [b for b in berries if b.smoothness <= self.value]
 
 
 class FilterBerriesBy_MainFlavorValue_LessThan(IBerryFilterInterface):
@@ -130,7 +130,7 @@ class FilterBerriesBy_MainFlavorValue_LessThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.main_flavor_value >= self._value]
+        return [b for b in berries if b.main_flavor_value >= self.value]
 
 
 class FilterBerriesBy_MainFlavorValue_GreaterThan(IBerryFilterInterface):
@@ -144,7 +144,7 @@ class FilterBerriesBy_MainFlavorValue_GreaterThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.main_flavor_value <= self._value]
+        return [b for b in berries if b.main_flavor_value <= self.value]
 
 
 class FilterBerriesBy_MainFlavorName(IBerryFilterInterface):
@@ -158,7 +158,7 @@ class FilterBerriesBy_MainFlavorName(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.main_flavor.lower() == self._value.lower()]
+        return [b for b in berries if b.main_flavor.lower() == self.value.lower()]
 
 
 class FilterBerryiesBy_NumberOfFlavors_LessThan(IBerryFilterInterface):
@@ -172,7 +172,7 @@ class FilterBerryiesBy_NumberOfFlavors_LessThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.num_flavors >= self._value]
+        return [b for b in berries if b.num_flavors >= self.value]
 
 
 class FilterBerryiesBy_NumberOfFlavors_GreaterThan(IBerryFilterInterface):
@@ -186,7 +186,7 @@ class FilterBerryiesBy_NumberOfFlavors_GreaterThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.num_flavors <= self._value]
+        return [b for b in berries if b.num_flavors <= self.value]
 
 
 class FilterBerriessBy_Rarity_LessThan(IBerryFilterInterface):
@@ -211,8 +211,8 @@ class FilterBerriessBy_Rarity_LessThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        assert 1 < self._value < 15
-        return [b for b in berries if b.rarity >= self._value]
+        assert 1 < self.value < 15
+        return [b for b in berries if b.rarity >= self.value]
 
 
 class FilterBerriessBy_Rarity_GreaterThan(IBerryFilterInterface):
@@ -237,8 +237,8 @@ class FilterBerriessBy_Rarity_GreaterThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        assert 1 <= self._value <= 15
-        return [b for b in berries if b.rarity <= self._value]
+        assert 1 <= self.value <= 15
+        return [b for b in berries if b.rarity <= self.value]
 
 
 class FilterBerriesBy_WeakenedMainFlavorValue_LessThan(IBerryFilterInterface):
@@ -252,7 +252,7 @@ class FilterBerriesBy_WeakenedMainFlavorValue_LessThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b._weakened_main_flavor_value >= self._value]
+        return [b for b in berries if b._weakened_main_flavor_value >= self.value]
 
 
 class FilterBerriesBy_WeakenedMainFlavorValue_GreaterThan(IBerryFilterInterface):
@@ -266,7 +266,7 @@ class FilterBerriesBy_WeakenedMainFlavorValue_GreaterThan(IBerryFilterInterface)
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b._weakened_main_flavor_value <= self._value]
+        return [b for b in berries if b._weakened_main_flavor_value <= self.value]
 
 
 class FilterBerriesBy_WeakenedMainFlavorName(IBerryFilterInterface):
@@ -280,7 +280,7 @@ class FilterBerriesBy_WeakenedMainFlavorName(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b._weakened_main_flavor.lower() == self._value.lower()]
+        return [b for b in berries if b._weakened_main_flavor.lower() == self.value.lower()]
 
 
 class FilterBerriessBy__id__(IBerryFilterInterface):
@@ -292,4 +292,4 @@ class FilterBerriessBy__id__(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.__id__ == self._value]
+        return [b for b in berries if b.__id__ == self.value]
