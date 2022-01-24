@@ -284,7 +284,7 @@ class FilterBerriesBy_WeakenedMainFlavorName(IBerryFilterInterface):
 
 
 class FilterBerriessBy__id__(IBerryFilterInterface):
-    """Filter out any berries whose __id__ does not equal teh passed in value.
+    """Filter out any berries whose __id__ does not equal the passed in value.
 
 
     Returns:
@@ -292,4 +292,4 @@ class FilterBerriessBy__id__(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        return [b for b in berries if b.smoothness == self._value]
+        return [b for b in berries if b.__id__ == self._value]
