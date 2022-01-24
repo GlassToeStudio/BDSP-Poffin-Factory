@@ -6,8 +6,15 @@ from make_poffins.berry.berry import Berry
 
 class IBerrySortInterface(metaclass=ABCMeta):
     def __init__(self, value=None, reverse=False):
-        self._value = value
-        self._reverse = reverse
+        self.value = value
+        """Check criteria against this value"""
+        self.reverse = reverse
+        """Rverse the order of the list if True
+
+        Note:\n
+                * default: False
+                * by defualt sorters are sorted by best to worst.
+        """
 
     @abstractmethod
     def execute(self, berries: list[Berry]) -> list[Berry]:
@@ -31,20 +38,26 @@ class IBerrySortInterface(metaclass=ABCMeta):
 class SortOnBerry_Attrs(IBerrySortInterface):
     """Sort berries by multiple values in ascending (False) or descenidng (True) order.
 
-    Format = (('attr', Reversed?), ('name', False))
+    Notes;\n
+            * H: means Higher is better so supply True to the second argument
+                - (("coolness", True), )
+            * L: means Lower is better so supply False to the second argument
+                - (("rarity", False), )
+            * -: means neither is better - False for ascending, True for descending
+                - (("rarity", False), )
 
     Attr:
-       0 | str   : name                           \n
-       1 | [int] : flavor_values                  \n
-       2 | int   : smoothness                     \n
-       3 | int   : main_flavor_value              \n
-       4 | str   : main_flavor                    \n
-       5 | int   : num_flavors                    \n
-       6 | int   : rarity                         \n
-       7 | [int] : __weakened_flavor_values__     \n
-       8 | int   : __weakened_main_flavor_value__ \n
-       9 | int   : __weakened_main_flavor__       \n
-      10 | int   : __id__                         \n
+        *  0 | str   : name                          * - \n
+        *  1 | [int] : flavor_values                 * H \n
+        *  2 | int   : smoothness                    * L \n
+        *  3 | int   : main_flavor_value             * H \n
+        *  4 | str   : main_flavor                   * - \n
+        *  5 | int   : num_flavors                   * H \n
+        *  6 | int   : rarity                        * L \n
+        *  7 | [int] : _weakened_flavor_values       * H \n
+        *  8 | int   : _weakened_main_flavor_value   * H \n
+        *  9 | int   : _weakened_main_flavor         * - \n
+        * 10 | int   : __id__                        * - \n
 
     https://docs.python.org/3/howto/sorting.html
 
