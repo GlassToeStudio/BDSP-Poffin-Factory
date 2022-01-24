@@ -55,7 +55,7 @@ class FilterPoffinsBy_NumberOfFlavors(IPoffinFilterInterface):
     """
 
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return [p for p in poffins if p.__num_flavors__() >= self.value]
+        return [p for p in poffins if p.num_flavors >= self.value]
 
 
 class FilterPoffins_ByRarity(IPoffinFilterInterface):
