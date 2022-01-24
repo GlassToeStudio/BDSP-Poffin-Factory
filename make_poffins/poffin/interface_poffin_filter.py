@@ -16,7 +16,28 @@ class IPoffinFilterInterface(metaclass=ABCMeta):
         return self.__class__.__name__
 
 
-class FilterPoffinsBy_Level(IPoffinFilterInterface):
+class FilterPoffinsBy_Flavor(IPoffinFilterInterface):
+    """Filter out any poffins that is not of the given flavor.
+
+    Args:
+        Flavor (str): The flavor poffins to keep
+
+    Notes:\n
+            * "Spicy"\n
+            * "Dry"\n
+            * "Bitter"\n
+            * "Sweet"\n
+            * "Sour"\n
+
+    Returns:
+        list[Poffin]: List of poffins that are the given flavor
+    """
+
+    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+        return [p for p in poffins if p.main_flavor.lower() == self.value.lower()]
+
+
+class FilterPoffinsBy_Level_LessThan(IPoffinFilterInterface):
     """Filter out any poffins < the passed in value.
 
     Args:
@@ -30,55 +51,144 @@ class FilterPoffinsBy_Level(IPoffinFilterInterface):
         return [p for p in poffins if p.level >= self.value]
 
 
-class FilterPoffinsBy_Flavor(IPoffinFilterInterface):
-    """Filter out any poffins that is not of the given flavor.
+class FilterPoffinsBy_Level_GreaterThan(IPoffinFilterInterface):
+    """Filter out any poffins > the passed in value.
 
     Args:
-        Flavor (str): The flavor poffins to keep
+        Level (int): The maximum level poffin to keep
 
     Returns:
-        list[Poffin]: List of poffins that are the given flavor
+        list[Poffin]: List of poffins with a level <= the passed in value.
     """
 
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return [p for p in poffins if p.main_flavor.lower() == self.value.lower()]
+        return [p for p in poffins if p.level <= self.value]
 
 
-class FilterPoffinsBy_NumberOfFlavors(IPoffinFilterInterface):
+class FilterPoffinsBy_SecondLevel_LessThan(IPoffinFilterInterface):
+    """Filter out any poffins < the passed in value.
+
+    Args:
+        Level (int): The minimum level poffin to keep
+
+    Returns:
+        list[Poffin]: List of poffins with a level >= the passed in value.
+    """
+
+    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+        return [p for p in poffins if p.second_level >= self.value]
+
+
+class FilterPoffinsBy_SecondLevel_GreaterThan(IPoffinFilterInterface):
+    """Filter out any poffins > the passed in value.
+
+    Args:
+        Level (int): The maximum level poffin to keep
+
+    Returns:
+        list[Poffin]: List of poffins with a level <= the passed in value.
+    """
+
+    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+        return [p for p in poffins if p.second_level <= self.value]
+
+
+class FilterPoffinsBy_NumberOfFlavors_LessThan(IPoffinFilterInterface):
     """Filter out any poffins with total number of flavors  < the passed in value.
 
     Args:
         Level (int): The minimum amount of flavors
+
+    Notes:\n
+            * 1 - 5 flavors
 
     Returns:
         list[Poffin]: List of poffins with flavors >= the passed in value.
     """
 
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+        assert 0 < self.value <= 5
         return [p for p in poffins if p.num_flavors >= self.value]
 
 
-class FilterPoffins_ByRarity(IPoffinFilterInterface):
-    """Filter out any berries with a rarity less than the given value
+class FilterPoffinsBy_NumberOfFlavors_GreaterThan(IPoffinFilterInterface):
+    """Filter out any poffins with total number of flavors  > the passed in value.
 
-    Notes:
-        THIS WILL NOT LEAVE MANY BERRIES!
+    Args:
+        Level (int): The maximum amount of flavors
 
-        min = 4\n
-        max = 60\n
-
+    Notes:\n
+            * 0 - 4 flavors
 
     Returns:
-        list[Berry]: berries with smoothness >= value
+        list[Poffin]: List of poffins with flavors <= the passed in value.
     """
 
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        assert 1 < self.value < 15
+        assert 0 <= self.value < 5
+        return [p for p in poffins if p.num_flavors <= self.value]
+
+
+class FilterPoffinsBy_Name(IPoffinFilterInterface):
+    """Filter out any poffins that do not have the same name as the passed in value.
+
+    Args:
+        name (str): The name of the poffins to keep.
+
+    Notes:\n
+            * "mild poffin"\n
+            * "rich poffin"\n
+            * "overripe poffin"\n
+            * "super mild poffin"\n
+            * "foul poffin" - Typically arent generated.\n
+
+    Returns:
+        list[Poffin]: Lisf of poffins with the same name as the passed in value.
+    """
+
+    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+        assert self.value in ["foul poffin", "mild poffin", "rich poffin", "overripe poffin", "super mild poffin"]
+        return super().execute(poffins)
+
+
+class FilterPoffins_ByRarity_LessThan(IPoffinFilterInterface):
+    """Filter out any berries with a rarity less than the given value
+
+    Notes:\n
+            * min = 7\n
+            * max = 60\n
+
+        THIS WILL NOT LEAVE MANY BERRIES!\n
+
+    Returns:
+        list[Berry]: berries with rarity >= value
+    """
+
+    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+        assert 6 < self.value <= 60
         return [p for p in poffins if p.rarity >= self.value]
 
 
+class FilterPoffins_ByRarity_GreaterThan(IPoffinFilterInterface):
+    """Filter out any berries with a rarity greater than the given value
+
+    Notes:\n
+            * min = 4\n
+            * max = 45\n
+
+        THIS WILL NOT LEAVE MANY BERRIES!\n
+
+    Returns:
+        list[Berry]: berries with rarity <= value
+    """
+
+    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+        assert 4 <= self.value < 46
+        return [p for p in poffins if p.rarity <= self.value]
+
+
 class FilterPoffinsBy_AnyFlavorValueLessThan(IPoffinFilterInterface):
-    """Filter out any poffins any flavor value  < the passed in value.
+    """Filter out any poffins with any flavor value  < the passed in value.
 
     Args:
         Level (int): The minimum flavor value
@@ -122,3 +232,15 @@ class FilterPoffinsBy_MaxNSimilar(IPoffinFilterInterface):
                 dict_similar_poffin_count[hahsable_poffin_values] = 1
 
         return filtered_poffins
+
+
+class FilterPoffinsBy__id__(IPoffinFilterInterface):
+    """Filter out any poffins whose __id__ does not equal the passed in value.
+
+
+    Returns:
+        list[Poffin]: berries.__id__ == value
+    """
+
+    def execute(self, berries: list[Poffin]) -> list[Poffin]:
+        return [b for b in berries if b.__id__ == self._value]
