@@ -43,48 +43,58 @@ class Berry:
         """The name of the berry"""
         self.flavor_values = values
         """List of 5 values representing the flavors for this berry"""
-        self.smoothness = self.__get_smoothness__()
+        self.smoothness = self._get_smoothness()
         """The inherent smoothness of this berry"""
         self.main_flavor_value = max(self.flavor_values)
         """The numerical value for the main flavor"""
-        self.main_flavor = self.__get_main_flavor__()
+        self.main_flavor = self._get_main_flavor()
         """The main flavor of this berry: Spicy, Dry, Sweet, Bitter, or Sour"""
         self.num_flavors = sum(1 for x in self.flavor_values if x > 0)
         """Total number of flavors this berry has"""
-        self.rarity = self.__get_rarity__()
+        self.rarity = self._get_rarity()
         """The rarity of this berry (1-15), higher is more rare"""
 
         # Other info
-        self.__weakened_flavor_values__ = self.__get_weakened_flavor_values__()
+        self._weakened_flavor_values = self._get_weakened_flavor_values()
         """List of 5 values weakened just for filtering/sorting"""
-        self.__weakened_main_flavor_value__ = max(self.__weakened_flavor_values__)
+        self._weakened_main_flavor_value = max(self._weakened_flavor_values)
         """The numerical value for the weakened main flavor"""
-        self.__weakened_main_flavor__ = self.__get_weakened_main_flavor__()
+        self._weakened_main_flavor = self._get_weakened_main_flavor()
         """The main flavor of this berry: Spicy, Dry, Sweet, Bitter, or Sour"""
         self.__id__ = int(''.join(map(str, self.flavor_values)))
         """The 'unique' id of this berry"""
 
-    def __get_smoothness__(self) -> int:
+    def _get_smoothness(self) -> int:
         """Get the smoothness value for this berry from the SMOOTHNESS_TABLE"""
         for smooth_key, smooth_names in SMOOTHNESS_TABLE.items():
             if self.name in smooth_names:
                 return smooth_key
         return 255
 
-    def __get_main_flavor__(self) -> str:
+    def _get_main_flavor(self) -> str:
         """Return the name of the flavor with the max value"""
         return FLAVORS[self.flavor_values.index(self.main_flavor_value)]
 
-    def __get_weakened_main_flavor__(self) -> str:
+    def _get_weakened_main_flavor(self) -> str:
         """Return the name of the flavor with the max value"""
-        return FLAVORS[self.__weakened_flavor_values__.index(self.__weakened_main_flavor_value__)]
+        return FLAVORS[self._weakened_flavor_values.index(self._weakened_main_flavor_value)]
 
-    def __get_rarity__(self) -> int:
+    def _get_rarity(self) -> int:
         return RARITY_TABLE[self.smoothness]
 
-    def __get_weakened_flavor_values__(self) -> list[int]:
+    def _get_weakened_flavor_values(self) -> list[int]:
         """Get list of 5 values weakened just for filtering/sorting"""
         return subtract_weakening_flavors(self.flavor_values)  # noqa ES501
+
+    def print_with_weakened_values(self):
+        """ganlon Dry      40 [  0,  30,  10,  30,   0]"""
+        printable_flavor_values = "["
+        for i in range(5):
+            printable_flavor_values = (f"{printable_flavor_values}"
+                                       f"{self._weakened_flavor_values[i]:>3}, ")  # noqa ES501
+        printable_flavor_values = f"{printable_flavor_values[:-2]}]"
+        r = f"\t{'- weak':<7}{self._weakened_main_flavor:<8}{self.smoothness:>3} {printable_flavor_values}"  # noqa ES501
+        return f"{str(self)}\n{r}"
 
     def __repr__(self) -> str:
         """ganlon (Dry)    40 - Flavors [  0,  30,  10,  30,   0]
@@ -107,16 +117,6 @@ class Berry:
                 f"{color_256(255)}{self.smoothness:>3}{RESET}"
                 f" - {color_256(239)}Flavors{RESET} {printable_flavor_values}")
 
-    def print_with_weakened_values(self):
-        """ganlon Dry      40 [  0,  30,  10,  30,   0]"""
-        printable_flavor_values = "["
-        for i in range(5):
-            printable_flavor_values = (f"{printable_flavor_values}"
-                                       f"{self.__weakened_flavor_values__[i]:>3}, ")  # noqa ES501
-        printable_flavor_values = f"{printable_flavor_values[:-2]}]"
-        r = f"\t{'- weak':<7}{self.__weakened_main_flavor__:<8}{self.smoothness:>3} {printable_flavor_values}"  # noqa ES501
-        return f"{str(self)}\n{r}"
-
     def __str__(self):
         """ganlon Dry      40 [  0,  30,  10,  30,   0]"""
         printable_flavor_values = "["
@@ -128,6 +128,21 @@ class Berry:
 
     def __eq__(self, other):
         return self.__id__ == other.__id__
+
+    def __nq__(self, other):
+        return self.__id__ != other.__id__
+
+    def __lt__(self, other):
+        return self.main_flavor_value < other.main_flavor_value
+
+    def __le__(self, other):
+        return self.main_flavor_value <= other.main_flavor_value
+
+    def __gt__(self, other):
+        return self.main_flavor_value > other.main_flavor_value
+
+    def __gt__(self, other):
+        return self.main_flavor_value >= other.main_flavor_value
 
     def __hash__(self):
         return self.__id__
