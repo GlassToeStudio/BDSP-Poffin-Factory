@@ -4,6 +4,9 @@ from make_poffins.poffin.poffin import Poffin
 
 
 class IPoffinSortInterface(metaclass=ABCMeta):
+    def __init__(self, value=None, reverse=False):
+        self.value = value
+        self.reverse = reverse
 
     @abstractmethod
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:
@@ -23,7 +26,7 @@ class SortOnPoffins_MainFlavorValue(IPoffinSortInterface):
     """
 
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: -x.level)
+        return sorted(poffins, key=lambda x: -x.level, reverse=self.reverse)
 
 
 class SortOnPoffins_Smoothness(IPoffinSortInterface):
@@ -36,7 +39,7 @@ class SortOnPoffins_Smoothness(IPoffinSortInterface):
     """
 
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: x.smoothness)
+        return sorted(poffins, key=lambda x: x.smoothness, reverse=self.reverse)
 
 
 class SortOnPoffins_LevelToSmoothnessRatio(IPoffinSortInterface):
@@ -49,7 +52,7 @@ class SortOnPoffins_LevelToSmoothnessRatio(IPoffinSortInterface):
     """
 
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: -x.level / x.smoothness)
+        return sorted(poffins, key=lambda x: -x.level / x.smoothness, reverse=self.reverse)
 
 
 class SortOnPoffins_LevelToSmoothnessRatioSum(IPoffinSortInterface):
@@ -62,4 +65,4 @@ class SortOnPoffins_LevelToSmoothnessRatioSum(IPoffinSortInterface):
     """
 
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: -((x.level / x.smoothness) + (x.second_level / x.smoothness)))
+        return sorted(poffins, key=lambda x: -((x.level / x.smoothness) + (x.second_level / x.smoothness)), reverse=self.reverse)

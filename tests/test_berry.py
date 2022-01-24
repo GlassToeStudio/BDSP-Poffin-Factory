@@ -1,9 +1,9 @@
 from make_poffins.berry import berry
-from make_poffins.berry.berry_factory import (every_berry, lansat_berry,
-                                              starf_berry)
+from make_poffins.berry.berry_factory import BerryFactory
 
 ganlon_berry = berry.Berry("Ganlon", [0, 30, 10, 30, 0])
 n_ganlon_berry = berry.Berry("Fake2", [0, 30, 10, 30, 0])
+berry_factory = BerryFactory(None)
 
 
 def test_berry_name():
@@ -53,20 +53,20 @@ def test_berry_hash():
 
 
 def print_all_berries():
-    _ = [(print('repr :', repr(b)), print('str  :', b))for b in every_berry]
+    _ = [(print('repr :', repr(b)), print('str  :', b))for b in berry_factory.filtered_berries]
 
 
 def print_berry_names():
-    _ = [print(b.name) for b in every_berry]
+    _ = [print(b.name) for b in berry_factory.filtered_berries]
 
 
 def pint_set_berry_names():
-    _ = [print(b.name) for b in frozenset(every_berry)]
+    _ = [print(b.name) for b in frozenset(berry_factory.filtered_berries)]
 
 
 def what_is_like_starf():
-    starf = starf_berry
-    ans = [b.name for b in frozenset(every_berry) if b == starf]
+    starf = berry_factory.starf_berry
+    ans = [b.name for b in frozenset(berry_factory.filtered_berries) if b == starf]
     print(ans)
 
 
@@ -78,4 +78,4 @@ if __name__ == "__main__":
     pint_set_berry_names()
     print()
     what_is_like_starf()
-    print(starf_berry, lansat_berry)
+    print(berry_factory.starf_berry, berry_factory.lansat_berry)

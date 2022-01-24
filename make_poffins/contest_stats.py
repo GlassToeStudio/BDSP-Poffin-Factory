@@ -25,12 +25,23 @@ class ContestStats:
         self.poffins_eaten = 0
         """Total poffins eaten"""
         self.rank = -1
-        """The ranking for the given poffin combo"""
+        """The ranking for the given poffin combo
+        
+            1 - Everything is maxed\n
+            2 - All categories maxed but still have some sheen\n
+            3 - Did not meet criteria for 1 or 2, this is no good\n
+
+        """
         self.__all_values = None
         """Convenient list of all contest values"""
         self.num_perfect_values = 0
         """The number of contest stats that are 255 (does not inlcude Sheen)"""
         self.unique_berries = 0
+        """Number of different berriess used to make these poffins"""
+        self.rarity = 0
+        """The total of all the berry rarities used in these poffins"""
+        self.__yield__ = 0
+        """The total poffins created from these beries"""
 
     def feed_poffins(self, poffins: list[Poffin]):
         self.poffins = poffins
@@ -47,6 +58,7 @@ class ContestStats:
                 self.__feed__(p)
                 if self.sheen >= 255 or self.__rank_combo__() == 2:
                     self.rank = self.__rank_combo__()
+                    self.__yield__ = len(self.poffins) * len(self.poffins[0].berries)
                     return
 
     def __feed__(self, p: Poffin) -> None:
@@ -103,7 +115,7 @@ f"  {BOLD}{outline}| {FLAVOR_COLORS['Sweet' ]}{'(Sweet)'  :<8}{RESET} ->  {BOLD}
 f"  {BOLD}{outline}| {FLAVOR_COLORS['Bitter']}{'(Bitter)' :<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Bitter']}{'Cleverness':<14}{RESET}:{bad_red if self.cleverness < 255 else FLAVOR_COLORS['Bitter']}{self.cleverness:>4} {BOLD}{outline}|{RESET                        }{FLAVOR_COLORS['Sour'  ]}       .'  {FLAVOR_COLORS['Spicy' ]}* * *{FLAVOR_COLORS['Sour'  ]}  `.   {RESET}   \n"  # noqa ES501
 f"  {BOLD}{outline}| {FLAVOR_COLORS['Sour'  ]}{'(Sour)'   :<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Sour'  ]}{'Toughness' :<14}{RESET}:{bad_red if self.toughness  < 255 else FLAVOR_COLORS['Bitter']}{self.toughness :>4} {BOLD}{outline}|{RESET                        }{FLAVOR_COLORS['Sour'  ]}      :  {FLAVOR_COLORS['Spicy' ]}*       *{FLAVOR_COLORS['Sour'  ]}  :  {RESET}   \n"  # noqa ES501
 f"  {BOLD}{outline}{'-'* amt}{RESET                                                                                                                                                                                                                                  }{FLAVOR_COLORS['Sour'  ]}     : ~ PO F F IN ~ : {RESET}   \n"  # noqa ES501
-f"  {BOLD}{outline}| {RESET}{BOLD}Eaten{RESET}{self.poffins_eaten:>6}  {BOLD}{'Sheen':<14}{RESET}:{BOLD if self.sheen >= 255 else RESET}{self.sheen:>4}{RESET} {BOLD}{outline}|{RESET                                                                                }{FLAVOR_COLORS['Sour'  ]}     : ~ A W A R D ~ : {RESET}   \n"  # noqa ES501
+f"  {BOLD}{outline}| {RESET}{BOLD}Eaten{RESET}{bad_red if self.poffins_eaten > self.__yield__ else RESET}{self.poffins_eaten:>6}{RESET}  {BOLD}{'Sheen':<14}{RESET}:{BOLD if self.sheen >= 255 else RESET}{self.sheen:>4}{RESET} {BOLD}{outline}|{RESET              }{FLAVOR_COLORS['Sour'  ]}     : ~ A W A R D ~ : {RESET}   \n"  # noqa ES501
 f"  {BOLD}{outline}{'-'* amt}{RESET                                                                                                                                                                                                                                  }{FLAVOR_COLORS['Sour'  ]}      :  {FLAVOR_COLORS['Spicy' ]}*       *{FLAVOR_COLORS['Sour'  ]}  :  {RESET}   \n"  # noqa ES501
 f"  {BOLD}{outline}| {RESET}{BOLD}Rank{RESET} :{FLAVOR_COLORS['Bitter'] if self.rank == 1 else FLAVOR_COLORS['Spicy'] if self.rank == 2 else bad_red} {self.rank:<2}{RESET}{BOLD}    Rarity{RESET}: {self.rarity:>5} : {self.unique_berries}{BOLD:<6}{outline}|{RESET}{FLAVOR_COLORS['Sour'  ]}       `.  {FLAVOR_COLORS['Spicy' ]}* * *{FLAVOR_COLORS['Sour'  ]}  .'   {RESET}   \n"  # noqa ES501
 f"  {BOLD}{outline}{'-'* amt}{RESET                                                                                                                                                                                                                                  }{FLAVOR_COLORS['Sour'  ]}         `-.....-'     {RESET}   \n")  # noqa ES501
@@ -145,7 +157,7 @@ def main():
     for _ in t:
         print(_)
     assert len(t) == 11, f"{len(t)} {len(poffins) * 4}"
-    stats.feed_poffins(frozenset(poffins))
+    stats.feed_poffins(poffins)
 
     print(stats)
     print(repr(stats))
