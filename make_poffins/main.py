@@ -2,16 +2,22 @@ import time
 from functools import cache
 
 from make_poffins.berry.berry_factory import BerryFactory
-from make_poffins.berry.berry_sort_and_filter_system import *
-from make_poffins.berry.interface_berry_filter import *
-from make_poffins.berry.interface_berry_sort import *
+from make_poffins.berry.berry_sort_and_filter_system import \
+    BerrySortAndFilterSystem
+from make_poffins.berry.interface_berry_filter import \
+    FilterBerriessBy_Rarity_GreaterThan
+from make_poffins.berry.interface_berry_sort import SortOnBerry_Attrs
 from make_poffins.contest_stats import ContestStats
-from make_poffins.poffin.interface_poffin_filter import *
-from make_poffins.poffin.interface_poffin_sort import *
+from make_poffins.poffin.interface_poffin_filter import (
+    FilterPoffinsBy_AnyFlavorValueLessThan, FilterPoffinsBy_Level,
+    FilterPoffinsBy_MaxNSimilar, FilterPoffinsBy_NumberOfFlavors)
+from make_poffins.poffin.interface_poffin_sort import \
+    SortOnPoffins_LevelToSmoothnessRatioSum
 from make_poffins.poffin.poffin import Poffin
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
-from make_poffins.poffin.poffin_sort_and_filter_system import *
+from make_poffins.poffin.poffin_sort_and_filter_system import \
+    PoffinSortAndFilterSystem
 
 
 @cache
@@ -58,7 +64,7 @@ def main():
 
         # Berries
         berry_sorters = [
-            FilterBerriessBy_RarityGreaterThan(no_berries_rarer_than),
+            FilterBerriessBy_Rarity_GreaterThan(no_berries_rarer_than),
             SortOnBerry_Attrs((('main_flavor', False), ('smoothness', False),  ('__weakened_main_flavor_value__', False))),
         ]
         berry_sorter = BerrySortAndFilterSystem(berry_sorters)
