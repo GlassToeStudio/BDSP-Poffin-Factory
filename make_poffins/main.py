@@ -27,7 +27,7 @@ def eat_and_rank_poffins(_poffin_combos: list[tuple[Poffin]], _top_x=10, _min_ra
 
     for poffin_combo in _poffin_combos:
         current_stat = ContestStats()
-        current_stat.feed_poffins(poffin_combo)
+        current_stat.apply_poffins(poffin_combo)
         if current_stat.rank > _min_rank or current_stat.poffins_eaten > _max_eaten:
             continue
         all_stats.append(current_stat)

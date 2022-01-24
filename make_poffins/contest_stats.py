@@ -43,7 +43,7 @@ class ContestStats:
         self._yield = 0
         """The total poffins created from these beries"""
 
-    def feed_poffins(self, poffins: list[Poffin]):
+    def apply_poffins(self, poffins: list[Poffin]):
         self.poffins = poffins
         self.rarity = sum(x.rarity for x in self.poffins)
 
@@ -54,13 +54,13 @@ class ContestStats:
         self.unique_berries = len(total_berries)
         while True:
             for p in poffins:
-                self._feed(p)
+                self._apply_poffin(p)
                 if self.sheen >= 255 or self._rank_combo() == 2:
                     self.rank = self._rank_combo()
                     self._yield = len(self.poffins) * len(self.poffins[0].berries)
                     return
 
-    def _feed(self, p: Poffin) -> None:
+    def _apply_poffin(self, p: Poffin) -> None:
         if self.sheen >= 255:
             return
 
@@ -156,7 +156,7 @@ def main():
     for _ in t:
         print(_)
     assert len(t) == 11, f"{len(t)} {len(poffins) * 4}"
-    stats.feed_poffins(poffins)
+    stats.apply_poffins(poffins)
 
     print(stats)
     print(repr(stats))
