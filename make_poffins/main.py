@@ -9,8 +9,8 @@ from make_poffins.berry.interface_berry_filter import \
 from make_poffins.berry.interface_berry_sort import SortOnBerry_Attrs
 from make_poffins.contest_stats import ContestStats
 from make_poffins.poffin.interface_poffin_filter import (
-    FilterPoffinsBy_AnyFlavorValueLessThan, FilterPoffinsBy_Level,
-    FilterPoffinsBy_MaxNSimilar, FilterPoffinsBy_NumberOfFlavors)
+    FilterPoffinsBy_AnyFlavorValueLessThan, FilterPoffinsBy_Level_LessThan,
+    FilterPoffinsBy_MaxNSimilar, FilterPoffinsBy_NumberOfFlavors_LessThan)
 from make_poffins.poffin.interface_poffin_sort import \
     SortOnPoffins_LevelToSmoothnessRatioSum
 from make_poffins.poffin.poffin import Poffin
@@ -73,8 +73,8 @@ def main():
 
         # Poffins
         poffin_sorters = [
-            FilterPoffinsBy_Level(min_level),
-            FilterPoffinsBy_NumberOfFlavors(min_flavors),
+            FilterPoffinsBy_Level_LessThan(min_level),
+            FilterPoffinsBy_NumberOfFlavors_LessThan(min_flavors),
             SortOnPoffins_LevelToSmoothnessRatioSum(),
             FilterPoffinsBy_MaxNSimilar(max_similar),
             FilterPoffinsBy_AnyFlavorValueLessThan(min_value)
