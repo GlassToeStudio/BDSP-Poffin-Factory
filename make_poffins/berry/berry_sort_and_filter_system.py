@@ -6,11 +6,23 @@ from make_poffins.berry.interface_berry_sort import IBerrySortInterface
 
 
 class BerrySortAndFilterSystem:
-    def __init__(self, _filters: list[IBerrySortInterface | IBerryFilterInterface]):
-        self.__sort_filters__ = _filters
+    """Takes a list of IBerrySortInterface and IBerryFilterInterface rules and
+    applies them to a list of berries.
+    """
+
+    def __init__(self, filters: list[IBerrySortInterface | IBerryFilterInterface]):
+        self._sort_filters = filters
 
     def get_Sorted_and_filtered_berries(self, berries: list[Berry]) -> list[Berry]:
-        for sort_filter in self.__sort_filters__:
+        """Return filtered and sorted berries based on the passed in rules
+
+        Args:
+            berries (list[Berry]): unfiltered, unsorted berries
+
+        Returns:
+            list[Berry]: filtered, sorted berries
+        """
+        for sort_filter in self._sort_filters:
             berries = sort_filter.execute(berries)
         return berries
 
