@@ -145,7 +145,7 @@ class Poffin:
             printable_flavor_values = (f"{printable_flavor_values}"
                                        f"{self.flavor_values[i]:>3}, ")
         printable_flavor_values = f"{printable_flavor_values[:-2]}]"
-        return f"{self.level:<4}{self.name:<20}{self.smoothness} {printable_flavor_values} Rarity: {self.rarity}\n{formated_berry_string}"  # noqa ES501
+        return f"{self.level:<4}{self.name:<20}{self.smoothness:>2} {printable_flavor_values} Rarity: {self.rarity}\n{formated_berry_string}"  # noqa ES501
 
     def __eq__(self, other):
         return self.__id__ == other.__id__
