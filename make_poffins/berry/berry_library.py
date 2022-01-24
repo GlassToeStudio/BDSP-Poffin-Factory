@@ -1,3 +1,4 @@
+from make_poffins.berry import berry_library
 from make_poffins.berry.berry import Berry
 
 petaya_berry = Berry("Petaya", [30, 0, 0, 30, 10])
@@ -277,3 +278,6 @@ Poffin:
             petaya Spicy    40 [ 30,   0,   0,  30,  10]\n
             enigma Spicy    60 [ 40,  10,   0,   0,   0]\n
 """
+if __name__ == "__main__":
+    for x in dir(berry_library):
+        print(x)
