@@ -37,7 +37,7 @@ def eat_and_rank_poffins(_poffin_combos: list[tuple[Poffin]], _top_x=10, _min_ra
         if len(all_stats) >= (_top_x*20):
             break
 
-    results = sorted(all_stats, key=lambda x: (x.unique_berries, x.rarity, x.poffins_eaten))
+    results = sorted(all_stats, key=lambda x: (x.rarity, x.unique_berries, x.poffins_eaten))
     if results:
         meh = '\n'*20
         print(f"{meh}{str(results[0])}", file=print_file)
@@ -65,7 +65,7 @@ def main():
         # Berries
         berry_sorters = [
             FilterBerriessBy_Rarity_GreaterThan(no_berries_rarer_than),
-            SortOnBerry_Attrs((('main_flavor', False), ('smoothness', False),  ('__weakened_main_flavor_value__', False))),
+            SortOnBerry_Attrs((('main_flavor', False), ('smoothness', False),  ('_weakened_main_flavor_value', False))),
         ]
         berry_sorter = BerrySortAndFilterSystem(berry_sorters)
         berry_factory = BerryFactory(berry_sorter)
