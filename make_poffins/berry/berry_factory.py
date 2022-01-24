@@ -1,7 +1,7 @@
 import math
 from itertools import combinations
 
-from make_poffins.berry import berry_factory, berry_library
+from make_poffins.berry import berry_library
 from make_poffins.berry.berry import Berry
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
@@ -86,5 +86,4 @@ class BerryFactory:
 
 
 if __name__ == "__main__":
-    for x in dir(berry_factory):
-        print(x)
+    print("BerryFactory")
