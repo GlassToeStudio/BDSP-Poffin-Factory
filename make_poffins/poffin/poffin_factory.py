@@ -62,9 +62,9 @@ class PoffinFactory():
         return self._poffins
 
     @calculate_time
-    def _poffin_permutations_n(self, n: int, poffins: list[Poffin] = None) -> tuple[Poffin, ...]:  # noqa ES501
+    def _get_poffin_permutations_n(self, n: int, poffins: list[Poffin] = None) -> tuple[Poffin, ...]:  # noqa ES501
         """Every combination of n poffins"""
-        print(f"Calling {self._poffin_permutations_n.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
+        print(f"Calling {self._get_poffin_permutations_n.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
         if poffins is None:
             print("There are no Poffins Here")
             poffins = self.filtered_poffins
@@ -73,30 +73,30 @@ class PoffinFactory():
         print(f"There are {c} permutations! Wow")
         return permutations(poffins, n)
 
-    def poffin_permutations_2(self, poffins: list[Poffin] = None) -> tuple[Poffin, Poffin]:
+    def get_poffin_permutations_2(self, poffins: list[Poffin] = None) -> tuple[Poffin, Poffin]:
         """Every combination of 2 poffins"""
-        print(f"Calling {self.poffin_permutations_2.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
-        return self._poffin_permutations_n(2, poffins)
+        print(f"Calling {self.get_poffin_permutations_2.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
+        return self._get_poffin_permutations_n(2, poffins)
 
-    def poffin_permutations_3(self, poffins: list[Poffin] = None) -> tuple[Poffin, Poffin, Poffin]:  # noqa ES501
+    def get_poffin_permutations_3(self, poffins: list[Poffin] = None) -> tuple[Poffin, Poffin, Poffin]:  # noqa ES501
         """Every combination of 3 poffins"""
-        print(f"Calling {self.poffin_permutations_3.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
-        return self._poffin_permutations_n(3, poffins)
+        print(f"Calling {self.get_poffin_permutations_3.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
+        return self._get_poffin_permutations_n(3, poffins)
 
-    def poffin_permutations_4(self, poffins: list[Poffin] = None) -> tuple[Poffin, Poffin, Poffin, Poffin]:  # noqa ES501
+    def get_poffin_permutations_4(self, poffins: list[Poffin] = None) -> tuple[Poffin, Poffin, Poffin, Poffin]:  # noqa ES501
         """Every combination of 4 poffins"""
-        print(f"Calling {self.poffin_permutations_4.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
-        return self._poffin_permutations_n(4, poffins)
+        print(f"Calling {self.get_poffin_permutations_4.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
+        return self._get_poffin_permutations_n(4, poffins)
 
-    def poffin_permutations_5(self, poffins: list[Poffin] = None) -> tuple[Poffin, Poffin, Poffin, Poffin, Poffin]:  # noqa ES501
+    def get_poffin_permutations_5(self, poffins: list[Poffin] = None) -> tuple[Poffin, Poffin, Poffin, Poffin, Poffin]:  # noqa ES501
         """Every combination of 5 poffins"""
-        print(f"Calling {self.poffin_permutations_5.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
-        return self._poffin_permutations_n(5, poffins)
+        print(f"Calling {self.get_poffin_permutations_5.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
+        return self._get_poffin_permutations_n(5, poffins)
 
-    def poffin_permutations_10(self, poffins: list[Poffin]) -> tuple[Poffin, Poffin, Poffin, Poffin, Poffin]:  # noqa ES501
+    def get_poffin_permutations_10(self, poffins: list[Poffin]) -> tuple[Poffin, Poffin, Poffin, Poffin, Poffin]:  # noqa ES501
         """Every combination of 10 poffins"""
-        print(f"Calling {self.poffin_permutations_10.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
-        return self._poffin_permutations_n(10, poffins=None)
+        print(f"Calling {self.get_poffin_permutations_10.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
+        return self._get_poffin_permutations_n(10, poffins=None)
 
     def generate_custom_poffin_list_from_recipes(self, recipes) -> list[Poffin]:  # noqa ES501
         return [self._cooker.cook(recipe) for recipe in recipes]  # noqa ES501
