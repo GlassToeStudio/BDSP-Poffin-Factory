@@ -45,7 +45,7 @@ class BerryFactory:
 
         return self._filtered_berries
 
-    def _berry_combinatiions_n(self, n: int, berries: list[Berry] = None) -> tuple[Berry, ...]:  # noqa ES501
+    def _get_berry_combinatiions_n(self, n: int, berries: list[Berry] = None) -> tuple[Berry, ...]:  # noqa ES501
         """Every combination of n berries"""
         print(f"Calling Combinations N, there are {'0' if berries is None  else len(berries)} berries")
 
@@ -60,29 +60,29 @@ class BerryFactory:
 
         return combinations(berries, n)
 
-    def berry_combinations_2(self, berries: list[Berry] = None) -> tuple[Berry, Berry]:
+    def get_berry_combinations_2(self, berries: list[Berry] = None) -> tuple[Berry, Berry]:
         """Every combination of 2 berries
 
             List of all 65 berries used if no berry list is passed in.
         """
         print(f"Calling Combinations 2, there are {'0' if berries is None  else len(berries)} berries")
-        return self._berry_combinatiions_n(2, berries)
+        return self._get_berry_combinatiions_n(2, berries)
 
-    def berry_combinations_3(self, berries: list[Berry] = None) -> tuple[Berry, Berry, Berry]:  # noqa ES501
+    def get_berry_combinations_3(self, berries: list[Berry] = None) -> tuple[Berry, Berry, Berry]:  # noqa ES501
         """Every combination of 3 berries
 
             List of all 65 berries used if no berry list is passed in.
         """
         print(f"Calling Combinations 3, there are {'0' if berries is None  else len(berries)} berries")
-        return self._berry_combinatiions_n(3, berries)
+        return self._get_berry_combinatiions_n(3, berries)
 
-    def berry_combinations_4(self, berries: list[Berry] = None) -> tuple[Berry, Berry, Berry, Berry]:  # noqa ES501
+    def get_berry_combinations_4(self, berries: list[Berry] = None) -> tuple[Berry, Berry, Berry, Berry]:  # noqa ES501
         """Every combination of 4 berries
 
             List of all 65 berries used if no berry list is passed in.
         """
         print(f"Calling Combinations 4, there are {'0' if berries is None  else len(berries)} berries")
-        return self._berry_combinatiions_n(4, berries)
+        return self._get_berry_combinatiions_n(4, berries)
 
 
 if __name__ == "__main__":
