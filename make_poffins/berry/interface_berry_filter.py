@@ -198,5 +198,5 @@ class FilterBerriessBy_RarityGreaterThan(IBerryFilterInterface):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        assert 1 < self.value < 15
+        assert 1 <= self.value <= 15
         return [b for b in berries if b.rarity <= self.value]

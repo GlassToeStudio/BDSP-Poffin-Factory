@@ -1,3 +1,4 @@
+import math
 from itertools import combinations
 
 from make_poffins.berry import berry_factory
@@ -320,6 +321,8 @@ class BerryFactory:
             print("There are no Berries Here")
             berries = self.filtered_berries
         print(f"Combinating {len(berries)} Filtered Berries")
+        c = math.factorial(len(berries)) / (math.factorial(n) * math.factorial(len(berries) - n))
+        print(f"There are {c} combinations! Wow")
         return combinations(berries, n)
 
     @staticmethod

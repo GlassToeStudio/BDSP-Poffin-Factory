@@ -15,7 +15,8 @@ from make_poffins.poffin.poffin_sort_and_filter_system import *
 
 
 @cache
-def get_best_by_eating(_poffin_combos: list[tuple[Poffin]], _top_x=10, _min_rank: int = 1, _max_eaten: int = 10, print_file=None) -> list[ContestStats]:
+def eat_and_rank_poffins(_poffin_combos: list[tuple[Poffin]], _top_x=10, _min_rank: int = 1, _max_eaten: int = 10, print_file=None) -> list[ContestStats]:
+    # TODO: This should have a home
     all_stats = []
 
     for poffin_combo in _poffin_combos:
@@ -31,13 +32,19 @@ def get_best_by_eating(_poffin_combos: list[tuple[Poffin]], _top_x=10, _min_rank
             break
 
     results = sorted(all_stats, key=lambda x: (x.unique_berries, x.rarity, x.poffins_eaten))
-    print(f"Total results: {len(results)}\nSending top {_top_x}!")
-    return results[:_top_x]
+    if results:
+        meh = '\n'*20
+        print(f"{meh}{str(results[0])}", file=print_file)
+        print(f"Total results: {len(results)}\nSending top {_top_x}!")
+        return results[:_top_x]
+    return None
 
 
 def main():
     timestamp = time.strftime("%d-%b-%Y %I-%M %p", time.localtime())
     with open(f"make_poffins/results/poffin_results_{timestamp}.txt", "w", encoding="utf-8") as print_file:
+
+        no_berries_rarer_than = 15
 
         min_level = 50
         min_flavors = 2
@@ -51,7 +58,7 @@ def main():
 
         # Berries
         berry_sorters = [
-            FilterBerriessBy_RarityGreaterThan(9),
+            FilterBerriessBy_RarityGreaterThan(no_berries_rarer_than),
             SortOnBerry_Attrs((('main_flavor', False), ('smoothness', False),  ('__weakened_main_flavor_value__', False))),
         ]
         berry_sorter = BerrySortAndFilterSystem(berry_sorters)
@@ -70,9 +77,9 @@ def main():
         poffin_factory = PoffinFactory(PoffinCooker(cook_time), berry_combinations, poffin_sorter)
         poffin_permutations = poffin_factory.poffin_permutations_4()
 
-        results = get_best_by_eating(poffin_permutations, top_x, min_rank, max_eaten, print_file)
+        results = eat_and_rank_poffins(poffin_permutations, top_x, min_rank, max_eaten, print_file)
 
-        print("Done eating!")
+        print("Lets see the results!\n\n\n")
         if len(results) > 0:
             for r in results:
                 print(r)

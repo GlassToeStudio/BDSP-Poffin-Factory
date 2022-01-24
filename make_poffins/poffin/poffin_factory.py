@@ -1,3 +1,4 @@
+import math
 from itertools import permutations
 
 from make_poffins.berry.berry import Berry
@@ -64,6 +65,8 @@ class PoffinFactory():
             print("There are no Poffins Here")
             poffins = self.filtered_poffins
         print(f"Permutating {len(poffins)} Filtered Poffins")
+        c = math.factorial(len(poffins)) / (math.factorial(len(poffins)-n))
+        print(f"There are {c} permutations! Wow")
         return permutations(poffins, n)
 
     def poffin_permutations_2(self, poffins: list[Poffin] = None) -> tuple[Poffin, Poffin]:
