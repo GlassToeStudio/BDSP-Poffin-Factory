@@ -74,9 +74,17 @@ def calculate_time(func):
         begin = timer()
         r = func(*args, **kwargs)
         end = timer()
-        print(f"\tTotal time taken in : {func.__name__}, {(end - begin):.6f} seconds")
+        print(f"\t{BOLD}{color_256(34)}Total time taken in : {color_256(179)}{func.__name__}, {color_256(151)}{(end - begin):.6f}{color_256(34)} seconds{RESET}")
         return r
     return time_it
 
 
 TOTAL_POFFINS = [0]
+"""Update this in poffin factory to keeo track of the total permutations of poffins"""
+
+
+def stat_counter(stat_count: int, per_iteration: int = 10000):
+    if stat_count % per_iteration == 0:
+        print(f" * {BOLD}Checked {outline}{stat_count:>9}{RESET}{BOLD} stats so far out of {outline}{TOTAL_POFFINS[0]:.0f}{RESET}"
+              f"\t{color_256(82)}{10*stat_count/TOTAL_POFFINS[0]:.2f}{RESET}%")
+    return stat_count + 1

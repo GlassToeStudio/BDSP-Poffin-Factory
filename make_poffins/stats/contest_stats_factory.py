@@ -1,6 +1,6 @@
 from functools import cache
 
-from make_poffins.constants import TOTAL_POFFINS
+from make_poffins.constants import TOTAL_POFFINS, calculate_time, stat_counter
 from make_poffins.poffin.poffin import Poffin
 from make_poffins.stats.contest_stats import ContestStats
 from make_poffins.stats.contest_stats_sort_and_filter_system import \
@@ -69,31 +69,33 @@ class ContestStatsFactory():
 
         print(f"Returning {len(self._filtered_contest_stats)} Filtered Poffins")
 
-        return self._filtered_contest_stats
+        return self._filtered_contest_stats[:self._top_n]
 
     @cache
+    @calculate_time
     def _generate_contest_stats(self) -> list[ContestStats]:
-        global TOTAL_POFFINS
         running_count = 0
         self._contest_stats = []
         for poffin_combo in self._poffin_combos:
-            if running_count % 10000 == 0:
-                print(f"Created {running_count} stats so far out of {TOTAL_POFFINS[0]}")
-            running_count += 1
+            running_count = stat_counter(running_count, 100000)
+
             current_stat = ContestStats()
             current_stat.apply_poffins(poffin_combo)
 
-            # TODO: Do we filter here or later?
+            # TODO: This is cheating since we have a sorting/filtering system...
+            # but why wait and do it later to numerous stats when we can just do
+            # do it now and save some time ¯\_(ツ)_/¯
             if current_stat.rank > self._min_rank or current_stat.poffins_eaten > self._max_eaten:
                 continue
             self._contest_stats.append(current_stat)
-
-            if len(self._contest_stats) >= self._top_n:  # TODO: Do I just make this 100?
+            print(f"\tFound {len(self._contest_stats)} results so far!")
+            if len(self._contest_stats) >= 200:  # TODO: Maybe not hard code this 🤔
                 print("\t100 records found! Exiting!")
                 break
 
         self._contest_stats = sorted(self._contest_stats, key=lambda x: (x.rarity, x.unique_berries, -x.poffins_eaten))
         return self._contest_stats
 
+    @calculate_time
     def get_filtered_and_sorted_contest_stats(self):
         return self.filtered_contest_stats
