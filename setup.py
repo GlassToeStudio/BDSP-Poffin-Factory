@@ -3,8 +3,6 @@ from os import path
 
 from setuptools import find_packages, setup
 
-import make_poffins
-
 HERE = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
@@ -13,7 +11,7 @@ with open("README.md", "r", encoding='utf-8') as f:
 
 setup(
     name='make_poffins',
-    version='0.1.2',
+    version='0.0.1',
     description='Making Poffins',
     long_description=long_description,
     long_description_content_type="text/markdown",
