@@ -2,7 +2,7 @@ import math
 from itertools import permutations
 
 from make_poffins.berry.berry import Berry
-from make_poffins.constants import calculate_time
+from make_poffins.constants import TOTAL_POFFINS, calculate_time
 from make_poffins.poffin.poffin import Poffin
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_sort_and_filter_system import \
@@ -63,6 +63,7 @@ class PoffinFactory():
 
     @calculate_time
     def _get_poffin_permutations_n(self, n: int, poffins: list[Poffin] = None) -> tuple[Poffin, ...]:  # noqa ES501
+        global TOTAL_POFFINS
         """Every combination of n poffins"""
         print(f"Calling {self._get_poffin_permutations_n.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
         if poffins is None:
@@ -70,6 +71,7 @@ class PoffinFactory():
             poffins = self.filtered_poffins
         print(f"Permutating {len(poffins)} Filtered Poffins")
         c = math.factorial(len(poffins)) / (math.factorial(len(poffins)-n))
+        TOTAL_POFFINS[0] = c
         print(f"There are {c} permutations! Wow")
         return permutations(poffins, n)
 

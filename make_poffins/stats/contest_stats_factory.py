@@ -1,5 +1,6 @@
 from functools import cache
 
+from make_poffins.constants import TOTAL_POFFINS
 from make_poffins.poffin.poffin import Poffin
 from make_poffins.stats.contest_stats import ContestStats
 from make_poffins.stats.contest_stats_sort_and_filter_system import \
@@ -7,9 +8,19 @@ from make_poffins.stats.contest_stats_sort_and_filter_system import \
 
 
 class ContestStatsFactory():
-    def __init__(self, poffin_combos: list[tuple[Poffin]], stats_filter_system: ContestStatsSortAndFilterSystem = None, _top_x=10, _min_rank: int = 1, _max_eaten: int = 10, print_file=None):  # noqa ES501
+    def __init__(self,
+                 poffin_combos: list[tuple[Poffin]],
+                 stats_filter_system: ContestStatsSortAndFilterSystem = None,
+                 top_n: int = 10,
+                 min_rank: int = 1,
+                 max_eaten: int = 10):
+
         self._poffin_combos = poffin_combos
         self._stats_filter_system = stats_filter_system
+
+        self._top_n = top_n
+        self._min_rank = min_rank
+        self._max_eaten = max_eaten
 
         self._contest_stats = None
         self._filtered_contest_stats = None
@@ -61,18 +72,23 @@ class ContestStatsFactory():
         return self._filtered_contest_stats
 
     @cache
-    def _generate_contest_stats(self, _min_rank: int = 1, _max_eaten: int = 20) -> list[ContestStats]:
+    def _generate_contest_stats(self) -> list[ContestStats]:
+        global TOTAL_POFFINS
+        running_count = 0
         self._contest_stats = []
         for poffin_combo in self._poffin_combos:
+            if running_count % 10000 == 0:
+                print(f"Created {running_count} stats so far out of {TOTAL_POFFINS[0]}")
+            running_count += 1
             current_stat = ContestStats()
             current_stat.apply_poffins(poffin_combo)
 
             # TODO: Do we filter here or later?
-            if current_stat.rank > _min_rank or current_stat.poffins_eaten > _max_eaten:
+            if current_stat.rank > self._min_rank or current_stat.poffins_eaten > self._max_eaten:
                 continue
             self._contest_stats.append(current_stat)
 
-            if len(self._contest_stats) >= 100:
+            if len(self._contest_stats) >= self._top_n:  # TODO: Do I just make this 100?
                 print("\t100 records found! Exiting!")
                 break
 

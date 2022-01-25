@@ -77,3 +77,6 @@ def calculate_time(func):
         print(f"\tTotal time taken in : {func.__name__}, {(end - begin):.6f} seconds")
         return r
     return time_it
+
+
+TOTAL_POFFINS = [0]
