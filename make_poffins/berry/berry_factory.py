@@ -1,6 +1,7 @@
 import math
 from itertools import combinations
 
+from constants import calculate_time
 from make_poffins.berry import berry_library
 from make_poffins.berry.berry import Berry
 from make_poffins.berry.berry_sort_and_filter_system import \
@@ -45,6 +46,7 @@ class BerryFactory:
 
         return self._filtered_berries
 
+    @calculate_time
     def _get_berry_combinatiions_n(self, n: int, berries: list[Berry] = None) -> tuple[Berry, ...]:  # noqa ES501
         """Every combination of n berries"""
         print(f"Calling Combinations N, there are {'0' if berries is None  else len(berries)} berries")
