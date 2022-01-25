@@ -34,7 +34,7 @@ class SortOnContestStats_Attrs(IContestStatsSortInterface):
                 - (("coolness", True), )
             * L: means Lower is better so supply False to the second argument
                 - (("rarity", False), )
-            * -: means neither is better - False for ascending, True for descending
+            *  : means neither is better - False for ascending, True for descending
                 - (("rarity", False), )
     Attr:
         *  0 | int : coolness           * H\n
@@ -62,9 +62,10 @@ class SortOnContestStats_Attrs(IContestStatsSortInterface):
 
 
 class SortOnContestStats_Coolness(IContestStatsSortInterface):
-    """Sort contest_stats by the value of their coolness.
+    """Sort contest_stats by the value of their coolness, descending.
 
             * Higher is better.
+            * List in Descending Order
 
     Returns:
         list[ContestStats]: sorted list of contest_stats
@@ -75,9 +76,10 @@ class SortOnContestStats_Coolness(IContestStatsSortInterface):
 
 
 class SortOnContestStats_Beauty(IContestStatsSortInterface):
-    """Sort contest_stats by the value of their beauty.
+    """Sort contest_stats by the value of their beauty, descending.
 
             * Higher is better.
+            * List in Descending Order
 
     Returns:
         list[ContestStats]: sorted list of contest_stats
@@ -88,9 +90,10 @@ class SortOnContestStats_Beauty(IContestStatsSortInterface):
 
 
 class SortOnContestStats_Cuteness(IContestStatsSortInterface):
-    """Sort contest_stats by the value of their cuteness.
+    """Sort contest_stats by the value of their cuteness, descending.
 
             * Higher is better.
+            * List in Descending Order
 
     Returns:
         list[ContestStats]: sorted list of contest_stats
@@ -101,9 +104,10 @@ class SortOnContestStats_Cuteness(IContestStatsSortInterface):
 
 
 class SortOnContestStats_Cleverness(IContestStatsSortInterface):
-    """Sort contest_stats by the value of their cleverness.
+    """Sort contest_stats by the value of their cleverness, descending.
 
             * Higher is better.
+            * List in Descending Order
 
     Returns:
         list[ContestStats]: sorted list of contest_stats
@@ -114,9 +118,10 @@ class SortOnContestStats_Cleverness(IContestStatsSortInterface):
 
 
 class SortOnContestStats_Toughness(IContestStatsSortInterface):
-    """Sort contest_stats by the value of their toughness.
+    """Sort contest_stats by the value of their toughness, descending.
 
             * Higher is better.
+            * List in Descending Order
 
     Returns:
         list[ContestStats]: sorted list of contest_stats
@@ -127,7 +132,7 @@ class SortOnContestStats_Toughness(IContestStatsSortInterface):
 
 
 class SortOnContestStats_Sheen(IContestStatsSortInterface):
-    """Sort contest_stats by the value of their toughness.
+    """Sort contest_stats by the value of their sheen, descending.
 
         Notes:\n
             * List reteruned in descending order by default
@@ -144,10 +149,10 @@ class SortOnContestStats_Sheen(IContestStatsSortInterface):
 
 
 class SortOnContestStats_PoffinsEaten(IContestStatsSortInterface):
-    """Sort contest_stats by the value of their poffins eaten.
+    """Sort contest_stats by the value of their poffins eaten, ascending.
 
             * Lower is better.
-
+            * List in Ascending Order
     Returns:
         list[ContestStats]: sorted list of contest_stats
     """
@@ -157,10 +162,10 @@ class SortOnContestStats_PoffinsEaten(IContestStatsSortInterface):
 
 
 class SortOnContestStats_NumPerfectValues(IContestStatsSortInterface):
-    """Sort contest_stats by their number of perfect values (value of 255).
+    """Sort contest_stats by their number of perfect values (value of 255), descending.
 
             * Higher is better.
-
+            * List in Descending Order
     Returns:
         list[ContestStats]: sorted list of contest_stats
     """
@@ -170,9 +175,10 @@ class SortOnContestStats_NumPerfectValues(IContestStatsSortInterface):
 
 
 class SortOnContestStats_NumUniqueBerries(IContestStatsSortInterface):
-    """Sort contest_stats by their number of unique berries used.
+    """Sort contest_stats by their number of unique berries used, ascending.
 
             * Lower is better.
+            * List in Ascending Order
 
     Returns:
         list[ContestStats]: sorted list of contest_stats
@@ -183,9 +189,10 @@ class SortOnContestStats_NumUniqueBerries(IContestStatsSortInterface):
 
 
 class SortOnContestStats_Rarity(IContestStatsSortInterface):
-    """Sort contest_stats by the rarity of the berries used.
+    """Sort contest_stats by the rarity of the berries used, asceding.
 
             * Lower is better.
+            * List in Ascending Order
 
     Returns:
         list[ContestStats]: sorted list of contest_stats
@@ -196,9 +203,10 @@ class SortOnContestStats_Rarity(IContestStatsSortInterface):
 
 
 class SortOnContestStats_Rank(IContestStatsSortInterface):
-    """Sort contest_stats by their ranl.
+    """Sort contest_stats by their rank, ascending.
 
             * Lower is better.
+            * List in Descending Order
 
         Notes:\n
                 * 1 - Everything is maxed\n
