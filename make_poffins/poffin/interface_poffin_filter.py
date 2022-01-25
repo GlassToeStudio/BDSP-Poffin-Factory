@@ -103,7 +103,7 @@ class FilterPoffinsBy_NumberOfFlavors_LessThan(IPoffinFilterInterface):
             * 1 - 5 flavors
 
     Returns:
-        list[Poffin]: List of poffins with flavors >= the passed in value.
+        list[Poffin]: List of poffins with number of flavors >= the passed in value.
     """
 
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:

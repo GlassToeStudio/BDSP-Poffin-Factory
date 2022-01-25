@@ -24,7 +24,7 @@ class IPoffinSortInterface(metaclass=ABCMeta):
         return self.__class__.__name__
 
 
-class SortOnContestStats_Attrs(IPoffinSortInterface):
+class SortOnPoffins_Attrs(IPoffinSortInterface):
     """Sort poffins by multiple values in ascending (False) or descenidng (True) order.
 
     Format = (('attr', Reversed?), ('name', False))
