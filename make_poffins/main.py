@@ -30,14 +30,14 @@ def main():
 
     # Poffins
     min_level = 100
-    min_flavors = 2
+    min_flavors = 3
     max_similar = 4
-    min_value = 30
+    min_value = 20
     # Cooking
-    cook_time = 40
+    cook_time = 38
 
     # Stats
-    max_eaten = 8
+    max_eaten = 7
     min_rank = 1
     # Internal rank mechanism
     stop_at_first_n_results = 10
@@ -62,7 +62,7 @@ def main():
     ]
     poffin_filtering_sorting_system = PoffinSortAndFilterSystem(poffin_filters_sorters)
     poffin_factory = PoffinFactory(PoffinCooker(cook_time), berry_combinations, poffin_filtering_sorting_system)
-    poffin_permutations = poffin_factory.get_poffin_permutations_3()
+    poffin_permutations = poffin_factory.get_poffin_permutations_4()
 
     # Stats
     contest_stats_filters_sorters = [
