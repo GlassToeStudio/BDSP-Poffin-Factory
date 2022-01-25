@@ -3,14 +3,16 @@ import time
 from make_poffins.berry.berry_factory import BerryFactory
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
-from make_poffins.berry.interface_berry_filter import \
-    FilterBerriessBy_Rarity_LessThan
+from make_poffins.berry.interface_berry_filter import (
+    FilterBerriesBy_Smoothness_LessThan, FilterBerriessBy_Rarity_GreaterThan,
+    FilterBerriessBy_Rarity_LessThan)
 from make_poffins.berry.interface_berry_sort import SortOnBerry_Attrs
 from make_poffins.poffin.interface_poffin_filter import (
     FilterPoffinsBy_AnyFlavorValueLessThan, FilterPoffinsBy_Level_LessThan,
     FilterPoffinsBy_MaxNSimilar, FilterPoffinsBy_NumberOfFlavors_LessThan)
 from make_poffins.poffin.interface_poffin_sort import (
-    SortOnPoffins_Level, SortOnPoffins_LevelToSmoothnessRatioSum)
+    SortOnPoffins_Attrs, SortOnPoffins_Level,
+    SortOnPoffins_LevelToSmoothnessRatioSum)
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
 from make_poffins.poffin.poffin_sort_and_filter_system import \
@@ -26,7 +28,8 @@ from stats.contest_stats_sort_and_filter_system import \
 def main():
 
     # Berries
-    no_berries_rarer_than = 7
+    no_berries_rarer_than = 15
+    min_berry_smoothness = 20
 
     # Poffins
     min_level = 100
@@ -34,17 +37,17 @@ def main():
     max_similar = 4
     min_value = 20
     # Cooking
-    cook_time = 38
+    cook_time = 38.5
 
     # Stats
     max_eaten = 7
     min_rank = 1
     # Internal rank mechanism
-    stop_at_first_n_results = 10
+    stop_at_first_n_results = 2000
 
     # Berries
     berry_filters_sorters = [
-        FilterBerriessBy_Rarity_LessThan(no_berries_rarer_than),
+        FilterBerriesBy_Smoothness_LessThan(min_berry_smoothness),
         SortOnBerry_Attrs((('main_flavor', False), ('smoothness', False),  ('_weakened_main_flavor_value', False))),
     ]
     berry_filtering_sorting_system = BerrySortAndFilterSystem(berry_filters_sorters)
@@ -54,14 +57,22 @@ def main():
     # Poffins
     poffin_filters_sorters = [
         FilterPoffinsBy_Level_LessThan(min_level),
+
         FilterPoffinsBy_NumberOfFlavors_LessThan(min_flavors),
         SortOnPoffins_LevelToSmoothnessRatioSum(),
         FilterPoffinsBy_MaxNSimilar(max_similar),
         FilterPoffinsBy_AnyFlavorValueLessThan(min_value),
-        SortOnPoffins_Level()
+        SortOnPoffins_Attrs((("level", True), ("second_level", True), ("rarity", False)))
     ]
     poffin_filtering_sorting_system = PoffinSortAndFilterSystem(poffin_filters_sorters)
     poffin_factory = PoffinFactory(PoffinCooker(cook_time), berry_combinations, poffin_filtering_sorting_system)
+    _ = input("Wait")
+    poffins = poffin_factory.poffins
+    print("length of poffins:", len(poffins))
+    _ = input("Wait")
+    filtered_poffins = poffin_factory.filtered_poffins
+    print("length of filtered poffins:", len(filtered_poffins))
+    _ = input("Wait")
     poffin_permutations = poffin_factory.get_poffin_permutations_4()
 
     # Stats
