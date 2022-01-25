@@ -13,7 +13,7 @@ class PoffinFactory():
     def __init__(self, cooker: PoffinCooker, berry_combinations: tuple[Berry, ...], poffin_filter_system: PoffinSortAndFilterSystem = None):  # noqa ES501
         self._cooker = cooker
         self._berry_combinations = berry_combinations
-        self.__poffin_filter_system__ = poffin_filter_system
+        self._poffin_filter_system = poffin_filter_system
 
         self._poffins = None
         self._filtered_poffin_list = None
@@ -29,7 +29,7 @@ class PoffinFactory():
         Returns:
             list[Poffin]: Unsorted or Filtered Poffin List
         """
-        print("Trying to Get the Poffin List", self._poffins)
+        print("Trying to Get the Poffin List")
         if self._poffins is None:
             print("Poffin List is Empty")
             self._poffins = self._generate_poffin_list()
@@ -46,7 +46,7 @@ class PoffinFactory():
         print("Trying to Get Filtered Poffins")
         if self._filtered_poffin_list is None:
             print("Have to Generate Filtered Poffins")
-            self._filtered_poffin_list = self.__poffin_filter_system__.get_Sorted_and_filtered_poffins(self.poffins)
+            self._filtered_poffin_list = self._poffin_filter_system.get_Sorted_and_filtered_poffins(self.poffins)
         print(f"Returning {len(self._filtered_poffin_list)} Filtered Poffins")
         return self._filtered_poffin_list
 
