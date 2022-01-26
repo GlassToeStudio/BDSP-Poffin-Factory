@@ -15,8 +15,16 @@ class IBerrySortInterface(metaclass=ABCMeta):
                 * default: False
                 * by defualt sorters are sorted by best to worst.
         """
-
+    @property
     @abstractmethod
+    def value(self):
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def reverse(self):
+        raise NotImplementedError
+
     def execute(self, berries: list[Berry]) -> list[Berry]:
         """Process the berries according to this sorting rule.
 
@@ -29,46 +37,11 @@ class IBerrySortInterface(metaclass=ABCMeta):
         Returns:
             list[Berry]: sorted berries
         """
-        raise NotImplementedError
+        berries.sort(key=attrgetter(self.value), reverse=self.reverse)
+        return berries
 
     def __str__(self):
         return self.__class__.__name__
-
-
-class SortOnBerry_Attrs(IBerrySortInterface):
-    """Sort berries by multiple values in ascending (False) or descenidng (True) order.
-
-    Notes;\n
-            * H: means Higher is better so supply True to the second argument
-                - (("coolness", True), )
-            * L: means Lower is better so supply False to the second argument
-                - (("rarity", False), )
-            *  : means neither is better - False for ascending, True for descending
-                - (("rarity", False), )
-
-    Attr:
-        *  0 | str   : name                          *   \n
-        *  1 | [int] : flavor_values                 * H \n
-        *  2 | int   : smoothness                    * L \n
-        *  3 | int   : main_flavor_value             * H \n
-        *  4 | str   : main_flavor                   *   \n
-        *  5 | int   : num_flavors                   * H \n
-        *  6 | int   : rarity                        * L \n
-        *  7 | [int] : _weakened_flavor_values       * H \n
-        *  8 | int   : _weakened_main_flavor_value   * H \n
-        *  9 | int   : _weakened_main_flavor         *   \n
-        * 10 | int   : __id__                        *   \n
-
-    https://docs.python.org/3/howto/sorting.html
-
-    Returns:
-        list[Berry]: sorted list of berries
-    """
-
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        for key, reverse in reversed(self._value):
-            berries.sort(key=attrgetter(key), reverse=reverse)
-        return berries
 
 
 class SortOnBerry_Name(IBerrySortInterface):
@@ -79,10 +52,13 @@ class SortOnBerry_Name(IBerrySortInterface):
     Returns:
         list[Berry]: sorted list of berries
     """
+    @property
+    def value(self):
+        return "name"
 
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('name'), reverse=self._reverse)
-        return berries
+    @property
+    def reverse(self):
+        return self._reverse
 
 
 class SortOnBerry_Smoothness(IBerrySortInterface):
@@ -97,13 +73,16 @@ class SortOnBerry_Smoothness(IBerrySortInterface):
     Returns:
         list[Berry]: sorted list of berries
     """
+    @property
+    def value(self):
+        return "smoothness"
 
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('smoothness'), reverse=self._reverse)
-        return berries
+    @property
+    def reverse(self):
+        return self._reverse
 
 
-class SortOnBerry_MainFlavorValue(IBerrySortInterface):
+class SortOnBerry_Main_Flavor_Value(IBerrySortInterface):
     """Sort berries by the value of their main flavor, descending.
 
             * Higher is better.
@@ -112,13 +91,16 @@ class SortOnBerry_MainFlavorValue(IBerrySortInterface):
     Returns:
         list[Berry]: sorted list of berries
     """
+    @property
+    def value(self):
+        return "main_flavor_value"
 
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('main_flavor_value'), reverse=not self._reverse)
-        return berries
+    @property
+    def reverse(self):
+        return not self._reverse
 
 
-class SortOnBerry_MainFlavor(IBerrySortInterface):
+class SortOnBerry_Main_Flavor(IBerrySortInterface):
     """Sort berries by their main flavor name, ascending alphabetical order.
 
             * List in Ascending Order
@@ -126,13 +108,16 @@ class SortOnBerry_MainFlavor(IBerrySortInterface):
     Returns:
         list[Berry]: sorted list of berries
     """
+    @property
+    def value(self):
+        return "main_flavor"
 
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('main_flavor'), reverse=self._reverse)
-        return berries
+    @property
+    def reverse(self):
+        return self._reverse
 
 
-class SortOnBerry_NumFlavors(IBerrySortInterface):
+class SortOnBerry_Num_Flavors(IBerrySortInterface):
     """Sort berries by the number of flavors they have, descending.
 
             * Higher is better.
@@ -141,10 +126,13 @@ class SortOnBerry_NumFlavors(IBerrySortInterface):
     Returns:
         list[Berry]: sorted list of berries
     """
+    @property
+    def value(self):
+        return "num_flavors"
 
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('num_flavors'), reverse=not self._reverse)
-        return berries
+    @property
+    def reverse(self):
+        return not self._reverse
 
 
 class SortOnBerry_Rarity(IBerrySortInterface):
@@ -159,13 +147,16 @@ class SortOnBerry_Rarity(IBerrySortInterface):
     Returns:
         list[Berry]: sorted list of berries
     """
+    @property
+    def value(self):
+        return "rarity"
 
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('rarity'), reverse=self._reverse)
-        return berries
+    @property
+    def reverse(self):
+        return self._reverse
 
 
-class SortOnBerry_WeakenedMainFlavorValue(IBerrySortInterface):
+class SortOnBerry__Weakened_Main_Flavor_Value(IBerrySortInterface):
     """Sort berries by their weakened main flavor value, in descending order.
 
             * Higher is better.
@@ -179,13 +170,16 @@ class SortOnBerry_WeakenedMainFlavorValue(IBerrySortInterface):
     Returns:
         list[Berry]: sorted list of berries
     """
+    @property
+    def value(self):
+        return "_weakened_main_flavor_value"
 
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('_weakened_main_flavor_value'), reverse=not self._reverse)
-        return berries
+    @property
+    def reverse(self):
+        return not self._reverse
 
 
-class SortOnBerry_WeakenedMainFlavor(IBerrySortInterface):
+class SortOnBerry__Weakened_Main_Flavor(IBerrySortInterface):
     """Sort berries by their weakened flavor name, ascending alphabetical order.
 
             * List in Ascending Order
@@ -193,13 +187,16 @@ class SortOnBerry_WeakenedMainFlavor(IBerrySortInterface):
     Returns:
         list[Berry]: sorted list of berries
     """
+    @property
+    def value(self):
+        return "_weakened_main_flavor"
 
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('_weakened_main_flavor'), reverse=self._reverse)
-        return berries
+    @property
+    def reverse(self):
+        return self._reverse
 
 
-class SortOnBerry__id__(IBerrySortInterface):
+class SortOnBerry___id__(IBerrySortInterface):
     """Sort berries by their weakened flavor name, descending.
 
             * Higher is not better or worse than lower
@@ -208,13 +205,16 @@ class SortOnBerry__id__(IBerrySortInterface):
     Returns:
         list[Berry]: sorted list of berries
     """
+    @property
+    def value(self):
+        return "__id__"
 
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=attrgetter('__id__'), reverse=not self._reverse)
-        return berries
+    @property
+    def reverse(self):
+        return not self._reverse
 
 
-class SortOnBerry_MainFlavorToSmoothnessRatio(IBerrySortInterface):
+class SortOnBerry_Main_Flavor_To_Smoothness_Ratio(IBerrySortInterface):
     """Sort berries by the level / smoothness, in descending order.
 
             * Higher is better.
@@ -223,7 +223,10 @@ class SortOnBerry_MainFlavorToSmoothnessRatio(IBerrySortInterface):
     Returns:
         list[Berry]: sorted list of berries
     """
+    @property
+    def value(self):
+        return "main_flavor_to_smoothness_ratio"
 
-    def execute(self, berries: list[Berry]) -> list[Berry]:
-        berries.sort(key=lambda x: x.main_flavor_value / x.smoothness, reverse=not self._reverse)
-        return berries
+    @property
+    def reverse(self):
+        return not self._reverse
