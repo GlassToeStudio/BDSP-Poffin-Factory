@@ -11,6 +11,8 @@ class PoffinSortAndFilterSystem:
 
     def get_Sorted_and_filtered_poffins(self, poffins: list[Poffin]) -> list[Poffin]:
         for sort_filter in self.__sort_filters__:
+            if not poffins:
+                return None
             poffins = sort_filter.execute(poffins)
         return poffins
 
