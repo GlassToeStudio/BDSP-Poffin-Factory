@@ -64,6 +64,8 @@ class Berry:
         self.__id__ = int(''.join(map(str, self.flavor_values)))
         """The 'unique' id of this berry"""
 
+        self.main_flavor_to_smoothness_ratio = self.main_flavor_value / self.smoothness
+
     def _get_smoothness(self) -> int:
         """Get the smoothness value for this berry from the SMOOTHNESS_TABLE"""
         for smooth_key, smooth_names in SMOOTHNESS_TABLE.items():
@@ -115,7 +117,7 @@ class Berry:
         return (f"\t{BOLD}{FLAVOR_COLORS[self.main_flavor]}{self.name:<7}{N_BOLD}"  # noqa ES501
                 f"{str(formated_flavor):<17}"
                 f"{color_256(255)}{self.smoothness:>3}{RESET}"
-                f" - {color_256(239)}Flavors{RESET} {printable_flavor_values}")
+                f" - {color_256(239)}Flavors{RESET} {printable_flavor_values} Rarity:{self.rarity:>3}")
 
     def __str__(self):
         """ganlon Dry      40 [  0,  30,  10,  30,   0]"""
@@ -124,25 +126,7 @@ class Berry:
             printable_flavor_values = (f"{printable_flavor_values}"
                                        f"{self.flavor_values[i]:>3}, ")  # noqa ES501
         printable_flavor_values = f"{printable_flavor_values[:-2]}]"
-        return f"\t{self.name:<7}{self.main_flavor:<8}{self.smoothness:>3} {printable_flavor_values} Rarity: {self.rarity}"  # noqa ES501
-
-    def __eq__(self, other):
-        return self.__id__ == other.__id__
-
-    def __nq__(self, other):
-        return self.__id__ != other.__id__
-
-    def __lt__(self, other):
-        return self.main_flavor_value < other.main_flavor_value
-
-    def __le__(self, other):
-        return self.main_flavor_value <= other.main_flavor_value
-
-    def __gt__(self, other):
-        return self.main_flavor_value > other.main_flavor_value
-
-    def __ge__(self, other):
-        return self.main_flavor_value >= other.main_flavor_value
+        return f"\t{self.name:<7}{self.main_flavor:<8}{self.smoothness:>3} {printable_flavor_values} Rarity:{self.rarity:>3}"  # noqa ES501
 
     def __hash__(self):
         return self.__id__
