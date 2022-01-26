@@ -6,7 +6,8 @@ from make_poffins.stats.contest_stats import ContestStats
 class IContestStatsFilterInterface(metaclass=ABCMeta):
 
     def __init__(self, value: int | str):
-        self.value = value
+        self._value = value
+        """The value by which we are comparing"""
 
     @abstractmethod
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
@@ -16,7 +17,7 @@ class IContestStatsFilterInterface(metaclass=ABCMeta):
         return self.__class__.__name__
 
 
-class FilterContestStatsBy_Rank_LessThan(IContestStatsFilterInterface):
+class FilterContestStatsBy_Rank_LT(IContestStatsFilterInterface):
     """Filter out any stats with a rank < the given value
 
         Notes:\n
@@ -30,10 +31,10 @@ class FilterContestStatsBy_Rank_LessThan(IContestStatsFilterInterface):
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
         self.value = min(self.value, 3)
-        return [p for p in contest_stats if p.rank >= self.value]
+        return [cs for cs in contest_stats if cs.rank >= self.value]
 
 
-class FilterContestStatsBy_Rank_GreaterThan(IContestStatsFilterInterface):
+class FilterContestStatsBy_Rank_GT(IContestStatsFilterInterface):
     """Filter out any stats with a rank > the given value
 
         Notes:\n
@@ -47,10 +48,10 @@ class FilterContestStatsBy_Rank_GreaterThan(IContestStatsFilterInterface):
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
         self.value = max(self.value, 1)
-        return [p for p in contest_stats if p.rank <= self.value]
+        return [cs for cs in contest_stats if cs.rank <= self.value]
 
 
-class FilterContestStatsBy_Rarity_LessThan(IContestStatsFilterInterface):
+class FilterContestStatsBy_Rarity_LT(IContestStatsFilterInterface):
     """Filter out any contest stats with a rarity less than the given value
 
     Notes:\n
@@ -65,14 +66,14 @@ class FilterContestStatsBy_Rarity_LessThan(IContestStatsFilterInterface):
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
         num_poffins = len(contest_stats[0].poffins)
-        assert ((7*num_poffins)-1) < self.value <= ((60*num_poffins))
-        return [p for p in contest_stats if p.rarity >= self.value]
+        assert ((7*num_poffins)-1) < self._value <= ((60*num_poffins))
+        return [cs for cs in contest_stats if cs.rarity >= self._value]
 
 
-class FilterContestStatsBy_Rarity_GreaterThan(IContestStatsFilterInterface):
+class FilterContestStatsBy_Rarity_GT(IContestStatsFilterInterface):
     """Filter out any contest stats with a rarity greater than the given value
 
-    Notes:\n
+    Notes:\nk
             * min =  4 x num poffins
             * max = 45 x num poffins
 
@@ -84,11 +85,11 @@ class FilterContestStatsBy_Rarity_GreaterThan(IContestStatsFilterInterface):
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
         num_poffins = len(contest_stats[0].poffins)
-        assert (4*num_poffins) <= self.value < ((45*num_poffins)+1)
-        return [p for p in contest_stats if p.rarity <= self.value]
+        assert (4*num_poffins) <= self._value < ((45*num_poffins)+1)
+        return [cs for cs in contest_stats if cs.rarity <= self._value]
 
 
-class FilterContestStatsBy_PoffinsEaten_LessThan(IContestStatsFilterInterface):
+class FilterContestStatsBy_Poffins_Eaten_LT(IContestStatsFilterInterface):
     """Filter out any contest stats with poffins eaten less than the given value
 
     Notes:\n
@@ -104,10 +105,10 @@ class FilterContestStatsBy_PoffinsEaten_LessThan(IContestStatsFilterInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return [p for p in contest_stats if p.poffins_eaten <= self.value]
+        return [cs for cs in contest_stats if cs.poffins_eaten >= self._value]
 
 
-class FilterContestStatsBy_PoffinsEaten_GreaterThan(IContestStatsFilterInterface):
+class FilterContestStatsBy_Poffins_Eaten_GT(IContestStatsFilterInterface):
     """Filter out any contest stats with poffins eaten greater than the given value
 
     Notes:\n
@@ -123,4 +124,32 @@ class FilterContestStatsBy_PoffinsEaten_GreaterThan(IContestStatsFilterInterface
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return [p for p in contest_stats if p.poffins_eaten >= self.value]
+        return [cs for cs in contest_stats if cs.poffins_eaten <= self._value]
+
+
+class FilterContestStatsBy_Num_Perfect_values_GT(IContestStatsFilterInterface):
+    """Filter out any contest stats with more than the given amount of perfect values.
+
+    Notes:\n
+            * 1 - 5
+
+    Returns:
+        list[ContestStat]: contest stats with n perfect values > value
+    """
+
+    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
+        return [cs for cs in contest_stats if cs.num_perfect_values <= self._value]
+
+
+class FilterContestStatsBy_Num_Perfect_values_LT(IContestStatsFilterInterface):
+    """Filter out any contest stats with less than the given amount of perfect values
+
+    Notes:\n
+            * 1 - 5
+
+    Returns:
+        list[ContestStat]: contest stats with n perfect values < value
+    """
+
+    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
+        return [cs for cs in contest_stats if cs.num_perfect_values >= self._value]

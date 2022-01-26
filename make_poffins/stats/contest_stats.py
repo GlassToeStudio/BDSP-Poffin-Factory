@@ -1,4 +1,6 @@
 
+from lib2to3.pytree import Base
+
 from make_poffins.berry import berry_library
 from make_poffins.constants import BOLD, FLAVOR_COLORS, RESET, bad_red, outline
 from make_poffins.poffin.poffin import Poffin
@@ -6,7 +8,7 @@ from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
 
 
-class ContestStats:
+class ContestStats(Base):
     """Container to hold contest stats
         * Coolness -> Spicy
         * Beauty -> Dry
@@ -18,7 +20,7 @@ class ContestStats:
     Has method to apply multiple poffins repeatedly.
     """
 
-    def __init__(self):
+    def __init__(self, poffins: list[Poffin] = None):
         """Container to hold contest stats
             * Coolness -> Spicy
             * Beauty -> Dry
@@ -29,6 +31,9 @@ class ContestStats:
 
         Has method to apply multiple poffins repeatedly.
         """
+        self.poffins = None
+        """The poffins used"""
+
         self.coolness = 0
         """Coolness -> Spicy"""
         self.beauty = 0
@@ -41,21 +46,9 @@ class ContestStats:
         """Tougnness -> Sour"""
         self.sheen = 0
         """Total sheen"""
-        self._all_values = None
-        """Convenient list of all 5 contest values - Not Sheen"""
-        self.poffins = None
-        """The poffins used"""
 
         # Values by which we can sort and filter
-        self.poffins_eaten = 0
-        """Total poffins eaten"""
-        self.num_perfect_values = 0
-        """The number of contest stats that are 255 - Not Sheen"""
-        self.unique_berries = 0
-        """Number of different berriess used to make these poffins"""
-        self.rarity = 0
-        """The total of all the berry rarities used in these poffins"""
-        self.rank = -1
+        self.rank = 5
         """The ranking for the given poffin combo.
 
             Notes:\n
@@ -63,11 +56,24 @@ class ContestStats:
                     * 2 - All categories maxed but still have some sheen\n
                     * 3 - Did not meet criteria for 1 or 2, this is not good\n
         """
-        self._yield = 0
-        """The total poffins created from these beries
+        self.rarity = 0
+        """The total rarity of all the berry rarities used in these poffins"""
+        self.poffins_eaten = 0
+        """Total poffins eaten"""
+        self.unique_berries = 0
+        """Number of different berriess used to make these poffins"""
+        self.num_perfect_values = 0
+        """The number of contest stats that are 255 - Not Sheen"""
 
+        self._all_values = None
+        """Convenient list of all 5 contest values - Not Sheen"""
+        self._yield = 0
+        """The total poffins created from these beries\n
             Used to determine if we will need to eat more poffins than are porudced from cooking once.
         """
+
+        if poffins:
+            self.apply_poffins(poffins)
 
     def apply_poffins(self, poffins: list[Poffin]):
         """Simulate feeding poffins one at a time and checking
@@ -82,25 +88,18 @@ class ContestStats:
                 * self.poffins
                 * self.rarity
                 * self.unique_berries
-
-        Yields:
-            None:
         """
+
         # these are set once
         self.poffins = poffins
         self.rarity = sum(x.rarity for x in self.poffins)
-        total_berries = set()
-        for _ in poffins:
-            for berry in _.berries:
-                total_berries.add(berry)
-        self.unique_berries = len(total_berries)
+        self.unique_berries = self._get_unique_berries(poffins)
 
         while True:
             for p in poffins:
                 self._apply_poffin(p)
-                current_rank = self._rank_combo()
-                if self.sheen >= 255 or current_rank == 2:
-                    self.rank = current_rank
+                if self.sheen >= 255 or self.num_perfect_values == 5:  # Sheen is maxed, cant eat anymore: Rank is 2 => All categories maxed.
+                    self.rank = self._rank_combo()
                     self._yield = len(self.poffins) * len(self.poffins[0].berries)
                     return
 
@@ -116,21 +115,22 @@ class ContestStats:
         self.cuteness = self._add_value(self.cuteness, p.flavor_values[2])
         self.cleverness = self._add_value(self.cleverness, p.flavor_values[3])  # noqa ES501
         self.toughness = self._add_value(self.toughness, p.flavor_values[4])
+
         self._all_values = [self.coolness, self.beauty, self.cuteness, self.cleverness, self.toughness]  # noqa ES501
-        self.num_perfect_values = sum(1 for x in self._all_values if x >= 255)
+        self.num_perfect_values = sum([1 for x in self._all_values if x >= 255])
 
     def _rank_combo(self) -> int:
         """Return a rank of this 4-poffin combo.
 
-        1 - everything is maxed
-        2 - all categories maxed but still have some sheen
-        3 - did not might criteria for 1 or 2, this is no good
+                1 - everything is maxed\n
+                2 - all categories maxed but still have some sheen\n
+                3 - did not might criteria for 1 or 2, this is no good\n
 
         Returns:
             int: ranking
         """
 
-        contest_values = sum(1 for x in self._all_values if x >= 255)
+        contest_values = self.num_perfect_values
         sheen_value = 10 if self.sheen >= 255 else 0
         total = contest_values + sheen_value
 
@@ -139,6 +139,14 @@ class ContestStats:
         if total == 5:
             return 2
         return 3
+
+    @classmethod
+    def _get_unique_berries(cls, poffins):
+        total_berries = set()
+        for p in poffins:
+            for berry in p.berries:
+                total_berries.add(berry)
+        return len(total_berries)
 
     @classmethod
     def _add_value(cls, current_value, additional_value):
@@ -165,9 +173,11 @@ f"  {BOLD}{outline}{'-'* amt}{RESET                                             
 
     def __str__(self) -> str:
         formated_poffin_string = '\n'.join(map(str, self.poffins))
+        formated_poffin_string = ''
+
         return (f"Rank: {self.rank} Poffins eaten: {self.poffins_eaten} Rarity: {self.rarity:<3} Unique Berries: {self.unique_berries}\n"
-                f"\t{self.coolness}, {self.beauty}, {self.cuteness}, {self.cleverness}, {self.toughness} : {self.sheen}\n"  # noqa ES501
-                f"\n{formated_poffin_string}\n")
+                f"\t{self.coolness}, {self.beauty}, {self.cuteness}, {self.cleverness}, {self.toughness} : {self.sheen}"  # noqa ES501
+                f"{formated_poffin_string}\n")
 
 
 def main():

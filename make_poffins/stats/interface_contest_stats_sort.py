@@ -6,9 +6,9 @@ from make_poffins.stats.contest_stats import ContestStats
 
 class IContestStatsSortInterface(metaclass=ABCMeta):
     def __init__(self, value=None, reverse=False):
-        self.value = value
+        self._value = value
         """Check criteria against this value"""
-        self.reverse = reverse
+        self._reverse = reverse
         """Rverse the order of the list if True
 
         Note:\n
@@ -27,15 +27,14 @@ class IContestStatsSortInterface(metaclass=ABCMeta):
 class SortOnContestStats_Attrs(IContestStatsSortInterface):
     """Sort contst stats by multiple values in ascending (False) or descenidng (True) order.
 
-    Format = (('attr', Reversed?), ('name', False))
+        - Format = (('attr', Reversed?), ('name', False))
 
     Notes;\n
             * H: means Higher is better so supply True to the second argument
-                - (("coolness", True), )
+                - (("coolness", True), )\n
             * L: means Lower is better so supply False to the second argument
-                - (("rarity", False), )
-            *  : means neither is better - False for ascending, True for descending
-                - (("rarity", False), )
+                - (("rarity", False), )\n
+
     Attr:
         *  0 | int : coolness           * H\n
         *  1 | int : beauty             * H\n
@@ -43,22 +42,58 @@ class SortOnContestStats_Attrs(IContestStatsSortInterface):
         *  3 | int : cleverness         * H\n
         *  4 | int : toughness          * H\n
         *  5 | int : sheen              * H\n
-        *  6 | int : poffins_eaten      * L\n
-        *  7 | int : num_perfect_values * H\n
-        *  8 | int : unique_berries     * L\n
-        *  9 | int : rarity             * L\n
-        * 10 | int : rank               * L\n
+        *  6 | int : rank               * L\n
+        *  7 | int : rarity             * L\n
+        *  8 | int : poffins_eaten      * L\n
+        *  9 | int : unique_berries     * L\n
+        * 10 | int : num_perfect_values * H\n
 
     https://docs.python.org/3/howto/sorting.html
 
     Returns:
-        list[ContestStats]: sorted list of contet stats
+        list[ContestStats]: sorted list of contest stats
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
         for key, reverse in reversed(self._value):
             contest_stats.sort(key=attrgetter(key), reverse=reverse)
         return contest_stats
+
+
+# class SortOnContestStats_Items(IContestStatsSortInterface):
+#     """Sort contst stats by multiple values in ascending (False) or descenidng (True) order.
+
+#         - Format = ((index, Reversed?), (0, True))
+
+#     Notes;\n
+#             * H: means Higher is better so supply True to the second argument
+#                 - For coolness: ((0, True), )\n
+#             * L: means Lower is better so supply False to the second argument
+#                 - For rarity: ((7, False), )\n
+
+#     Attr:
+#         *  0 | int : coolness           * H\n
+#         *  1 | int : beauty             * H\n
+#         *  2 | int : cuteness           * H\n
+#         *  3 | int : cleverness         * H\n
+#         *  4 | int : toughness          * H\n
+#         *  5 | int : sheen              * H\n
+#         *  6 | int : rank               * L\n
+#         *  7 | int : rarity             * L\n
+#         *  8 | int : poffins_eaten      * L\n
+#         *  9 | int : unique_berries     * L\n
+#         * 10 | int : num_perfect_values * H\n
+
+#     https://docs.python.org/3/howto/sorting.html
+
+#     Returns:
+#         list[ContestStats]: sorted list of contest stats
+#     """
+
+#     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
+#         for key, reverse in reversed(self.value):
+#             contest_stats.sort(key=itemgetter(key), reverse=reverse)
+#         return contest_stats
 
 
 class SortOnContestStats_Coolness(IContestStatsSortInterface):
@@ -72,7 +107,7 @@ class SortOnContestStats_Coolness(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.coolness, reverse=not self.reverse)
+        return sorted(contest_stats, key=lambda x: x.coolness, reverse=not self._reverse)
 
 
 class SortOnContestStats_Beauty(IContestStatsSortInterface):
@@ -86,7 +121,7 @@ class SortOnContestStats_Beauty(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.beauty, reverse=not self.reverse)
+        return sorted(contest_stats, key=lambda x: x.beauty, reverse=not self._reverse)
 
 
 class SortOnContestStats_Cuteness(IContestStatsSortInterface):
@@ -100,7 +135,7 @@ class SortOnContestStats_Cuteness(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.cuteness, reverse=not self.reverse)
+        return sorted(contest_stats, key=lambda x: x.cuteness, reverse=not self._reverse)
 
 
 class SortOnContestStats_Cleverness(IContestStatsSortInterface):
@@ -114,7 +149,7 @@ class SortOnContestStats_Cleverness(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.cleverness, reverse=not self.reverse)
+        return sorted(contest_stats, key=lambda x: x.cleverness, reverse=not self._reverse)
 
 
 class SortOnContestStats_Toughness(IContestStatsSortInterface):
@@ -128,7 +163,7 @@ class SortOnContestStats_Toughness(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.toughness, reverse=not self.reverse)
+        return sorted(contest_stats, key=lambda x: x.toughness, reverse=not self._reverse)
 
 
 class SortOnContestStats_Sheen(IContestStatsSortInterface):
@@ -145,7 +180,7 @@ class SortOnContestStats_Sheen(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.toughness, reverse=not self.reverse)
+        return sorted(contest_stats, key=lambda x: x.toughness, reverse=not self._reverse)
 
 
 class SortOnContestStats_PoffinsEaten(IContestStatsSortInterface):
@@ -158,7 +193,7 @@ class SortOnContestStats_PoffinsEaten(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.poffins_eaten, reverse=self.reverse)
+        return sorted(contest_stats, key=lambda x: x.poffins_eaten, reverse=self._reverse)
 
 
 class SortOnContestStats_NumPerfectValues(IContestStatsSortInterface):
@@ -171,7 +206,7 @@ class SortOnContestStats_NumPerfectValues(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.num_perfect_values, reverse=not self.reverse)
+        return sorted(contest_stats, key=lambda x: x.num_perfect_values, reverse=not self._reverse)
 
 
 class SortOnContestStats_NumUniqueBerries(IContestStatsSortInterface):
@@ -185,7 +220,7 @@ class SortOnContestStats_NumUniqueBerries(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.unique_berries, reverse=self.reverse)
+        return sorted(contest_stats, key=lambda x: x.unique_berries, reverse=self._reverse)
 
 
 class SortOnContestStats_Rarity(IContestStatsSortInterface):
@@ -199,7 +234,7 @@ class SortOnContestStats_Rarity(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.rarity, reverse=self.reverse)
+        return sorted(contest_stats, key=lambda x: x.rarity, reverse=self._reverse)
 
 
 class SortOnContestStats_Rank(IContestStatsSortInterface):
@@ -218,4 +253,4 @@ class SortOnContestStats_Rank(IContestStatsSortInterface):
     """
 
     def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return sorted(contest_stats, key=lambda x: x.rank, reverse=self.reverse)
+        return sorted(contest_stats, key=lambda x: x.rank, reverse=self._reverse)
