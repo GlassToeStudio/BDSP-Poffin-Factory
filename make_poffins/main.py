@@ -50,10 +50,6 @@ def main():
     ]
     berry_filtering_sorting_system = BerrySortAndFilterSystem(berry_filters_sorters)
     berry_factory = BerryFactory(berry_filtering_sorting_system)
-    for _ in berry_factory.filtered_berries:
-        print(_)
-
-    _ = input("wait")
     berry_combinations = berry_factory.get_berry_combinations_4()
 
     # Poffins
@@ -69,14 +65,11 @@ def main():
     poffin_factory = PoffinFactory(PoffinCooker(cook_time), berry_combinations, poffin_filtering_sorting_system)
     poffin_permutations = poffin_factory.get_poffin_permutations_3()
 
-    # poffin_permutations = PoffinFactory.generate_poffin_combinations(poffin_library.poffin_list, 4)
     # Stats
     contest_stats_filters_sorters = [
-        SortOnContestStats_Rarity(),
-        # FilterContestStatsBy_Rank_GreaterThan(1),
-        # FilterContestStatsBy_PoffinsEaten_GreaterThan(5)
         FilterContestStatsBy_Poffins_Eaten_GT(max_eaten),
-        FilterContestStatsBy_Rank_GT(min_rank)
+        FilterContestStatsBy_Rank_GT(min_rank),
+        SortOnContestStats_Rarity()
     ]
     contest_stats_filtering_sorting_system = ContestStatsSortAndFilterSystem(contest_stats_filters_sorters)
     contest_stat_factory = ContestStatsFactory(poffin_permutations, contest_stats_filtering_sorting_system)
