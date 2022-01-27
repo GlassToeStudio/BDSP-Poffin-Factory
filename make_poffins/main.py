@@ -80,7 +80,7 @@ def main():
     ]
     contest_stats_filtering_sorting_system = ContestStatsSortAndFilterSystem(contest_stats_filters_sorters)
     contest_stat_factory = ContestStatsFactory(poffin_permutations, contest_stats_filtering_sorting_system)
-    final_stats = contest_stat_factory.get_filtered_and_sorted_contest_stats()
+    final_stats = contest_stat_factory.filtered_contest_stats
 
     timestamp = time.strftime("%d-%b-%Y %I-%M %p", time.localtime())
     with open(f"make_poffins/results/poffin_results_{timestamp}.txt", "w", encoding="utf-8") as print_file:
