@@ -51,7 +51,7 @@ def test_rank_and_eaten_filter():
     ]
     sorting_system = ContestStatsSortAndFilterSystem(sorters)
     stat_factory = ContestStatsFactory(poffin_combos, sorting_system)
-    final_stats = stat_factory.get_filtered_and_sorted_contest_stats()
+    final_stats = stat_factory.filtered_contest_stats
 
     _ = [print(str(p)) for p in final_stats]
 
@@ -120,7 +120,7 @@ def test_whats_going_on_in_main():
     ]
     contest_stats_filtering_sorting_system = ContestStatsSortAndFilterSystem(contest_stats_filters_sorters)
     contest_stat_factory = ContestStatsFactory(poffin_permutations, contest_stats_filtering_sorting_system)
-    final_stats = contest_stat_factory.get_filtered_and_sorted_contest_stats()
+    final_stats = contest_stat_factory.filtered_contest_stats
 
 
 def test_get_attr_name():
@@ -138,7 +138,7 @@ def test_get_attr_name():
     stat_factory = ContestStatsFactory(poffin_combos, sorting_system)
 
     # stat_factory._get_attr_name_from_Ifilter()
-    final_stats = stat_factory.get_filtered_and_sorted_contest_stats()
+    final_stats = stat_factory.filtered_contest_stats
 
     _ = [print(str(p)) for p in final_stats]
 

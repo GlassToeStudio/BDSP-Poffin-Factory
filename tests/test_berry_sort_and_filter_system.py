@@ -20,7 +20,7 @@ def test_SortOnBerry_Name():
     ]
 
     berry_sorter = BerrySortAndFilterSystem(berry_sorters)
-    berries = berry_sorter.get_Sorted_and_filtered_berries(berry_factory.filtered_berries)
+    berries = berry_sorter.get_filtered_and_sorted_berries(berry_factory.filtered_berries)
     assert berries[0].name == "aguav"
     assert berries[-1].name == 'yache'
 
@@ -34,7 +34,7 @@ def test_SortOnBerry_Attrs():
     ]
 
     berry_sorter = BerrySortAndFilterSystem(berry_sorters)
-    berries = berry_sorter.get_Sorted_and_filtered_berries(berry_factory.filtered_berries)
+    berries = berry_sorter.get_filtered_and_sorted_berries(berry_factory.filtered_berries)
     assert berries[0].name == "wepear" and berries[-1].rarity == 15
 
 
@@ -56,7 +56,7 @@ def test_FilterBerriesBy_AnyFlavorValue_LessThan():
         FilterBerriessBy_Rarity_GreaterThan(9)
     ]
     berry_sorter = BerrySortAndFilterSystem(berry_sorters)
-    berries = berry_sorter.get_Sorted_and_filtered_berries(berry_library.every_berry)
+    berries = berry_sorter.get_filtered_and_sorted_berries(berry_library.every_berry)
 
     value = 33
     assert len(berries) == value, "Should be 30"
