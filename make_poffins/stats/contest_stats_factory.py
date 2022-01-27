@@ -58,7 +58,7 @@ class ContestStatsFactory():
         if self._filtered_contest_stats is None:
             self._filtered_contest_stats = self._stats_filter_system.get_filtered_and_sorted_contest_stats(self.contest_stats)
 
-         print(f"Returning {None if self._filtered_contest_stats is None else len(self._filtered_contest_stats)} Filtered Contest Stats")
+        print(f"Returning {None if self._filtered_contest_stats is None else len(self._filtered_contest_stats)} Filtered Contest Stats")
         return self._filtered_contest_stats
 
     @calculate_time
