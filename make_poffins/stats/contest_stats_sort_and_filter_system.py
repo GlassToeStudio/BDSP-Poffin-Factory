@@ -70,7 +70,7 @@ class ContestStatsSortAndFilterSystem:
     def filters(self):
         return self._filters
 
-    def get_sorted_and_filtered_contest_stats(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
+    def get_filtered_and_sorted_contest_stats(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
         """Return filtered and sorted contest stats based on the passed in rules
 
         Args:

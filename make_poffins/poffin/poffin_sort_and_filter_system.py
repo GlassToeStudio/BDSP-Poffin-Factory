@@ -9,7 +9,7 @@ class PoffinSortAndFilterSystem:
     def __init__(self, _filters: list[IPoffinSortInterface | IPoffinFilterInterface]):
         self.__sort_filters__ = _filters
 
-    def get_Sorted_and_filtered_poffins(self, poffins: list[Poffin]) -> list[Poffin]:
+    def get_filtered_and_sorted_poffins(self, poffins: list[Poffin]) -> list[Poffin]:
         for sort_filter in self.__sort_filters__:
             if not poffins:
                 return None

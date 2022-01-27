@@ -62,7 +62,7 @@ class BerrySortAndFilterSystem:
         self._sort_filters = filters
         self._split_and_reconstruct_sort_filters()
 
-    def get_Sorted_and_filtered_berries(self, berries: list[Berry]) -> list[Berry]:
+    def get_filtered_and_sorted_berries(self, berries: list[Berry]) -> list[Berry]:
         """Return filtered and sorted berries based on the passed in rules
 
         Args:
@@ -96,6 +96,6 @@ if __name__ == "__main__":
         FilterBerriessBy_Rarity_LessThan(4),
     ]
     bsf = BerrySortAndFilterSystem(sorters)
-    berries = bsf.get_Sorted_and_filtered_berries(berry_library.every_berry)
+    berries = bsf.get_filtered_and_sorted_berries(berry_library.every_berry)
     for _ in berries:
         print(_)
