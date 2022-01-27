@@ -71,7 +71,7 @@ class ContestStatsFactory():
                 continue
 
             self._contest_stats.append(current_stat)
-            if len(self._contest_stats) >= 10E6 <= running_count:  # TODO: Maybe not hard code this 🤔
+            if len(self._contest_stats) >= 10 or running_count >= 10E6:  # TODO: Maybe not hard code this 🤔
                 return self._contest_stats
 
         return self._contest_stats
@@ -111,16 +111,16 @@ class ContestStatsFactory():
             attribute, op, value = filter_data
             attribute_value = getattr(cs, attribute)
             if value == attribute_value:
-                # print(f"{attribute_name} : {cs_value} == {attribute_value} {True}")
+                # print(f"{attribute} : {attribute_value} == {value} {True}")
                 continue
             elif op == 0:
-                # If value is greater than, keep it.
-                # print(f"{attribute_name} : {cs_value} > {attribute_value} {cs_value > attribute_value}")
-                keep = value > attribute_value
+                # If attribute > value, Keep it.
+                # print(f"{attribute} : {attribute_value} > {value} {attribute_value > value}")
+                keep = attribute_value > value
             else:
-                # If value is less than, keep it
-                # print(f"{attribute_name} : {cs_value} < {attribute_value} {cs_value < attribute_value}")
-                keep = value < attribute_value
+                # If attribute < value, Leep it.
+                # print(f"{attribute} : {attribute_value} < {value} {attribute_value < value}")
+                keep = attribute_value < value
             if not keep:
                 return keep
         return keep
