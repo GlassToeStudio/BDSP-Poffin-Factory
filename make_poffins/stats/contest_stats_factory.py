@@ -14,14 +14,11 @@ class ContestStatsFactory():
         # passed in
         self._poffin_combos = poffin_combos
         self._stats_filter_system = stats_filter_system
-
-        # For filtering
         self._filter_dict = {}
-        if self._stats_filter_system.filters:
-            self._construct_filter_dict()
-
         self._contest_stats = []
         self._filtered_contest_stats = []
+        if self._stats_filter_system.filters:
+            self._construct_filter_dict()
         print("\nSetting Up StatsFactory")
 
     @property
@@ -37,7 +34,7 @@ class ContestStatsFactory():
             list[ContestStats]: Unfiltered and Unsorted Contest Stats List
         """
 
-        if self._contest_stats is None:
+        if not self._contest_stats:
             self._contest_stats = self._generate_contest_stats()
 
         print(f"Returning {len(self._contest_stats)} UNFILTERED Contest Stats!")
@@ -55,15 +52,17 @@ class ContestStatsFactory():
         Returns:
             list[ContestStats]: Filtered and Sorted Contest Stats List
         """
-        if self._filtered_contest_stats is None:
+
+        if not self._filtered_contest_stats:
             self._filtered_contest_stats = self._stats_filter_system.get_filtered_and_sorted_contest_stats(self.contest_stats)
 
-        print(f"Returning {None if self._filtered_contest_stats is None else len(self._filtered_contest_stats)} Filtered Contest Stats")
+        print(f"Returning {None if not self._filtered_contest_stats else len(self._filtered_contest_stats)} Filtered Contest Stats")
         return self._filtered_contest_stats
 
     @calculate_time
     @cache
     def _generate_contest_stats(self) -> list[ContestStats]:
+        print("do i exist tho")
         running_count = 0
         for poffin_combo in self._poffin_combos:
             running_count = stat_counter(running_count, 100000)
@@ -72,7 +71,7 @@ class ContestStatsFactory():
                 continue
 
             self._contest_stats.append(current_stat)
-            if len(self._contest_stats) >= 10E6 or running_count >= 10E6:  # TODO: Maybe not hard code this 🤔
+            if len(self._contest_stats) >= 10E6 <= running_count:  # TODO: Maybe not hard code this 🤔
                 return self._contest_stats
 
         return self._contest_stats
