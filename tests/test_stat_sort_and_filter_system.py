@@ -5,7 +5,9 @@ from make_poffins.berry.berry_sort_and_filter_system import \
 from make_poffins.berry.interface_berry_filter import (
     FilterBerriesBy_Smoothness_LessThan, FilterBerriessBy_Rarity_GreaterThan,
     FilterBerriessBy_Rarity_LessThan)
-from make_poffins.berry.interface_berry_sort import _SortOnBerry_Attrs
+from make_poffins.berry.interface_berry_sort import (
+    SortOnBerry__Weakened_Main_Flavor_Value, SortOnBerry_Main_Flavor,
+    SortOnBerry_Smoothness)
 from make_poffins.poffin.interface_poffin_filter import (
     FilterPoffinsBy_AnyFlavorValueLessThan, FilterPoffinsBy_Flavor,
     FilterPoffinsBy_Level_LessThan, FilterPoffinsBy_MaxNSimilar,
@@ -29,12 +31,11 @@ from make_poffins.stats.interface_contest_stats_filter import (
     FilterContestStatsBy_Rank_LT, FilterContestStatsBy_Rarity_GT,
     FilterContestStatsBy_Rarity_LT)
 from make_poffins.stats.interface_contest_stats_sort import (
-    SortOnContestStats_Attrs, SortOnContestStats_Rank,
+    SortOnContestStats_PoffinsEaten, SortOnContestStats_Rank,
     SortOnContestStats_Rarity)
 
+# noqa F401
 berries = berry_library.every_berry
-x = _SortOnBerry_Attrs((('rarity', False), ('name', False)))
-berries = x.execute(berries)
 x = FilterBerriessBy_Rarity_LessThan(8)
 berries = x.execute(berries)
 x = FilterBerriessBy_Rarity_GreaterThan(9)
@@ -45,7 +46,8 @@ def test_rank_and_eaten_filter():
     poffin_combos = PoffinFactory.generate_poffin_combinations_r(poffin_library.poffin_list, 4)
 
     sorters = [
-        SortOnContestStats_Attrs((('rarity', False), ('poffins_eaten', False)))
+        SortOnContestStats_Rarity(),
+        SortOnContestStats_PoffinsEaten(),
     ]
     sorting_system = ContestStatsSortAndFilterSystem(sorters)
     stat_factory = ContestStatsFactory(poffin_combos, sorting_system)
@@ -78,8 +80,9 @@ def test_whats_going_on_in_main():
     # Berries
     berry_filters_sorters = [
         FilterBerriesBy_Smoothness_LessThan(min_berry_smoothness),
-
-        _SortOnBerry_Attrs((('main_flavor', False), ('smoothness', False),  ('_weakened_main_flavor_value', False))),
+        SortOnBerry_Main_Flavor(),
+        SortOnBerry_Smoothness(),
+        SortOnBerry__Weakened_Main_Flavor_Value()
     ]
     berry_filtering_sorting_system = BerrySortAndFilterSystem(berry_filters_sorters)
     berry_factory = BerryFactory(berry_filtering_sorting_system, berry_library.tiny_list)
@@ -128,7 +131,8 @@ def test_get_attr_name():
         FilterContestStatsBy_Rank_LT(2),
         FilterContestStatsBy_Rank_GT(2),
         FilterContestStatsBy_Num_Perfect_values_LT(2),
-        SortOnContestStats_Attrs((('rarity', False), ('poffins_eaten', False)))
+        SortOnContestStats_Rarity(),
+        SortOnContestStats_PoffinsEaten()
     ]
     sorting_system = ContestStatsSortAndFilterSystem(sorters)
     stat_factory = ContestStatsFactory(poffin_combos, sorting_system)
