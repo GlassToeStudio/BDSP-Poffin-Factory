@@ -29,9 +29,7 @@ class PoffinFactory():
         Returns:
             list[Poffin]: Unsorted or Filtered Poffin List
         """
-        print("Trying to Get the Poffin List")
         if self._poffins is None:
-            print("Poffin List is Empty")
             self._poffins = self._generate_poffin_list()
         print(f"Returning {len(self._poffins)} Cooked Poffins")
         return self._poffins
@@ -43,10 +41,8 @@ class PoffinFactory():
         Returns:
             list[Poffin]: Filtered and Sorted Poffin List
         """
-        print("Trying to Get Filtered Poffins")
         if self._filtered_poffin_list is None:
-            print("Have to Generate Filtered Poffins")
-            self._filtered_poffin_list = self._poffin_filter_system.get_Sorted_and_filtered_poffins(self.poffins)
+            self._filtered_poffin_list = self._poffin_filter_system.get_filtered_and_sorted_poffins(self.poffins)
         print(f"Returning {len(self._filtered_poffin_list)} Filtered Poffins")
         return self._filtered_poffin_list
 
@@ -67,7 +63,6 @@ class PoffinFactory():
         """Every combination of n poffins"""
         print(f"Calling {self._get_poffin_permutations_n.__name__}, there are {'0' if poffins is None  else len(poffins)} poffins")
         if poffins is None:
-            print("There are no Poffins Here")
             poffins = self.filtered_poffins
         print(f"Permutating {len(poffins)} Filtered Poffins")
         c = math.factorial(len(poffins)) / (math.factorial(len(poffins)-n))
@@ -104,19 +99,6 @@ class PoffinFactory():
         return [self._cooker.cook(recipe) for recipe in recipes]  # noqa ES501
 
     @staticmethod
-    def get_python_style_poffin_declaration_string(poffin: Poffin) -> str:
-        """test_poffin = Poffin([148, 0, 0, 28, 0], 30, [berry_factory.spelon_berry, berry_factory.liechi_berry, berry_factory.petaya_berry, berry_factory.enigma_berry])"""  # noqa ES501
-        poffin_name = "".join([f"{poffin.berries[_].name}_" for _ in range(4)])[:-1]  # noqa ES501
-        berry_names = "".join([f"berry_factory.{poffin.berries[_].name}_berry, " for _ in range(4)])[:-2]  # noqa ES501
-        return f"{poffin_name}_poffin = Poffin({poffin.flavor_values}, {poffin.smoothness}, [{berry_names}])"  # noqa ES501
-
-    @staticmethod
-    def get_python_style_poffin_list_string(poffin: Poffin) -> str:
-        """test_poffin = Poffin([148, 0, 0, 28, 0], 30, [berry_factory.spelon_berry, berry_factory.liechi_berry, berry_factory.petaya_berry, berry_factory.enigma_berry])"""  # noqa ES501
-        poffin_name = "".join([f"{poffin.berries[_].name}_" for _ in range(4)])[:-1]  # noqa ES501
-        return f"{poffin_name}_poffin,"
-
-    @staticmethod
     def generate_poffin_combinations_r(poffins: list[Poffin], r: int = 5) -> list[Poffin]:
         Cn_r = math.factorial(len(poffins)) / (math.factorial(r) * math.factorial(len(poffins) - r))
         TOTAL_POFFINS[0] = Cn_r
@@ -129,6 +111,19 @@ class PoffinFactory():
         TOTAL_POFFINS[0] = Pn_r
         print(f"There are {Pn_r} permutations! Wow")
         return permutations(poffins, r)
+
+    @staticmethod
+    def get_python_style_poffin_declaration_string(poffin: Poffin) -> str:
+        """test_poffin = Poffin([148, 0, 0, 28, 0], 30, [berry_factory.spelon_berry, berry_factory.liechi_berry, berry_factory.petaya_berry, berry_factory.enigma_berry])"""  # noqa ES501
+        poffin_name = "".join([f"{poffin.berries[_].name}_" for _ in range(4)])[:-1]  # noqa ES501
+        berry_names = "".join([f"berry_factory.{poffin.berries[_].name}_berry, " for _ in range(4)])[:-2]  # noqa ES501
+        return f"{poffin_name}_poffin = Poffin({poffin.flavor_values}, {poffin.smoothness}, [{berry_names}])"  # noqa ES501
+
+    @staticmethod
+    def get_python_style_poffin_list_string(poffin: Poffin) -> str:
+        """test_poffin = Poffin([148, 0, 0, 28, 0], 30, [berry_factory.spelon_berry, berry_factory.liechi_berry, berry_factory.petaya_berry, berry_factory.enigma_berry])"""  # noqa ES501
+        poffin_name = "".join([f"{poffin.berries[_].name}_" for _ in range(4)])[:-1]  # noqa ES501
+        return f"{poffin_name}_poffin,"
 
 
 if __name__ == "__main__":

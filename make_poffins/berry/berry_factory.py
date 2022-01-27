@@ -62,11 +62,7 @@ class BerryFactory:
             3. The list of berries if they where somehow set through a field you shouldnt touch.\n
         """
 
-        print("Trying to Get the Berry List")
-
         if self._berries is None:
-            print("Berry List is Empty")
-
             self._berries = self._every_berry  # NOTE: Using an outside reference here! :D
             print(f"Returning {len(self._berries)}, Every Berry!")
         else:
@@ -88,16 +84,13 @@ class BerryFactory:
         print("Trying to Get Filtered Berries.")
 
         if self._berry_filter_system is None:
-            print("There is No Berry Filter System.")
             print(f"Returning {len(self._every_berry)}, Every Berry!")
             return self._every_berry
 
         if self._filtered_berries is None:
-            print("Have to Generate Filtered Berries")
+            self._filtered_berries = self._berry_filter_system.get_filtered_and_sorted_berries(self.berries)
 
-            self._filtered_berries = self._berry_filter_system.get_Sorted_and_filtered_berries(self.berries)
         print(f"Returning {len(self._filtered_berries)} Filtered Berries")
-
         return self._filtered_berries
 
     @calculate_time

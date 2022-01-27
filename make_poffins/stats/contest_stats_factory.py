@@ -17,39 +17,30 @@ class ContestStatsFactory():
 
         # For filtering
         self._filter_dict = {}
-        self._construct_filter_dict()
-
-        # Only generated when get_filtered_and_sorted_contest_stats() is called.
-        self._contest_stats = None
-        self._filtered_contest_stats = None
-        print("\nSetting Up StatsFactory")
-
-    @property
-    def filter_dict(self):
-        if not self._filter_dict:
+        if self._stats_filter_system.filters:
             self._construct_filter_dict()
-        return self._filter_dict
+
+        self._contest_stats = []
+        self._filtered_contest_stats = []
+        print("\nSetting Up StatsFactory")
 
     @property
     def contest_stats(self) -> list[ContestStats]:
         """List of all contest stats from the given list of poffins
 
         Note:\n
-                * Internal cutoff @ 100 records
+                * Internal cutoff @ 10E6 records
                 * Internal min rank @ 1
                 * Internal max eaten @ 20
 
         Returns:
-            list[ContestStats]: Unfilter and Unsorted Contest Stats List
+            list[ContestStats]: Unfiltered and Unsorted Contest Stats List
         """
-        print("Trying to Get the Contest Stats List", self._contest_stats)
 
         if self._contest_stats is None:
-
-            print("Contest Stats are Empty")
             self._contest_stats = self._generate_contest_stats()
 
-        print(f"Returning {len(self._contest_stats)} Contest Stats!")
+        print(f"Returning {len(self._contest_stats)} UNFILTERED Contest Stats!")
         return self._contest_stats
 
     @property
@@ -57,72 +48,33 @@ class ContestStatsFactory():
         """List of foltered and sorted contest stats from the given list of poffins
 
         Note:\n
-                * Internal cutoff @ 100 records
+                * Internal cutoff @ 10E6 records
                 * Internal min rank @ 1
                 * Internal max eaten @ 20
 
         Returns:
             list[ContestStats]: Filtered and Sorted Contest Stats List
         """
-        print("Trying to Get Filtered Poffins")
         if self._filtered_contest_stats is None:
+            self._filtered_contest_stats = self._stats_filter_system.get_filtered_and_sorted_contest_stats(self.contest_stats)
 
-            print("Have to Generate Contest Stats")
-            self._filtered_contest_stats = self._stats_filter_system.get_sorted_and_filtered_contest_stats(self.contest_stats)
-
-        if self._filtered_contest_stats is None:
-
-            print("None met the criteria")
-            return None
-
-        print(f"Returning {len(self._filtered_contest_stats)} Filtered Poffins")
+         print(f"Returning {None if self._filtered_contest_stats is None else len(self._filtered_contest_stats)} Filtered Contest Stats")
         return self._filtered_contest_stats
 
     @calculate_time
     @cache
     def _generate_contest_stats(self) -> list[ContestStats]:
         running_count = 0
-        self._contest_stats = []
         for poffin_combo in self._poffin_combos:
             running_count = stat_counter(running_count, 100000)
-
             current_stat = ContestStats(poffin_combo)
-
-            # Test out new filter:
             if not self._check_rule(current_stat):
                 continue
 
-            # current_stat.apply_poffins(poffin_combo)
-
-            # print("Sent", current_stat.poffins_eaten)
-            # returned_current_stat = self._stats_filter_system.get_sorted_and_filtered_contest_stats([current_stat])
-
-            # if returned_current_stat and len(returned_current_stat) > 0:
-            # returned_current_stat = returned_current_stat[0]
-
-            # print(f"Returned: eaten {str(returned_current_stat.poffins_eaten)}")
-            # print(str(returned_current_stat))
-
-            # else:
-            # print("Stat did not meet criteria")
-            # continue
-
-            # TODO: This is cheating since we have a sorting/filtering system...
-            # but why wait and do it later to numerous stats when we can just do
-            # do it now and save some time ¯\_(ツ)_/¯
-
-            # if current_stat.rank > self._min_rank or current_stat.poffins_eaten > self._max_eaten:
-            # continue
-
             self._contest_stats.append(current_stat)
+            if len(self._contest_stats) >= 10E6 or running_count >= 10E6:  # TODO: Maybe not hard code this 🤔
+                return self._contest_stats
 
-            # print(f"\tFound {len(self._contest_stats)} results so far!")
-            if len(self._contest_stats) >= 10E6:  # TODO: Maybe not hard code this 🤔
-
-                print("\t10000 records found! Exiting!")
-                break
-
-        self._contest_stats = sorted(self._contest_stats, key=lambda x: (x.rarity, x.unique_berries, -x.poffins_eaten))
         return self._contest_stats
 
     def _construct_filter_dict(self):
@@ -138,8 +90,7 @@ class ContestStatsFactory():
              * values = (attribute, op, value)
         """
 
-        if self._stats_filter_system.filters:
-            self._filter_dict = {str(filter): (filter.attribute,  filter.op, filter.value) for filter in self._stats_filter_system.filters}
+        self._filter_dict = {str(filter): (filter.attribute,  filter.op, filter.value) for filter in self._stats_filter_system.filters}
 
     def _check_rule(self, cs: ContestStats):
         """Check the contest stat against ther filters saved in the filter dict.
@@ -174,7 +125,3 @@ class ContestStatsFactory():
             if not keep:
                 return keep
         return keep
-
-    @calculate_time
-    def get_filtered_and_sorted_contest_stats(self):
-        return self.filtered_contest_stats
