@@ -1,4 +1,4 @@
-from make_poffins.berry import berry
+from make_poffins.berry import berry, berry_library
 from make_poffins.berry.berry_factory import BerryFactory
 
 ganlon_berry = berry.Berry("Ganlon", [0, 30, 10, 30, 0])
@@ -65,7 +65,7 @@ def pint_set_berry_names():
 
 
 def what_is_like_starf():
-    starf = berry_factory.starf_berry
+    starf = berry_library.starf_berry
     ans = [b.name for b in frozenset(berry_factory.filtered_berries) if b == starf]
     print(ans)
 
@@ -78,4 +78,4 @@ if __name__ == "__main__":
     pint_set_berry_names()
     print()
     what_is_like_starf()
-    print(berry_factory.starf_berry, berry_factory.lansat_berry)
+    print(berry_library.starf_berry, berry_library.lansat_berry)
