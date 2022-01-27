@@ -90,10 +90,12 @@ class ContestStatsSortAndFilterSystem:
     def _split_and_reconstruct_sort_filters(self):
         self._filters = [f for f in self._sort_filters if isinstance(f, IContestStatsFilterInterface)]
         sorters = [s for s in self._sort_filters if isinstance(s, IContestStatsSortInterface)]
-        args = [(i.value, i.reverse) for i in sorters]
-        for arg in args:
-            print(arg)
-        self._sort_filters.append(_SortOnContestStats_Attrs(args))
+
+        if sorters:
+            args = [(i.value, i.reverse) for i in sorters]
+            for arg in args:
+                print(arg)
+            self._sort_filters = [_SortOnContestStats_Attrs(args)]
 
 
 if __name__ == "__main__":
