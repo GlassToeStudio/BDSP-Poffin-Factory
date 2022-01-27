@@ -16,13 +16,19 @@ class ContestStatsFactory():
         self._stats_filter_system = stats_filter_system
 
         # For filtering
-        self.rule_dict = {}
-        self._get_attr_name_from_Ifilter()
+        self._filter_dict = {}
+        self._construct_filter_dict()
 
         # Only generated when get_filtered_and_sorted_contest_stats() is called.
         self._contest_stats = None
         self._filtered_contest_stats = None
         print("\nSetting Up StatsFactory")
+
+    @property
+    def filter_dict(self):
+        if not self._filter_dict:
+            self._construct_filter_dict()
+        return self._filter_dict
 
     @property
     def contest_stats(self) -> list[ContestStats]:
@@ -119,34 +125,24 @@ class ContestStatsFactory():
         self._contest_stats = sorted(self._contest_stats, key=lambda x: (x.rarity, x.unique_berries, -x.poffins_eaten))
         return self._contest_stats
 
-    def _get_attr_name_from_Ifilter(self):
-        """Loop through the filters and parse their Class.__name__ to extract the
-        following values:
-
-        Ex:
-            FilterContestStatsBy_Rarity_LT
-             - The passed in value: value - from the Class instance.\n
-                * class_instance.value
-             - The comparison operateor: >, < - from the last two characters of the Class name
-                * GT or LT
-             - The attribute name: 'name' from the 21:-3 character of the Class name
-                * 'rarity'
+    def _construct_filter_dict(self):
+        """Construct a filter disctionary from the data provide by the available filters
 
         Info:
-            given_value = i.value\n
-            to_parse = i.__class__.__name__\n
-            comp = to_parse[-2:]\n
-            attribute_name = to_parse[21:-3].lower()\n
+            attribute = filter.attribute\n
+            op = filter.op  < or >\n
+            value = filter.value\n
 
         Store these values in a dict with:
              * key = Class.__name__
-             * values = (attribute name, compariosn, instance.value)
+             * values = (attribute, op, value)
         """
-        for i in self._stats_filter_system.filters:
-            self.rule_dict[str(i)] = (str(i)[21:-3].lower(),  str(i)[-2:], i._value)
 
-    def _check_rule(self, cs):
-        """Check the contest stat against ther rules saved in the rile dict.
+        if self._stats_filter_system.filters:
+            self._filter_dict = {str(filter): (filter.attribute,  filter.op, filter.value) for filter in self._stats_filter_system.filters}
+
+    def _check_rule(self, cs: ContestStats):
+        """Check the contest stat against ther filters saved in the filter dict.
 
         If any result is False, return false as this stat does not pass all
         the filters.
@@ -161,20 +157,20 @@ class ContestStatsFactory():
             bool: True if passed all filters else False
         """
         keep = True
-        for _, values in self.rule_dict.items():
-            attribute_name, comp, cs_value = values
-            attribute_value = getattr(cs, attribute_name)
-            if cs_value == attribute_value:
+        for _, filter_data in self._filter_dict.items():
+            attribute, op, value = filter_data
+            attribute_value = getattr(cs, attribute)
+            if value == attribute_value:
                 # print(f"{attribute_name} : {cs_value} == {attribute_value} {True}")
                 continue
-            elif comp == "LT":
-                # If my value is greater than, keep it.
+            elif op == 0:
+                # If value is greater than, keep it.
                 # print(f"{attribute_name} : {cs_value} > {attribute_value} {cs_value > attribute_value}")
-                keep = cs_value > attribute_value
+                keep = value > attribute_value
             else:
-                # If my value is less than, keep it
+                # If value is less than, keep it
                 # print(f"{attribute_name} : {cs_value} < {attribute_value} {cs_value < attribute_value}")
-                keep = cs_value < attribute_value
+                keep = value < attribute_value
             if not keep:
                 return keep
         return keep

@@ -7,10 +7,26 @@ class IContestStatsFilterInterface(metaclass=ABCMeta):
 
     def __init__(self, value: int | str):
         self._value = value
-        """The value by which we are comparing"""
 
+    @property
     @abstractmethod
-    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
+    def value(self):
+        """The value by which we are comparing"""
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def attribute(self):
+        """The name of this attribute"""
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def op(self):
+        """
+                * 0 : Less than
+                * 1 : Greater Than
+        """
         raise NotImplementedError
 
     def __str__(self):
@@ -25,13 +41,30 @@ class FilterContestStatsBy_Rank_LT(IContestStatsFilterInterface):
                 * 2 - All categories maxed but still have some sheen\n
                 * 3 - Did not meet criteria for 1 or 2, this is not good\n
 
+        A value less than means "better"
+
         Returns:
             list[ContestStats]: List of contest_stats with rank >= the given value
     """
 
-    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        self.value = min(self.value, 3)
-        return [cs for cs in contest_stats if cs.rank >= self.value]
+    @property
+    def value(self):
+        """The value by which we are comparing"""
+        assert 1 <= self._value <= 3
+        return self._value
+
+    @property
+    def attribute(self):
+        """The name of this attribute"""
+        return "rank"
+
+    @property
+    def op(self):
+        """
+                * 0 : Less than
+                * 1 : Greater Than
+        """
+        return 0
 
 
 class FilterContestStatsBy_Rank_GT(IContestStatsFilterInterface):
@@ -42,13 +75,30 @@ class FilterContestStatsBy_Rank_GT(IContestStatsFilterInterface):
                 * 2 - All categories maxed but still have some sheen\n
                 * 3 - Did not meet criteria for 1 or 2, this is not good\n
 
+        A value greater than means "worse"        
+
         Returns:
             list[ContestStats]: List of contest_stats with rank <= the given value
     """
 
-    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        self.value = max(self.value, 1)
-        return [cs for cs in contest_stats if cs.rank <= self.value]
+    @property
+    def value(self):
+        """The value by which we are comparing"""
+        assert 1 <= self._value <= 3
+        return self._value
+
+    @property
+    def attribute(self):
+        """The name of this attribute"""
+        return "rank"
+
+    @property
+    def op(self):
+        """
+                * 0 : Less than
+                * 1 : Greater Than
+        """
+        return 1
 
 
 class FilterContestStatsBy_Rarity_LT(IContestStatsFilterInterface):
@@ -58,35 +108,58 @@ class FilterContestStatsBy_Rarity_LT(IContestStatsFilterInterface):
             * min =  7 x num poffins\n
             * max = 60 x num poffins\n
 
-        THIS WILL NOT LEAVE MANY BERRIES!\n
 
     Returns:
         list[ContestStat]: contest stats with rarity <= value
     """
 
-    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        num_poffins = len(contest_stats[0].poffins)
-        assert ((7*num_poffins)-1) < self._value <= ((60*num_poffins))
-        return [cs for cs in contest_stats if cs.rarity >= self._value]
+    @property
+    def value(self):
+        """The value by which we are comparing"""
+        return self._value
+
+    @property
+    def attribute(self):
+        """The name of this attribute"""
+        return "rarity"
+
+    @property
+    def op(self):
+        """
+                * 0 : Less than
+                * 1 : Greater Than
+        """
+        return 0
 
 
 class FilterContestStatsBy_Rarity_GT(IContestStatsFilterInterface):
     """Filter out any contest stats with a rarity greater than the given value
 
-    Notes:\nk
+    Notes:\n
             * min =  4 x num poffins
             * max = 45 x num poffins
-
-        THIS WILL NOT LEAVE MANY BERRIES!\n
 
     Returns:
         list[ContestStat]: contest stats with rarity <= value
     """
 
-    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        num_poffins = len(contest_stats[0].poffins)
-        assert (4*num_poffins) <= self._value < ((45*num_poffins)+1)
-        return [cs for cs in contest_stats if cs.rarity <= self._value]
+    @property
+    def value(self):
+        """The value by which we are comparing"""
+        return self._value
+
+    @property
+    def attribute(self):
+        """The name of this attribute"""
+        return "rarity"
+
+    @property
+    def op(self):
+        """
+                * 0 : Less than
+                * 1 : Greater Than
+        """
+        return 1
 
 
 class FilterContestStatsBy_Poffins_Eaten_LT(IContestStatsFilterInterface):
@@ -104,8 +177,23 @@ class FilterContestStatsBy_Poffins_Eaten_LT(IContestStatsFilterInterface):
         list[ContestStat]: contest stats with poffins eaten >= value
     """
 
-    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return [cs for cs in contest_stats if cs.poffins_eaten >= self._value]
+    @property
+    def value(self):
+        """The value by which we are comparing"""
+        return self._value
+
+    @property
+    def attribute(self):
+        """The name of this attribute"""
+        return "poffins_eaten"
+
+    @property
+    def op(self):
+        """
+                * 0 : Less than
+                * 1 : Greater Than
+        """
+        return 0
 
 
 class FilterContestStatsBy_Poffins_Eaten_GT(IContestStatsFilterInterface):
@@ -122,9 +210,51 @@ class FilterContestStatsBy_Poffins_Eaten_GT(IContestStatsFilterInterface):
     Returns:
         list[ContestStat]: contest stats with poffins eaten <= value
     """
+    @property
+    def value(self):
+        """The value by which we are comparing"""
+        return self._value
 
-    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return [cs for cs in contest_stats if cs.poffins_eaten <= self._value]
+    @property
+    def attribute(self):
+        """The name of this attribute"""
+        return "poffins_eaten"
+
+    @property
+    def op(self):
+        """
+                * 0 : Less than
+                * 1 : Greater Than
+        """
+        return 1
+
+
+class FilterContestStatsBy_Num_Perfect_values_LT(IContestStatsFilterInterface):
+    """Filter out any contest stats with less than the given amount of perfect values
+
+    Notes:\n
+            * 1 - 5
+
+    Returns:
+        list[ContestStat]: contest stats with n perfect values < value
+    """
+    @property
+    def value(self):
+        """The value by which we are comparing"""
+        return self._value
+
+    @property
+    def attribute(self):
+        """The name of this attribute"""
+        return "num_perfect_values"
+
+    @property
+    def op(self):
+        """
+                * 0 : Less than
+                * 1 : Greater Than
+        """
+        return 0
 
 
 class FilterContestStatsBy_Num_Perfect_values_GT(IContestStatsFilterInterface):
@@ -137,19 +267,20 @@ class FilterContestStatsBy_Num_Perfect_values_GT(IContestStatsFilterInterface):
         list[ContestStat]: contest stats with n perfect values > value
     """
 
-    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return [cs for cs in contest_stats if cs.num_perfect_values <= self._value]
+    @property
+    def value(self):
+        """The value by which we are comparing"""
+        return self._value
 
+    @property
+    def attribute(self):
+        """The name of this attribute"""
+        return "num_perfect_values"
 
-class FilterContestStatsBy_Num_Perfect_values_LT(IContestStatsFilterInterface):
-    """Filter out any contest stats with less than the given amount of perfect values
-
-    Notes:\n
-            * 1 - 5
-
-    Returns:
-        list[ContestStat]: contest stats with n perfect values < value
-    """
-
-    def execute(self, contest_stats: list[ContestStats]) -> list[ContestStats]:
-        return [cs for cs in contest_stats if cs.num_perfect_values >= self._value]
+    @property
+    def op(self):
+        """
+                * 0 : Less than
+                * 1 : Greater Than
+        """
+        return 1
