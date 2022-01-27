@@ -8,7 +8,7 @@ from make_poffins.berry.interface_berry_filter import (
     FilterBerriessBy_Rarity_LessThan)
 from make_poffins.berry.interface_berry_sort import (
     SortOnBerry__Weakened_Main_Flavor_Value, SortOnBerry_Main_Flavor_Value,
-    SortOnBerry_Name, SortOnBerry_Rarity, _SortOnBerry_Attrs)
+    SortOnBerry_Name, SortOnBerry_Rarity)
 from make_poffins.poffin.interface_poffin_filter import (
     FilterPoffinsBy_AnyFlavorValueLessThan, FilterPoffinsBy_Level_LessThan,
     FilterPoffinsBy_MaxNSimilar, FilterPoffinsBy_NumberOfFlavors_LessThan)
