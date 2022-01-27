@@ -31,9 +31,6 @@ class IBerrySortInterface(metaclass=ABCMeta):
         Args:
             berries (list[Berry]): berries to sort
 
-        Raises:
-            NotImplementedError: Part of interface
-
         Returns:
             list[Berry]: sorted berries
         """
