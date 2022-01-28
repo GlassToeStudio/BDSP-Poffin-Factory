@@ -131,12 +131,12 @@ class Poffin:
         join_berries = '\n'.join(map(repr, self.berries))
         formated_berry_string = f"* {color_256(239)}Berries used:{RESET}\n{join_berries}"  # noqa ES501
         name_for_printing = self.repr_name if self.repr_name != self.name else f'{f"{BOLD}{string_of_all_flavors}{RESET}":<28}'  # noqa ES501
-        amt = 62
+        amt = 75
         return (
             "\n"
             f"{outline}{'-'*amt}{RESET}\n"
             f"{BOLD}{self.level} - {name_for_printing:<37}{BOLD} {self.smoothness}{N_BOLD}"  # noqa ES501
-            f" - {color_256(239)}Flavors{RESET} {printable_flavor_values}\n"
+            f" - {color_256(239)}Flavors{RESET} {printable_flavor_values} Rarity: {self.rarity}\n"
             f"{outline}{'-'*amt}{RESET}\n"
             f"* {string_of_all_flavors} ({self.level}, {self.second_level})\n"  # noqa ES501
             f"{formated_berry_string}\n"
