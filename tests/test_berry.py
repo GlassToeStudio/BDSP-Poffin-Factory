@@ -8,38 +8,89 @@ berry_factory = BerryFactory(None)
 
 def test_berry_name():
     value = "ganlon"
-    assert ganlon_berry.name == value, f"Should be {value}"
+    assert ganlon_berry.name == value, f"Should be True"
 
 
 def test_berry_flavor_values():
     value = [0, 30, 10, 30, 0]
-    assert ganlon_berry.flavor_values == value, f"Should be {value}"
+    assert ganlon_berry.flavor_values == value, f"Should be True"
 
 
 def test_berry_smoothness():
     value = 40
-    assert ganlon_berry.smoothness == value, f"Should be {value}"
+    assert ganlon_berry.smoothness == value, f"Should be True"
 
 
-def test_berry_str():
-    value1 = "\tganlon Dry      40 [  0,  30,  10,  30,   0] [-30, 20, -20, 30, 0]"
-    value2 = "\tganlon Dry      40 [  0,  30,  10,  30,   0] Rarity:  9"
-    assert str(ganlon_berry) == value1 or str(ganlon_berry) == value2, "Should be True"  # noqa ES501
+def test_berry_main_flavor_value():
+    value = 30
+    assert ganlon_berry.main_flavor_value == value, f"Should be True"
 
 
 def test_berry_main_flavor():
     value = "Dry"
-    assert ganlon_berry.main_flavor == value, f"Should be {value}"
+    assert ganlon_berry.main_flavor == value, f"Should be True"
 
 
-def test_berry__get_smoothness__():
-    value = 255
-    assert n_ganlon_berry.smoothness == value, f"Should be {value}"
+def test_berry_num_flavors():
+    value = 3
+    assert ganlon_berry.num_flavors == value, f"Should be True"
+
+
+def test_berry_rarity():
+    value = 9
+    assert ganlon_berry.rarity == value, f"Should be True"
+
+
+def test_berry_weakened_flavor_values():
+    value = [-30, 20, -20, 30, 0]
+    assert ganlon_berry._weakened_flavor_values == value, f"Should be True"
+
+
+def test_berry_weakened_main_flavor_value():
+    value = 30
+    assert ganlon_berry._weakened_main_flavor_value == value, f"Should be True"
+
+
+def test_berry_weakened_main_flavor():
+    value = "Bitter"
+    assert ganlon_berry._weakened_main_flavor == value, f"Should be True"
 
 
 def test_berry_id():
     value = True
-    assert ganlon_berry.__id__ == n_ganlon_berry.__id__, f"Should be {value}"
+    assert ganlon_berry.__id__ == n_ganlon_berry.__id__, f"Should be True"
+
+
+def test_berry_main_flavor_to_smoothness_ratio():
+    value = 30/40
+    assert ganlon_berry.main_flavor_to_smoothness_ratio == value, f"Should be True"
+
+
+def test_berry__get_smoothness__():
+    value = 255
+    value2 = 40
+    assert n_ganlon_berry._get_smoothness() == value, f"Should be True"
+    assert ganlon_berry._get_smoothness() == value2, f"Should be True"
+
+
+def test_berry_get_main_flavor():
+    value = 'Dry'
+    assert ganlon_berry._get_main_flavor() == value, "Should be True"
+
+
+def test_berry_get_weakened_main_flavor():
+    value = 'Bitter'
+    assert ganlon_berry._get_weakened_main_flavor() == value, "Should be True"
+
+
+def test_berry_get_rarity():
+    value = 9
+    assert ganlon_berry._get_rarity() == value, "Should be True"
+
+
+def test_berry_get_weakened_flavor_values():
+    value = [-30, 20, -20, 30, 0]
+    assert ganlon_berry._get_weakened_flavor_values() == value, "Should be True"
 
 
 def test_berry_eq():
@@ -50,6 +101,11 @@ def test_berry_eq():
 def test_berry_hash():
     value = True
     assert len([ganlon_berry, n_ganlon_berry]) == len(set([ganlon_berry, n_ganlon_berry])), f"Should be {value}"  # noqa ES501
+
+
+def test_berry_str():
+    value = "\tganlon Dry      40 [  0,  30,  10,  30,   0] Rarity:  9"
+    assert str(ganlon_berry) == value, "Should be True"  # noqa ES501
 
 
 def print_all_berries():
