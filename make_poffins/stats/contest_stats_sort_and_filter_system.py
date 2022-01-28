@@ -93,8 +93,6 @@ class ContestStatsSortAndFilterSystem:
 
         if sorters:
             args = [(i.value, i.reverse) for i in sorters]
-            for arg in args:
-                print(arg)
             self._sort_filters = [_SortOnContestStats_Attrs(args)]
 
 
