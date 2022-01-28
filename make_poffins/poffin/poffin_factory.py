@@ -92,7 +92,7 @@ class PoffinFactory():
 
         if poffins is None:
             poffins = self.filtered_poffins
-        print(f"Permutating {len(poffins)} Filtered Berries")
+        print(f"Permutating {len(poffins)} Filtered Poffins")
 
         c = math.factorial(len(poffins)) / (math.factorial(len(poffins)-n))
         TOTAL_POFFINS[0] = c
