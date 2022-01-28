@@ -15,47 +15,22 @@ class IPoffinSortInterface(metaclass=ABCMeta):
                 * default: False
                 * by defualt sorters are sorted by best to worst.
         """
-
+    @property
     @abstractmethod
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+    def value(self):
         raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def reverse(self):
+        raise NotImplementedError
+
+    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+        poffins.sort(key=attrgetter(self.value), reverse=self.reverse)
+        return poffins
 
     def __str__(self):
         return self.__class__.__name__
-
-
-class SortOnPoffins_Attrs(IPoffinSortInterface):
-    """Sort poffins by multiple values in ascending (False) or descenidng (True) order.
-
-    Format = (('attr', Reversed?), ('name', False))
-
-    Notes;\n
-            * H: means Higher is better so supply True to the second argument
-                - (("coolness", True), )
-            * L: means Lower is better so supply False to the second argument
-                - (("rarity", False), )
-            *  : means neither is better - False for ascending, True for descending
-                - (("rarity", False), )
-    Attr:
-        *  0 | int : smoothness    * L\n
-        *  1 | int : main_flavor   *  \n
-        *  2 | int : level         * H\n
-        *  3 | int : second_level  * H\n
-        *  4 | int : name          *  \n
-        *  5 | int : num_flavors   *  \n
-        *  6 | int : rarity        * L\n
-        *  7 | int : __id__ *      *  \n
-
-    https://docs.python.org/3/howto/sorting.html
-
-    Returns:
-        list[Poffins]: sorted list of poffins
-    """
-
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        for key, reverse in reversed(self._value):
-            poffins.sort(key=attrgetter(key), reverse=reverse)
-        return poffins
 
 
 class SortOnPoffins_Smoothness(IPoffinSortInterface):
@@ -67,9 +42,13 @@ class SortOnPoffins_Smoothness(IPoffinSortInterface):
     Returns:
         list[Poffin]: sorted list of poffins
     """
+    @property
+    def value(self):
+        return "smoothness"
 
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: x.smoothness, reverse=self._reverse)
+    @property
+    def reverse(self):
+        return self._reverse
 
 
 class SortOnPoffins_MainFlavor(IPoffinSortInterface):
@@ -80,9 +59,13 @@ class SortOnPoffins_MainFlavor(IPoffinSortInterface):
     Returns:
         list[Poffin]: sorted list of poffins
     """
+    @property
+    def value(self):
+        return "main_flavor"
 
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: x.main_flavor, reverse=self._reverse)
+    @property
+    def reverse(self):
+        return self._reverse
 
 
 class SortOnPoffins_Level(IPoffinSortInterface):
@@ -95,9 +78,13 @@ class SortOnPoffins_Level(IPoffinSortInterface):
     Returns:
         list[Poffin]: sorted list of poffins
     """
+    @property
+    def value(self):
+        return "level"
 
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: x.level, reverse=not self._reverse)
+    @property
+    def reverse(self):
+        return not self._reverse
 
 
 class SortOnPoffins_SecondLevel(IPoffinSortInterface):
@@ -109,9 +96,13 @@ class SortOnPoffins_SecondLevel(IPoffinSortInterface):
     Returns:
         list[Poffin]: sorted list of poffins
     """
+    @property
+    def value(self):
+        return "second_level"
 
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: x.second_level, reverse=not self._reverse)
+    @property
+    def reverse(self):
+        return not self._reverse
 
 
 class SortOnPoffins_Name(IPoffinSortInterface):
@@ -122,9 +113,13 @@ class SortOnPoffins_Name(IPoffinSortInterface):
     Returns:
         list[Poffin]: sorted list of poffins
     """
+    @property
+    def value(self):
+        return "name"
 
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: x.name, reverse=self._reverse)
+    @property
+    def reverse(self):
+        return self._reverse
 
 
 class SortOnPoffins_MainFlavorValue(IPoffinSortInterface):
@@ -137,9 +132,13 @@ class SortOnPoffins_MainFlavorValue(IPoffinSortInterface):
     Returns:
         list[Poffin]: sorted list of poffins
     """
+    @property
+    def value(self):
+        return "level"
 
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: x.level, reverse=not self._reverse)
+    @property
+    def reverse(self):
+        return not self._reverse
 
 
 class SortOnPoffins_NumFlavors(IPoffinSortInterface):
@@ -150,9 +149,13 @@ class SortOnPoffins_NumFlavors(IPoffinSortInterface):
     Returns:
         list[Poffin]: sorted list of poffins
     """
+    @property
+    def value(self):
+        return "num_flavors"
 
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: x.num_flavors, reverse=not self._reverse)
+    @property
+    def reverse(self):
+        return not self._reverse
 
 
 class SortOnPoffins_LevelToSmoothnessRatio(IPoffinSortInterface):
@@ -164,9 +167,13 @@ class SortOnPoffins_LevelToSmoothnessRatio(IPoffinSortInterface):
     Returns:
         list[Poffin]: sorted list of poffins
     """
+    @property
+    def value(self):
+        return "level_to_smoothness_ratio"
 
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: x.level / x.smoothness, reverse=not self._reverse)
+    @property
+    def reverse(self):
+        return not self._reverse
 
 
 class SortOnPoffins_LevelToSmoothnessRatioSum(IPoffinSortInterface):
@@ -178,6 +185,10 @@ class SortOnPoffins_LevelToSmoothnessRatioSum(IPoffinSortInterface):
     Returns:
         list[Poffin]: sorted list of poffins
     """
+    @property
+    def value(self):
+        return "level_to_smoothness_ratio_sum"
 
-    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
-        return sorted(poffins, key=lambda x: ((x.level / x.smoothness) + (x.second_level / x.smoothness)), reverse=not self._reverse)
+    @property
+    def reverse(self):
+        return not self._reverse
