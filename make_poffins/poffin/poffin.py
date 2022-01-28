@@ -62,6 +62,10 @@ class Poffin:
         """The total rarity (in berriy rarity) for this poffin"""
         self.__id__ = int(''.join(map(str, self.flavor_values)))
         """The 'unique' id of this poffin"""
+        self.level_to_smoothness_ratio = self.level/self.smoothness
+        """ level / smoothness"""
+        self.level_to_smoothness_ratio_sum = (self.level + self.second_level)/self.smoothness
+        """ level / smoothness"""
         self._set_names()
 
     def _get_flavors(self) -> list[str]:
