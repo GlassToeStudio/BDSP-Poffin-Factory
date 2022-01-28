@@ -84,8 +84,6 @@ class BerrySortAndFilterSystem:
             self._sort_filters = [f for f in self._sort_filters if isinstance(f, IBerryFilterInterface)]
 
             args = [(i.value, i.reverse) for i in sorters]
-            for arg in args:
-                print(arg)
             self._sort_filters.append(_SortOnBerry_Attrs(args))
 
 
