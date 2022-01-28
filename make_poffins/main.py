@@ -36,7 +36,7 @@ def main():
     berry_filters_sorters = [
         SortOnBerry_Rarity(),
         SortOnBerry_Name(),
-        FilterBerriessBy_Rarity_LessThan(7)
+        FilterBerriessBy_Rarity_LessThan(1)
     ]
     berry_filtering_sorting_system = BerrySortAndFilterSystem(berry_filters_sorters)
     berry_factory = BerryFactory(berry_filtering_sorting_system)
@@ -44,20 +44,20 @@ def main():
 
     # Poffins
     poffin_filters_sorters = [
-        FilterPoffinsBy_Level_LessThan(100),
-        FilterPoffinsBy_NumberOfFlavors_LessThan(3),
+        FilterPoffinsBy_Level_LessThan(20),
+        FilterPoffinsBy_NumberOfFlavors_LessThan(4),
         FilterPoffinsBy_MaxNSimilar(4),
-        FilterPoffinsBy_AnyFlavorValueLessThan(20),
+        # FilterPoffinsBy_AnyFlavorValueLessThan(10),
         SortOnPoffins_LevelToSmoothnessRatioSum()
     ]
     poffin_filtering_sorting_system = PoffinSortAndFilterSystem(poffin_filters_sorters)
     poffin_factory = PoffinFactory(PoffinCooker(38.5), berry_combinations, poffin_filtering_sorting_system)
-    poffin_permutations = poffin_factory.get_poffin_permutations_3()
+    poffin_permutations = poffin_factory.get_poffin_permutations_2()
 
     # Stats
     contest_stats_filters_sorters = [
-        FilterContestStatsBy_Poffins_Eaten_GT(9),
-        FilterContestStatsBy_Rank_GT(1),
+        FilterContestStatsBy_Poffins_Eaten_GT(10),
+        FilterContestStatsBy_Rank_GT(2),
         SortOnContestStats_Rarity(),
         SortOnContestStats_PoffinsEaten(),
         SortOnContestStats_NumUniqueBerries()
@@ -68,20 +68,16 @@ def main():
 
     timestamp = time.strftime("%d-%b-%Y %I-%M %p", time.localtime())
     with open(f"make_poffins/results/poffin_results_{timestamp}.txt", "w", encoding="utf-8") as print_file:
-        if final_stats:
+        if not final_stats:
+            print("No results")
+        else:
             print("Lets see the results!\n\n\n")
             for stat in final_stats:
                 print(stat, file=print_file)
             print('\n'*10, file=print_file)
-            print(str(final_stats[0]))
             print(str(final_stats[0]), file=print_file)
-
-            # for stat in final_stats[:100]:
-            #    print(stat)
-            # for stat in final_stats[:10]:
-            # print(repr(stat))
-        else:
-            print("No results")
+            print(str(final_stats[0]))
+            print(repr(final_stats[0]))
 
 
 if __name__ == "__main__":
