@@ -2,7 +2,7 @@
 import math
 
 from make_poffins.berry.berry import Berry
-from make_poffins.constants import subtract_weakening_flavors
+from make_poffins.constants import calculate_time, subtract_weakening_flavors
 from make_poffins.poffin.poffin import Poffin
 
 
@@ -25,11 +25,7 @@ class PoffinCooker:
             list[int]: summed_berry_values
         """
 
-        summed_berry_values = [0] * 5
-        for i in range(5):
-            for berry in berries:
-                summed_berry_values[i] += berry.flavor_values[i]
-        return summed_berry_values
+        return [sum(x) for x in zip(*[x.flavor_values for x in berries])]
 
     @classmethod
     def __subtract_weakening_flavors__(cls, poffin_values: list[int]) -> list[int]:  # noqa ES501
@@ -73,7 +69,7 @@ class PoffinCooker:
 
         smoothness_p = ⌊Σⁿ(smoothness_b) / n⌋ - n
 
-        -9 for having 6 max level friends help cook.
+
 
         (there can be 6 total friends so is it [friends * 1.5]?)
 
@@ -87,7 +83,9 @@ class PoffinCooker:
 
     @classmethod
     def __adjust_affection__(cls, smoothness: int):
-        """I dont know how this works"""
+        """I dont know how this works
+        -9 for having 6 max level friends help cook.
+        """
         return smoothness - 9
 
     @classmethod
