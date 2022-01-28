@@ -7,8 +7,8 @@ from make_poffins.berry.berry_filter_interface import (
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
 from make_poffins.berry.berry_sort_interface import (
-    SortOnBerry__Weakened_Main_Flavor_Value, SortOnBerry_Main_Flavor_Value,
-    SortOnBerry_Name, SortOnBerry_Rarity)
+    SortBerriesBy_Main_Flavor_Value, SortBerriesBy_Name, SortBerriesBy_Rarity,
+    SortBerriesBy_Weakened_Main_Flavor_Value)
 from make_poffins.constants import calculate_time
 from make_poffins.contest_stats.contest_stats_factory import \
     ContestStatsFactory
@@ -35,9 +35,10 @@ from make_poffins.poffin.poffin_sort_interface import (
 def main():
     # Berries
     berry_filters_sorters = [
-        SortOnBerry_Rarity(),
-        SortOnBerry_Name(),
-        RemoveBerriesWith_Rarity_LessThan(1)
+        SortBerriesBy_Rarity(),
+        SortBerriesBy_Name(),
+        RemoveBerriesWith_Rarity_LessThan(3),
+        RemoveBerriesWith_Rarity_GreaterThan(11)
     ]
     berry_filtering_sorting_system = BerrySortAndFilterSystem(berry_filters_sorters)
     berry_factory = BerryFactory(berry_filtering_sorting_system)
@@ -45,22 +46,22 @@ def main():
 
     # Poffins
     poffin_filters_sorters = [
-        FilterPoffinsBy_Level_LessThan(20),
-        FilterPoffinsBy_NumberOfFlavors_LessThan(4),
+        FilterPoffinsBy_Level_LessThan(100),
+        FilterPoffinsBy_NumberOfFlavors_LessThan(3),
         FilterPoffinsBy_MaxNSimilar(4),
-        # FilterPoffinsBy_AnyFlavorValueLessThan(10),
+        FilterPoffinsBy_AnyFlavorValueLessThan(20),
         SortOnPoffins_LevelToSmoothnessRatioSum()
     ]
     poffin_filtering_sorting_system = PoffinSortAndFilterSystem(poffin_filters_sorters)
     poffin_factory = PoffinFactory(PoffinCooker(38.5), berry_combinations, poffin_filtering_sorting_system)
-    poffin_permutations = poffin_factory.get_poffin_permutations_2()
+    poffin_permutations = poffin_factory.get_poffin_permutations_3()
 
     # Stats
     contest_stats_filters_sorters = [
-        FilterContestStatsBy_Poffins_Eaten_GT(10),
-        FilterContestStatsBy_Rank_GT(2),
-        SortOnContestStats_Rarity(),
+        FilterContestStatsBy_Poffins_Eaten_GT(12),
+        FilterContestStatsBy_Rank_GT(1),
         SortOnContestStats_PoffinsEaten(),
+        SortOnContestStats_Rarity(),
         SortOnContestStats_NumUniqueBerries()
     ]
     contest_stats_filtering_sorting_system = ContestStatsSortAndFilterSystem(contest_stats_filters_sorters)

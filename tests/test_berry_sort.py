@@ -8,9 +8,10 @@ from make_poffins.berry.berry_filter_interface import (
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
 from make_poffins.berry.berry_sort_interface import (
-    IBerrySorter, SortOnBerry__Weakened_Main_Flavor, SortOnBerry_Main_Flavor,
-    SortOnBerry_Main_Flavor_To_Smoothness_Ratio, SortOnBerry_Name,
-    SortOnBerry_Rarity, SortOnBerry_Smoothness)
+    IBerrySorter, SortBerriesBy_Main_Flavor,
+    SortBerriesBy_Main_Flavor_To_Smoothness_Ratio, SortBerriesBy_Name,
+    SortBerriesBy_Rarity, SortBerriesBy_Smoothness,
+    SortBerriesBy_Weakened_Main_Flavor)
 
 
 def test_IBerrySortInterface_instantiation():
@@ -19,12 +20,12 @@ def test_IBerrySortInterface_instantiation():
 
 
 def test_IBerrySortInterface_inheritance():
-    _ = SortOnBerry_Name()
+    _ = SortBerriesBy_Name()
     assert isinstance(_, IBerrySorter)
 
 
 def test_SortOnBerry_Name_members():
-    x = SortOnBerry_Name()
+    x = SortBerriesBy_Name()
     assert hasattr(x, '_value')
     assert x._value is None
     assert hasattr(x, '_reverse')
@@ -38,7 +39,7 @@ def test_SortOnBerry_Name_members():
 
 
 def test_SortOnBerry_Name_execute():
-    x = SortOnBerry_Name()
+    x = SortBerriesBy_Name()
     with pytest.raises(TypeError):
         y = x.execute()
     y = x.execute(berry_library.every_berry)

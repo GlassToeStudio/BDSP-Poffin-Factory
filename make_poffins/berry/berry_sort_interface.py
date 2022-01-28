@@ -47,7 +47,7 @@ class IBerrySorter(metaclass=ABCMeta):
         return self.__class__.__name__
 
 
-class SortOnBerry_Name(IBerrySorter):
+class SortBerriesBy_Name(IBerrySorter):
     """Sort berries by their name, ascending alphabetical order.
 
             * List in Ascending Order
@@ -64,7 +64,7 @@ class SortOnBerry_Name(IBerrySorter):
         return self._reverse
 
 
-class SortOnBerry_Smoothness(IBerrySorter):
+class SortBerriesBy_Smoothness(IBerrySorter):
     """Sort berries by the value of their smoothness, in ascending order.
 
             * Lower is better.
@@ -85,7 +85,7 @@ class SortOnBerry_Smoothness(IBerrySorter):
         return self._reverse
 
 
-class SortOnBerry_Main_Flavor_Value(IBerrySorter):
+class SortBerriesBy_Main_Flavor_Value(IBerrySorter):
     """Sort berries by the value of their main flavor, descending.
 
             * Higher is better.
@@ -103,7 +103,7 @@ class SortOnBerry_Main_Flavor_Value(IBerrySorter):
         return not self._reverse
 
 
-class SortOnBerry_Main_Flavor(IBerrySorter):
+class SortBerriesBy_Main_Flavor(IBerrySorter):
     """Sort berries by their main flavor name, ascending alphabetical order.
 
             * List in Ascending Order
@@ -120,7 +120,7 @@ class SortOnBerry_Main_Flavor(IBerrySorter):
         return self._reverse
 
 
-class SortOnBerry_Num_Flavors(IBerrySorter):
+class SortBerriesBy_Num_Flavors(IBerrySorter):
     """Sort berries by the number of flavors they have, descending.
 
             * Higher is better.
@@ -138,7 +138,7 @@ class SortOnBerry_Num_Flavors(IBerrySorter):
         return not self._reverse
 
 
-class SortOnBerry_Rarity(IBerrySorter):
+class SortBerriesBy_Rarity(IBerrySorter):
     """Sort berries by thier rarity, ascending.
 
             * Lower is better.
@@ -159,7 +159,7 @@ class SortOnBerry_Rarity(IBerrySorter):
         return self._reverse
 
 
-class SortOnBerry__Weakened_Main_Flavor_Value(IBerrySorter):
+class SortBerriesBy_Weakened_Main_Flavor_Value(IBerrySorter):
     """Sort berries by their weakened main flavor value, in descending order.
 
             * Higher is better.
@@ -182,7 +182,7 @@ class SortOnBerry__Weakened_Main_Flavor_Value(IBerrySorter):
         return not self._reverse
 
 
-class SortOnBerry__Weakened_Main_Flavor(IBerrySorter):
+class SortBerriesBy_Weakened_Main_Flavor(IBerrySorter):
     """Sort berries by their weakened flavor name, ascending alphabetical order.
 
             * List in Ascending Order
@@ -199,7 +199,7 @@ class SortOnBerry__Weakened_Main_Flavor(IBerrySorter):
         return self._reverse
 
 
-class SortOnBerry___id__(IBerrySorter):
+class SortBerriesBy__id__(IBerrySorter):
     """Sort berries by their weakened flavor name, descending.
 
             * Higher is not better or worse than lower
@@ -217,7 +217,7 @@ class SortOnBerry___id__(IBerrySorter):
         return not self._reverse
 
 
-class SortOnBerry_Main_Flavor_To_Smoothness_Ratio(IBerrySorter):
+class SortBerriesBy_Main_Flavor_To_Smoothness_Ratio(IBerrySorter):
     """Sort berries by the level / smoothness, in descending order.
 
             * Higher is better.

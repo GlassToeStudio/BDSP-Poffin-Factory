@@ -5,17 +5,17 @@ from make_poffins.berry.berry_filter_interface import \
     RemoveBerriesWith_Smoothness_LessThan
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
-from make_poffins.berry.berry_sort_interface import (SortOnBerry_Main_Flavor,
-                                                     SortOnBerry_Name,
-                                                     SortOnBerry_Rarity)
+from make_poffins.berry.berry_sort_interface import (SortBerriesBy_Main_Flavor,
+                                                     SortBerriesBy_Name,
+                                                     SortBerriesBy_Rarity)
 
 
 @pytest.fixture(scope="session")
 def bf():
     """Returns a berry factory with every berry sorted by main flavor, rarirty"""
     berry_filters_sorters = [
-        SortOnBerry_Name(),
-        SortOnBerry_Name()
+        SortBerriesBy_Name(),
+        SortBerriesBy_Name()
         # SortOnBerry_Rarity()
     ]
     for _ in berry_library.tiny_list:

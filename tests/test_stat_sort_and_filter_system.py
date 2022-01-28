@@ -6,8 +6,8 @@ from make_poffins.berry.berry_filter_interface import (
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
 from make_poffins.berry.berry_sort_interface import (
-    SortOnBerry__Weakened_Main_Flavor_Value, SortOnBerry_Main_Flavor,
-    SortOnBerry_Smoothness)
+    SortBerriesBy_Main_Flavor, SortBerriesBy_Smoothness,
+    SortBerriesBy_Weakened_Main_Flavor_Value)
 from make_poffins.contest_stats.contest_stats_factory import \
     ContestStatsFactory
 from make_poffins.contest_stats.contest_stats_filter_interface import (

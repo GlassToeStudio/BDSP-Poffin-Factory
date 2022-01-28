@@ -6,8 +6,8 @@ from make_poffins.berry.berry import Berry
 from make_poffins.berry.berry_filter_interface import (
     IBerryFilter, RemoveBerriesWith_Rarity_LessThan)
 from make_poffins.berry.berry_sort_interface import (IBerrySorter,
-                                                     SortOnBerry_Name,
-                                                     SortOnBerry_Rarity)
+                                                     SortBerriesBy_Name,
+                                                     SortBerriesBy_Rarity)
 
 
 class _SortOnBerry_Attrs(IBerrySorter):
@@ -89,8 +89,8 @@ class BerrySortAndFilterSystem:
 
 if __name__ == "__main__":
     sorters = [
-        SortOnBerry_Rarity(),
-        SortOnBerry_Name(),
+        SortBerriesBy_Rarity(),
+        SortBerriesBy_Name(),
         RemoveBerriesWith_Rarity_LessThan(4),
     ]
     bsf = BerrySortAndFilterSystem(sorters)
