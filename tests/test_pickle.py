@@ -1,6 +1,7 @@
 import pickle
 
 from make_poffins.berry import berry_library
+from make_poffins.constants import FLAVORS
 from make_poffins.poffin.poffin_factory import PoffinFactory
 from make_poffins.poffin.poffin_library import poffin_library
 from make_poffins.stats.contest_stats_factory import ContestStatsFactory
@@ -21,7 +22,8 @@ def test_pickle_poffin():
 
 
 def test_pickle_contests_stats():
-    poffin_combos = PoffinFactory.generate_poffin_combinations_r(poffin_library.poffin_list, 4)
+    poffin_list = poffin_library.generate_random_poffin_list_n_of_each(5, FLAVORS)
+    poffin_combos = PoffinFactory.generate_poffin_combinations_r(poffin_list, 3)
 
     sorters = [
         SortOnContestStats_Rarity(),
