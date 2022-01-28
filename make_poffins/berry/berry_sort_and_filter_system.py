@@ -5,12 +5,12 @@ from make_poffins.berry import berry_library
 from make_poffins.berry.berry import Berry
 from make_poffins.berry.berry_filter_interface import (
     FilterBerriessBy_Rarity_LessThan, IBerryFilterInterface)
-from make_poffins.berry.berry_sort_interface import (IBerrySortInterface,
+from make_poffins.berry.berry_sort_interface import (IBerrySorter,
                                                      SortOnBerry_Name,
                                                      SortOnBerry_Rarity)
 
 
-class _SortOnBerry_Attrs(IBerrySortInterface):
+class _SortOnBerry_Attrs(IBerrySorter):
     """Sort berries by multiple values in ascending (False) or descenidng (True) order.
 
     Notes;\n
@@ -58,7 +58,7 @@ class BerrySortAndFilterSystem:
     applies them to a list of berries.
     """
 
-    def __init__(self, filters: list[IBerrySortInterface | IBerryFilterInterface]):
+    def __init__(self, filters: list[IBerrySorter | IBerryFilterInterface]):
         self._sort_filters = filters
         self._split_and_reconstruct_sort_filters()
 
@@ -79,7 +79,7 @@ class BerrySortAndFilterSystem:
         return berries
 
     def _split_and_reconstruct_sort_filters(self):
-        sorters = [s for s in self._sort_filters if isinstance(s, IBerrySortInterface)]
+        sorters = [s for s in self._sort_filters if isinstance(s, IBerrySorter)]
         if sorters:
             self._sort_filters = [f for f in self._sort_filters if isinstance(f, IBerryFilterInterface)]
 

@@ -4,6 +4,9 @@ from make_poffins.berry.berry import Berry
 
 
 class IBerryFilterInterface(metaclass=ABCMeta):
+    """TODO: Rename to: RemoveBerriesWith_
+
+    """
 
     def __init__(self, value: int | str):
         self._value = value
