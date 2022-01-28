@@ -1,8 +1,11 @@
+from itertools import chain, islice
+from sys import stdout
 from timeit import default_timer as timer
 
 from gts_colors.colors import (BOLD, ITALIC, N_BOLD, N_ITALIC, RESET, RGB_BLUE,
                                RGB_DARK_VIOLET, RGB_GREEN, RGB_ORANGE, RGB_RED,
-                               RGB_VIOLET, RGB_YELLOW, color_256)
+                               RGB_VIOLET, RGB_YELLOW, color_256, rgb,
+                               start_down, start_up)
 
 italic = ITALIC
 n_bold = N_BOLD
@@ -80,11 +83,64 @@ def calculate_time(func):
 
 
 TOTAL_POFFINS = [0]
-"""Update this in poffin factory to keeo track of the total permutations of poffins"""
+"""Update this in poffin factory to keep track of the total permutations of poffins"""
+
+TOTAL_BERRIES = [0]
+"""Update this in berry factory to keep track of the total permutations of berries"""
+RGB_RED = rgb(255, 0, 0)
+"""Calls rgb(255, 0, 0)"""
+
+RGB_RED_O = rgb(255, 85, 0)
+"""Calls rgb(255, 85, 0)"""
+
+RGB_ORANGE = rgb(255, 127, 0)
+"""Calls rgb(255, 127, 0)"""
+
+RGB_YELLOW = rgb(255, 255, 0)
+"""Calls rgb(255, 255, 0)"""
+
+RGB_GREEN = rgb(0, 200, 0)
+"""Calls  rgb(0, 200, 0)"""
+
+RGB_GREEN_B = rgb(0, 255, 0)
+"""Calls  rgb(0, 255, 0)"""
 
 
-def stat_counter(stat_count: int, per_iteration: int = 10000):
+def stat_counter(stat_count: int, out_of: int, split, per_iteration: int = 100):
+    """[summary]
+
+    Args:
+        stat_count (int): [description]
+        out_of (int): [description]
+        split ([type]): [description]
+        per_iteration (int, optional): [description]. Defaults to 100.
+
+    Returns:
+        [type]: [description]
+    """
+
     if stat_count % per_iteration == 0:
-        print(f" * {BOLD}Checked {outline}{stat_count:>9}{RESET}{BOLD} stats so far out of {outline}{TOTAL_POFFINS[0]:.0f}{RESET}"
-              f"\t{color_256(82)}{10*stat_count/TOTAL_POFFINS[0]:.2f}{RESET}%")
+        value = int((20*stat_count/out_of))
+        if value <= 4:
+            col = RGB_RED
+        elif value <= 8:
+            col = RGB_RED_O
+        elif value <= 12:
+            col = RGB_ORANGE
+        elif value <= 16:
+            col = RGB_YELLOW
+        elif value < 20:
+            col = RGB_GREEN
+        else:
+            col = RGB_GREEN_B
+
+        bar = f"{'▓'*value}"
+        print(f"{start_up(1)} * {BOLD}Checked {outline}{stat_count:>9}{RESET}{BOLD} stats so far out of {outline}{out_of:.0f}{RESET}"
+              f" - {col}│{bar:<20}│{BOLD}{100*(stat_count/out_of)/split:6.2f}{RESET}%")
     return stat_count + 1
+
+
+def chunks(iterable, size):
+    iterator = iter(iterable)
+    for first in iterator:
+        yield chain([first], islice(iterator, size - 1))
