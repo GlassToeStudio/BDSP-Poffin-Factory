@@ -4,20 +4,6 @@ import multiprocessing
 from itertools import chain, combinations, islice, permutations
 
 
-def test_multthread():
-    manager = multiprocessing.Manager()
-    return_dict = manager.list()
-    jobs = []
-    for i in range(4):
-        p = multiprocessing.Process(target=worker, args=(i, return_dict))
-        jobs.append(p)
-        p.start()
-
-    for proc in jobs:
-        proc.join()
-    print(return_dict)
-
-
 def worker(chunk, return_list):
     """worker function"""
     value = 0
@@ -34,7 +20,7 @@ def chunks(iterable, size):
         yield chain([first], islice(iterator, size - 1))
 
 
-def test_multithread_combination():
+def test_multi_process_combination():
     manager = multiprocessing.Manager()
     return_list = manager.list()
     jobs = []
@@ -44,7 +30,7 @@ def test_multithread_combination():
     c = math.factorial(n) // (math.factorial(r) * math.factorial(n - r))
     print("Total combinations:", c)
     combos = combinations(range(n), r)
-    slice = c//2
+    slice = int(c//2)
     J = 0
     for i, chunk in enumerate(chunks(combos, slice)):
         if i % slice == 0:
@@ -60,4 +46,4 @@ def test_multithread_combination():
 
 
 if __name__ == "__main__":
-    test_multithread_combination()
+    test_multi_process_combination()
