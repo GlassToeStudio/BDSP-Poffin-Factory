@@ -1,6 +1,4 @@
 
-from lib2to3.pytree import Base
-
 from make_poffins.berry import berry_library
 from make_poffins.constants import BOLD, FLAVOR_COLORS, RESET, bad_red, outline
 from make_poffins.poffin.poffin import Poffin
@@ -8,7 +6,7 @@ from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
 
 
-class ContestStats(Base):
+class ContestStats:
     """Container to hold contest stats
         * Coolness -> Spicy
         * Beauty -> Dry
@@ -173,11 +171,10 @@ f"  {BOLD}{outline}{'-'* amt}{RESET                                             
 
     def __str__(self) -> str:
         formated_poffin_string = '\n'.join(map(str, self.poffins))
-        formated_poffin_string = ''
 
-        return (f"Rank: {self.rank} Poffins eaten: {self.poffins_eaten} Rarity: {self.rarity:<3} Unique Berries: {self.unique_berries}\n"
-                f"\t{self.coolness}, {self.beauty}, {self.cuteness}, {self.cleverness}, {self.toughness} : {self.sheen}"  # noqa ES501
-                f"{formated_poffin_string}\n")
+        return (f"Rank: {self.rank} Poffins eaten: {self.poffins_eaten} Rarity: {self.rarity:<3} Unique Berries: {self.unique_berries}")  # \n"
+        #f"\t{self.coolness}, {self.beauty}, {self.cuteness}, {self.cleverness}, {self.toughness} : {self.sheen}"  # noqa ES501
+        # f"{formated_poffin_string}\n")
 
 
 def main():
