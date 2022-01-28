@@ -4,7 +4,7 @@ from operator import attrgetter
 from make_poffins.berry import berry_library
 from make_poffins.berry.berry import Berry
 from make_poffins.berry.berry_filter_interface import (
-    FilterBerriessBy_Rarity_LessThan, IBerryFilterInterface)
+    FilterBerriessBy_Rarity_LessThan, IBerryFilter)
 from make_poffins.berry.berry_sort_interface import (IBerrySorter,
                                                      SortOnBerry_Name,
                                                      SortOnBerry_Rarity)
@@ -58,7 +58,7 @@ class BerrySortAndFilterSystem:
     applies them to a list of berries.
     """
 
-    def __init__(self, filters: list[IBerrySorter | IBerryFilterInterface]):
+    def __init__(self, filters: list[IBerrySorter | IBerryFilter]):
         self._sort_filters = filters
         self._split_and_reconstruct_sort_filters()
 
@@ -81,7 +81,7 @@ class BerrySortAndFilterSystem:
     def _split_and_reconstruct_sort_filters(self):
         sorters = [s for s in self._sort_filters if isinstance(s, IBerrySorter)]
         if sorters:
-            self._sort_filters = [f for f in self._sort_filters if isinstance(f, IBerryFilterInterface)]
+            self._sort_filters = [f for f in self._sort_filters if isinstance(f, IBerryFilter)]
 
             args = [(i.value, i.reverse) for i in sorters]
             self._sort_filters.append(_SortOnBerry_Attrs(args))
