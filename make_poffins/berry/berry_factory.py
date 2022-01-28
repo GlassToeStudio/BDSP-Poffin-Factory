@@ -48,8 +48,8 @@ class BerryFactory:
 
         self._berries = berries
         self._filtered_berries = None
-        self._every_berry = berry_library.every_berry
         self._berry_filter_system = berry_filter_system
+        self._every_berry = berry_library.every_berry
         print("\nSetting Up BerryFactory...")
 
     @property
@@ -84,8 +84,8 @@ class BerryFactory:
         print("Trying to Get Filtered Berries.")
 
         if self._berry_filter_system is None:
-            print(f"Returning {len(self._every_berry)}, Every Berry!")
-            return self._every_berry
+            print(f"Returning {len(self._every_berry)}, Every Berry!")  # NOTE: Using an outside reference here! :D
+            return self._every_berry  # NOTE: Using an outside reference here! :D
 
         if self._filtered_berries is None:
             self._filtered_berries = self._berry_filter_system.get_filtered_and_sorted_berries(self.berries)
