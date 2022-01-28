@@ -1,9 +1,9 @@
 from operator import attrgetter
 
-from make_poffins.poffin.interface_poffin_filter import IPoffinFilterInterface
-from make_poffins.poffin.interface_poffin_sort import (
-    IPoffinSortInterface, SortOnPoffins_MainFlavor)
 from make_poffins.poffin.poffin import Poffin
+from make_poffins.poffin.poffin_filter_interface import IPoffinFilterInterface
+from make_poffins.poffin.poffin_sort_interface import (
+    IPoffinSortInterface, SortOnPoffins_MainFlavor)
 
 
 # pylint: disable=too-few-public-methods

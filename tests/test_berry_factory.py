@@ -5,7 +5,7 @@ from make_poffins.berry.berry_factory import BerryFactory
 def test_berry_list(bf: BerryFactory):
     value = len(bf.berries)
     assert len(berry_library.tiny_list) == value, "Should be True"
-    assert bf.berries[0].name == "aguave"
+    assert bf.berries[0].name == "petaya"
 
 
 def test_berry_filtered_list(bf: BerryFactory):

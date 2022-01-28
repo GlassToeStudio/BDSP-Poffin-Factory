@@ -2,13 +2,14 @@ import pickle
 
 from make_poffins.berry import berry_library
 from make_poffins.constants import FLAVORS
+from make_poffins.contest_stats.contest_stats_factory import \
+    ContestStatsFactory
+from make_poffins.contest_stats.contest_stats_sort_and_filter_system import \
+    ContestStatsSortAndFilterSystem
+from make_poffins.contest_stats.contest_stats_sort_interface import (
+    SortOnContestStats_PoffinsEaten, SortOnContestStats_Rarity)
 from make_poffins.poffin.poffin_factory import PoffinFactory
 from make_poffins.poffin.poffin_library import poffin_library
-from make_poffins.stats.contest_stats_factory import ContestStatsFactory
-from make_poffins.stats.contest_stats_sort_and_filter_system import \
-    ContestStatsSortAndFilterSystem
-from make_poffins.stats.interface_contest_stats_sort import (
-    SortOnContestStats_PoffinsEaten, SortOnContestStats_Rarity)
 
 
 def test_pickle_berry():

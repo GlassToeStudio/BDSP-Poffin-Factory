@@ -3,10 +3,10 @@ from functools import cache
 
 from make_poffins.constants import (TOTAL_POFFINS, calculate_time, chunks,
                                     stat_counter)
-from make_poffins.poffin.poffin import Poffin
-from make_poffins.stats.contest_stats import ContestStats
-from make_poffins.stats.contest_stats_sort_and_filter_system import \
+from make_poffins.contest_stats.contest_stats import ContestStats
+from make_poffins.contest_stats.contest_stats_sort_and_filter_system import \
     ContestStatsSortAndFilterSystem
+from make_poffins.poffin.poffin import Poffin
 
 
 class ContestStatsFactory():

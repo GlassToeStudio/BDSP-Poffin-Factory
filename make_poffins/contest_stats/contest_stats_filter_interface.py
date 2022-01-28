@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-from make_poffins.stats.contest_stats import ContestStats
+from make_poffins.contest_stats.contest_stats import ContestStats
 
 
 class IContestStatsFilterInterface(metaclass=ABCMeta):

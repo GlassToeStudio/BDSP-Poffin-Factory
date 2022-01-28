@@ -1,33 +1,34 @@
 import time
 
 from make_poffins.berry.berry_factory import BerryFactory
-from make_poffins.berry.berry_sort_and_filter_system import \
-    BerrySortAndFilterSystem
-from make_poffins.berry.interface_berry_filter import (
+from make_poffins.berry.berry_filter_interface import (
     FilterBerriesBy_Smoothness_LessThan, FilterBerriessBy_Rarity_GreaterThan,
     FilterBerriessBy_Rarity_LessThan)
-from make_poffins.berry.interface_berry_sort import (
+from make_poffins.berry.berry_sort_and_filter_system import \
+    BerrySortAndFilterSystem
+from make_poffins.berry.berry_sort_interface import (
     SortOnBerry__Weakened_Main_Flavor_Value, SortOnBerry_Main_Flavor_Value,
     SortOnBerry_Name, SortOnBerry_Rarity)
 from make_poffins.constants import calculate_time
-from make_poffins.poffin.interface_poffin_filter import (
-    FilterPoffinsBy_AnyFlavorValueLessThan, FilterPoffinsBy_Level_LessThan,
-    FilterPoffinsBy_MaxNSimilar, FilterPoffinsBy_NumberOfFlavors_LessThan)
-from make_poffins.poffin.interface_poffin_sort import (
-    SortOnPoffins_Level, SortOnPoffins_LevelToSmoothnessRatioSum)
+from make_poffins.contest_stats.contest_stats_factory import \
+    ContestStatsFactory
+from make_poffins.contest_stats.contest_stats_filter_interface import (
+    FilterContestStatsBy_Poffins_Eaten_GT, FilterContestStatsBy_Rank_GT)
+from make_poffins.contest_stats.contest_stats_sort_and_filter_system import \
+    ContestStatsSortAndFilterSystem
+from make_poffins.contest_stats.contest_stats_sort_interface import (
+    SortOnContestStats_NumUniqueBerries, SortOnContestStats_PoffinsEaten,
+    SortOnContestStats_Rarity)
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
+from make_poffins.poffin.poffin_filter_interface import (
+    FilterPoffinsBy_AnyFlavorValueLessThan, FilterPoffinsBy_Level_LessThan,
+    FilterPoffinsBy_MaxNSimilar, FilterPoffinsBy_NumberOfFlavors_LessThan)
 from make_poffins.poffin.poffin_library import poffin_library
 from make_poffins.poffin.poffin_sort_and_filter_system import \
     PoffinSortAndFilterSystem
-from make_poffins.stats.contest_stats_factory import ContestStatsFactory
-from make_poffins.stats.contest_stats_sort_and_filter_system import \
-    ContestStatsSortAndFilterSystem
-from make_poffins.stats.interface_contest_stats_filter import (
-    FilterContestStatsBy_Poffins_Eaten_GT, FilterContestStatsBy_Rank_GT)
-from make_poffins.stats.interface_contest_stats_sort import (
-    SortOnContestStats_NumUniqueBerries, SortOnContestStats_PoffinsEaten,
-    SortOnContestStats_Rarity)
+from make_poffins.poffin.poffin_sort_interface import (
+    SortOnPoffins_Level, SortOnPoffins_LevelToSmoothnessRatioSum)
 
 
 @calculate_time

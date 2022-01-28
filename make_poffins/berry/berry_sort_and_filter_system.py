@@ -3,9 +3,9 @@ from operator import attrgetter
 
 from make_poffins.berry import berry_library
 from make_poffins.berry.berry import Berry
-from make_poffins.berry.interface_berry_filter import (
+from make_poffins.berry.berry_filter_interface import (
     FilterBerriessBy_Rarity_LessThan, IBerryFilterInterface)
-from make_poffins.berry.interface_berry_sort import (IBerrySortInterface,
+from make_poffins.berry.berry_sort_interface import (IBerrySortInterface,
                                                      SortOnBerry_Name,
                                                      SortOnBerry_Rarity)
 

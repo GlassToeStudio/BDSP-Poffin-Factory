@@ -1,11 +1,11 @@
 import pytest
 from make_poffins.berry import berry_library
 from make_poffins.berry.berry_factory import BerryFactory
+from make_poffins.berry.berry_filter_interface import \
+    FilterBerriesBy_Smoothness_LessThan
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
-from make_poffins.berry.interface_berry_filter import \
-    FilterBerriesBy_Smoothness_LessThan
-from make_poffins.berry.interface_berry_sort import (SortOnBerry_Main_Flavor,
+from make_poffins.berry.berry_sort_interface import (SortOnBerry_Main_Flavor,
                                                      SortOnBerry_Name,
                                                      SortOnBerry_Rarity)
 

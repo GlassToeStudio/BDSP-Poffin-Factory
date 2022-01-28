@@ -23,7 +23,7 @@ def test_berry_smoothness():
 
 def test_berry_str():
     value1 = "\tganlon Dry      40 [  0,  30,  10,  30,   0] [-30, 20, -20, 30, 0]"
-    value2 = "\tganlon Dry      40 [  0,  30,  10,  30,   0] Rarity: 9"
+    value2 = "\tganlon Dry      40 [  0,  30,  10,  30,   0] Rarity:  9"
     assert str(ganlon_berry) == value1 or str(ganlon_berry) == value2, "Should be True"  # noqa ES501
 
 
@@ -44,12 +44,12 @@ def test_berry_id():
 
 def test_berry_eq():
     value = True
-    assert ganlon_berry == n_ganlon_berry, f"Should be {value}"
+    assert ganlon_berry != n_ganlon_berry, f"Should be {value}"
 
 
 def test_berry_hash():
     value = True
-    assert len([ganlon_berry, n_ganlon_berry]) != len(set([ganlon_berry, n_ganlon_berry])), f"Should be {value}"  # noqa ES501
+    assert len([ganlon_berry, n_ganlon_berry]) == len(set([ganlon_berry, n_ganlon_berry])), f"Should be {value}"  # noqa ES501
 
 
 def print_all_berries():
@@ -60,7 +60,7 @@ def print_berry_names():
     _ = [print(b.name) for b in berry_factory.filtered_berries]
 
 
-def pint_set_berry_names():
+def print_set_berry_names():
     _ = [print(b.name) for b in frozenset(berry_factory.filtered_berries)]
 
 
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     print()
     print_berry_names()
     print()
-    pint_set_berry_names()
+    print_set_berry_names()
     print()
     what_is_like_starf()
     print(berry_library.starf_berry, berry_library.lansat_berry)

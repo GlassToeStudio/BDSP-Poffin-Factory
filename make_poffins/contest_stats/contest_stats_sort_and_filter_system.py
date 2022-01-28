@@ -1,9 +1,9 @@
 from operator import attrgetter
 
-from make_poffins.stats.contest_stats import ContestStats
-from make_poffins.stats.interface_contest_stats_filter import \
+from make_poffins.contest_stats.contest_stats import ContestStats
+from make_poffins.contest_stats.contest_stats_filter_interface import \
     IContestStatsFilterInterface
-from make_poffins.stats.interface_contest_stats_sort import \
+from make_poffins.contest_stats.contest_stats_sort_interface import \
     IContestStatsSortInterface
 
 # pylint: disable=too-few-public-methods
