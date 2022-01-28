@@ -30,7 +30,7 @@ class IBerryFilter(metaclass=ABCMeta):
         return f"{self.__class__.__name__} with a value of {self._value}"
 
 
-class FilterBerriesBy_AnyFlavorValue_LessThan(IBerryFilter):
+class RemoveBerriesWith_AnyFlavorValue_LessThan(IBerryFilter):
     """Filter out any berries any flavor value  < the passed in value.
 
     Args:
@@ -58,7 +58,7 @@ class FilterBerriesBy_AnyFlavorValue_LessThan(IBerryFilter):
         return berries
 
 
-class FilterBerriesBy_AnyFlavorValue_GreaterThan(IBerryFilter):
+class RemoveBerriesWith_AnyFlavorValue_GreaterThan(IBerryFilter):
     """Filter out any berries any flavor value > the passed in value.
 
     Args:
@@ -86,7 +86,7 @@ class FilterBerriesBy_AnyFlavorValue_GreaterThan(IBerryFilter):
         return berries
 
 
-class FilterBerriesBy_Smoothness_LessThan(IBerryFilter):
+class RemoveBerriesWith_Smoothness_LessThan(IBerryFilter):
     """Filter out any berries with a smoothnes less than the given value
 
     Notes:
@@ -104,7 +104,7 @@ class FilterBerriesBy_Smoothness_LessThan(IBerryFilter):
         return [b for b in berries if b.smoothness >= self._value]
 
 
-class FilterBerriessBy_Smoothness_GreaterThan(IBerryFilter):
+class RemoveBerriesWith_Smoothness_GreaterThan(IBerryFilter):
     """Filter out any berries with a smoothnes greater than the given value
 
     Notes:
@@ -122,7 +122,7 @@ class FilterBerriessBy_Smoothness_GreaterThan(IBerryFilter):
         return [b for b in berries if b.smoothness <= self._value]
 
 
-class FilterBerriesBy_MainFlavorValue_LessThan(IBerryFilter):
+class RemoveBerriesWith_MainFlavorValue_LessThan(IBerryFilter):
     """Filter out any berries < the passed in value.
 
     Args:
@@ -136,7 +136,7 @@ class FilterBerriesBy_MainFlavorValue_LessThan(IBerryFilter):
         return [b for b in berries if b.main_flavor_value >= self._value]
 
 
-class FilterBerriesBy_MainFlavorValue_GreaterThan(IBerryFilter):
+class RemoveBerriesWith_MainFlavorValue_GreaterThan(IBerryFilter):
     """Filter out any berries > the passed in value.
 
     Args:
@@ -150,7 +150,7 @@ class FilterBerriesBy_MainFlavorValue_GreaterThan(IBerryFilter):
         return [b for b in berries if b.main_flavor_value <= self._value]
 
 
-class FilterBerriesBy_MainFlavorName(IBerryFilter):
+class RemoveBerriesWith_MainFlavorName(IBerryFilter):
     """Filter out any berries that is not of the given flavor.
 
     Args:
@@ -164,7 +164,7 @@ class FilterBerriesBy_MainFlavorName(IBerryFilter):
         return [b for b in berries if b.main_flavor.lower() == self._value.lower()]
 
 
-class FilterBerryiesBy_NumberOfFlavors_LessThan(IBerryFilter):
+class RemoveBerriesWith_NumberOfFlavors_LessThan(IBerryFilter):
     """Filter out any berries with total number of flavors  < the passed in value.
 
     Args:
@@ -178,7 +178,7 @@ class FilterBerryiesBy_NumberOfFlavors_LessThan(IBerryFilter):
         return [b for b in berries if b.num_flavors >= self._value]
 
 
-class FilterBerryiesBy_NumberOfFlavors_GreaterThan(IBerryFilter):
+class RemoveBerriesWith_NumberOfFlavors_GreaterThan(IBerryFilter):
     """Filter out any berries with total number of flavors > the passed in value.
 
     Args:
@@ -192,7 +192,7 @@ class FilterBerryiesBy_NumberOfFlavors_GreaterThan(IBerryFilter):
         return [b for b in berries if b.num_flavors <= self._value]
 
 
-class FilterBerriessBy_Rarity_LessThan(IBerryFilter):
+class RemoveBerriesWith_Rarity_LessThan(IBerryFilter):
     """Filter out any berries with a rarity less than the given value
 
     Notes:
@@ -218,7 +218,7 @@ class FilterBerriessBy_Rarity_LessThan(IBerryFilter):
         return [b for b in berries if b.rarity >= self._value]
 
 
-class FilterBerriessBy_Rarity_GreaterThan(IBerryFilter):
+class RemoveBerriesWith_Rarity_GreaterThan(IBerryFilter):
     """Filter out any berries with a rarity greater than the given value
 
     Notes:
@@ -244,7 +244,7 @@ class FilterBerriessBy_Rarity_GreaterThan(IBerryFilter):
         return [b for b in berries if b.rarity <= self._value]
 
 
-class FilterBerriesBy_WeakenedMainFlavorValue_LessThan(IBerryFilter):
+class RemoveBerriesWith_WeakenedMainFlavorValue_LessThan(IBerryFilter):
     """Filter out any berries < the passed in value.
 
     Args:
@@ -258,7 +258,7 @@ class FilterBerriesBy_WeakenedMainFlavorValue_LessThan(IBerryFilter):
         return [b for b in berries if b._weakened_main_flavor_value >= self._value]
 
 
-class FilterBerriesBy_WeakenedMainFlavorValue_GreaterThan(IBerryFilter):
+class RemoveBerriesWith_WeakenedMainFlavorValue_GreaterThan(IBerryFilter):
     """Filter out any berries > the passed in value.
 
     Args:
@@ -272,7 +272,7 @@ class FilterBerriesBy_WeakenedMainFlavorValue_GreaterThan(IBerryFilter):
         return [b for b in berries if b._weakened_main_flavor_value <= self._value]
 
 
-class FilterBerriesBy_WeakenedMainFlavorName(IBerryFilter):
+class RemoveBerriesWith_WeakenedMainFlavorName(IBerryFilter):
     """Filter out any berries that is not of the given weakened flavor.
 
     Args:
@@ -286,7 +286,7 @@ class FilterBerriesBy_WeakenedMainFlavorName(IBerryFilter):
         return [b for b in berries if b._weakened_main_flavor.lower() == self._value.lower()]
 
 
-class FilterBerriessBy__id__(IBerryFilter):
+class RemoveBerriesWith___id__(IBerryFilter):
     """Filter out any berries whose __id__ does not equal the passed in value.
 
 

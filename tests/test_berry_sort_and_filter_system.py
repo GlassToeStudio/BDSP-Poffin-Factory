@@ -1,9 +1,9 @@
 from make_poffins.berry import berry_library
 from make_poffins.berry.berry_factory import BerryFactory
 from make_poffins.berry.berry_filter_interface import (
-    FilterBerriesBy_AnyFlavorValue_LessThan,
-    FilterBerriesBy_Smoothness_LessThan, FilterBerriessBy_Rarity_GreaterThan,
-    FilterBerriessBy_Rarity_LessThan)
+    RemoveBerriesWith_AnyFlavorValue_LessThan,
+    RemoveBerriesWith_Rarity_GreaterThan, RemoveBerriesWith_Rarity_LessThan,
+    RemoveBerriesWith_Smoothness_LessThan)
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
 from make_poffins.berry.berry_sort_interface import (
@@ -52,8 +52,8 @@ def test_SortOnBerry_MainFlavorToSmoothnessRatio():
 
 def test_FilterBerriesBy_AnyFlavorValue_LessThan():
     berry_sorters = [
-        FilterBerriessBy_Rarity_LessThan(5),
-        FilterBerriessBy_Rarity_GreaterThan(9)
+        RemoveBerriesWith_Rarity_LessThan(5),
+        RemoveBerriesWith_Rarity_GreaterThan(9)
     ]
     berry_sorter = BerrySortAndFilterSystem(berry_sorters)
     berries = berry_sorter.get_filtered_and_sorted_berries(berry_library.every_berry)
@@ -64,7 +64,7 @@ def test_FilterBerriesBy_AnyFlavorValue_LessThan():
 
 if __name__ == "__main__":
     berries = berry_library.every_berry
-    x = FilterBerriessBy_Rarity_LessThan(4)
+    x = RemoveBerriesWith_Rarity_LessThan(4)
     berries = x.execute(berries)
     berry_sorters = [
         SortOnBerry_Rarity(),

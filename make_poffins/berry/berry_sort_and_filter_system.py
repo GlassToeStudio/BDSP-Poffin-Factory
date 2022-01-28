@@ -4,7 +4,7 @@ from operator import attrgetter
 from make_poffins.berry import berry_library
 from make_poffins.berry.berry import Berry
 from make_poffins.berry.berry_filter_interface import (
-    FilterBerriessBy_Rarity_LessThan, IBerryFilter)
+    IBerryFilter, RemoveBerriesWith_Rarity_LessThan)
 from make_poffins.berry.berry_sort_interface import (IBerrySorter,
                                                      SortOnBerry_Name,
                                                      SortOnBerry_Rarity)
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     sorters = [
         SortOnBerry_Rarity(),
         SortOnBerry_Name(),
-        FilterBerriessBy_Rarity_LessThan(4),
+        RemoveBerriesWith_Rarity_LessThan(4),
     ]
     bsf = BerrySortAndFilterSystem(sorters)
     berries = bsf.get_filtered_and_sorted_berries(berry_library.every_berry)

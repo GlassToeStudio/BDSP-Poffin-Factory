@@ -2,8 +2,8 @@ import time
 
 from make_poffins.berry.berry_factory import BerryFactory
 from make_poffins.berry.berry_filter_interface import (
-    FilterBerriesBy_Smoothness_LessThan, FilterBerriessBy_Rarity_GreaterThan,
-    FilterBerriessBy_Rarity_LessThan)
+    RemoveBerriesWith_Rarity_GreaterThan, RemoveBerriesWith_Rarity_LessThan,
+    RemoveBerriesWith_Smoothness_LessThan)
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
 from make_poffins.berry.berry_sort_interface import (
@@ -37,7 +37,7 @@ def main():
     berry_filters_sorters = [
         SortOnBerry_Rarity(),
         SortOnBerry_Name(),
-        FilterBerriessBy_Rarity_LessThan(1)
+        RemoveBerriesWith_Rarity_LessThan(1)
     ]
     berry_filtering_sorting_system = BerrySortAndFilterSystem(berry_filters_sorters)
     berry_factory = BerryFactory(berry_filtering_sorting_system)

@@ -2,9 +2,9 @@ import pytest
 from make_poffins.berry import berry_library
 from make_poffins.berry.berry_factory import BerryFactory
 from make_poffins.berry.berry_filter_interface import (
-    FilterBerriesBy_AnyFlavorValue_LessThan,
-    FilterBerriesBy_Smoothness_LessThan, FilterBerriessBy_Rarity_GreaterThan,
-    FilterBerriessBy_Rarity_LessThan)
+    RemoveBerriesWith_AnyFlavorValue_LessThan,
+    RemoveBerriesWith_Rarity_GreaterThan, RemoveBerriesWith_Rarity_LessThan,
+    RemoveBerriesWith_Smoothness_LessThan)
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
 from make_poffins.berry.berry_sort_interface import (
