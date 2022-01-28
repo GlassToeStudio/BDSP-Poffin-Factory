@@ -64,7 +64,7 @@ class PoffinFactory():
     def _generate_poffin_list_parallel(self) -> list[Poffin]:  # noqa ES501
         processed_list = mp.Manager().list()
         processes = []
-        chunk_size = int(self.num_berries//(mp.cpu_count()))
+        chunk_size = int(self.num_berries//100)
         for i, berry_chunk in enumerate(chunks(self._berry_combinations, chunk_size)):
             if i % chunk_size == 0:
                 p = mp.Process(target=self._parallel_task, args=(berry_chunk, processed_list))
