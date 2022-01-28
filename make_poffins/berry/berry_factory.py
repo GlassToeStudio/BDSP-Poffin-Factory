@@ -5,7 +5,7 @@ from make_poffins.berry import berry_library
 from make_poffins.berry.berry import Berry
 from make_poffins.berry.berry_sort_and_filter_system import \
     BerrySortAndFilterSystem
-from make_poffins.constants import calculate_time
+from make_poffins.constants import TOTAL_BERRIES, calculate_time
 
 
 class BerryFactory:
@@ -104,17 +104,16 @@ class BerryFactory:
         Returns:
             tuple[Berry, ...]: Every combination of n berries
         """
-        print(f"Calling Combinations N, there are {'0' if berries is None  else len(berries)} berries")
+
+        global TOTAL_BERRIES
 
         if berries is None:
-            print("There are no Berries Here")
-
             berries = self.filtered_berries
         print(f"Combinating {len(berries)} Filtered Berries")
 
         c = math.factorial(len(berries)) / (math.factorial(n) * math.factorial(len(berries) - n))
+        TOTAL_BERRIES[0] = c
         print(f"There are {c} combinations! Wow")
-        print(len(list(combinations(berries, n))))
         return combinations(berries, n)
 
     def get_berry_combinations_2(self, berries: list[Berry] = None) -> tuple[Berry, Berry]:
@@ -127,7 +126,6 @@ class BerryFactory:
         Returns:
             tuple[Berry, Berry]: Every combination of 2 berries
         """
-        print(f"Calling Combinations 2, there are {'0' if berries is None  else len(berries)} berries")
         return self._get_berry_combinatiions_n(2, berries)
 
     def get_berry_combinations_3(self, berries: list[Berry] = None) -> tuple[Berry, Berry, Berry]:  # noqa ES501
@@ -140,7 +138,6 @@ class BerryFactory:
         Returns:
             tuple[Berry, Berry, Berry]: Every combination of 3 berries
         """
-        print(f"Calling Combinations 3, there are {'0' if berries is None  else len(berries)} berries")
         return self._get_berry_combinatiions_n(3, berries)
 
     def get_berry_combinations_4(self, berries: list[Berry] = None) -> tuple[Berry, Berry, Berry, Berry]:  # noqa ES501
@@ -153,7 +150,6 @@ class BerryFactory:
         Returns:
             tuple[Berry, Berry, Berry, Berry]: Every combination of 4 berries
         """
-        print(f"Calling Combinations 4, there are {'0' if berries is None  else len(berries)} berries")
         return self._get_berry_combinatiions_n(4, berries)
 
 
