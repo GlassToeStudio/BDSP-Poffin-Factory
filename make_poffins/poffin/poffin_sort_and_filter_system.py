@@ -65,7 +65,8 @@ class PoffinSortAndFilterSystem:
         if self._sort_filters:
             for sort_filter in self._sort_filters:
                 if not poffins:
-                    return None
+                    print("Fresh out of poffins!")
+                    return
                 poffins = sort_filter.execute(poffins)
             return poffins
 
