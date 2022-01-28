@@ -39,7 +39,6 @@ class ContestStatsFactory():
 
         if not self._filtered_contest_stats:
             self._filtered_contest_stats = self._generate_contest_stats_parallel()
-            #self._contest_stats = self._generate_contest_stats_serial()
 
         return self._filtered_contest_stats
 
@@ -56,7 +55,7 @@ class ContestStatsFactory():
 
         if not self._filtered_sorted_contest_stats:
             self._filtered_sorted_contest_stats = self._stats_filter_system.get_filtered_and_sorted_contest_stats(self.filtered_contest_stats)
-        print(f"Returning {None if not self._filtered_sorted_contest_stats else len(self._filtered_sorted_contest_stats)} sorted Contest Stats")
+        print(f"Returning {0 if not self._filtered_sorted_contest_stats else len(self._filtered_sorted_contest_stats)} sorted Contest Stats")
         return self._filtered_sorted_contest_stats
 
     @calculate_time
