@@ -1,3 +1,4 @@
+import random
 from itertools import chain, islice
 from sys import stdout
 from timeit import default_timer as timer
@@ -11,12 +12,27 @@ italic = ITALIC
 n_bold = N_BOLD
 n_italic = N_ITALIC
 
+
+def get_emoji(flavor: str = "Other"):
+    r = random.randrange(0, len(EMOJI[flavor]))
+    return EMOJI[flavor][r]
+
+
+EMOJI = {
+    "Spicy": [' 🌶️ '],      # '🍊', '🥭'],
+    "Dry": [' 🍇 '],        # '🍆'],
+    "Sweet": [' 🍑 '],      # '🍍'],
+    "Bitter": [' 🍐 '],       # '🥬', '🥒', '🍏', '🍈', '🥝', '🥑'],
+    "Sour": [' 🍋 '],       # '🌽', '🍌'],
+    "Other": ['🥔', '❔', '🍛', '🥚', '🥕', '🍉', '🍓', '🍒', '🍅', '🍎']
+}
+
 # Weakened by:
 # Spicy |  Sour  |  Bitter | Sweet  | Dry\n
 # Dry   |  Spicy |  Sour   | Bitter | Sweet
 FLAVORS = ["Spicy", "Dry", "Sweet", "Bitter", "Sour"]
 """List of all 5 flavors in order of preference - Spicy, Dry, Sweet, Bitter, Sour"""  # noqa ES501
-FLAVOR_COLORS = {"Spicy": color_256(208), "Dry": color_256(39), "Sweet": color_256(163), "Bitter": color_256(40), "Sour": color_256(226)}  # noqa ES501
+FLAVOR_COLORS = {"Spicy": color_256(208), "Dry": color_256(39), "Sweet": color_256(212), "Bitter": color_256(40), "Sour": color_256(226)}  # noqa ES501
 """Dictionary of ascii color codes for each of the 5 flavors: {"Flavor" : Color}"""  # noqa ES501
 FLAVOR_PREFERENCE = {"Spicy": 5, "Dry": 4, "Sweet": 3, "Bitter": 2, "Sour": 1}
 """Lookup table to find a given flavor's (Spicy, Dry, Sweet, Bitter, Sour) preference"""  # noqa ES501
