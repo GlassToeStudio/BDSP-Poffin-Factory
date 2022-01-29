@@ -281,4 +281,5 @@ Poffin:
 if __name__ == "__main__":
     every_berry = bsf._SortOnBerry_Attrs([("name", False)]).execute(every_berry)
     for b in every_berry:
-        print(b.printSoICanMakeAList())
+        print(b)
+        print(repr(b))
