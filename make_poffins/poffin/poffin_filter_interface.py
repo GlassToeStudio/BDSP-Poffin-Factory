@@ -129,7 +129,7 @@ class FilterPoffinsBy_NumberOfFlavors_GreaterThan(IPoffinFilterInterface):
         return [p for p in poffins if p.num_flavors <= self._value]
 
 
-class FilterPoffinsBy_Name(IPoffinFilterInterface):
+class FilterPoffinsBy_Name_Equal(IPoffinFilterInterface):
     """Filter out any poffins that do not have the same name as the passed in value.
 
     Args:
@@ -148,7 +148,29 @@ class FilterPoffinsBy_Name(IPoffinFilterInterface):
 
     def execute(self, poffins: list[Poffin]) -> list[Poffin]:
         assert self._value in ["foul poffin", "mild poffin", "rich poffin", "overripe poffin", "super mild poffin"]
-        return super().execute(poffins)
+        return [p for p in poffins if p.name != self._value]
+
+
+class FilterPoffinsBy_Name_NotEqual(IPoffinFilterInterface):
+    """Filter out any poffins that do not have the same name as the passed in value.
+
+    Args:
+        name (str): The name of the poffins to keep.
+
+    Notes:\n
+            * "mild poffin"\n
+            * "rich poffin"\n
+            * "overripe poffin"\n
+            * "super mild poffin"\n
+            * "foul poffin" - Typically arent generated.\n
+
+    Returns:
+        list[Poffin]: Lisf of poffins with the same name as the passed in value.
+    """
+
+    def execute(self, poffins: list[Poffin]) -> list[Poffin]:
+        assert self._value in ["foul poffin", "mild poffin", "rich poffin", "overripe poffin", "super mild poffin"]
+        return [p for p in poffins if p.name == self._value]
 
 
 class FilterPoffinsBy_Rarity_LessThan(IPoffinFilterInterface):
