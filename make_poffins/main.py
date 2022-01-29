@@ -35,10 +35,10 @@ from make_poffins.poffin.poffin_sort_interface import (
 def main():
     # Berries
     berry_filters_sorters = [
+        RemoveBerriesWith_Rarity_GreaterThan(15),
+        RemoveBerriesWith_Rarity_LessThan(1),
         SortBerriesBy_Rarity(),
-        SortBerriesBy_Name(),
-        RemoveBerriesWith_Rarity_LessThan(3),
-        RemoveBerriesWith_Rarity_GreaterThan(11)
+        SortBerriesBy_Name()
     ]
     berry_filtering_sorting_system = BerrySortAndFilterSystem(berry_filters_sorters)
     berry_factory = BerryFactory(berry_filtering_sorting_system)
@@ -46,7 +46,7 @@ def main():
 
     # Poffins
     poffin_filters_sorters = [
-        FilterPoffinsBy_Level_LessThan(100),
+        FilterPoffinsBy_Level_LessThan(115),
         FilterPoffinsBy_NumberOfFlavors_LessThan(3),
         FilterPoffinsBy_MaxNSimilar(4),
         FilterPoffinsBy_AnyFlavorValueLessThan(20),
