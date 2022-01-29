@@ -136,7 +136,7 @@ def stat_counter(stat_count: int, out_of: int, split, per_iteration: int = 100):
 
         bar = f"{'▓'*value}"
         print(f"{start_up(1)} * {BOLD}Checked {outline}{stat_count:>9}{RESET}{BOLD} stats so far out of {outline}{out_of:.0f}{RESET}"
-              f" - {col}│{bar:<20}│{BOLD}{100*(stat_count/out_of)/split:6.2f}{RESET}%")
+              f" - {col}│{bar:<20}│{BOLD}{min(100,100*(stat_count/out_of)/split):6.2f}{RESET}%")
     return stat_count + 1
 
 
