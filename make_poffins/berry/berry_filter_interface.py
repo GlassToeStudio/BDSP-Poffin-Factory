@@ -240,7 +240,7 @@ class RemoveBerriesWith_Rarity_GreaterThan(IBerryFilter):
     """
 
     def execute(self, berries: list[Berry]) -> list[Berry]:
-        assert 1 <= self._value < 15
+        assert 1 < self._value <= 15
         return [b for b in berries if b.rarity <= self._value]
 
 
