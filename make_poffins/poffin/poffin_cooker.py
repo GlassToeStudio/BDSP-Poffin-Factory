@@ -53,9 +53,8 @@ class PoffinCooker:
         """Reduce each value by the number of spills and the number of burns.
 
         """
-        # TODO: I set the max value to 115 since I think thats all you can get in game.
+        # NOTE: I set the max value to 115 since I think thats all you can get in game.
         return [min(poffin_values[i] - (self.spills + self.burns), 115) for i in range(5)]  # noqa ES501
-        #return [min(poffin_values[i] - (self.spills + self.burns), 115) for i in range(5)]  # noqa ES501
 
     @classmethod
     def __set_negatives_to_zero__(cls, poffin_values: list[int]) -> list[int]:
