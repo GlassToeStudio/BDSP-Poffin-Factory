@@ -1,6 +1,6 @@
 from make_poffins.constants import (BOLD, FLAVOR_COLORS, FLAVORS, ITALIC,
                                     N_BOLD, N_ITALIC, RARITY_TABLE, RESET,
-                                    SMOOTHNESS_TABLE, color_256,
+                                    SMOOTHNESS_TABLE, color_256, get_emoji,
                                     subtract_weakening_flavors)
 
 
@@ -22,7 +22,7 @@ class Berry:
     https://progameguides.com/pokemon/complete-poffin-recipe-guide-for-pokemon-brilliant-diamond-and-shining-pearl/
     """
 
-    def __init__(self, name: str, values: list[int], emoji: str = "🥭"):
+    def __init__(self, name: str, values: list[int], emoji: str = None):
         """A berry with which poffins are made.
 
         Arguments:
@@ -63,8 +63,12 @@ class Berry:
         """The main flavor of this berry: Spicy, Dry, Sweet, Bitter, or Sour"""
         self.__id__ = int(''.join(map(str, self.flavor_values)))
         """The 'unique' id of this berry"""
-        self.emoji = emoji
         self.main_flavor_to_smoothness_ratio = self.main_flavor_value / self.smoothness
+        """Smoothness / ratio; for sorting"""
+        if not emoji:
+            self.emoji = self._get_emoji()
+        else:
+            self.emoji = emoji
 
     def _get_smoothness(self) -> int:
         """Get the smoothness value for this berry from the SMOOTHNESS_TABLE"""
@@ -87,6 +91,9 @@ class Berry:
     def _get_weakened_flavor_values(self) -> list[int]:
         """Get list of 5 values weakened just for filtering/sorting"""
         return subtract_weakening_flavors(self.flavor_values)  # noqa ES501
+
+    def _get_emoji(self):
+        return get_emoji(self.main_flavor)
 
     def print_with_weakened_values(self):
         """ganlon Dry      40 [  0,  30,  10,  30,   0]"""
@@ -114,7 +121,7 @@ class Berry:
         printable_flavor_values = f"{printable_flavor_values[:-2]}]"
         formated_flavor = f"({ITALIC}{self.main_flavor}{N_ITALIC})"
 
-        return (f"     {self.emoji:>2}{BOLD}{FLAVOR_COLORS[self.main_flavor]}{self.name:<7}{N_BOLD}"  # noqa ES501
+        return (f"    {self.emoji:>2}{BOLD}{FLAVOR_COLORS[self.main_flavor]}{self.name:<7}{N_BOLD}"  # noqa ES501
                 f"{str(formated_flavor):<17}"
                 f"{color_256(255)}{self.smoothness:>3}{RESET}"
                 f" - {color_256(239)}Flavors{RESET} {printable_flavor_values} Rarity:{self.rarity:>3}")
@@ -126,7 +133,7 @@ class Berry:
             printable_flavor_values = (f"{printable_flavor_values}"
                                        f"{self.flavor_values[i]:>3}, ")  # noqa ES501
         printable_flavor_values = f"{printable_flavor_values[:-2]}]"
-        return f"     {self.emoji:<2}{self.name:<7}{self.main_flavor:<8}{self.smoothness:>3} {printable_flavor_values} Rarity:{self.rarity:>3} {self.emoji}"  # noqa ES501
+        return f"\t{self.name:<7}{self.main_flavor:<8}{self.smoothness:>3} {printable_flavor_values} Rarity:{self.rarity:>3}"  # noqa ES501
 
     def __hash__(self):
         return self.__id__
