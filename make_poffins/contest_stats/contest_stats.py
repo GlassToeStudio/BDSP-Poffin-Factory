@@ -148,6 +148,7 @@ class ContestStats:
 
     @classmethod
     def _add_value(cls, current_value, additional_value):
+        # NOTE: Interneal max 115 for additonal value - Controlled in poffin cooker
         return min(255, current_value + additional_value)
 
     def __repr__(self) -> str:
