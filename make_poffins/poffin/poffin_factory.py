@@ -5,7 +5,7 @@ from itertools import combinations, permutations, starmap
 
 from make_poffins.berry.berry import Berry
 from make_poffins.constants import (TOTAL_BERRIES, TOTAL_POFFINS,
-                                    calculate_time, chunks, start_up)
+                                    calculate_time, start_up)
 from make_poffins.poffin.poffin import Poffin
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_sort_and_filter_system import \
@@ -34,7 +34,7 @@ class PoffinFactory():
         """
         if not self._poffins:
             # self._poffins = self._generate_poffin_list_serial()
-            self._poffins = self._generate_poffin_list_map()  # NOTE: This is the same as serial...
+            self._poffins = self._generate_poffin_list_map()
         print(f"Returning {None if not self._poffins else len(self._poffins)} Cooked Poffins")
         return self._poffins
 
