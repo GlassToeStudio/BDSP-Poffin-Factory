@@ -144,6 +144,19 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 .vscode/settings.json
+
+
+
+################################################################################################
+################################################################################################
+
 results/
 results/*
+
+
+# Few of these for housekeeping, kill switch, etc
 *.bat
+
+# found on internet, might include later
+berries-info.json
+make_poffins/berry/berries/
