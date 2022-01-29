@@ -1,5 +1,4 @@
 import multiprocessing as mp
-from functools import cache
 
 from make_poffins.constants import (TOTAL_POFFINS, calculate_time, chunks,
                                     stat_counter)
@@ -59,28 +58,12 @@ class ContestStatsFactory():
         return self._filtered_sorted_contest_stats
 
     @calculate_time
-    def _generate_contest_stats_serial(self) -> list[ContestStats]:
-
-        for poffin_combo in self._poffin_combos:
-            current_stat = ContestStats(poffin_combo)
-            #self.running_count = stat_counter(self.running_count, self.num_poffins, 1, 5000)
-            if self._passes_all_filters(current_stat):
-                self._filtered_contest_stats.append(current_stat)
-
-            if len(self._filtered_contest_stats) >= 10E6 or self.running_count >= 10E6:  # NOTE: Maybe not hard code this 🤔
-                #self.running_count = stat_counter(self.running_count, self.num_poffins, 1, 1)
-                return self._filtered_contest_stats
-
-        #self.running_count += stat_counter(self.running_count, self.num_poffins, 1, 1)
-        return self._filtered_contest_stats
-
-    @calculate_time
     def _generate_contest_stats_parallel(self) -> list[ContestStats]:
         processed_list = mp.Manager().list()
         processes = []
-        cores = mp.cpu_count()*2
+        cores = mp.cpu_count()
         chunk_size = int(self.num_poffins//cores)
-        my_index = 0
+        my_index = 1
         for i, poffin_chunk in enumerate(chunks(self._poffin_combos, chunk_size)):
             if i % chunk_size == 0:
                 p = mp.Process(target=self._parallel_task, args=(poffin_chunk, processed_list, cores, my_index))
@@ -90,14 +73,14 @@ class ContestStatsFactory():
 
         for process in processes:
             process.join()
-        self.running_count = stat_counter(self.running_count, self.num_poffins, 1, 1)
+        self.running_count = stat_counter(self.num_poffins, self.num_poffins, 1, 1)
         self._filtered_contest_stats = processed_list
         return self._filtered_contest_stats
 
     def _parallel_task(self, poffin_chunks, shared_list, cores, my_index: int):
         for poffin_combo in poffin_chunks:
             current_stat = ContestStats(poffin_combo)
-            if my_index == 0:
+            if my_index == cores:
                 self.running_count = stat_counter(self.running_count, self.num_poffins, 1, 5000)
                 self.running_count += cores
                 pass
