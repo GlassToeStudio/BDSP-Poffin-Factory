@@ -22,7 +22,7 @@ class Berry:
     https://progameguides.com/pokemon/complete-poffin-recipe-guide-for-pokemon-brilliant-diamond-and-shining-pearl/
     """
 
-    def __init__(self, name: str, values: list[int]):
+    def __init__(self, name: str, values: list[int], emoji: str = "🥭"):
         """A berry with which poffins are made.
 
         Arguments:
@@ -63,7 +63,7 @@ class Berry:
         """The main flavor of this berry: Spicy, Dry, Sweet, Bitter, or Sour"""
         self.__id__ = int(''.join(map(str, self.flavor_values)))
         """The 'unique' id of this berry"""
-
+        self.emoji = emoji
         self.main_flavor_to_smoothness_ratio = self.main_flavor_value / self.smoothness
 
     def _get_smoothness(self) -> int:
@@ -114,7 +114,7 @@ class Berry:
         printable_flavor_values = f"{printable_flavor_values[:-2]}]"
         formated_flavor = f"({ITALIC}{self.main_flavor}{N_ITALIC})"
 
-        return (f"\t{BOLD}{FLAVOR_COLORS[self.main_flavor]}{self.name:<7}{N_BOLD}"  # noqa ES501
+        return (f"     {self.emoji:>2}{BOLD}{FLAVOR_COLORS[self.main_flavor]}{self.name:<7}{N_BOLD}"  # noqa ES501
                 f"{str(formated_flavor):<17}"
                 f"{color_256(255)}{self.smoothness:>3}{RESET}"
                 f" - {color_256(239)}Flavors{RESET} {printable_flavor_values} Rarity:{self.rarity:>3}")
@@ -126,10 +126,19 @@ class Berry:
             printable_flavor_values = (f"{printable_flavor_values}"
                                        f"{self.flavor_values[i]:>3}, ")  # noqa ES501
         printable_flavor_values = f"{printable_flavor_values[:-2]}]"
-        return f"\t{self.name:<7}{self.main_flavor:<8}{self.smoothness:>3} {printable_flavor_values} Rarity:{self.rarity:>3}"  # noqa ES501
+        return f"     {self.emoji:<2}{self.name:<7}{self.main_flavor:<8}{self.smoothness:>3} {printable_flavor_values} Rarity:{self.rarity:>3} {self.emoji}"  # noqa ES501
 
     def __hash__(self):
         return self.__id__
+
+    def printSoICanMakeAList(self):
+        printable_flavor_values = "["
+        for i in range(5):
+            printable_flavor_values = (f"{printable_flavor_values}"
+                                       f"{self.flavor_values[i]:>1}, ")
+        r = (f'{self.name}_berry,')  # = Berry("{self.name.capitalize()}", {printable_flavor_values[:-2]}])\n'
+        # f'"""{self.main_flavor.capitalize()} ({self.smoothness}) -- {printable_flavor_values[:-2]}]"""')
+        return r
 
 
 if __name__ == "__main__":
