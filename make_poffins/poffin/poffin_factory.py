@@ -1,11 +1,11 @@
 import math
 import multiprocessing as mp
-import queue
-from itertools import combinations, permutations
+import threading as mt
+from itertools import combinations, permutations, starmap
 
 from make_poffins.berry.berry import Berry
 from make_poffins.constants import (TOTAL_BERRIES, TOTAL_POFFINS,
-                                    calculate_time, chunks)
+                                    calculate_time, chunks, start_up)
 from make_poffins.poffin.poffin import Poffin
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_sort_and_filter_system import \
@@ -33,9 +33,9 @@ class PoffinFactory():
             list[Poffin]: Unsorted or Filtered Poffin List
         """
         if not self._poffins:
-            self._poffins = self._generate_poffin_list_serial()
-            # self._poffins = self._generate_poffin_list_parallel() TODO: Not using this, its slower.. for some reason and I think there is a bug.
-        print(f"Returning {len(self._poffins)} Cooked Poffins")
+            # self._poffins = self._generate_poffin_list_serial()
+            self._poffins = self._generate_poffin_list_map()  # NOTE: This is the same as serial...
+        print(f"Returning {None if not self._poffins else len(self._poffins)} Cooked Poffins")
         return self._poffins
 
     @property
@@ -47,12 +47,12 @@ class PoffinFactory():
         """
         if not self._filtered_poffin_list:
             self._filtered_poffin_list = self._poffin_filter_system.get_filtered_and_sorted_poffins(self.poffins)
-        print(f"Returning {len(self._filtered_poffin_list)} Filtered Poffins")
+        print(f"Returning {None if not self._filtered_poffin_list else len(self._filtered_poffin_list)} Filtered Poffins")
         return self._filtered_poffin_list
 
     @calculate_time
     def _generate_poffin_list_serial(self) -> list[Poffin]:  # noqa ES501
-        print("Cooking Poffins", self.num_berries, mp.cpu_count())
+        print("Cooking Poffins")
         for recipe in self._berry_combinations:
             p = self._cooker.cook(recipe)
             if p.name == "foul poffin":
@@ -61,28 +61,22 @@ class PoffinFactory():
         return self._poffins
 
     @calculate_time
-    def _generate_poffin_list_parallel(self) -> list[Poffin]:  # noqa ES501
-        processed_list = mp.Manager().list()
-        processes = []
-        chunk_size = int(self.num_berries//100)
-        for i, berry_chunk in enumerate(chunks(self._berry_combinations, chunk_size)):
-            if i % chunk_size == 0:
-                p = mp.Process(target=self._parallel_task, args=(berry_chunk, processed_list))
-                processes.append(p)
-                p.start()
-
-        for p in processes:
-            p.join()
-
-        self._poffins = processed_list
+    def _generate_poffin_list_map(self) -> list[Poffin]:  # noqa ES501
+        pool = mp.Pool()
+        chunk_size = int(TOTAL_BERRIES[0]//mp.cpu_count())
+        print(f"Cooking Poffins map")
+        r = pool.map_async(self._mapped_cook, self._berry_combinations, chunksize=chunk_size)
+        print()
+        while not r.ready():
+            print(f"{start_up(1)} * Complete: {100*((TOTAL_BERRIES[0] - (r._number_left*chunk_size)) / TOTAL_BERRIES[0]):6.2f}%")
+            r.wait(timeout=1)
+        self._poffins = [x for x in r.get() if x is not None]
         return self._poffins
 
-    def _parallel_task(self, berry_chunks, shared_list):
-        for recipe in berry_chunks:
-            p = self._cooker.cook(recipe)
-            if p.name == "foul poffin":
-                continue
-            shared_list.append(p)
+    def _mapped_cook(self, recipe):
+        p = self._cooker.cook(recipe)
+        if p.name != "foul poffin":
+            return p
 
     @calculate_time
     def _get_poffin_permutations_n(self, n: int, poffins: list[Poffin] = None) -> tuple[Poffin, ...]:  # noqa ES501
