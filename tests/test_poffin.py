@@ -48,10 +48,10 @@ def test_poffin_hash():
     assert len([test_poffin1, test_poffin2]) != len(set([test_poffin1, test_poffin2])), f"Should be {value}"  # noqa ES501
 
 
-def print_poffin():
+def main():
     print(repr(test_poffin1))
     print(str(test_poffin1))
 
 
 if __name__ == "__main__":
-    print_poffin()
+    main()
