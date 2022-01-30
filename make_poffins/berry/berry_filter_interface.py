@@ -4,9 +4,7 @@ from make_poffins.berry.berry import Berry
 
 
 class IBerryFilter(metaclass=ABCMeta):
-    """TODO: Rename to: RemoveBerriesWith_
-
-    """
+    """Berry Filter Parent Class - abstract - not to be instanced."""
 
     def __init__(self, value: int | str):
         self._value = value
@@ -286,7 +284,7 @@ class RemoveBerriesWith_WeakenedMainFlavorName(IBerryFilter):
         return [b for b in berries if b._weakened_main_flavor.lower() == self._value.lower()]
 
 
-class RemoveBerriesWith___id__(IBerryFilter):
+class RemoveBerriesWith_id_NotEqual(IBerryFilter):
     """Filter out any berries whose __id__ does not equal the passed in value.
 
 
