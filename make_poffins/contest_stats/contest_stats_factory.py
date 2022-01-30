@@ -62,7 +62,7 @@ class ContestStatsFactory():
         processed_list = mp.Manager().list()
         processes = []
         cores = mp.cpu_count()
-        chunk_size = int(self.num_poffins//cores)
+        chunk_size = max(self.num_poffins, int(self.num_poffins//cores))
         my_index = 1
         for i, poffin_chunk in enumerate(chunks(self._poffin_combos, chunk_size)):
             if i % chunk_size == 0:
