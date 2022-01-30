@@ -7,7 +7,7 @@ from make_poffins.contest_stats.contest_stats_factory import \
 from make_poffins.contest_stats.contest_stats_sort_and_filter_system import \
     ContestStatsSortAndFilterSystem
 from make_poffins.contest_stats.contest_stats_sort_interface import (
-    SortOnContestStats_PoffinsEaten, SortOnContestStats_Rarity)
+    SortContestStatsBy_PoffinsEaten, SortContestStatsBy_Rarity)
 from make_poffins.poffin.poffin_factory import PoffinFactory
 from make_poffins.poffin.poffin_library import poffin_library
 
@@ -27,8 +27,8 @@ def test_pickle_contests_stats():
     poffin_combos = PoffinFactory.generate_poffin_combinations_r(poffin_list, 3)
 
     sorters = [
-        SortOnContestStats_Rarity(),
-        SortOnContestStats_PoffinsEaten(),
+        SortContestStatsBy_Rarity(),
+        SortContestStatsBy_PoffinsEaten(),
     ]
     sorting_system = ContestStatsSortAndFilterSystem(sorters)
     stat_factory = ContestStatsFactory(poffin_combos, sorting_system)

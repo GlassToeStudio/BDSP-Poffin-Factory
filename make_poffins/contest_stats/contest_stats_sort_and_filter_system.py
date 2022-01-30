@@ -2,14 +2,14 @@ from operator import attrgetter
 
 from make_poffins.contest_stats.contest_stats import ContestStats
 from make_poffins.contest_stats.contest_stats_filter_interface import \
-    IContestStatsFilterInterface
+    IContestStatsFilter
 from make_poffins.contest_stats.contest_stats_sort_interface import \
-    IContestStatsSortInterface
+    IContestStatsSort
 
 # pylint: disable=too-few-public-methods
 
 
-class _SortOnContestStats_Attrs(IContestStatsSortInterface):
+class _SortOnContestStats_Attrs(IContestStatsSort):
     """Sort contst stats by multiple values in ascending (False) or descenidng (True) order.
 
         - Format = (('attr', Reversed?), ('name', False))
@@ -61,9 +61,9 @@ class ContestStatsSortAndFilterSystem:
                 * Poffins Eaten\n
     """
 
-    def __init__(self, sort_filters: list[IContestStatsSortInterface | IContestStatsFilterInterface]):
+    def __init__(self, sort_filters: list[IContestStatsSort | IContestStatsFilter]):
         self._sort_filters = sort_filters
-        self._filters: list[IContestStatsFilterInterface] = []
+        self._filters: list[IContestStatsFilter] = []
         self._split_and_reconstruct_sort_filters()
 
     @property
@@ -88,8 +88,8 @@ class ContestStatsSortAndFilterSystem:
             return contest_stats
 
     def _split_and_reconstruct_sort_filters(self):
-        self._filters = [f for f in self._sort_filters if isinstance(f, IContestStatsFilterInterface)]
-        sorters = [s for s in self._sort_filters if isinstance(s, IContestStatsSortInterface)]
+        self._filters = [f for f in self._sort_filters if isinstance(f, IContestStatsFilter)]
+        sorters = [s for s in self._sort_filters if isinstance(s, IContestStatsSort)]
 
         if sorters:
             args = [(i.value, i.reverse) for i in sorters]

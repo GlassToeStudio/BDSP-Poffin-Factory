@@ -11,16 +11,16 @@ from make_poffins.berry.berry_sort_interface import (
 from make_poffins.contest_stats.contest_stats_factory import \
     ContestStatsFactory
 from make_poffins.contest_stats.contest_stats_filter_interface import (
-    FilterContestStatsBy_Num_Perfect_values_LT,
-    FilterContestStatsBy_Poffins_Eaten_GT,
-    FilterContestStatsBy_Poffins_Eaten_LT, FilterContestStatsBy_Rank_GT,
-    FilterContestStatsBy_Rank_LT, FilterContestStatsBy_Rarity_GT,
-    FilterContestStatsBy_Rarity_LT)
+    RemoveContestStatsWith_NumPerfectValues_LessThan,
+    RemoveContestStatsWith_PoffinsEaten_GreaterThan,
+    RemoveContestStatsWith_PoffinsEaten_LessThan, RemoveContestStatsWith_Rank_GreaterThan,
+    RemoveContestStatsWith_Rank_LessThan, RemoveContestStatsWith_Rarity_GreaterThan,
+    RemoveContestStatsWith_Rarity_LessThan)
 from make_poffins.contest_stats.contest_stats_sort_and_filter_system import \
     ContestStatsSortAndFilterSystem
 from make_poffins.contest_stats.contest_stats_sort_interface import (
-    SortOnContestStats_PoffinsEaten, SortOnContestStats_Rank,
-    SortOnContestStats_Rarity)
+    SortContestStatsBy_PoffinsEaten, SortContestStatsBy_Rank,
+    SortContestStatsBy_Rarity)
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
 from make_poffins.poffin.poffin_filter_interface import (
@@ -46,8 +46,8 @@ def test_rank_and_eaten_filter():
     poffin_combos = PoffinFactory.generate_poffin_combinations_r(poffin_library.poffin_list, 4)
 
     sorters = [
-        SortOnContestStats_Rarity(),
-        SortOnContestStats_PoffinsEaten(),
+        SortContestStatsBy_Rarity(),
+        SortContestStatsBy_PoffinsEaten(),
     ]
     sorting_system = ContestStatsSortAndFilterSystem(sorters)
     stat_factory = ContestStatsFactory(poffin_combos, sorting_system)

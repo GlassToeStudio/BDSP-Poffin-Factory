@@ -13,12 +13,12 @@ from make_poffins.constants import calculate_time
 from make_poffins.contest_stats.contest_stats_factory import \
     ContestStatsFactory
 from make_poffins.contest_stats.contest_stats_filter_interface import (
-    FilterContestStatsBy_Poffins_Eaten_GT, FilterContestStatsBy_Rank_GT)
+    RemoveContestStatsWith_PoffinsEaten_GreaterThan, RemoveContestStatsWith_Rank_GreaterThan)
 from make_poffins.contest_stats.contest_stats_sort_and_filter_system import \
     ContestStatsSortAndFilterSystem
 from make_poffins.contest_stats.contest_stats_sort_interface import (
-    SortOnContestStats_NumUniqueBerries, SortOnContestStats_PoffinsEaten,
-    SortOnContestStats_Rank, SortOnContestStats_Rarity)
+    SortContestStatsBy_NumUniqueBerries, SortContestStatsBy_PoffinsEaten,
+    SortContestStatsBy_Rank, SortContestStatsBy_Rarity)
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
 from make_poffins.poffin.poffin_filter_interface import (
@@ -61,9 +61,9 @@ def main():
 
     # Stats
     contest_stats_filters_sorters = [
-        FilterContestStatsBy_Poffins_Eaten_GT(12),
-        FilterContestStatsBy_Rank_GT(2),
-        SortOnContestStats_Rank(),
+        RemoveContestStatsWith_PoffinsEaten_GreaterThan(12),
+        RemoveContestStatsWith_Rank_GreaterThan(2),
+        SortContestStatsBy_Rank(),
         # SortOnContestStats_PoffinsEaten(),
         # SortOnContestStats_NumUniqueBerries(),
         # SortOnContestStats_Rarity(),

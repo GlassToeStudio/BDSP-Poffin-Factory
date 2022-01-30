@@ -1,9 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
-from make_poffins.contest_stats.contest_stats import ContestStats
 
-
-class IContestStatsFilterInterface(metaclass=ABCMeta):
+class IContestStatsFilter(metaclass=ABCMeta):
 
     def __init__(self, value: int | str):
         self._value = value
@@ -23,17 +21,14 @@ class IContestStatsFilterInterface(metaclass=ABCMeta):
     @property
     @abstractmethod
     def op(self):
-        """
-                * 0 : Less than
-                * 1 : Greater Than
-        """
+        """     * 0 : Less than\n       * 1 : Greater Than"""
         raise NotImplementedError
 
     def __str__(self):
         return self.__class__.__name__
 
 
-class FilterContestStatsBy_Rank_LT(IContestStatsFilterInterface):
+class RemoveContestStatsWith_Rank_LessThan(IContestStatsFilter):
     """Filter out any stats with a rank < the given value
 
         Notes:\n
@@ -60,14 +55,11 @@ class FilterContestStatsBy_Rank_LT(IContestStatsFilterInterface):
 
     @property
     def op(self):
-        """
-                * 0 : Less than
-                * 1 : Greater Than
-        """
+        """     * 0 : Less than\n       * 1 : Greater Than"""
         return 0
 
 
-class FilterContestStatsBy_Rank_GT(IContestStatsFilterInterface):
+class RemoveContestStatsWith_Rank_GreaterThan(IContestStatsFilter):
     """Filter out any stats with a rank > the given value
 
         Notes:\n
@@ -94,14 +86,11 @@ class FilterContestStatsBy_Rank_GT(IContestStatsFilterInterface):
 
     @property
     def op(self):
-        """
-                * 0 : Less than
-                * 1 : Greater Than
-        """
+        """     * 0 : Less than\n       * 1 : Greater Than"""
         return 1
 
 
-class FilterContestStatsBy_Rarity_LT(IContestStatsFilterInterface):
+class RemoveContestStatsWith_Rarity_LessThan(IContestStatsFilter):
     """Filter out any contest stats with a rarity less than the given value
 
     Notes:\n
@@ -125,14 +114,11 @@ class FilterContestStatsBy_Rarity_LT(IContestStatsFilterInterface):
 
     @property
     def op(self):
-        """
-                * 0 : Less than
-                * 1 : Greater Than
-        """
+        """     * 0 : Less than\n       * 1 : Greater Than"""
         return 0
 
 
-class FilterContestStatsBy_Rarity_GT(IContestStatsFilterInterface):
+class RemoveContestStatsWith_Rarity_GreaterThan(IContestStatsFilter):
     """Filter out any contest stats with a rarity greater than the given value
 
     Notes:\n
@@ -155,14 +141,11 @@ class FilterContestStatsBy_Rarity_GT(IContestStatsFilterInterface):
 
     @property
     def op(self):
-        """
-                * 0 : Less than
-                * 1 : Greater Than
-        """
+        """     * 0 : Less than\n       * 1 : Greater Than"""
         return 1
 
 
-class FilterContestStatsBy_Poffins_Eaten_LT(IContestStatsFilterInterface):
+class RemoveContestStatsWith_PoffinsEaten_LessThan(IContestStatsFilter):
     """Filter out any contest stats with poffins eaten less than the given value
 
     Notes:\n
@@ -189,14 +172,11 @@ class FilterContestStatsBy_Poffins_Eaten_LT(IContestStatsFilterInterface):
 
     @property
     def op(self):
-        """
-                * 0 : Less than
-                * 1 : Greater Than
-        """
+        """     * 0 : Less than\n       * 1 : Greater Than"""
         return 0
 
 
-class FilterContestStatsBy_Poffins_Eaten_GT(IContestStatsFilterInterface):
+class RemoveContestStatsWith_PoffinsEaten_GreaterThan(IContestStatsFilter):
     """Filter out any contest stats with poffins eaten greater than the given value
 
     Notes:\n
@@ -222,14 +202,11 @@ class FilterContestStatsBy_Poffins_Eaten_GT(IContestStatsFilterInterface):
 
     @property
     def op(self):
-        """
-                * 0 : Less than
-                * 1 : Greater Than
-        """
+        """     * 0 : Less than\n       * 1 : Greater Than"""
         return 1
 
 
-class FilterContestStatsBy_Num_Perfect_values_LT(IContestStatsFilterInterface):
+class RemoveContestStatsWith_NumPerfectValues_LessThan(IContestStatsFilter):
     """Filter out any contest stats with less than the given amount of perfect values
 
     Notes:\n
@@ -250,14 +227,11 @@ class FilterContestStatsBy_Num_Perfect_values_LT(IContestStatsFilterInterface):
 
     @property
     def op(self):
-        """
-                * 0 : Less than
-                * 1 : Greater Than
-        """
+        """     * 0 : Less than\n       * 1 : Greater Than"""
         return 0
 
 
-class FilterContestStatsBy_Num_Perfect_values_GT(IContestStatsFilterInterface):
+class RemoveContestStatsWith_NumPerfectValues_GreaterThan(IContestStatsFilter):
     """Filter out any contest stats with more than the given amount of perfect values.
 
     Notes:\n
@@ -279,8 +253,5 @@ class FilterContestStatsBy_Num_Perfect_values_GT(IContestStatsFilterInterface):
 
     @property
     def op(self):
-        """
-                * 0 : Less than
-                * 1 : Greater Than
-        """
+        """     * 0 : Less than\n       * 1 : Greater Than"""
         return 1

@@ -4,7 +4,7 @@ from operator import attrgetter
 from make_poffins.contest_stats.contest_stats import ContestStats
 
 
-class IContestStatsSortInterface(metaclass=ABCMeta):
+class IContestStatsSort(metaclass=ABCMeta):
     def __init__(self, value=None, reverse=False):
         self._value = value
         """Check criteria against this value"""
@@ -41,7 +41,7 @@ class IContestStatsSortInterface(metaclass=ABCMeta):
         return self.__class__.__name__
 
 
-class SortOnContestStats_Coolness(IContestStatsSortInterface):
+class SortContestStatsBy_Coolness(IContestStatsSort):
     """Sort contest_stats by the value of their coolness, descending.
 
             * Higher is better.
@@ -59,7 +59,7 @@ class SortOnContestStats_Coolness(IContestStatsSortInterface):
         return not self._reverse
 
 
-class SortOnContestStats_Beauty(IContestStatsSortInterface):
+class SortContestStatsBy_Beauty(IContestStatsSort):
     """Sort contest_stats by the value of their beauty, descending.
 
             * Higher is better.
@@ -77,7 +77,7 @@ class SortOnContestStats_Beauty(IContestStatsSortInterface):
         return not self._reverse
 
 
-class SortOnContestStats_Cuteness(IContestStatsSortInterface):
+class SortContestStatsBy_Cuteness(IContestStatsSort):
     """Sort contest_stats by the value of their cuteness, descending.
 
             * Higher is better.
@@ -95,7 +95,7 @@ class SortOnContestStats_Cuteness(IContestStatsSortInterface):
         return not self._reverse
 
 
-class SortOnContestStats_Cleverness(IContestStatsSortInterface):
+class SortContestStatsBy_Cleverness(IContestStatsSort):
     """Sort contest_stats by the value of their cleverness, descending.
 
             * Higher is better.
@@ -113,7 +113,7 @@ class SortOnContestStats_Cleverness(IContestStatsSortInterface):
         return not self._reverse
 
 
-class SortOnContestStats_Toughness(IContestStatsSortInterface):
+class SortContestStatsBy_Toughness(IContestStatsSort):
     """Sort contest_stats by the value of their toughness, descending.
 
             * Higher is better.
@@ -131,7 +131,7 @@ class SortOnContestStats_Toughness(IContestStatsSortInterface):
         return not self._reverse
 
 
-class SortOnContestStats_Sheen(IContestStatsSortInterface):
+class SortContestStatsBy_Sheen(IContestStatsSort):
     """Sort contest_stats by the value of their sheen, descending.
 
         Notes:\n
@@ -152,7 +152,7 @@ class SortOnContestStats_Sheen(IContestStatsSortInterface):
         return not self._reverse
 
 
-class SortOnContestStats_PoffinsEaten(IContestStatsSortInterface):
+class SortContestStatsBy_PoffinsEaten(IContestStatsSort):
     """Sort contest_stats by the value of their poffins eaten, ascending.
 
             * Lower is better.
@@ -169,7 +169,7 @@ class SortOnContestStats_PoffinsEaten(IContestStatsSortInterface):
         return self._reverse
 
 
-class SortOnContestStats_NumPerfectValues(IContestStatsSortInterface):
+class SortContestStatsBy_NumPerfectValues(IContestStatsSort):
     """Sort contest_stats by their number of perfect values (value of 255), descending.
 
             * Higher is better.
@@ -186,7 +186,7 @@ class SortOnContestStats_NumPerfectValues(IContestStatsSortInterface):
         return not self._reverse
 
 
-class SortOnContestStats_NumUniqueBerries(IContestStatsSortInterface):
+class SortContestStatsBy_NumUniqueBerries(IContestStatsSort):
     """Sort contest_stats by their number of unique berries used, ascending.
 
             * Lower is better.
@@ -204,7 +204,7 @@ class SortOnContestStats_NumUniqueBerries(IContestStatsSortInterface):
         return self._reverse
 
 
-class SortOnContestStats_Rarity(IContestStatsSortInterface):
+class SortContestStatsBy_Rarity(IContestStatsSort):
     """Sort contest_stats by the rarity of the berries used, asceding.
 
             * Lower is better.
@@ -222,7 +222,7 @@ class SortOnContestStats_Rarity(IContestStatsSortInterface):
         return self._reverse
 
 
-class SortOnContestStats_Rank(IContestStatsSortInterface):
+class SortContestStatsBy_Rank(IContestStatsSort):
     """Sort contest_stats by their rank, ascending.
 
             * Lower is better.
