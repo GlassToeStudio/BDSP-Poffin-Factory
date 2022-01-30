@@ -88,7 +88,6 @@ poffin_list_dict = {
     'bitter': bitter_poffin_list,
     'sour': sour_poffin_list
 }
-FLAVORS
 
 
 def get_random_poffin(flavor):
@@ -126,6 +125,6 @@ def generate_random_poffin_list_n_total_of_random(n: int) -> list[Poffin]:
     """
     return_list = []
     for _ in range(n):
-        f = random.randrange(len(FLAVORS))
-        return_list.append(get_random_poffin(f))
+        r = random.randrange(len(FLAVORS))
+        return_list.append(get_random_poffin(FLAVORS[r]))
     return return_list
