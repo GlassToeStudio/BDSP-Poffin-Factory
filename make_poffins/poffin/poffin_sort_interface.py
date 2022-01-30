@@ -4,7 +4,7 @@ from operator import attrgetter
 from make_poffins.poffin.poffin import Poffin
 
 
-class IPoffinSortInterface(metaclass=ABCMeta):
+class IPoffinSort(metaclass=ABCMeta):
     def __init__(self, value=None, reverse=False):
         self._value = value
         """Check criteria against this value"""
@@ -33,7 +33,7 @@ class IPoffinSortInterface(metaclass=ABCMeta):
         return self.__class__.__name__
 
 
-class SortOnPoffins_Smoothness(IPoffinSortInterface):
+class SortPoffinsBy_Smoothness(IPoffinSort):
     """Sort poffins by the value of their smoothness, in ascending order.
 
             * Lower is better.
@@ -51,7 +51,7 @@ class SortOnPoffins_Smoothness(IPoffinSortInterface):
         return self._reverse
 
 
-class SortOnPoffins_MainFlavor(IPoffinSortInterface):
+class SortPoffinsBy_MainFlavor(IPoffinSort):
     """Sort poffins by the their main flavor, in ascending alphabetical order.
 
             * List in Ascending Order
@@ -68,7 +68,7 @@ class SortOnPoffins_MainFlavor(IPoffinSortInterface):
         return self._reverse
 
 
-class SortOnPoffins_Level(IPoffinSortInterface):
+class SortPoffinsBy_Level(IPoffinSort):
     """Sort poffins by the their level, in descending order.
 
             * Higher is better.
@@ -87,7 +87,7 @@ class SortOnPoffins_Level(IPoffinSortInterface):
         return not self._reverse
 
 
-class SortOnPoffins_SecondLevel(IPoffinSortInterface):
+class SortPoffinsBy_SecondLevel(IPoffinSort):
     """Sort poffins by the their second level, in desceding order.
 
             * Higher is better.
@@ -105,7 +105,7 @@ class SortOnPoffins_SecondLevel(IPoffinSortInterface):
         return not self._reverse
 
 
-class SortOnPoffins_Name(IPoffinSortInterface):
+class SortPoffinsBy_Name(IPoffinSort):
     """Sort poffins by the their name, in ascending alphabetical order.
 
             * List in Ascending Order
@@ -122,7 +122,7 @@ class SortOnPoffins_Name(IPoffinSortInterface):
         return self._reverse
 
 
-class SortOnPoffins_MainFlavorValue(IPoffinSortInterface):
+class SortPoffinsBy_MainFlavorValue(IPoffinSort):
     """Sort poffins by the value of their main flavor, in descending order.
 
             * Higher is better.
@@ -141,7 +141,7 @@ class SortOnPoffins_MainFlavorValue(IPoffinSortInterface):
         return not self._reverse
 
 
-class SortOnPoffins_NumFlavors(IPoffinSortInterface):
+class SortPoffinsBy_NumFlavors(IPoffinSort):
     """Sort poffins by the number of flavors. in descending order.
 
             * List in Descending Order
@@ -158,7 +158,7 @@ class SortOnPoffins_NumFlavors(IPoffinSortInterface):
         return not self._reverse
 
 
-class SortOnPoffins_LevelToSmoothnessRatio(IPoffinSortInterface):
+class SortPoffinsBy_LevelToSmoothnessRatio(IPoffinSort):
     """Sort poffins by the level / smoothness, in descending order.
 
             * Higher is better.
@@ -176,7 +176,7 @@ class SortOnPoffins_LevelToSmoothnessRatio(IPoffinSortInterface):
         return not self._reverse
 
 
-class SortOnPoffins_LevelToSmoothnessRatioSum(IPoffinSortInterface):
+class SortPoffinsBy_LevelToSmoothnessRatioSum(IPoffinSort):
     """Sort poffins by the sum of their levels / smoothness, in descending order.
 
             * Higher is better.

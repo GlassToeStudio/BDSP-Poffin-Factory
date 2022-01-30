@@ -3,11 +3,11 @@ from operator import attrgetter
 from make_poffins.poffin.poffin import Poffin
 from make_poffins.poffin.poffin_filter_interface import IPoffinFilter
 from make_poffins.poffin.poffin_sort_interface import (
-    IPoffinSortInterface, SortOnPoffins_MainFlavor)
+    IPoffinSort, SortPoffinsBy_MainFlavor)
 
 
 # pylint: disable=too-few-public-methods
-class _SortOnPoffins_Attrs(IPoffinSortInterface):
+class _SortOnPoffins_Attrs(IPoffinSort):
     """Sort poffins by multiple values in ascending (False) or descenidng (True) order.
 
     Format = (('attr', Reversed?), ('name', False))
@@ -49,7 +49,7 @@ class _SortOnPoffins_Attrs(IPoffinSortInterface):
 
 
 class PoffinSortAndFilterSystem:
-    def __init__(self, _filters: list[IPoffinSortInterface | IPoffinFilter]):
+    def __init__(self, _filters: list[IPoffinSort | IPoffinFilter]):
         self._sort_filters = _filters
         self._split_and_reconstruct_sort_filters()
 
@@ -71,7 +71,7 @@ class PoffinSortAndFilterSystem:
             return poffins
 
     def _split_and_reconstruct_sort_filters(self):
-        sorters = [s for s in self._sort_filters if isinstance(s, IPoffinSortInterface)]
+        sorters = [s for s in self._sort_filters if isinstance(s, IPoffinSort)]
         if sorters:
             self._sort_filters = [f for f in self._sort_filters if isinstance(f, IPoffinFilter)]
 

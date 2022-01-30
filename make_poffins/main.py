@@ -31,7 +31,7 @@ from make_poffins.poffin.poffin_library import poffin_library
 from make_poffins.poffin.poffin_sort_and_filter_system import \
     PoffinSortAndFilterSystem
 from make_poffins.poffin.poffin_sort_interface import (
-    SortOnPoffins_Level, SortOnPoffins_LevelToSmoothnessRatioSum)
+    SortPoffinsBy_Level, SortPoffinsBy_LevelToSmoothnessRatioSum)
 
 
 @calculate_time
@@ -53,7 +53,7 @@ def main():
         RemovePoffinsWith_SecondLevel_LessThan(40),
         RemovePoffinsWith_NumberOfFlavors_LessThan(1),
         RemovePoffinsWith_MaxNSimilar(1),
-        SortOnPoffins_LevelToSmoothnessRatioSum()
+        SortPoffinsBy_LevelToSmoothnessRatioSum()
     ]
     poffin_filtering_sorting_system = PoffinSortAndFilterSystem(poffin_filters_sorters)
     poffin_factory = PoffinFactory(PoffinCooker(40), berry_combinations, poffin_filtering_sorting_system)

@@ -32,7 +32,7 @@ from make_poffins.poffin.poffin_library import poffin_library
 from make_poffins.poffin.poffin_sort_and_filter_system import \
     PoffinSortAndFilterSystem
 from make_poffins.poffin.poffin_sort_interface import (
-    SortOnPoffins_LevelToSmoothnessRatioSum, SortOnPoffins_Name)
+    SortPoffinsBy_LevelToSmoothnessRatioSum, SortPoffinsBy_Name)
 
 # noqa F401
 berries = berry_library.every_berry
