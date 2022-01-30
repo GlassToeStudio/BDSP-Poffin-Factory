@@ -1,7 +1,7 @@
 from operator import attrgetter
 
 from make_poffins.poffin.poffin import Poffin
-from make_poffins.poffin.poffin_filter_interface import IPoffinFilterInterface
+from make_poffins.poffin.poffin_filter_interface import IPoffinFilter
 from make_poffins.poffin.poffin_sort_interface import (
     IPoffinSortInterface, SortOnPoffins_MainFlavor)
 
@@ -49,7 +49,7 @@ class _SortOnPoffins_Attrs(IPoffinSortInterface):
 
 
 class PoffinSortAndFilterSystem:
-    def __init__(self, _filters: list[IPoffinSortInterface | IPoffinFilterInterface]):
+    def __init__(self, _filters: list[IPoffinSortInterface | IPoffinFilter]):
         self._sort_filters = _filters
         self._split_and_reconstruct_sort_filters()
 
@@ -73,7 +73,7 @@ class PoffinSortAndFilterSystem:
     def _split_and_reconstruct_sort_filters(self):
         sorters = [s for s in self._sort_filters if isinstance(s, IPoffinSortInterface)]
         if sorters:
-            self._sort_filters = [f for f in self._sort_filters if isinstance(f, IPoffinFilterInterface)]
+            self._sort_filters = [f for f in self._sort_filters if isinstance(f, IPoffinFilter)]
 
             args = [(i.value, i.reverse) for i in sorters]
             self._sort_filters.append(_SortOnPoffins_Attrs(args))

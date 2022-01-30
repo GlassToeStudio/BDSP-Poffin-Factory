@@ -24,10 +24,10 @@ from make_poffins.contest_stats.contest_stats_sort_interface import (
 from make_poffins.poffin.poffin_cooker import PoffinCooker
 from make_poffins.poffin.poffin_factory import PoffinFactory
 from make_poffins.poffin.poffin_filter_interface import (
-    FilterPoffinsBy_AnyFlavorValueLessThan, FilterPoffinsBy_Flavor,
-    FilterPoffinsBy_Level_LessThan, FilterPoffinsBy_MaxNSimilar,
-    FilterPoffinsBy_NumberOfFlavors_LessThan,
-    FilterPoffinsBy_Rarity_GreaterThan)
+    RemovePoffinsWith_AnyFlavorValueLessThan, RemovePoffinsWith_MaxNSimilar,
+    RemovePoffinsWith_NumberOfFlavors_LessThan,
+    RemovePoffinsWith_Rarity_GreaterThan, RemovePoffinsWith_Level_LessThan,
+    RemovePoffinsWith_Flavor_NotEqual)
 from make_poffins.poffin.poffin_library import poffin_library
 from make_poffins.poffin.poffin_sort_and_filter_system import \
     PoffinSortAndFilterSystem
