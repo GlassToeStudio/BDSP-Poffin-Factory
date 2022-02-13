@@ -61,12 +61,13 @@ class ContestStatsFactory():
     def _generate_contest_stats_parallel(self) -> list[ContestStats]:
         processed_list = mp.Manager().list()
         processes = []
-        cores = mp.cpu_count()
-        chunk_size = max(self.num_poffins, int(self.num_poffins//cores))
+        cores = mp.cpu_count()-1
+        chunk_size = min(self.num_poffins, int(self.num_poffins//cores))
         my_index = 1
+        self.running_count = stat_counter(0, self.num_poffins, 1, 1)
         for i, poffin_chunk in enumerate(chunks(self._poffin_combos, chunk_size)):
             if i % chunk_size == 0:
-                p = mp.Process(target=self._parallel_task, args=(poffin_chunk, processed_list, cores, my_index))
+                p = mp.Process(target=self._parallel_task, args=(poffin_chunk, processed_list, cores-1, my_index))
                 processes.append(p)
                 p.start()
                 my_index += 1
