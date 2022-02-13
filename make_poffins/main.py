@@ -13,7 +13,8 @@ from make_poffins.constants import calculate_time
 from make_poffins.contest_stats.contest_stats_factory import \
     ContestStatsFactory
 from make_poffins.contest_stats.contest_stats_filter_interface import (
-    RemoveContestStatsWith_PoffinsEaten_GreaterThan, RemoveContestStatsWith_Rank_GreaterThan)
+    RemoveContestStatsWith_PoffinsEaten_GreaterThan,
+    RemoveContestStatsWith_Rank_GreaterThan)
 from make_poffins.contest_stats.contest_stats_sort_and_filter_system import \
     ContestStatsSortAndFilterSystem
 from make_poffins.contest_stats.contest_stats_sort_interface import (
@@ -49,7 +50,7 @@ def main():
 
     # Poffins
     poffin_filters_sorters = [
-        RemovePoffinsWith_Level_LessThan(115),
+        RemovePoffinsWith_Level_LessThan(100),
         RemovePoffinsWith_SecondLevel_LessThan(40),
         RemovePoffinsWith_NumberOfFlavors_LessThan(1),
         RemovePoffinsWith_MaxNSimilar(1),
