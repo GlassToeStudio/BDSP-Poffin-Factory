@@ -9,10 +9,11 @@ from make_poffins.poffin.poffin import Poffin
 class PoffinCooker:
     """Give it some berries and it will cook a poffin in time = t"""
 
-    def __init__(self, cook_time: float = 40, spills: int = 0, burns: int = 0):  # noqa ES501
+    def __init__(self, cook_time: float = 40, spills: int = 0, burns: int = 0, friends=6):  # noqa ES501
         self.cook_time = cook_time
         self.spills = spills
         self.burns = burns
+        self.friends = friends
 
     @classmethod
     def __sum_over_all_berries__(cls, berries: list[Berry]) -> list[int]:
@@ -42,19 +43,21 @@ class PoffinCooker:
         negatives = self.__count_negative_values__(poffin_values)
         return [poffin_values[i] - negatives for i in range(5)]  # noqa ES501
 
-    def __multiply_by_cooking_time_bonus__(self, poffin_values: list[int]) -> list[int]:  # noqa ES501
+    def __multiply_by_cooking_time_bonus__(self, poffin_values: list[int]) -> list[float]:  # noqa ES501
         """Multiply the remaining values by a bonus for cooking time.
         """
 
         bonus = 60.0 / self.cook_time
-        return [math.floor(poffin_values[i] * bonus) for i in range(5)]
+        return [poffin_values[i] * bonus for i in range(5)]
 
     def __subtract_spills_and_burns__(self, poffin_values: list[int]) -> list[int]:  # noqa ES501
         """Reduce each value by the number of spills and the number of burns.
 
         """
         # NOTE: I set the max value to 115 since I think thats all you can get in game.
-        return [min(poffin_values[i] - (self.spills + self.burns), 115) for i in range(5)]  # noqa ES501
+        # return [min(poffin_values[i] - (self.spills + self.burns), 115) for i in range(5)]  # noqa ES501
+        # NOTE: I DO NOT set the max value to 115 even though I think thats all you can get in game.
+        return [round(poffin_values[i] - (self.spills + self.burns)) for i in range(5)]  # noqa ES501
 
     @classmethod
     def __set_negatives_to_zero__(cls, poffin_values: list[int]) -> list[int]:
@@ -80,12 +83,11 @@ class PoffinCooker:
         berry_smoothness = sum(x.smoothness for x in berries)
         return math.floor((berry_smoothness / n) - n)
 
-    @classmethod
-    def __adjust_affection__(cls, smoothness: int):
+    def __adjust_affection__(self, smoothness: int):
         """I dont know how this works
         -9 for having 6 max level friends help cook.
         """
-        return smoothness - 9
+        return smoothness - int(self.friends*1.5)
 
     @classmethod
     def __count_negative_values__(cls, poffin_values: list[int]) -> list[int]:

@@ -32,15 +32,17 @@ from make_poffins.poffin.poffin_library import poffin_library
 from make_poffins.poffin.poffin_sort_and_filter_system import \
     PoffinSortAndFilterSystem
 from make_poffins.poffin.poffin_sort_interface import (
-    SortPoffinsBy_Level, SortPoffinsBy_LevelToSmoothnessRatioSum)
+    SortPoffinsBy_Level, SortPoffinsBy_LevelToSmoothnessRatioSum,
+    SortPoffinsBy_NumFlavors, SortPoffinsBy_SecondLevel,
+    SortPoffinsBy_Smoothness)
 
 
 @calculate_time
 def main():
     # Berries
     berry_filters_sorters = [
-        RemoveBerriesWith_Rarity_LessThan(7),
-        RemoveBerriesWith_Rarity_GreaterThan(15),
+        # RemoveBerriesWith_Rarity_LessThan(1),
+        # RemoveBerriesWith_Rarity_GreaterThan(15),
         SortBerriesBy_Rarity(),
         SortBerriesBy_Name()
     ]
@@ -50,39 +52,30 @@ def main():
 
     # Poffins
     poffin_filters_sorters = [
-        RemovePoffinsWith_Level_LessThan(100),
-        RemovePoffinsWith_SecondLevel_LessThan(30),
+        RemovePoffinsWith_Level_LessThan(85),
+        # RemovePoffinsWith_SecondLevel_LessThan(30),
         RemovePoffinsWith_NumberOfFlavors_LessThan(1),
         RemovePoffinsWith_MaxNSimilar(1),
-        SortPoffinsBy_LevelToSmoothnessRatioSum()
+        SortPoffinsBy_NumFlavors(),
+        SortPoffinsBy_Level(),
+        SortPoffinsBy_SecondLevel()
     ]
     poffin_filtering_sorting_system = PoffinSortAndFilterSystem(poffin_filters_sorters)
     poffin_factory = PoffinFactory(PoffinCooker(40), berry_combinations, poffin_filtering_sorting_system)
-    poffin_permutations = poffin_factory.get_poffin_permutations_3()
-
-    # Stats
-    contest_stats_filters_sorters = [
-        RemoveContestStatsWith_PoffinsEaten_GreaterThan(12),
-        RemoveContestStatsWith_Rank_GreaterThan(2),
-        SortContestStatsBy_Rank(),
-        SortContestStatsBy_PoffinsEaten(),
-    ]
-    contest_stats_filtering_sorting_system = ContestStatsSortAndFilterSystem(contest_stats_filters_sorters)
-    contest_stat_factory = ContestStatsFactory(poffin_permutations, contest_stats_filtering_sorting_system)
-    final_stats = contest_stat_factory.filtered_sorted_contest_stats
+    all_poffins = poffin_factory.generate_custom_poffin_list_from_recipes(berry_combinations)
 
     timestamp = time.strftime("%d-%b-%Y %I-%M %p", time.localtime())
     with open(f"make_poffins/results/poffin_results_{timestamp}.txt", "w", encoding="utf-8") as print_file:
-        if not final_stats:
+        if not all_poffins:
             print("No results")
         else:
             print("Lets see the results!\n\n\n")
-            for stat in final_stats:
-                print(stat, file=print_file)
+            for poffin in all_poffins:
+                print(poffin, file=print_file)
             print('\n'*10, file=print_file)
-            print(str(final_stats[0]), file=print_file)
-            print(str(final_stats[0]))
-            print(repr(final_stats[0]))
+            print(str(all_poffins[0]), file=print_file)
+            print(str(all_poffins[0]))
+            print(repr(all_poffins[0]))
 
 
 if __name__ == "__main__":

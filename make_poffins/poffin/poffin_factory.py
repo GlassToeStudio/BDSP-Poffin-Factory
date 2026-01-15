@@ -71,6 +71,7 @@ class PoffinFactory():
             print(f"{start_up(1)} * Complete: {100*((TOTAL_BERRIES[0] - (r._number_left*chunk_size)) / TOTAL_BERRIES[0]):6.2f}%")
             r.wait(timeout=1)
         self._poffins = [x for x in r.get() if x is not None]
+        print(f"{start_up(1)} * Complete: {100*((TOTAL_BERRIES[0] - (r._number_left*chunk_size)) / TOTAL_BERRIES[0]):6.2f}%")
         return self._poffins
 
     def _mapped_cook(self, recipe):
@@ -114,7 +115,8 @@ class PoffinFactory():
         return self._get_poffin_permutations_n(10, poffins=None)
 
     def generate_custom_poffin_list_from_recipes(self, recipes) -> list[Poffin]:  # noqa ES501
-        return [self._cooker.cook(recipe) for recipe in recipes]  # noqa ES501
+        self._poffins = [self._cooker.cook(recipe) for recipe in recipes] 
+        return self.filtered_poffins
 
     @staticmethod
     def generate_poffin_combinations_r(poffins: list[Poffin], r: int = 5) -> list[Poffin]:

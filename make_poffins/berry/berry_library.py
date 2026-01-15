@@ -278,6 +278,10 @@ Poffin:
             petaya Spicy    40 [ 30,   0,   0,  30,  10]\n
             enigma Spicy    60 [ 40,  10,   0,   0,   0]\n
 """
+cooker_test_recipe = [spelon_berry, petaya_berry, enigma_berry, jaboca_berry]
+bulba_recipe = [bluk_berry, nanab_berry, wepear_berry]
+
+
 if __name__ == "__main__":
     every_berry = bsf._SortOnBerry_Attrs([("name", False)]).execute(every_berry)
     for b in every_berry:
