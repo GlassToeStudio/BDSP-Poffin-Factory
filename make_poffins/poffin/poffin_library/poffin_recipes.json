@@ -13452,6 +13452,4139 @@
                 "custap",
                 "lansat"
             ]
+        },
+        {
+            "name": "charti_liechi_custap_ganlon_poffin",
+            "flavor_values": [
+                0,
+                0,
+                55,
+                55,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "charti",
+                "liechi",
+                "custap",
+                "ganlon"
+            ]
+        },
+        {
+            "name": "charti_liechi_custap_salac_poffin",
+            "flavor_values": [
+                10,
+                0,
+                115,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "charti",
+                "liechi",
+                "custap",
+                "salac"
+            ]
+        },
+        {
+            "name": "charti_liechi_custap_rowap_poffin",
+            "flavor_values": [
+                25,
+                0,
+                85,
+                0,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "charti",
+                "liechi",
+                "custap",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_liechi_custap_colbur_poffin",
+            "flavor_values": [
+                12,
+                0,
+                72,
+                0,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "charti",
+                "liechi",
+                "custap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_liechi_lansat_ganlon_poffin",
+            "flavor_values": [
+                0,
+                0,
+                43,
+                13,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "charti",
+                "liechi",
+                "lansat",
+                "ganlon"
+            ]
+        },
+        {
+            "name": "charti_liechi_lansat_salac_poffin",
+            "flavor_values": [
+                40,
+                0,
+                100,
+                0,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "charti",
+                "liechi",
+                "lansat",
+                "salac"
+            ]
+        },
+        {
+            "name": "charti_liechi_lansat_rowap_poffin",
+            "flavor_values": [
+                55,
+                0,
+                70,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "charti",
+                "liechi",
+                "lansat",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_liechi_lansat_colbur_poffin",
+            "flavor_values": [
+                40,
+                0,
+                55,
+                0,
+                0
+            ],
+            "smoothness": 27,
+            "berries": [
+                "charti",
+                "liechi",
+                "lansat",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_liechi_ganlon_salac_poffin",
+            "flavor_values": [
+                0,
+                0,
+                40,
+                10,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "charti",
+                "liechi",
+                "ganlon",
+                "salac"
+            ]
+        },
+        {
+            "name": "charti_liechi_salac_rowap_poffin",
+            "flavor_values": [
+                27,
+                0,
+                72,
+                0,
+                27
+            ],
+            "smoothness": 30,
+            "berries": [
+                "charti",
+                "liechi",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_liechi_salac_colbur_poffin",
+            "flavor_values": [
+                12,
+                0,
+                57,
+                0,
+                12
+            ],
+            "smoothness": 24,
+            "berries": [
+                "charti",
+                "liechi",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_custap_lansat_ganlon_poffin",
+            "flavor_values": [
+                0,
+                0,
+                40,
+                25,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "charti",
+                "custap",
+                "lansat",
+                "ganlon"
+            ]
+        },
+        {
+            "name": "charti_custap_lansat_salac_poffin",
+            "flavor_values": [
+                12,
+                0,
+                102,
+                0,
+                27
+            ],
+            "smoothness": 33,
+            "berries": [
+                "charti",
+                "custap",
+                "lansat",
+                "salac"
+            ]
+        },
+        {
+            "name": "charti_custap_lansat_rowap_poffin",
+            "flavor_values": [
+                27,
+                0,
+                72,
+                0,
+                27
+            ],
+            "smoothness": 38,
+            "berries": [
+                "charti",
+                "custap",
+                "lansat",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_custap_lansat_colbur_poffin",
+            "flavor_values": [
+                12,
+                0,
+                57,
+                0,
+                12
+            ],
+            "smoothness": 32,
+            "berries": [
+                "charti",
+                "custap",
+                "lansat",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_custap_ganlon_salac_poffin",
+            "flavor_values": [
+                0,
+                0,
+                42,
+                27,
+                27
+            ],
+            "smoothness": 30,
+            "berries": [
+                "charti",
+                "custap",
+                "ganlon",
+                "salac"
+            ]
+        },
+        {
+            "name": "charti_custap_salac_rowap_poffin",
+            "flavor_values": [
+                0,
+                0,
+                72,
+                0,
+                72
+            ],
+            "smoothness": 35,
+            "berries": [
+                "charti",
+                "custap",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_custap_salac_colbur_poffin",
+            "flavor_values": [
+                0,
+                0,
+                55,
+                0,
+                55
+            ],
+            "smoothness": 29,
+            "berries": [
+                "charti",
+                "custap",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_lansat_ganlon_salac_poffin",
+            "flavor_values": [
+                0,
+                0,
+                25,
+                0,
+                25
+            ],
+            "smoothness": 28,
+            "berries": [
+                "charti",
+                "lansat",
+                "ganlon",
+                "salac"
+            ]
+        },
+        {
+            "name": "liechi_custap_lansat_ganlon_poffin",
+            "flavor_values": [
+                12,
+                0,
+                87,
+                27,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "liechi",
+                "custap",
+                "lansat",
+                "ganlon"
+            ]
+        },
+        {
+            "name": "liechi_custap_lansat_salac_poffin",
+            "flavor_values": [
+                57,
+                0,
+                147,
+                0,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "liechi",
+                "custap",
+                "lansat",
+                "salac"
+            ]
+        },
+        {
+            "name": "liechi_custap_lansat_rowap_poffin",
+            "flavor_values": [
+                72,
+                0,
+                117,
+                0,
+                0
+            ],
+            "smoothness": 39,
+            "berries": [
+                "liechi",
+                "custap",
+                "lansat",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_custap_lansat_colbur_poffin",
+            "flavor_values": [
+                55,
+                0,
+                100,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "liechi",
+                "custap",
+                "lansat",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_custap_ganlon_salac_poffin",
+            "flavor_values": [
+                0,
+                0,
+                87,
+                27,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "liechi",
+                "custap",
+                "ganlon",
+                "salac"
+            ]
+        },
+        {
+            "name": "liechi_custap_ganlon_rowap_poffin",
+            "flavor_values": [
+                0,
+                0,
+                58,
+                0,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "liechi",
+                "custap",
+                "ganlon",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_custap_ganlon_colbur_poffin",
+            "flavor_values": [
+                0,
+                0,
+                40,
+                40,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "liechi",
+                "custap",
+                "ganlon",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_custap_jaboca_salac_poffin",
+            "flavor_values": [
+                28,
+                0,
+                58,
+                28,
+                13
+            ],
+            "smoothness": 37,
+            "berries": [
+                "liechi",
+                "custap",
+                "jaboca",
+                "salac"
+            ]
+        },
+        {
+            "name": "liechi_custap_salac_rowap_poffin",
+            "flavor_values": [
+                42,
+                0,
+                117,
+                0,
+                42
+            ],
+            "smoothness": 37,
+            "berries": [
+                "liechi",
+                "custap",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_custap_salac_colbur_poffin",
+            "flavor_values": [
+                27,
+                0,
+                102,
+                0,
+                27
+            ],
+            "smoothness": 30,
+            "berries": [
+                "liechi",
+                "custap",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_custap_rowap_colbur_poffin",
+            "flavor_values": [
+                42,
+                0,
+                72,
+                0,
+                27
+            ],
+            "smoothness": 35,
+            "berries": [
+                "liechi",
+                "custap",
+                "rowap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_lansat_ganlon_salac_poffin",
+            "flavor_values": [
+                12,
+                0,
+                72,
+                0,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "liechi",
+                "lansat",
+                "ganlon",
+                "salac"
+            ]
+        },
+        {
+            "name": "liechi_lansat_ganlon_rowap_poffin",
+            "flavor_values": [
+                27,
+                0,
+                42,
+                0,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "liechi",
+                "lansat",
+                "ganlon",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_lansat_ganlon_colbur_poffin",
+            "flavor_values": [
+                12,
+                0,
+                27,
+                0,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "liechi",
+                "lansat",
+                "ganlon",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_lansat_salac_rowap_poffin",
+            "flavor_values": [
+                72,
+                0,
+                102,
+                0,
+                42
+            ],
+            "smoothness": 34,
+            "berries": [
+                "liechi",
+                "lansat",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_lansat_salac_colbur_poffin",
+            "flavor_values": [
+                57,
+                0,
+                87,
+                0,
+                27
+            ],
+            "smoothness": 28,
+            "berries": [
+                "liechi",
+                "lansat",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_ganlon_salac_rowap_poffin",
+            "flavor_values": [
+                0,
+                0,
+                42,
+                0,
+                42
+            ],
+            "smoothness": 32,
+            "berries": [
+                "liechi",
+                "ganlon",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_ganlon_salac_colbur_poffin",
+            "flavor_values": [
+                0,
+                0,
+                27,
+                0,
+                27
+            ],
+            "smoothness": 25,
+            "berries": [
+                "liechi",
+                "ganlon",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "custap_lansat_ganlon_salac_poffin",
+            "flavor_values": [
+                0,
+                0,
+                72,
+                0,
+                42
+            ],
+            "smoothness": 34,
+            "berries": [
+                "custap",
+                "lansat",
+                "ganlon",
+                "salac"
+            ]
+        },
+        {
+            "name": "custap_lansat_ganlon_rowap_poffin",
+            "flavor_values": [
+                0,
+                0,
+                42,
+                0,
+                42
+            ],
+            "smoothness": 39,
+            "berries": [
+                "custap",
+                "lansat",
+                "ganlon",
+                "rowap"
+            ]
+        },
+        {
+            "name": "custap_lansat_ganlon_colbur_poffin",
+            "flavor_values": [
+                0,
+                0,
+                27,
+                12,
+                27
+            ],
+            "smoothness": 33,
+            "berries": [
+                "custap",
+                "lansat",
+                "ganlon",
+                "colbur"
+            ]
+        },
+        {
+            "name": "custap_lansat_salac_rowap_poffin",
+            "flavor_values": [
+                42,
+                0,
+                102,
+                0,
+                87
+            ],
+            "smoothness": 39,
+            "berries": [
+                "custap",
+                "lansat",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "custap_lansat_salac_colbur_poffin",
+            "flavor_values": [
+                27,
+                0,
+                87,
+                0,
+                72
+            ],
+            "smoothness": 33,
+            "berries": [
+                "custap",
+                "lansat",
+                "salac",
+                "colbur"
+            ]
+        }
+    ],
+    "spicy": [
+        {
+            "name": "petaya_enigma_tanga_apicot_poffin",
+            "flavor_values": [
+                85,
+                55,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "apicot"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_micle_poffin",
+            "flavor_values": [
+                57,
+                57,
+                0,
+                12,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "micle"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_charti_poffin",
+            "flavor_values": [
+                102,
+                42,
+                0,
+                12,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "charti"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_liechi_poffin",
+            "flavor_values": [
+                147,
+                0,
+                0,
+                12,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "liechi"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_custap_poffin",
+            "flavor_values": [
+                117,
+                0,
+                0,
+                27,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "custap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_lansat_poffin",
+            "flavor_values": [
+                144,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_ganlon_poffin",
+            "flavor_values": [
+                72,
+                42,
+                0,
+                57,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "ganlon"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_jaboca_poffin",
+            "flavor_values": [
+                117,
+                12,
+                0,
+                57,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_petaya_poffin",
+            "flavor_values": [
+                162,
+                12,
+                0,
+                42,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_salac_poffin",
+            "flavor_values": [
+                114,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_rowap_poffin",
+            "flavor_values": [
+                130,
+                10,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_tanga_colbur_poffin",
+            "flavor_values": [
+                117,
+                12,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "enigma",
+                "tanga",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_enigma_apicot_liechi_poffin",
+            "flavor_values": [
+                87,
+                27,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "enigma",
+                "apicot",
+                "liechi"
+            ]
+        },
+        {
+            "name": "petaya_enigma_apicot_custap_poffin",
+            "flavor_values": [
+                58,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "apicot",
+                "custap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_apicot_lansat_poffin",
+            "flavor_values": [
+                85,
+                25,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "petaya",
+                "enigma",
+                "apicot",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_enigma_apicot_jaboca_poffin",
+            "flavor_values": [
+                57,
+                57,
+                0,
+                27,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "apicot",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_enigma_apicot_petaya_poffin",
+            "flavor_values": [
+                102,
+                57,
+                0,
+                12,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "enigma",
+                "apicot",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_enigma_apicot_salac_poffin",
+            "flavor_values": [
+                55,
+                10,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "enigma",
+                "apicot",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_enigma_apicot_rowap_poffin",
+            "flavor_values": [
+                70,
+                55,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "apicot",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_apicot_colbur_poffin",
+            "flavor_values": [
+                55,
+                55,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "apicot",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_enigma_micle_liechi_poffin",
+            "flavor_values": [
+                58,
+                28,
+                13,
+                28,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "micle",
+                "liechi"
+            ]
+        },
+        {
+            "name": "petaya_enigma_micle_lansat_poffin",
+            "flavor_values": [
+                58,
+                28,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 39,
+            "berries": [
+                "petaya",
+                "enigma",
+                "micle",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_enigma_micle_petaya_poffin",
+            "flavor_values": [
+                72,
+                57,
+                0,
+                57,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "micle",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_enigma_micle_salac_poffin",
+            "flavor_values": [
+                28,
+                13,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "micle",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_enigma_charti_liechi_poffin",
+            "flavor_values": [
+                103,
+                13,
+                0,
+                28,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "charti",
+                "liechi"
+            ]
+        },
+        {
+            "name": "petaya_enigma_charti_custap_poffin",
+            "flavor_values": [
+                72,
+                0,
+                0,
+                42,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "enigma",
+                "charti",
+                "custap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_charti_lansat_poffin",
+            "flavor_values": [
+                102,
+                12,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "petaya",
+                "enigma",
+                "charti",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_enigma_charti_jaboca_poffin",
+            "flavor_values": [
+                72,
+                42,
+                0,
+                72,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "enigma",
+                "charti",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_enigma_charti_petaya_poffin",
+            "flavor_values": [
+                117,
+                42,
+                0,
+                57,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "charti",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_enigma_charti_salac_poffin",
+            "flavor_values": [
+                72,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "charti",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_enigma_charti_rowap_poffin",
+            "flavor_values": [
+                85,
+                40,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "enigma",
+                "charti",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_charti_colbur_poffin",
+            "flavor_values": [
+                72,
+                42,
+                0,
+                12,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "enigma",
+                "charti",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_enigma_liechi_custap_poffin",
+            "flavor_values": [
+                117,
+                0,
+                42,
+                42,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "liechi",
+                "custap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_liechi_lansat_poffin",
+            "flavor_values": [
+                147,
+                0,
+                27,
+                0,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "petaya",
+                "enigma",
+                "liechi",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_enigma_liechi_ganlon_poffin",
+            "flavor_values": [
+                72,
+                12,
+                0,
+                72,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "enigma",
+                "liechi",
+                "ganlon"
+            ]
+        },
+        {
+            "name": "petaya_enigma_liechi_jaboca_poffin",
+            "flavor_values": [
+                115,
+                0,
+                0,
+                70,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "liechi",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_enigma_liechi_petaya_poffin",
+            "flavor_values": [
+                160,
+                0,
+                0,
+                55,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "enigma",
+                "liechi",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_enigma_liechi_salac_poffin",
+            "flavor_values": [
+                117,
+                0,
+                27,
+                0,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "enigma",
+                "liechi",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_enigma_liechi_rowap_poffin",
+            "flavor_values": [
+                130,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "liechi",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_liechi_colbur_poffin",
+            "flavor_values": [
+                115,
+                0,
+                0,
+                10,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "liechi",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_enigma_custap_lansat_poffin",
+            "flavor_values": [
+                117,
+                0,
+                27,
+                12,
+                0
+            ],
+            "smoothness": 39,
+            "berries": [
+                "petaya",
+                "enigma",
+                "custap",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_enigma_custap_jaboca_poffin",
+            "flavor_values": [
+                85,
+                0,
+                0,
+                85,
+                0
+            ],
+            "smoothness": 42,
+            "berries": [
+                "petaya",
+                "enigma",
+                "custap",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_enigma_custap_petaya_poffin",
+            "flavor_values": [
+                130,
+                0,
+                0,
+                70,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "custap",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_enigma_custap_salac_poffin",
+            "flavor_values": [
+                87,
+                0,
+                27,
+                12,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "custap",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_enigma_custap_rowap_poffin",
+            "flavor_values": [
+                100,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 42,
+            "berries": [
+                "petaya",
+                "enigma",
+                "custap",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_custap_colbur_poffin",
+            "flavor_values": [
+                85,
+                0,
+                0,
+                25,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "enigma",
+                "custap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_enigma_lansat_ganlon_poffin",
+            "flavor_values": [
+                72,
+                12,
+                0,
+                42,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "petaya",
+                "enigma",
+                "lansat",
+                "ganlon"
+            ]
+        },
+        {
+            "name": "petaya_enigma_lansat_jaboca_poffin",
+            "flavor_values": [
+                115,
+                0,
+                0,
+                40,
+                0
+            ],
+            "smoothness": 39,
+            "berries": [
+                "petaya",
+                "enigma",
+                "lansat",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_enigma_lansat_petaya_poffin",
+            "flavor_values": [
+                160,
+                0,
+                0,
+                25,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "petaya",
+                "enigma",
+                "lansat",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_enigma_lansat_salac_poffin",
+            "flavor_values": [
+                115,
+                0,
+                10,
+                0,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "petaya",
+                "enigma",
+                "lansat",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_enigma_lansat_rowap_poffin",
+            "flavor_values": [
+                129,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 39,
+            "berries": [
+                "petaya",
+                "enigma",
+                "lansat",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_lansat_colbur_poffin",
+            "flavor_values": [
+                114,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "petaya",
+                "enigma",
+                "lansat",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_enigma_ganlon_salac_poffin",
+            "flavor_values": [
+                42,
+                0,
+                0,
+                42,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "enigma",
+                "ganlon",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_enigma_ganlon_rowap_poffin",
+            "flavor_values": [
+                57,
+                42,
+                0,
+                12,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "ganlon",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_jaboca_petaya_poffin",
+            "flavor_values": [
+                132,
+                12,
+                0,
+                102,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "jaboca",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_enigma_jaboca_salac_poffin",
+            "flavor_values": [
+                85,
+                0,
+                0,
+                40,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "jaboca",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_enigma_jaboca_rowap_poffin",
+            "flavor_values": [
+                102,
+                12,
+                0,
+                12,
+                0
+            ],
+            "smoothness": 42,
+            "berries": [
+                "petaya",
+                "enigma",
+                "jaboca",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_jaboca_colbur_poffin",
+            "flavor_values": [
+                87,
+                12,
+                0,
+                57,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "enigma",
+                "jaboca",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_enigma_petaya_salac_poffin",
+            "flavor_values": [
+                130,
+                0,
+                0,
+                25,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "enigma",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_enigma_petaya_rowap_poffin",
+            "flavor_values": [
+                147,
+                12,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_petaya_colbur_poffin",
+            "flavor_values": [
+                132,
+                12,
+                0,
+                42,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_enigma_salac_rowap_poffin",
+            "flavor_values": [
+                100,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "petaya",
+                "enigma",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_enigma_salac_colbur_poffin",
+            "flavor_values": [
+                84,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "enigma",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_enigma_rowap_colbur_poffin",
+            "flavor_values": [
+                100,
+                10,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "enigma",
+                "rowap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_tanga_apicot_liechi_poffin",
+            "flavor_values": [
+                72,
+                12,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "petaya",
+                "tanga",
+                "apicot",
+                "liechi"
+            ]
+        },
+        {
+            "name": "petaya_tanga_apicot_custap_poffin",
+            "flavor_values": [
+                40,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "apicot",
+                "custap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_apicot_lansat_poffin",
+            "flavor_values": [
+                70,
+                10,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "petaya",
+                "tanga",
+                "apicot",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_tanga_apicot_jaboca_poffin",
+            "flavor_values": [
+                43,
+                43,
+                0,
+                13,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "apicot",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_tanga_apicot_petaya_poffin",
+            "flavor_values": [
+                87,
+                42,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "petaya",
+                "tanga",
+                "apicot",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_tanga_apicot_salac_poffin",
+            "flavor_values": [
+                42,
+                0,
+                0,
+                0,
+                27
+            ],
+            "smoothness": 25,
+            "berries": [
+                "petaya",
+                "tanga",
+                "apicot",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_tanga_apicot_rowap_poffin",
+            "flavor_values": [
+                57,
+                42,
+                0,
+                0,
+                27
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "apicot",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_apicot_colbur_poffin",
+            "flavor_values": [
+                42,
+                42,
+                0,
+                0,
+                12
+            ],
+            "smoothness": 24,
+            "berries": [
+                "petaya",
+                "tanga",
+                "apicot",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_tanga_micle_liechi_poffin",
+            "flavor_values": [
+                43,
+                13,
+                13,
+                13,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "micle",
+                "liechi"
+            ]
+        },
+        {
+            "name": "petaya_tanga_micle_lansat_poffin",
+            "flavor_values": [
+                42,
+                12,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "petaya",
+                "tanga",
+                "micle",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_tanga_micle_petaya_poffin",
+            "flavor_values": [
+                57,
+                42,
+                0,
+                42,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "micle",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_tanga_micle_salac_poffin",
+            "flavor_values": [
+                13,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "micle",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_tanga_charti_liechi_poffin",
+            "flavor_values": [
+                88,
+                0,
+                0,
+                13,
+                0
+            ],
+            "smoothness": 24,
+            "berries": [
+                "petaya",
+                "tanga",
+                "charti",
+                "liechi"
+            ]
+        },
+        {
+            "name": "petaya_tanga_charti_custap_poffin",
+            "flavor_values": [
+                57,
+                0,
+                0,
+                27,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "tanga",
+                "charti",
+                "custap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_charti_lansat_poffin",
+            "flavor_values": [
+                85,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 27,
+            "berries": [
+                "petaya",
+                "tanga",
+                "charti",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_tanga_charti_jaboca_poffin",
+            "flavor_values": [
+                57,
+                27,
+                0,
+                57,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "tanga",
+                "charti",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_tanga_charti_petaya_poffin",
+            "flavor_values": [
+                102,
+                27,
+                0,
+                42,
+                0
+            ],
+            "smoothness": 24,
+            "berries": [
+                "petaya",
+                "tanga",
+                "charti",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_tanga_charti_salac_poffin",
+            "flavor_values": [
+                54,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 24,
+            "berries": [
+                "petaya",
+                "tanga",
+                "charti",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_tanga_charti_rowap_poffin",
+            "flavor_values": [
+                70,
+                25,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "tanga",
+                "charti",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_charti_colbur_poffin",
+            "flavor_values": [
+                57,
+                27,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 23,
+            "berries": [
+                "petaya",
+                "tanga",
+                "charti",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_tanga_liechi_custap_poffin",
+            "flavor_values": [
+                102,
+                0,
+                42,
+                27,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "liechi",
+                "custap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_liechi_lansat_poffin",
+            "flavor_values": [
+                130,
+                0,
+                25,
+                0,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "petaya",
+                "tanga",
+                "liechi",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_tanga_liechi_ganlon_poffin",
+            "flavor_values": [
+                57,
+                0,
+                0,
+                57,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "petaya",
+                "tanga",
+                "liechi",
+                "ganlon"
+            ]
+        },
+        {
+            "name": "petaya_tanga_liechi_jaboca_poffin",
+            "flavor_values": [
+                100,
+                0,
+                0,
+                55,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "liechi",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_tanga_liechi_petaya_poffin",
+            "flavor_values": [
+                145,
+                0,
+                0,
+                40,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "petaya",
+                "tanga",
+                "liechi",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_tanga_liechi_salac_poffin",
+            "flavor_values": [
+                100,
+                0,
+                25,
+                0,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "petaya",
+                "tanga",
+                "liechi",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_tanga_liechi_rowap_poffin",
+            "flavor_values": [
+                115,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "liechi",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_liechi_colbur_poffin",
+            "flavor_values": [
+                100,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 24,
+            "berries": [
+                "petaya",
+                "tanga",
+                "liechi",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_tanga_custap_lansat_poffin",
+            "flavor_values": [
+                102,
+                0,
+                27,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "petaya",
+                "tanga",
+                "custap",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_tanga_custap_jaboca_poffin",
+            "flavor_values": [
+                70,
+                0,
+                0,
+                70,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "tanga",
+                "custap",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_tanga_custap_petaya_poffin",
+            "flavor_values": [
+                115,
+                0,
+                0,
+                55,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "custap",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_tanga_custap_salac_poffin",
+            "flavor_values": [
+                73,
+                0,
+                28,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "custap",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_tanga_custap_rowap_poffin",
+            "flavor_values": [
+                87,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "tanga",
+                "custap",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_custap_colbur_poffin",
+            "flavor_values": [
+                70,
+                0,
+                0,
+                10,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "tanga",
+                "custap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_tanga_lansat_ganlon_poffin",
+            "flavor_values": [
+                57,
+                0,
+                0,
+                27,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "petaya",
+                "tanga",
+                "lansat",
+                "ganlon"
+            ]
+        },
+        {
+            "name": "petaya_tanga_lansat_jaboca_poffin",
+            "flavor_values": [
+                100,
+                0,
+                0,
+                25,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "petaya",
+                "tanga",
+                "lansat",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_tanga_lansat_petaya_poffin",
+            "flavor_values": [
+                145,
+                0,
+                0,
+                10,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "petaya",
+                "tanga",
+                "lansat",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_tanga_lansat_salac_poffin",
+            "flavor_values": [
+                102,
+                0,
+                12,
+                0,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "petaya",
+                "tanga",
+                "lansat",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_tanga_lansat_rowap_poffin",
+            "flavor_values": [
+                115,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "petaya",
+                "tanga",
+                "lansat",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_lansat_colbur_poffin",
+            "flavor_values": [
+                99,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 27,
+            "berries": [
+                "petaya",
+                "tanga",
+                "lansat",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_tanga_ganlon_salac_poffin",
+            "flavor_values": [
+                27,
+                0,
+                0,
+                27,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "petaya",
+                "tanga",
+                "ganlon",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_tanga_ganlon_rowap_poffin",
+            "flavor_values": [
+                43,
+                28,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "ganlon",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_jaboca_petaya_poffin",
+            "flavor_values": [
+                117,
+                0,
+                0,
+                87,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "jaboca",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_tanga_jaboca_salac_poffin",
+            "flavor_values": [
+                72,
+                0,
+                0,
+                27,
+                12
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "jaboca",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_tanga_jaboca_rowap_poffin",
+            "flavor_values": [
+                88,
+                0,
+                0,
+                0,
+                13
+            ],
+            "smoothness": 35,
+            "berries": [
+                "petaya",
+                "tanga",
+                "jaboca",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_jaboca_colbur_poffin",
+            "flavor_values": [
+                73,
+                0,
+                0,
+                43,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "tanga",
+                "jaboca",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_tanga_petaya_salac_poffin",
+            "flavor_values": [
+                115,
+                0,
+                0,
+                10,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "petaya",
+                "tanga",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_tanga_petaya_rowap_poffin",
+            "flavor_values": [
+                130,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_petaya_colbur_poffin",
+            "flavor_values": [
+                117,
+                0,
+                0,
+                27,
+                0
+            ],
+            "smoothness": 24,
+            "berries": [
+                "petaya",
+                "tanga",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_tanga_salac_rowap_poffin",
+            "flavor_values": [
+                85,
+                0,
+                0,
+                0,
+                40
+            ],
+            "smoothness": 30,
+            "berries": [
+                "petaya",
+                "tanga",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_tanga_salac_colbur_poffin",
+            "flavor_values": [
+                70,
+                0,
+                0,
+                0,
+                25
+            ],
+            "smoothness": 24,
+            "berries": [
+                "petaya",
+                "tanga",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_tanga_rowap_colbur_poffin",
+            "flavor_values": [
+                87,
+                0,
+                0,
+                0,
+                27
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "tanga",
+                "rowap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_apicot_liechi_custap_poffin",
+            "flavor_values": [
+                42,
+                0,
+                42,
+                0,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "apicot",
+                "liechi",
+                "custap"
+            ]
+        },
+        {
+            "name": "petaya_apicot_liechi_lansat_poffin",
+            "flavor_values": [
+                70,
+                0,
+                25,
+                0,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "apicot",
+                "liechi",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_apicot_liechi_jaboca_poffin",
+            "flavor_values": [
+                42,
+                12,
+                0,
+                27,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "apicot",
+                "liechi",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_apicot_liechi_petaya_poffin",
+            "flavor_values": [
+                87,
+                12,
+                0,
+                12,
+                0
+            ],
+            "smoothness": 27,
+            "berries": [
+                "petaya",
+                "apicot",
+                "liechi",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_apicot_liechi_salac_poffin",
+            "flavor_values": [
+                42,
+                0,
+                27,
+                0,
+                0
+            ],
+            "smoothness": 27,
+            "berries": [
+                "petaya",
+                "apicot",
+                "liechi",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_apicot_liechi_rowap_poffin",
+            "flavor_values": [
+                58,
+                13,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "apicot",
+                "liechi",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_apicot_liechi_colbur_poffin",
+            "flavor_values": [
+                40,
+                10,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "petaya",
+                "apicot",
+                "liechi",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_apicot_custap_lansat_poffin",
+            "flavor_values": [
+                42,
+                0,
+                27,
+                0,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "petaya",
+                "apicot",
+                "custap",
+                "lansat"
+            ]
+        },
+        {
+            "name": "petaya_apicot_custap_petaya_poffin",
+            "flavor_values": [
+                55,
+                0,
+                0,
+                25,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "apicot",
+                "custap",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_apicot_lansat_jaboca_poffin",
+            "flavor_values": [
+                43,
+                13,
+                0,
+                0,
+                13
+            ],
+            "smoothness": 34,
+            "berries": [
+                "petaya",
+                "apicot",
+                "lansat",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "petaya_apicot_lansat_petaya_poffin",
+            "flavor_values": [
+                85,
+                10,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "apicot",
+                "lansat",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_apicot_lansat_salac_poffin",
+            "flavor_values": [
+                42,
+                0,
+                12,
+                0,
+                42
+            ],
+            "smoothness": 29,
+            "berries": [
+                "petaya",
+                "apicot",
+                "lansat",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_apicot_lansat_rowap_poffin",
+            "flavor_values": [
+                57,
+                12,
+                0,
+                0,
+                42
+            ],
+            "smoothness": 34,
+            "berries": [
+                "petaya",
+                "apicot",
+                "lansat",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_apicot_lansat_colbur_poffin",
+            "flavor_values": [
+                42,
+                12,
+                0,
+                0,
+                27
+            ],
+            "smoothness": 28,
+            "berries": [
+                "petaya",
+                "apicot",
+                "lansat",
+                "colbur"
+            ]
+        },
+        {
+            "name": "petaya_apicot_jaboca_petaya_poffin",
+            "flavor_values": [
+                57,
+                42,
+                0,
+                57,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "apicot",
+                "jaboca",
+                "petaya"
+            ]
+        },
+        {
+            "name": "petaya_apicot_petaya_salac_poffin",
+            "flavor_values": [
+                57,
+                0,
+                0,
+                0,
+                12
+            ],
+            "smoothness": 27,
+            "berries": [
+                "petaya",
+                "apicot",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "petaya_apicot_petaya_rowap_poffin",
+            "flavor_values": [
+                72,
+                42,
+                0,
+                0,
+                12
+            ],
+            "smoothness": 32,
+            "berries": [
+                "petaya",
+                "apicot",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "petaya_apicot_petaya_colbur_poffin",
+            "flavor_values": [
+                58,
+                43,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "petaya",
+                "apicot",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "micle_liechi_lansat_petaya_poffin",
+            "flavor_values": [
+                42,
+                0,
+                42,
+                0,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "micle",
+                "liechi",
+                "lansat",
+                "petaya"
+            ]
+        },
+        {
+            "name": "micle_liechi_petaya_rowap_poffin",
+            "flavor_values": [
+                27,
+                12,
+                12,
+                0,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "micle",
+                "liechi",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "micle_liechi_petaya_colbur_poffin",
+            "flavor_values": [
+                13,
+                13,
+                0,
+                13,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "micle",
+                "liechi",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "micle_lansat_petaya_rowap_poffin",
+            "flavor_values": [
+                28,
+                13,
+                0,
+                0,
+                13
+            ],
+            "smoothness": 39,
+            "berries": [
+                "micle",
+                "lansat",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "micle_lansat_petaya_colbur_poffin",
+            "flavor_values": [
+                12,
+                12,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "micle",
+                "lansat",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_liechi_custap_petaya_poffin",
+            "flavor_values": [
+                57,
+                0,
+                42,
+                42,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "charti",
+                "liechi",
+                "custap",
+                "petaya"
+            ]
+        },
+        {
+            "name": "charti_liechi_lansat_jaboca_poffin",
+            "flavor_values": [
+                42,
+                0,
+                12,
+                12,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "charti",
+                "liechi",
+                "lansat",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "charti_liechi_lansat_petaya_poffin",
+            "flavor_values": [
+                87,
+                0,
+                27,
+                0,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "charti",
+                "liechi",
+                "lansat",
+                "petaya"
+            ]
+        },
+        {
+            "name": "charti_liechi_jaboca_salac_poffin",
+            "flavor_values": [
+                13,
+                0,
+                13,
+                13,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "charti",
+                "liechi",
+                "jaboca",
+                "salac"
+            ]
+        },
+        {
+            "name": "charti_liechi_jaboca_rowap_poffin",
+            "flavor_values": [
+                27,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "charti",
+                "liechi",
+                "jaboca",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_liechi_petaya_salac_poffin",
+            "flavor_values": [
+                57,
+                0,
+                27,
+                0,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "charti",
+                "liechi",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "charti_liechi_petaya_rowap_poffin",
+            "flavor_values": [
+                72,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "charti",
+                "liechi",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_liechi_petaya_colbur_poffin",
+            "flavor_values": [
+                57,
+                0,
+                0,
+                12,
+                0
+            ],
+            "smoothness": 24,
+            "berries": [
+                "charti",
+                "liechi",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_liechi_rowap_colbur_poffin",
+            "flavor_values": [
+                28,
+                0,
+                28,
+                0,
+                13
+            ],
+            "smoothness": 29,
+            "berries": [
+                "charti",
+                "liechi",
+                "rowap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_custap_lansat_petaya_poffin",
+            "flavor_values": [
+                57,
+                0,
+                27,
+                12,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "charti",
+                "custap",
+                "lansat",
+                "petaya"
+            ]
+        },
+        {
+            "name": "charti_custap_petaya_salac_poffin",
+            "flavor_values": [
+                28,
+                0,
+                28,
+                13,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "charti",
+                "custap",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "charti_custap_petaya_rowap_poffin",
+            "flavor_values": [
+                42,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 35,
+            "berries": [
+                "charti",
+                "custap",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_custap_petaya_colbur_poffin",
+            "flavor_values": [
+                25,
+                0,
+                0,
+                25,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "charti",
+                "custap",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_lansat_jaboca_petaya_poffin",
+            "flavor_values": [
+                57,
+                0,
+                0,
+                42,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "charti",
+                "lansat",
+                "jaboca",
+                "petaya"
+            ]
+        },
+        {
+            "name": "charti_lansat_petaya_salac_poffin",
+            "flavor_values": [
+                57,
+                0,
+                12,
+                0,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "charti",
+                "lansat",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "charti_lansat_petaya_rowap_poffin",
+            "flavor_values": [
+                72,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "charti",
+                "lansat",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_lansat_petaya_colbur_poffin",
+            "flavor_values": [
+                55,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 27,
+            "berries": [
+                "charti",
+                "lansat",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_jaboca_petaya_rowap_poffin",
+            "flavor_values": [
+                43,
+                28,
+                0,
+                13,
+                13
+            ],
+            "smoothness": 35,
+            "berries": [
+                "charti",
+                "jaboca",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_petaya_salac_rowap_poffin",
+            "flavor_values": [
+                40,
+                0,
+                0,
+                0,
+                40
+            ],
+            "smoothness": 30,
+            "berries": [
+                "charti",
+                "petaya",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "charti_petaya_salac_colbur_poffin",
+            "flavor_values": [
+                25,
+                0,
+                0,
+                0,
+                25
+            ],
+            "smoothness": 24,
+            "berries": [
+                "charti",
+                "petaya",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "charti_petaya_rowap_colbur_poffin",
+            "flavor_values": [
+                42,
+                27,
+                0,
+                0,
+                27
+            ],
+            "smoothness": 29,
+            "berries": [
+                "charti",
+                "petaya",
+                "rowap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_custap_lansat_jaboca_poffin",
+            "flavor_values": [
+                57,
+                0,
+                57,
+                27,
+                0
+            ],
+            "smoothness": 39,
+            "berries": [
+                "liechi",
+                "custap",
+                "lansat",
+                "jaboca"
+            ]
+        },
+        {
+            "name": "liechi_custap_lansat_petaya_poffin",
+            "flavor_values": [
+                102,
+                0,
+                72,
+                12,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "liechi",
+                "custap",
+                "lansat",
+                "petaya"
+            ]
+        },
+        {
+            "name": "liechi_custap_jaboca_rowap_poffin",
+            "flavor_values": [
+                43,
+                0,
+                28,
+                0,
+                13
+            ],
+            "smoothness": 42,
+            "berries": [
+                "liechi",
+                "custap",
+                "jaboca",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_custap_petaya_salac_poffin",
+            "flavor_values": [
+                72,
+                0,
+                72,
+                12,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "liechi",
+                "custap",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "liechi_custap_petaya_rowap_poffin",
+            "flavor_values": [
+                85,
+                0,
+                40,
+                0,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "liechi",
+                "custap",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_custap_petaya_colbur_poffin",
+            "flavor_values": [
+                72,
+                0,
+                27,
+                27,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "liechi",
+                "custap",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_lansat_ganlon_petaya_poffin",
+            "flavor_values": [
+                57,
+                0,
+                0,
+                42,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "liechi",
+                "lansat",
+                "ganlon",
+                "petaya"
+            ]
+        },
+        {
+            "name": "liechi_lansat_jaboca_petaya_poffin",
+            "flavor_values": [
+                100,
+                0,
+                0,
+                40,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "liechi",
+                "lansat",
+                "jaboca",
+                "petaya"
+            ]
+        },
+        {
+            "name": "liechi_lansat_jaboca_salac_poffin",
+            "flavor_values": [
+                57,
+                0,
+                42,
+                0,
+                12
+            ],
+            "smoothness": 34,
+            "berries": [
+                "liechi",
+                "lansat",
+                "jaboca",
+                "salac"
+            ]
+        },
+        {
+            "name": "liechi_lansat_jaboca_rowap_poffin",
+            "flavor_values": [
+                72,
+                0,
+                12,
+                0,
+                12
+            ],
+            "smoothness": 39,
+            "berries": [
+                "liechi",
+                "lansat",
+                "jaboca",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_lansat_jaboca_colbur_poffin",
+            "flavor_values": [
+                58,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "liechi",
+                "lansat",
+                "jaboca",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_lansat_petaya_salac_poffin",
+            "flavor_values": [
+                100,
+                0,
+                55,
+                0,
+                0
+            ],
+            "smoothness": 29,
+            "berries": [
+                "liechi",
+                "lansat",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "liechi_lansat_petaya_rowap_poffin",
+            "flavor_values": [
+                115,
+                0,
+                25,
+                0,
+                0
+            ],
+            "smoothness": 34,
+            "berries": [
+                "liechi",
+                "lansat",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_lansat_petaya_colbur_poffin",
+            "flavor_values": [
+                100,
+                0,
+                10,
+                0,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "liechi",
+                "lansat",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_lansat_rowap_colbur_poffin",
+            "flavor_values": [
+                72,
+                0,
+                57,
+                0,
+                27
+            ],
+            "smoothness": 33,
+            "berries": [
+                "liechi",
+                "lansat",
+                "rowap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_ganlon_petaya_rowap_poffin",
+            "flavor_values": [
+                42,
+                0,
+                0,
+                12,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "liechi",
+                "ganlon",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_jaboca_petaya_salac_poffin",
+            "flavor_values": [
+                70,
+                0,
+                0,
+                40,
+                0
+            ],
+            "smoothness": 32,
+            "berries": [
+                "liechi",
+                "jaboca",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "liechi_jaboca_petaya_rowap_poffin",
+            "flavor_values": [
+                85,
+                0,
+                0,
+                10,
+                0
+            ],
+            "smoothness": 37,
+            "berries": [
+                "liechi",
+                "jaboca",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_jaboca_petaya_colbur_poffin",
+            "flavor_values": [
+                70,
+                0,
+                0,
+                55,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "liechi",
+                "jaboca",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_jaboca_rowap_colbur_poffin",
+            "flavor_values": [
+                40,
+                0,
+                0,
+                0,
+                40
+            ],
+            "smoothness": 35,
+            "berries": [
+                "liechi",
+                "jaboca",
+                "rowap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_petaya_salac_rowap_poffin",
+            "flavor_values": [
+                87,
+                0,
+                27,
+                0,
+                12
+            ],
+            "smoothness": 32,
+            "berries": [
+                "liechi",
+                "petaya",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "liechi_petaya_salac_colbur_poffin",
+            "flavor_values": [
+                72,
+                0,
+                12,
+                0,
+                0
+            ],
+            "smoothness": 25,
+            "berries": [
+                "liechi",
+                "petaya",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "liechi_petaya_rowap_colbur_poffin",
+            "flavor_values": [
+                85,
+                0,
+                0,
+                0,
+                0
+            ],
+            "smoothness": 30,
+            "berries": [
+                "liechi",
+                "petaya",
+                "rowap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "custap_lansat_jaboca_petaya_poffin",
+            "flavor_values": [
+                70,
+                0,
+                0,
+                55,
+                0
+            ],
+            "smoothness": 39,
+            "berries": [
+                "custap",
+                "lansat",
+                "jaboca",
+                "petaya"
+            ]
+        },
+        {
+            "name": "custap_lansat_petaya_salac_poffin",
+            "flavor_values": [
+                72,
+                0,
+                57,
+                0,
+                12
+            ],
+            "smoothness": 34,
+            "berries": [
+                "custap",
+                "lansat",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "custap_lansat_petaya_rowap_poffin",
+            "flavor_values": [
+                87,
+                0,
+                27,
+                0,
+                12
+            ],
+            "smoothness": 39,
+            "berries": [
+                "custap",
+                "lansat",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "custap_lansat_petaya_colbur_poffin",
+            "flavor_values": [
+                73,
+                0,
+                13,
+                0,
+                0
+            ],
+            "smoothness": 33,
+            "berries": [
+                "custap",
+                "lansat",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "custap_jaboca_petaya_rowap_poffin",
+            "flavor_values": [
+                57,
+                0,
+                0,
+                27,
+                27
+            ],
+            "smoothness": 42,
+            "berries": [
+                "custap",
+                "jaboca",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "custap_petaya_salac_rowap_poffin",
+            "flavor_values": [
+                57,
+                0,
+                27,
+                0,
+                57
+            ],
+            "smoothness": 37,
+            "berries": [
+                "custap",
+                "petaya",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "custap_petaya_salac_colbur_poffin",
+            "flavor_values": [
+                43,
+                0,
+                13,
+                0,
+                43
+            ],
+            "smoothness": 30,
+            "berries": [
+                "custap",
+                "petaya",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "custap_petaya_rowap_colbur_poffin",
+            "flavor_values": [
+                55,
+                0,
+                0,
+                0,
+                40
+            ],
+            "smoothness": 35,
+            "berries": [
+                "custap",
+                "petaya",
+                "rowap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "lansat_ganlon_petaya_salac_poffin",
+            "flavor_values": [
+                27,
+                0,
+                0,
+                12,
+                12
+            ],
+            "smoothness": 29,
+            "berries": [
+                "lansat",
+                "ganlon",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "lansat_ganlon_petaya_rowap_poffin",
+            "flavor_values": [
+                42,
+                0,
+                0,
+                0,
+                12
+            ],
+            "smoothness": 34,
+            "berries": [
+                "lansat",
+                "ganlon",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "lansat_ganlon_petaya_colbur_poffin",
+            "flavor_values": [
+                28,
+                0,
+                0,
+                28,
+                0
+            ],
+            "smoothness": 28,
+            "berries": [
+                "lansat",
+                "ganlon",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "lansat_jaboca_petaya_salac_poffin",
+            "flavor_values": [
+                72,
+                0,
+                0,
+                12,
+                27
+            ],
+            "smoothness": 34,
+            "berries": [
+                "lansat",
+                "jaboca",
+                "petaya",
+                "salac"
+            ]
+        },
+        {
+            "name": "lansat_jaboca_petaya_rowap_poffin",
+            "flavor_values": [
+                85,
+                0,
+                0,
+                0,
+                25
+            ],
+            "smoothness": 39,
+            "berries": [
+                "lansat",
+                "jaboca",
+                "petaya",
+                "rowap"
+            ]
+        },
+        {
+            "name": "lansat_jaboca_petaya_colbur_poffin",
+            "flavor_values": [
+                72,
+                0,
+                0,
+                27,
+                12
+            ],
+            "smoothness": 33,
+            "berries": [
+                "lansat",
+                "jaboca",
+                "petaya",
+                "colbur"
+            ]
+        },
+        {
+            "name": "lansat_petaya_salac_rowap_poffin",
+            "flavor_values": [
+                87,
+                0,
+                12,
+                0,
+                57
+            ],
+            "smoothness": 34,
+            "berries": [
+                "lansat",
+                "petaya",
+                "salac",
+                "rowap"
+            ]
+        },
+        {
+            "name": "lansat_petaya_salac_colbur_poffin",
+            "flavor_values": [
+                72,
+                0,
+                0,
+                0,
+                42
+            ],
+            "smoothness": 28,
+            "berries": [
+                "lansat",
+                "petaya",
+                "salac",
+                "colbur"
+            ]
+        },
+        {
+            "name": "lansat_petaya_rowap_colbur_poffin",
+            "flavor_values": [
+                85,
+                0,
+                0,
+                0,
+                40
+            ],
+            "smoothness": 33,
+            "berries": [
+                "lansat",
+                "petaya",
+                "rowap",
+                "colbur"
+            ]
+        },
+        {
+            "name": "jaboca_petaya_rowap_colbur_poffin",
+            "flavor_values": [
+                58,
+                0,
+                0,
+                0,
+                58
+            ],
+            "smoothness": 35,
+            "berries": [
+                "jaboca",
+                "petaya",
+                "rowap",
+                "colbur"
+            ]
         }
     ]
 }

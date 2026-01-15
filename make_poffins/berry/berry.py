@@ -21,6 +21,12 @@ class Berry:
 
     https://progameguides.com/pokemon/complete-poffin-recipe-guide-for-pokemon-brilliant-diamond-and-shining-pearl/
     """
+    __slots__ = [
+        'name', 'flavor_values', 'smoothness', 'main_flavor_value',
+        'main_flavor', 'num_flavors', 'rarity', '_weakened_flavor_values',
+        '_weakened_main_flavor_value', '_weakened_main_flavor',
+        '__id__', 'main_flavor_to_smoothness_ratio', 'emoji'
+    ]
 
     def __init__(self, name: str, values: list[int], emoji: str = None):
         """A berry with which poffins are made.
@@ -143,7 +149,8 @@ class Berry:
         for i in range(5):
             printable_flavor_values = (f"{printable_flavor_values}"
                                        f"{self.flavor_values[i]:>1}, ")
-        r = (f'{self.name}_berry,')  # = Berry("{self.name.capitalize()}", {printable_flavor_values[:-2]}])\n'
+        # = Berry("{self.name.capitalize()}", {printable_flavor_values[:-2]}])\n'
+        r = (f'{self.name}_berry,')
         # f'"""{self.main_flavor.capitalize()} ({self.smoothness}) -- {printable_flavor_values[:-2]}]"""')
         return r
 

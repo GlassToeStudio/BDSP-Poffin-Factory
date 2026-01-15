@@ -13,7 +13,7 @@ from make_poffins.poffin.poffin_sort_and_filter_system import \
 
 
 class PoffinFactory():
-    def __init__(self, cooker: PoffinCooker, berry_combinations: tuple[Berry, ...] = None, poffin_filter_system: PoffinSortAndFilterSystem = None):  # noqa ES501
+    def __init__(self, cooker: PoffinCooker, berry_combinations: list[list[Berry]], poffin_filter_system: PoffinSortAndFilterSystem = None):  # noqa ES501
         self._cooker = cooker
         self._berry_combinations = berry_combinations
         self._poffin_filter_system = poffin_filter_system
@@ -35,7 +35,8 @@ class PoffinFactory():
         if not self._poffins:
             # self._poffins = self._generate_poffin_list_serial()
             self._poffins = self._generate_poffin_list_map()
-        print(f"Returning {None if not self._poffins else len(self._poffins)} Cooked Poffins")
+        print(
+            f"Returning {None if not self._poffins else len(self._poffins)} Cooked Poffins")
         return self._poffins
 
     @property
@@ -46,8 +47,10 @@ class PoffinFactory():
             list[Poffin]: Filtered and Sorted Poffin List
         """
         if not self._filtered_poffin_list:
-            self._filtered_poffin_list = self._poffin_filter_system.get_filtered_and_sorted_poffins(self.poffins)
-        print(f"Returning {None if not self._filtered_poffin_list else len(self._filtered_poffin_list)} Filtered Poffins")
+            self._filtered_poffin_list = self._poffin_filter_system.get_filtered_and_sorted_poffins(
+                self.poffins)
+        print(
+            f"Returning {None if not self._filtered_poffin_list else len(self._filtered_poffin_list)} Filtered Poffins")
         return self._filtered_poffin_list
 
     @calculate_time
@@ -65,10 +68,12 @@ class PoffinFactory():
         pool = mp.Pool()
         chunk_size = int(TOTAL_BERRIES[0]//mp.cpu_count())
         print(f"Cooking Poffins map")
-        r = pool.map_async(self._mapped_cook, self._berry_combinations, chunksize=chunk_size)
+        r = pool.map_async(self._mapped_cook,
+                           self._berry_combinations, chunksize=chunk_size)
         print()
         while not r.ready():
-            print(f"{start_up(1)} * Complete: {100*((TOTAL_BERRIES[0] - (r._number_left*chunk_size)) / TOTAL_BERRIES[0]):6.2f}%")
+            print(
+                f"{start_up(1)} * Complete: {100*((TOTAL_BERRIES[0] - (r._number_left*chunk_size)) / TOTAL_BERRIES[0]):6.2f}%")
             r.wait(timeout=1)
         self._poffins = [x for x in r.get() if x is not None]
         return self._poffins
@@ -118,7 +123,8 @@ class PoffinFactory():
 
     @staticmethod
     def generate_poffin_combinations_r(poffins: list[Poffin], r: int = 5) -> list[Poffin]:
-        Cn_r = math.factorial(len(poffins)) / (math.factorial(r) * math.factorial(len(poffins) - r))
+        Cn_r = math.factorial(len(poffins)) / (math.factorial(r)
+                                               * math.factorial(len(poffins) - r))
         TOTAL_POFFINS[0] = Cn_r
         print(f"There are {Cn_r} combinations! Wow")
         return combinations(poffins, r)

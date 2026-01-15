@@ -25,6 +25,11 @@ class Poffin:
             * Berries (aka recipe): list[Berry] (up to 4)\n
             * __id__: int
     """
+    __slots__ = [
+        'flavor_values', 'smoothness', 'berries', '_flavor_names', 'name', 'main_flavor',
+        'level', 'second_level', 'num_flavors', 'rarity', 'level_to_smoothness_ratio', '_repr_name', '__id__',
+        'level_to_smoothness_ratio_sum'
+    ]
 
     def __init__(self, flavor_values: list[int], smoothness: int, berries: list[Berry]):  # noqa ES501
         """
@@ -45,6 +50,7 @@ class Poffin:
             Berries (aka recipe): list[Berry] (up to 4)
             __id__: int
         """
+
         self.flavor_values = flavor_values
         """Values of the flavors - unaltered. Ex: [10, 0, 0, 10, 0]"""
         self.smoothness = smoothness
@@ -67,7 +73,8 @@ class Poffin:
         """The total rarity (sum of berry rarity) for this poffin"""
         self.level_to_smoothness_ratio = self.level/self.smoothness
         """ level / smoothness"""
-        self.level_to_smoothness_ratio_sum = (self.level + self.second_level)/self.smoothness
+        self.level_to_smoothness_ratio_sum = (
+            self.level + self.second_level)/self.smoothness
         """ sum(level / smoothness,)"""
         self._repr_name = ""
         """The fancy colored version of the poffins name"""

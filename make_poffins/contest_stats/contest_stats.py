@@ -17,6 +17,11 @@ class ContestStats:
 
     Has method to apply multiple poffins repeatedly.
     """
+    __slots__ = [
+        'poffins', 'coolness', 'beauty', 'cuteness', 'cleverness',
+        'toughness', 'sheen', 'rank', 'rarity', 'poffins_eaten',
+        'unique_berries', 'num_perfect_values', '_all_values', '_yield'
+    ]
 
     def __init__(self, poffins: list[Poffin] = None):
         """Container to hold contest stats
@@ -96,9 +101,11 @@ class ContestStats:
         while True:
             for p in poffins:
                 self._apply_poffin(p)
-                if self.sheen >= 255 or self.num_perfect_values == 5:  # Sheen is maxed, cant eat anymore: Rank is 2 => All categories maxed.
+                # Sheen is maxed, cant eat anymore: Rank is 2 => All categories maxed.
+                if self.sheen >= 255 or self.num_perfect_values == 5:
                     self.rank = self._rank_combo()
-                    self._yield = len(self.poffins) * len(self.poffins[0].berries)
+                    self._yield = len(self.poffins) * \
+                        len(self.poffins[0].berries)
                     return
 
     def _apply_poffin(self, p: Poffin) -> None:
@@ -115,7 +122,8 @@ class ContestStats:
         self.toughness = self._add_value(self.toughness, p.flavor_values[4])
 
         self._all_values = [self.coolness, self.beauty, self.cuteness, self.cleverness, self.toughness]  # noqa ES501
-        self.num_perfect_values = sum([1 for x in self._all_values if x >= 255])
+        self.num_perfect_values = sum(
+            [1 for x in self._all_values if x >= 255])
 
     def _rank_combo(self) -> int:
         """Return a rank of this 4-poffin combo.
@@ -155,27 +163,28 @@ class ContestStats:
         amt = 36
         formated_poffin_string = '\n'.join(map(repr, self.poffins))
         return (
-f"\t{formated_poffin_string                                                                                                                                                                                                                                          }                                                          \n"  # noqa ES501
-f"\t{BOLD}{outline}{'-'* amt}{RESET                                                                                                                                                                                                                                  }{FLAVOR_COLORS['Dry'   ]}      ---------------  {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}| ******   Contest Stats    ****** |{RESET                                                                                                                                                                                                        }{FLAVOR_COLORS['Dry'   ]}     \\####|▓▓▓██|####/{RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}{'-'* amt}{RESET                                                                                                                                                                                                                                  }{FLAVOR_COLORS['Dry'   ]}      \\###|█▓▓▓█|###/ {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}| {FLAVOR_COLORS['Spicy' ]}{'(Spicy)'  :<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Spicy' ]}{'Coolness'  :<14}{RESET}:{bad_red if self.coolness   < 255 else FLAVOR_COLORS['Bitter']}{self.coolness  :>4} {BOLD}{outline}|{RESET                        }{FLAVOR_COLORS['Dry'   ]}       `##|██▓▓▓|##'   {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}| {FLAVOR_COLORS['Dry'   ]}{'(Dry)'    :<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Dry'   ]}{'Beauty'    :<14}{RESET}:{bad_red if self.beauty     < 255 else FLAVOR_COLORS['Bitter']}{self.beauty    :>4} {BOLD}{outline}|{RESET                        }{FLAVOR_COLORS['Sour'  ]}            ({FLAVOR_COLORS['Spicy' ]}O{FLAVOR_COLORS['Sour'  ]})        {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}| {FLAVOR_COLORS['Sweet' ]}{'(Sweet)'  :<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Sweet' ]}{'Cuteness'  :<14}{RESET}:{bad_red if self.cuteness   < 255 else FLAVOR_COLORS['Bitter']}{self.cuteness  :>4} {BOLD}{outline}|{RESET                        }{FLAVOR_COLORS['Sour'  ]}         .-'''''-.     {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}| {FLAVOR_COLORS['Bitter']}{'(Bitter)' :<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Bitter']}{'Cleverness':<14}{RESET}:{bad_red if self.cleverness < 255 else FLAVOR_COLORS['Bitter']}{self.cleverness:>4} {BOLD}{outline}|{RESET                        }{FLAVOR_COLORS['Sour'  ]}       .'  {FLAVOR_COLORS['Spicy' ]}* * *{FLAVOR_COLORS['Sour'  ]}  `.   {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}| {FLAVOR_COLORS['Sour'  ]}{'(Sour)'   :<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Sour'  ]}{'Toughness' :<14}{RESET}:{bad_red if self.toughness  < 255 else FLAVOR_COLORS['Bitter']}{self.toughness :>4} {BOLD}{outline}|{RESET                        }{FLAVOR_COLORS['Sour'  ]}      :  {FLAVOR_COLORS['Spicy' ]}*       *{FLAVOR_COLORS['Sour'  ]}  :  {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}{'-'* amt}{RESET                                                                                                                                                                                                                                  }{FLAVOR_COLORS['Sour'  ]}     : ~ PO F F IN ~ : {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}| {RESET}{BOLD}Eaten{RESET}{bad_red if self.poffins_eaten > self._yield else RESET}{self.poffins_eaten:>6}{RESET}  {BOLD}{'Sheen':<14}{RESET}:{BOLD if self.sheen >= 255 else RESET}{self.sheen:>4}{RESET} {BOLD}{outline}|{RESET              }{FLAVOR_COLORS['Sour'  ]}     : ~ A W A R D ~ : {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}{'-'* amt}{RESET                                                                                                                                                                                                                                  }{FLAVOR_COLORS['Sour'  ]}      :  {FLAVOR_COLORS['Spicy' ]}*       *{FLAVOR_COLORS['Sour'  ]}  :  {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}| {RESET}{BOLD}Rank{RESET} :{FLAVOR_COLORS['Bitter'] if self.rank == 1 else FLAVOR_COLORS['Spicy'] if self.rank == 2 else bad_red} {self.rank:<2}{RESET}{BOLD}    {'R/U':<6}{RESET}  {self.rarity:>5} : {self.unique_berries}{BOLD:<6}{outline}|{RESET}{FLAVOR_COLORS['Sour'  ]}       `.  {FLAVOR_COLORS['Spicy' ]}* * *{FLAVOR_COLORS['Sour'  ]}  .'   {RESET}   \n"  # noqa ES501
-f"\t{BOLD}{outline}{'-'* amt}{RESET                                                                                                                                                                                                                                  }{FLAVOR_COLORS['Sour'  ]}         `-.....-'     {RESET}   \n"  # noqa ES501
-f"{BOLD}{outline}{'-'* 75}{RESET}\n")  # noqa ES501
+f"\t{formated_poffin_string}                                                          \n"  # noqa ES501
+f"\t{BOLD}{outline}{'-' * amt}{RESET}{FLAVOR_COLORS['Dry']}      ---------------  {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}| ******   Contest Stats    ****** |{RESET}{FLAVOR_COLORS['Dry']}     \\####|▓▓▓██|####/{RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}{'-' * amt}{RESET}{FLAVOR_COLORS['Dry']}      \\###|█▓▓▓█|###/ {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}| {FLAVOR_COLORS['Spicy']}{'(Spicy)':<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Spicy']}{'Coolness':<14}{RESET}:{bad_red if self.coolness < 255 else FLAVOR_COLORS['Bitter']}{self.coolness:>4} {BOLD}{outline}|{RESET}{FLAVOR_COLORS['Dry']}       `##|██▓▓▓|##'   {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}| {FLAVOR_COLORS['Dry']}{'(Dry)':<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Dry']}{'Beauty':<14}{RESET}:{bad_red if self.beauty < 255 else FLAVOR_COLORS['Bitter']}{self.beauty:>4} {BOLD}{outline}|{RESET}{FLAVOR_COLORS['Sour']}            ({FLAVOR_COLORS['Spicy']}O{FLAVOR_COLORS['Sour']})        {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}| {FLAVOR_COLORS['Sweet']}{'(Sweet)':<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Sweet']}{'Cuteness':<14}{RESET}:{bad_red if self.cuteness < 255 else FLAVOR_COLORS['Bitter']}{self.cuteness:>4} {BOLD}{outline}|{RESET}{FLAVOR_COLORS['Sour']}         .-'''''-.     {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}| {FLAVOR_COLORS['Bitter']}{'(Bitter)':<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Bitter']}{'Cleverness':<14}{RESET}:{bad_red if self.cleverness < 255 else FLAVOR_COLORS['Bitter']}{self.cleverness:>4} {BOLD}{outline}|{RESET}{FLAVOR_COLORS['Sour']}       .'  {FLAVOR_COLORS['Spicy']}* * *{FLAVOR_COLORS['Sour']}  `.   {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}| {FLAVOR_COLORS['Sour']}{'(Sour)':<8}{RESET} ->  {BOLD}{FLAVOR_COLORS['Sour']}{'Toughness':<14}{RESET}:{bad_red if self.toughness < 255 else FLAVOR_COLORS['Bitter']}{self.toughness:>4} {BOLD}{outline}|{RESET}{FLAVOR_COLORS['Sour']}      :  {FLAVOR_COLORS['Spicy']}*       *{FLAVOR_COLORS['Sour']}  :  {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}{'-' * amt}{RESET}{FLAVOR_COLORS['Sour']}     : ~ PO F F IN ~ : {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}| {RESET}{BOLD}Eaten{RESET}{bad_red if self.poffins_eaten > self._yield else RESET}{self.poffins_eaten:>6}{RESET}  {BOLD}{'Sheen':<14}{RESET}:{BOLD if self.sheen >= 255 else RESET}{self.sheen:>4}{RESET} {BOLD}{outline}|{RESET}{FLAVOR_COLORS['Sour']}     : ~ A W A R D ~ : {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}{'-' * amt}{RESET}{FLAVOR_COLORS['Sour']}      :  {FLAVOR_COLORS['Spicy']}*       *{FLAVOR_COLORS['Sour']}  :  {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}| {RESET}{BOLD}Rank{RESET} :{FLAVOR_COLORS['Bitter'] if self.rank == 1 else FLAVOR_COLORS['Spicy'] if self.rank == 2 else bad_red} {self.rank:<2}{RESET}{BOLD}    {'R/U':<6}{RESET}  {self.rarity:>5} : {self.unique_berries}{BOLD:<6}{outline}|{RESET}{FLAVOR_COLORS['Sour']}       `.  {FLAVOR_COLORS['Spicy']}* * *{FLAVOR_COLORS['Sour']}  .'   {RESET}   \n"  # noqa ES501
+f"\t{BOLD}{outline}{'-' * amt}{RESET}{FLAVOR_COLORS['Sour']}         `-.....-'     {RESET}   \n"  # noqa ES501
+f"{BOLD}{outline}{'-' * 75}{RESET}\n")  # noqa ES501
 
     def __str__(self) -> str:
         formated_poffin_string = '\n'.join(map(str, self.poffins))
 
-        return (f"Rank: {self.rank} Poffins eaten: {self.poffins_eaten} Rarity: {self.rarity:<3} Unique Berries: {self.unique_berries}")  # \n"
-        #f"\t{self.coolness}, {self.beauty}, {self.cuteness}, {self.cleverness}, {self.toughness} : {self.sheen}"  # noqa ES501
+        # \n"
+        return (f"Rank: {self.rank} Poffins eaten: {self.poffins_eaten} Rarity: {self.rarity:<3} Unique Berries: {self.unique_berries}")
+        # f"\t{self.coolness}, {self.beauty}, {self.cuteness}, {self.cleverness}, {self.toughness} : {self.sheen}"  # noqa ES501
         # f"{formated_poffin_string}\n")
 
 
@@ -188,13 +197,18 @@ def main():
         Second strongest flavor value: 28
     """
 
-    recipes = [
-        [berry_library.petaya_berry, berry_library.enigma_berry, berry_library.liechi_berry, berry_library.custap_berry],
-        [berry_library.apicot_berry, berry_library.micle_berry, berry_library.ganlon_berry, berry_library.jaboca_berry],
-        [berry_library.apicot_berry, berry_library.custap_berry, berry_library.lansat_berry, berry_library.salac_berry],
-        [berry_library.petaya_berry, berry_library.enigma_berry, berry_library.ganlon_berry, berry_library.jaboca_berry],
-        [berry_library.apicot_berry, berry_library.custap_berry, berry_library.salac_berry, berry_library.rowap_berry]
-    ]
+    recipes = (
+        [berry_library.petaya_berry, berry_library.enigma_berry,
+            berry_library.liechi_berry, berry_library.custap_berry],
+        [berry_library.apicot_berry, berry_library.micle_berry,
+            berry_library.ganlon_berry, berry_library.jaboca_berry],
+        [berry_library.apicot_berry, berry_library.custap_berry,
+            berry_library.lansat_berry, berry_library.salac_berry],
+        [berry_library.petaya_berry, berry_library.enigma_berry,
+            berry_library.ganlon_berry, berry_library.jaboca_berry],
+        [berry_library.apicot_berry, berry_library.custap_berry,
+            berry_library.salac_berry, berry_library.rowap_berry]
+    )
     cooker = PoffinCooker()
     stats = ContestStats()
     pf = PoffinFactory(cooker, recipes)

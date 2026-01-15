@@ -44,7 +44,8 @@ def main():
         SortBerriesBy_Rarity(),
         SortBerriesBy_Name()
     ]
-    berry_filtering_sorting_system = BerrySortAndFilterSystem(berry_filters_sorters)
+    berry_filtering_sorting_system = BerrySortAndFilterSystem(
+        berry_filters_sorters)
     berry_factory = BerryFactory(berry_filtering_sorting_system)
     berry_combinations = berry_factory.get_berry_combinations_4()
 
@@ -56,8 +57,10 @@ def main():
         RemovePoffinsWith_MaxNSimilar(1),
         SortPoffinsBy_LevelToSmoothnessRatioSum()
     ]
-    poffin_filtering_sorting_system = PoffinSortAndFilterSystem(poffin_filters_sorters)
-    poffin_factory = PoffinFactory(PoffinCooker(40), berry_combinations, poffin_filtering_sorting_system)
+    poffin_filtering_sorting_system = PoffinSortAndFilterSystem(
+        poffin_filters_sorters)
+    poffin_factory = PoffinFactory(PoffinCooker(
+        40), berry_combinations, poffin_filtering_sorting_system)
     poffin_permutations = poffin_factory.get_poffin_permutations_3()
 
     # Stats
@@ -69,8 +72,10 @@ def main():
         # SortOnContestStats_NumUniqueBerries(),
         # SortOnContestStats_Rarity(),
     ]
-    contest_stats_filtering_sorting_system = ContestStatsSortAndFilterSystem(contest_stats_filters_sorters)
-    contest_stat_factory = ContestStatsFactory(poffin_permutations, contest_stats_filtering_sorting_system)
+    contest_stats_filtering_sorting_system = ContestStatsSortAndFilterSystem(
+        contest_stats_filters_sorters)
+    contest_stat_factory = ContestStatsFactory(
+        poffin_permutations, contest_stats_filtering_sorting_system)
     final_stats = contest_stat_factory.filtered_sorted_contest_stats
 
     timestamp = time.strftime("%d-%b-%Y %I-%M %p", time.localtime())

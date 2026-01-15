@@ -11,7 +11,7 @@ with open("README.md", "r", encoding='utf-8') as f:
 
 setup(
     name='make_poffins',
-    version='0.0.1',
+    version='0.0.2cd ..',
     description='Making Poffins',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -31,10 +31,11 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent"
     ],
-    packages=find_packages(include=['make_poffins', 'make_poffins.*'], exclude=['tests']),
+    packages=find_packages(
+        include=['make_poffins', 'make_poffins.*'], exclude=['tests']),
     include_package_data=True,
     package_data={
-        "": ["./results/*"]
+        "": ["./results/*", "./poffin/poffin_library/poffin_recipes.json"]
     },
     install_requires=[],
     setup_requires=['pytest-runner'],
