@@ -3,5 +3,5 @@ setuptools
 twine
 pytest
 pytest-runner
-gts_colors
 tqdm
+gts_colors

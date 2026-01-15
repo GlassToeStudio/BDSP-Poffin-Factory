@@ -12,11 +12,17 @@ class Berry:
 
     Attributes:
         name : str.lower()\n
+
         main flavor : str\n
+
             Ex: Spicy, Dry, Sweet, Bitter, Sour>\n
+
         smoothness : int\n
+
         flavor values : list[int, int, int, int, int]\n
+
             Ex: [0, 30, 10, 30, 0]\n
+
         main flavor value : int\n
 
     https://progameguides.com/pokemon/complete-poffin-recipe-guide-for-pokemon-brilliant-diamond-and-shining-pearl/

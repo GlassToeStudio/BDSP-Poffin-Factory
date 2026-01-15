@@ -54,7 +54,7 @@ class PoffinCooker:
 
         """
         # NOTE: I set the max value to 115 since I think thats all you can get in game.
-        return [min(poffin_values[i] - (self.spills + self.burns), 115) for i in range(5)]  # noqa ES501
+        return [min(poffin_values[i] - (self.spills + self.burns), 100) for i in range(5)]  # noqa ES501
 
     @classmethod
     def __set_negatives_to_zero__(cls, poffin_values: list[int]) -> list[int]:

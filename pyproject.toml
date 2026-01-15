@@ -1,0 +1,31 @@
+# In poffin_project/pyproject.toml
+
+[build-system]
+# These are the build-time requirements for your project.
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+    "twine",
+    "pytest",
+    "pytest-runner",
+    "tqdm"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+# This section contains the modern, standardized project metadata.
+name = "make-poffins"
+version = "1.0.0"
+description = "A Python application to calculate optimal Poffin recipes in Pokémon."
+requires-python = ">=3.8"
+
+# List your project's runtime dependencies here.
+# Based on your files, you need tqdm and numpy.
+dependencies = [
+    "tqdm",
+    "numpy",
+    "twine",
+    "pytest",
+    "pytest-runner",
+    "tqdm"
+]
