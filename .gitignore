@@ -155,8 +155,3 @@ results/*
 
 
 # Few of these for housekeeping, kill switch, etc
-*.bat
-
-# found on internet, might include later
-berries-info.json
-make_poffins/berry/berries/
